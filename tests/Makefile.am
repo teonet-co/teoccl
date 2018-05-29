@@ -14,7 +14,7 @@ AM_CXX = clang++
 AM_CXXFLAGS = \
          -g -Wall \
 	 -I../src \
-	 -std=c++17
+	 -std=c++11
 
 ## Debug info
 if DEBUG

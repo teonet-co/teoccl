@@ -20,7 +20,7 @@ AM_CFLAGS = \
 AM_CXX = clang++
 AM_CXXFLAGS = \
 	 -g -Wall \
-         -std=c++17 \
+         -std=c++11 \
 	 -fPIC
 	
 #	 -std=c++11 
