@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  * 
  * \file   hash.h
- * \author \author Kirill Scherba <kirill@scherba.ru>
+ * \author Kirill Scherba <kirill@scherba.ru>
  *
  * Created on June 5, 2016, 4:29 PM
  */
@@ -40,7 +40,9 @@ typedef unsigned long int ub4; /* unsigned 4-byte quantities */
 typedef unsigned char ub1; /* unsigned 1-byte quantities */  
 
 uint32_t teoHashSuperFast (const char * data, int len);
-ub4 teoHashFast(ub1 *k, ub4 length, ub4 initval); /* the previous hash, or an arbitrary value */
+ub4 teoHashFast(ub1 *k, ub4 length, ub4 initval); /* the previous hash,
+                                                     or an arbitrary value
+                                                   */
 
 #ifdef __cplusplus
 }

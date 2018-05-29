@@ -154,10 +154,10 @@ void _check_map(const size_t NUM_KEYS) {
     
     // Loop through map using iterator
     t_beg = timeInMilliseconds();
-    // Create map iterator
+    // Create normal map iterator
     teoMapIterator *it = teoMapIteratorNew(map);
     CU_ASSERT_PTR_NOT_NULL_FATAL(it);
-    
+
     i = 0;
     //printf("\n display %d records by iterator loop: \n", (int)map->length);
     while(teoMapIteratorNext(it)) {
@@ -173,7 +173,28 @@ void _check_map(const size_t NUM_KEYS) {
     CU_ASSERT(i == map->length);
     // Destroy map iterator
     teoMapIteratorDestroy(it);
-    
+
+    // Create reverse map iterator
+    teoMapIterator *it_r = teoMapIteratorReverseNew(map);
+    CU_ASSERT_PTR_NOT_NULL_FATAL(it_r);
+
+    i = map->length+1;
+    //printf("\n display %d records by iterator loop: \n", (int)map->length);
+    while(teoMapIteratorPrev(it_r)) {
+        i--;
+        teoMapElementData *el = teoMapIteratorElement(it_r);
+        size_t key_lenth;
+        /*void *key =*/ teoMapIteratorElementKey(el, &key_lenth);
+        size_t data_lenth;
+        /*void *data =*/ teoMapIteratorElementData(el, &data_lenth);
+        //printf("\n #%d, idx: %u, hash: %010u, key: %s, data: %s ", 
+        //       i, it->idx, el->hash, (char*)key, (char*)data);        
+    }
+    CU_ASSERT(i == 1);
+    // Destroy map iterator
+    teoMapIteratorDestroy(it_r);
+ 
+ 
     printf("\n\t%d records read in iterator loop, time: %.3f ms \n   ", 
             (int)map->length, (timeInMilliseconds() - t_beg) / 1000.0);
         
@@ -189,7 +210,7 @@ void _check_map(const size_t NUM_KEYS) {
 }
 
 void check_map() {
-    size_t num = 11, mul = 6, num_keys = 55;
+    size_t num = 11, mul = 6, num_keys = 3;
     
     for(int i=0; i < num; i++, num_keys = (i < (num + 1)/2 ? num_keys * mul : num_keys / mul ))
         _check_map(num_keys);

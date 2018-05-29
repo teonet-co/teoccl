@@ -92,8 +92,10 @@ void *teoMapGet(teoMapData *map, void *key, size_t key_length,
 int teoMapDelete(teoMapData *map, void *key, size_t key_length);
 
 teoMapIterator *teoMapIteratorNew(teoMapData *map);
+teoMapIterator *teoMapIteratorReverseNew(teoMapData *map);
 int teoMapIteratorDestroy(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
+teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
 /**
  * Get element selected last map net or map previous iterator function
  * 
