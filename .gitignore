@@ -21,7 +21,7 @@
 /docs/
 /src/.libs/
 /src/.deps/
-/src/libtrudp.pc
+/src/libteoccl.pc
 /po/Makefile.in
 /po/Makefile
 /Makefile.in
