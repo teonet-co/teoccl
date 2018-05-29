@@ -4,7 +4,7 @@
 
 The Teo ccl library process basic container at C language.
 
-[Read More](https://gitlab.ksproject.org/teonet/teonet/wikis/tr-udp)
+[Read More](https://github.com/teonet-co/teonet/wikis/tr-udp)
 
 ## 2. Installation from sources
 
