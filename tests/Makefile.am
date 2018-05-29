@@ -7,7 +7,8 @@ AM_CPPFLAGS = \
 
 AM_CFLAGS = \
 	 -g -Wall \
-	 -I../src
+	 -I../src \
+	 -std=gnu99
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
