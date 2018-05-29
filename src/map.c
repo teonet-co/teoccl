@@ -408,6 +408,26 @@ teoMapIterator *teoMapIteratorNew(teoMapData *map) {
 }
 
 /**
+ * Create new map reverse iterator
+ * 
+ * @param map Pointer to teoMapData
+ * @return Pointer to teoMapIterator or NULL at memory allocate error
+ */
+teoMapIterator *teoMapIteratorReverseNew(teoMapData *map) {
+
+    teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
+    if(map_it) {
+        map_it->it = teoQueueIteratorNew(map->q[map->hash_map_size - 1]);
+        map_it->idx = map->hash_map_size - 1;
+        map_it->map = map;
+        map_it->tmv = NULL;
+    }
+
+    return map_it;
+}
+
+
+/**
  * Destroy map iterator
  * 
  * @param map_it Pointer to teoMapIterator
@@ -438,6 +458,35 @@ teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it) {
 
     while(!(tqd = teoQueueIteratorNext(map_it->it))) {
         if(++map_it->idx < map_it->map->hash_map_size) {
+            teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
+        }
+        else break;
+    }
+
+    if(tqd) {
+        tmv = (teoMapElementData *)tqd->data;
+        map_it->tmv = tmv;
+    }
+
+    return tmv;
+}
+
+
+/**
+ * Get prev maps element
+ * 
+ * @param map_it Pointer to teoMapIterator
+ * @return Pointer to map element data teoMapValueData
+ */
+teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
+
+    if(!map_it) return NULL;
+
+    teoQueueData *tqd;
+    teoMapElementData *tmv = NULL;
+
+    while(!(tqd = teoQueueIteratorPrev(map_it->it))) {
+        if(--map_it->idx != UINT32_MAX) {
             teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
         }
         else break;
