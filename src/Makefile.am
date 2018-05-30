@@ -46,10 +46,9 @@ libteoccl_la_SOURCES = \
 	hash.c \
 	map.c
 	
-libteocclincludedir=$(includedir)
+libteocclincludedir=$(includedir)/libteoccl
 	
-nobase_libteocclinclude_HEADERS = \
-	queue.h
+nobase_libteocclinclude_HEADERS = 
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
 
