@@ -41,7 +41,7 @@ extern "C" {
 #define HASH_TABLE_SIZE 100
 #define HASH_TABLE_INITVAL 77557755
     
-typedef struct teoMapData {
+typedef struct teoMap {
     
     size_t length;
     teoQueue **q;
@@ -49,7 +49,7 @@ typedef struct teoMapData {
     uint32_t collisions;
     size_t hash_map_size;
     
-} teoMapData;    
+} teoMap;    
 
 typedef struct teoMapElementData {
     
@@ -63,14 +63,14 @@ typedef struct teoMapElementData {
 typedef struct teoMapIterator {
     
     uint32_t idx;
-    teoMapData *map;
+    teoMap *map;
     teoQueueIterator *it;
     teoMapElementData *tmv;
     
 } teoMapIterator;
 
 //TRUDP_API 
-void *teoMapGetFirst(teoMapData *map, size_t *data_length); 
+void *teoMapGetFirst(teoMap *map, size_t *data_length); 
 /**
  * Get number of elements in TR-UPD map
  *
@@ -79,20 +79,20 @@ void *teoMapGetFirst(teoMapData *map, size_t *data_length);
  */
 //TRUDP_API
 static inline 
-size_t teoMapSize(teoMapData *map) {
+size_t teoMapSize(teoMap *map) {
     return map ? map->length : -1;
 }
 
-teoMapData *teoMapNew(size_t size, int auto_resize_f);
-void teoMapDestroy(teoMapData *map);
-void *teoMapAdd(teoMapData *map, void *key, size_t key_length, void *data, 
+teoMap *teoMapNew(size_t size, int auto_resize_f);
+void teoMapDestroy(teoMap *map);
+void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data, 
   size_t data_length);
-void *teoMapGet(teoMapData *map, void *key, size_t key_length, 
+void *teoMapGet(teoMap *map, void *key, size_t key_length, 
   size_t *data_length);
-int teoMapDelete(teoMapData *map, void *key, size_t key_length);
+int teoMapDelete(teoMap *map, void *key, size_t key_length);
 
-teoMapIterator *teoMapIteratorNew(teoMapData *map);
-teoMapIterator *teoMapIteratorReverseNew(teoMapData *map);
+teoMapIterator *teoMapIteratorNew(teoMap *map);
+teoMapIterator *teoMapIteratorReverseNew(teoMap *map);
 int teoMapIteratorDestroy(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
