@@ -77,11 +77,7 @@ void *teoMapGetFirst(teoMapData *map, size_t *data_length);
  * @param map Pointer to teoMapData
  * @return Number of elements in TR-UPD map
  */
-//TRUDP_API
-static inline 
-size_t teoMapSize(teoMapData *map) {
-    return map ? map->length : -1;
-}
+size_t teoMapSize(teoMapData *map);
 
 teoMapData *teoMapNew(size_t size, int auto_resize_f);
 void teoMapDestroy(teoMapData *map);
@@ -96,16 +92,14 @@ teoMapIterator *teoMapIteratorReverseNew(teoMapData *map);
 int teoMapIteratorDestroy(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
+
 /**
  * Get element selected last map net or map previous iterator function
  * 
  * @param map_it Pointer to teoMapIterator
  * @return Pointer to map element data teoMapValueData
  */
-static inline 
-teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
-    return map_it ? map_it->tmv : NULL;
-}
+teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it); 
 /**
  * Get key from map element data
  * 
@@ -113,12 +107,8 @@ teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
  * @param key_length [out] Key length
  * @return Pointer to key
  */
-static inline 
-void *teoMapIteratorElementKey(teoMapElementData *el, 
-        size_t *key_length) {
-    if(key_length) *key_length = el->key_length;
-    return el->data;
-}
+void *teoMapIteratorElementKey(teoMapElementData *el, size_t *key_length);
+
 /**
  * Get data from map element data
  * 
@@ -126,12 +116,7 @@ void *teoMapIteratorElementKey(teoMapElementData *el,
  * @param data_length [out] Data length
  * @return Pointer to data
  */
-static inline 
-void *teoMapIteratorElementData(teoMapElementData *el, 
-        size_t *data_length) {
-    if(data_length) *data_length = el->data_length;
-    return el->data + el->key_length;
-}
+void *teoMapIteratorElementData(teoMapElementData *el, size_t *data_length);
 
 #ifdef __cplusplus
 }

@@ -34,16 +34,28 @@
 
 #include "map.h"
 #include "hash.h"
-//#include "packet.h"
 
 // Local functions
-static void *_teoMapGet(teoMapData *map, void *key, size_t key_length,
-        uint32_t hash, size_t *data_length);
-static teoMapElementData *_teoMapGetValueData(void *tqd_data,
-        uint32_t key_length);
-static uint32_t _teopMapHash(void *key, size_t key_length);
-static teoMapData *_teoMapResize(teoMapData *map, size_t size);
-static teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd);
+static
+void *_teoMapGet(teoMapData *map, void *key, size_t key_length, uint32_t hash,
+        size_t *data_length);
+
+static
+teoMapElementData *_teoMapGetValueData(void *tqd_data, uint32_t key_length);
+
+static
+uint32_t _teopMapHash(void *key, size_t key_length);
+
+static
+teoMapData *_teoMapResize(teoMapData *map, size_t size);
+
+static
+teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd);
+
+
+size_t teoMapSize(teoMapData *map) {
+    return map ? map->length : -1;
+}
 
 /**
  * Create new map
@@ -499,3 +511,39 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
 
     return tmv;
 }
+
+/**
+ * Get element selected last map net or map previous iterator function
+ * 
+ * @param map_it Pointer to teoMapIterator
+ * @return Pointer to map element data teoMapValueData
+ */
+teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
+    return map_it ? map_it->tmv : NULL;
+}
+/**
+ * Get key from map element data
+ * 
+ * @param el Pointer to teoMapElementData
+ * @param key_length [out] Key length
+ * @return Pointer to key
+ */
+void *teoMapIteratorElementKey(teoMapElementData *el, 
+        size_t *key_length) {
+    if(key_length) *key_length = el->key_length;
+    return el->data;
+}
+/**
+ * Get data from map element data
+ * 
+ * @param el Pointer to teoMapElementData
+ * @param data_length [out] Data length
+ * @return Pointer to data
+ */
+void *teoMapIteratorElementData(teoMapElementData *el, 
+        size_t *data_length) {
+    if(data_length) *data_length = el->data_length;
+    return el->data + el->key_length;
+}
+
+
