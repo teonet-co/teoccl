@@ -37,7 +37,7 @@
 
 // Local functions
 static
-void *_teoMapGet(teoMapData *map, void *key, size_t key_length, uint32_t hash,
+void *_teoMapGet(teoMap *map, void *key, size_t key_length, uint32_t hash,
         size_t *data_length);
 
 static
@@ -47,13 +47,13 @@ static
 uint32_t _teopMapHash(void *key, size_t key_length);
 
 static
-teoMapData *_teoMapResize(teoMapData *map, size_t size);
+teoMap *_teoMapResize(teoMap *map, size_t size);
 
 static
 teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd);
 
 
-size_t teoMapSize(teoMapData *map) {
+size_t teoMapSize(teoMap *map) {
     return map ? map->length : -1;
 }
 
@@ -64,10 +64,10 @@ size_t teoMapSize(teoMapData *map) {
  * @param auto_resize_f Auto resize hash map
  * @return Pointer to teoMapData
  */
-teoMapData *teoMapNew(size_t size, int auto_resize_f) {
+teoMap *teoMapNew(size_t size, int auto_resize_f) {
 
     int i;
-    teoMapData *map = (teoMapData *)malloc(sizeof(teoMapData));
+    teoMap *map = (teoMap *)malloc(sizeof(teoMap));
 
     // Fill parameters
     map->q = (teoQueue **)malloc(size * sizeof(teoQueue*));
@@ -89,7 +89,7 @@ teoMapData *teoMapNew(size_t size, int auto_resize_f) {
  * @param size New hash map size
  * @return Pointer to the same teoMapData
  */
-static teoMapData *_teoMapResize(teoMapData *map, size_t size) {
+static teoMap *_teoMapResize(teoMap *map, size_t size) {
 
     // Show mime of  resize for testing
     // #define _SHOW_FUNCTION_MSG_ 1
@@ -99,7 +99,7 @@ static teoMapData *_teoMapResize(teoMapData *map, size_t size) {
     #endif
 
     int i = 0;
-    teoMapData *map_new = teoMapNew(size, map->auto_resize_f); 
+    teoMap *map_new = teoMapNew(size, map->auto_resize_f); 
 
     // Loop through existing map and add it elements to new map
     teoMapIterator *it;
@@ -162,7 +162,7 @@ static teoMapData *_teoMapResize(teoMapData *map, size_t size) {
  * 
  * @param map Pointer to teoMapData
  */
-void teoMapDestroy(teoMapData *map) {
+void teoMapDestroy(teoMap *map) {
 
     if(map) {
 
@@ -206,7 +206,7 @@ static inline uint32_t _teopMapHash(void *key, size_t key_length) {
  *
  * @return Pointer to Data of selected key or NULL if not found
  */
-static void *_teoMapGet(teoMapData *map, void *key, size_t key_length,
+static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
         uint32_t hash, size_t *data_length) {
 
     void *data = NULL; //(void*)-1;
@@ -246,7 +246,7 @@ static void *_teoMapGet(teoMapData *map, void *key, size_t key_length,
  * 
  * @return Pointer to Data of first available element or (void*)-1 if not found
  */
-void *teoMapGetFirst(teoMapData *map, size_t *data_length) {
+void *teoMapGetFirst(teoMap *map, size_t *data_length) {
     
     void *data = (void*)-1;
     if(data_length) *data_length = 0;
@@ -295,7 +295,7 @@ static inline teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd) 
  * @param data_length Data length
  * @return Data of added key or (void*)-1 at error
  */
-void *teoMapAdd(teoMapData *map, void *key, size_t key_length, void *data,
+void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
         size_t data_length) {
 
     void *r_data = (void*)-1;
@@ -357,7 +357,7 @@ void *teoMapAdd(teoMapData *map, void *key, size_t key_length, void *data,
  *
  * @return Data of selected key (may be NULL) or (void*)-1 if not found
  */
-void *teoMapGet(teoMapData *map, void *key, size_t key_length,
+void *teoMapGet(teoMap *map, void *key, size_t key_length,
         size_t *data_length) {
 
     uint32_t hash = _teopMapHash(key, key_length);
@@ -375,7 +375,7 @@ void *teoMapGet(teoMapData *map, void *key, size_t key_length,
  * @param key_length Key length
  * @return Zero at success, or errors: -1 - keys element not found
  */
-int teoMapDelete(teoMapData *map, void *key, size_t key_length) {
+int teoMapDelete(teoMap *map, void *key, size_t key_length) {
 
     int rv = -1;
 
@@ -406,7 +406,7 @@ int teoMapDelete(teoMapData *map, void *key, size_t key_length) {
  * @param map Pointer to teoMapData
  * @return Pointer to teoMapIterator or NULL at memory allocate error
  */
-teoMapIterator *teoMapIteratorNew(teoMapData *map) {
+teoMapIterator *teoMapIteratorNew(teoMap *map) {
 
     teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
     if(map_it) {
@@ -425,7 +425,7 @@ teoMapIterator *teoMapIteratorNew(teoMapData *map) {
  * @param map Pointer to teoMapData
  * @return Pointer to teoMapIterator or NULL at memory allocate error
  */
-teoMapIterator *teoMapIteratorReverseNew(teoMapData *map) {
+teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 
     teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
     if(map_it) {

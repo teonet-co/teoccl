@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  *
  * \file  map 
- * \Author Kirill Scherba <kirill@scherba.ru>
+ * \Author max <mpano91@gmail.com>
  *
  * Teo ccl Map C++ wrapper
  *
@@ -42,7 +42,18 @@ namespace teo {
   class Map {
     
   private:
-    teoMap
+
+    teoMap *map;
+
+  public:
+
+    Map() { map = teoMapNew(HASH_TABLE_SIZE, 1); }
+    Map(size_t size, int auto_resize_f)
+    {
+      map = teoMapNew(size, auto_resize_f);
+    }
+    
+    virtual ~Map() { teoMapDestroy(map); }
 
   }
 
