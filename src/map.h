@@ -77,6 +77,7 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length);
  * @param map Pointer to teoMapData
  * @return Number of elements in TR-UPD map
  */
+
 size_t teoMapSize(teoMap *map);
 
 teoMap *teoMapNew(size_t size, int auto_resize_f);
