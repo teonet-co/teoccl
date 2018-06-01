@@ -55,6 +55,103 @@ namespace teo {
     
     virtual ~Map() { teoMapDestroy(map); }
 
+
+    // size
+    inline size_t size() {
+      return teoMapSize(map);
+    }
+
+    inline void *getFirst(size_t *data_length) {
+      return teoMapGetFirst(map, data_length);
+    }
+
+
+    // add
+    inline void *add(void *key, size_t key_length, void *data,
+        size_t data_length) {
+      return teoMapAdd(map, key, key_length, data, data_length);
+    }
+
+    inline void *add(const std::string& key, const std::string& data) {
+      return add((void *)key.c_str(), key.size() + 1, (void *)data.c_str(),
+          data.size() + 1);
+    }
+
+    template<typename K, typename D>
+    void *add(const K& key, const D& data) {
+      return add((void*)&key, sizeof(K), (void *)&data, sizeof(D));
+    }
+
+
+    // get
+    inline void *get(void *key, size_t key_length, size_t *data_length) {
+      return teoMapGet(map, key, key_length, data_length);
+    }
+
+    inline void *get(const std::string& key, size_t *data_length) {
+      return get((void *)&key.c_str(), key.size() + 1, data_length);
+    }
+
+    template<typename K>
+    void *get(const K& key, size_t *data_length) {
+      return get((void *)&key, sizeof(K), data_length);
+    }
+
+
+    // delete
+    inline void *deleteByKey(void *key, size_t key_length) {
+      return teoMapDelete(map, key, key_length);
+    }
+
+    inline void *deleteByKey(const std::string& key) {
+      return deleteByKey((void *)&key.c_str(), key.size() + 1);
+    }
+
+    template<typename K>
+    void *deleteByKey(const K& key) {
+      return deleteByKey((void *)&key, sizeof(K));
+    }
+
+
+    // get iterator new(normal)
+    inline teoMapIterator *iterator() {
+      return teoMapIteratorNew(map);
+    }
+ 
+    // get iterator new(reverse)
+    inline teoMapIterator *iteratorReverse() {
+      return teoMapIteratorReverseNew(map);
+    }
+
+    // iterator next
+    inline teoMapElementData *iteratorNext(teoMapIterator *it) {
+      return teoMapIteratorNext(it);
+    }
+ 
+    // iterator prev
+    inline teoMapElementData *iterator_prev(teoMapIterator *it) {
+      return teoMapIteratorPrev(it);
+    }
+
+    // iterator free
+    inline int iteratorFree(teoMapIterator *it) {
+      retirn teomapIteratorDestroy(it);
+    }
+ 
+    // get element
+    inline teoMapElementData *mapItEl(teoMapIterator *it) {
+      return teoMapIteratorElement(it);
+    }
+
+    // get key
+    inline void *mapItElKey(teoMapElementData *el size_t *key_length) {
+      return teoMapIteratorElementKey(el, key_length);
+    }
+
+    // get data
+    inline void *mapItElData(teoMapElementData *el, size_t *data_length) {
+      reutn teoMapIteratorElementData(el, data_length);
+    }
   }
 
 }
