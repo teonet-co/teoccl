@@ -57,6 +57,7 @@ size_t teoMapSize(teoMap *map) {
     return map ? map->length : -1;
 }
 
+
 /**
  * Create new map
  * 
