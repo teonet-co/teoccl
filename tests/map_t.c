@@ -172,7 +172,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     CU_ASSERT(i == map->length);
     // Destroy map iterator
-    teoMapIteratorDestroy(it);
+    teoMapIteratorFree(it);
 
     // Create reverse map iterator
     teoMapIterator *it_r = teoMapIteratorReverseNew(map);
@@ -192,7 +192,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     CU_ASSERT(i == 1);
     // Destroy map iterator
-    teoMapIteratorDestroy(it_r);
+    teoMapIteratorFree(it_r);
  
  
     printf("\n\t%d records read in iterator loop, time: %.3f ms \n   ", 
