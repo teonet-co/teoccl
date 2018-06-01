@@ -110,7 +110,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     
     // Create new map
-    teoMapData *map = teoMapNew(NUM_KEYS, 1);
+    teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
     
     // Add and Get data from map
@@ -222,7 +222,7 @@ void check_binary_key() {
     const size_t NUM_KEYS = 20;
     
     // Create new map
-    teoMapData *map = teoMapNew(NUM_KEYS, 1);
+    teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
     
     int key = 25;
