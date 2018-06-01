@@ -81,6 +81,7 @@ size_t teoMapSize(teoMap *map);
 
 teoMap *teoMapNew(size_t size, int auto_resize_f);
 void teoMapDestroy(teoMap *map);
+void teoMapClear(teoMap *map);
 void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data, 
   size_t data_length);
 void *teoMapGet(teoMap *map, void *key, size_t key_length, 

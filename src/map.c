@@ -175,6 +175,16 @@ void teoMapDestroy(teoMap *map) {
     }
 }
 
+void teoMapClear(teoMap *map) {
+
+  if (map) {
+    int i;
+    for (i = 0; i < map->hash_map_size; i++) {
+      teoQueueFree(map->q[i]);
+    }
+    _teoMapResize(map, HASH_TABLE_SIZE);
+  }
+}
 /**
  * Calculate hash for selected key
  *

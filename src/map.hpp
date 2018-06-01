@@ -61,6 +61,10 @@ namespace teo {
       return teoMapSize(map);
     }
 
+    inline void mapClear() {
+      teoMapClear(map);
+    }
+
     inline void *getFirst(size_t *data_length) {
       return teoMapGetFirst(map, data_length);
     }
@@ -77,6 +81,11 @@ namespace teo {
           data.size() + 1);
     }
 
+    template<typename D>
+    void *add(const std::string& key, const D& data) {
+      return add((void*)key.c_str(), key.size() + 1, (void *)&data, sizeof(D));
+    }
+
     template<typename K, typename D>
     void *add(const K& key, const D& data) {
       return add((void*)&key, sizeof(K), (void *)&data, sizeof(D));
@@ -89,7 +98,7 @@ namespace teo {
     }
 
     inline void *get(const std::string& key, size_t *data_length) {
-      return get((void *)&key.c_str(), key.size() + 1, data_length);
+      return get((void *)key.c_str(), key.size() + 1, data_length);
     }
 
     template<typename K>
@@ -99,16 +108,16 @@ namespace teo {
 
 
     // delete
-    inline void *deleteByKey(void *key, size_t key_length) {
+    inline int deleteByKey(void *key, size_t key_length) {
       return teoMapDelete(map, key, key_length);
     }
 
-    inline void *deleteByKey(const std::string& key) {
-      return deleteByKey((void *)&key.c_str(), key.size() + 1);
+    inline int deleteByKey(const std::string& key) {
+      return deleteByKey((void *)key.c_str(), key.size() + 1);
     }
 
     template<typename K>
-    void *deleteByKey(const K& key) {
+    int deleteByKey(const K& key) {
       return deleteByKey((void *)&key, sizeof(K));
     }
 
@@ -135,7 +144,7 @@ namespace teo {
 
     // iterator free
     inline int iteratorFree(teoMapIterator *it) {
-      retirn teomapIteratorDestroy(it);
+      return teoMapIteratorDestroy(it);
     }
  
     // get element
@@ -144,15 +153,16 @@ namespace teo {
     }
 
     // get key
-    inline void *mapItElKey(teoMapElementData *el size_t *key_length) {
+    inline void *mapItElKey(teoMapElementData *el, size_t *key_length) {
       return teoMapIteratorElementKey(el, key_length);
     }
 
     // get data
     inline void *mapItElData(teoMapElementData *el, size_t *data_length) {
-      reutn teoMapIteratorElementData(el, data_length);
+      return teoMapIteratorElementData(el, data_length);
     }
-  }
+
+  };
 
 }
 #endif /* MAP_HXX */
