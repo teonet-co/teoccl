@@ -49,7 +49,13 @@ void *teoArrayListGetIdx(teoArrayList *tal, size_t i) {
 
 int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data) {
 
-    
+    if (idx > SIZE_T_MAX -1 ) return -1;
+    if(array_list_expand_internal(arr, idx+1)) return -1;
+    if(idx < arr->length && arr->array[idx])
+        arr->free_fn(arr->array[idx]);
+    arr->array[idx] = data;
+    if(arr->length <= idx) arr->length = idx + 1;
+  return 0;
 }
 
 int teoArayListDelIdx(teoArrayList *tal, size_t idx, size_t count);
