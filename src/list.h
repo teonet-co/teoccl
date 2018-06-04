@@ -16,23 +16,23 @@ extern "C" {
 #define ARRAY_LIST_DEFAULT_SIZE 32
 
 
-//typedef void (array_list_free_fn) (void *data);
+typedef void (array_list_free_fn) (void *data);
 
 typedef struct teoArrayList {
 
     void **array;
     size_t length;
     size_t size;
-    //array_list_free *free_fn;
+    array_list_free_fn *free_fn;
 
 } teoArrayList;
 
-teoArrayList *teoArrayListNew();
+teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
 void teoArrayListFree(teoArrayList *tal);
 
 void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
 int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data);
-int teoArayListDelIdx(teoArrayList *tal, size_t idx, size_t count);
+int teoArrayListDelIdx(teoArrayList *tal, size_t idx, size_t count);
 int teoArrayListAdd(teoArrayList *tal, void *data);
 size_t teoArrayListLength(teoArrayList *tal);
 

@@ -44,7 +44,8 @@ lib_LTLIBRARIES = libteoccl.la
 libteoccl_la_SOURCES = \
 	queue.c \
 	hash.c \
-	map.c
+	map.c \
+	list.c
 	
 libteocclincludedir=$(includedir)/libteoccl
 	
