@@ -33,16 +33,16 @@ void list_add_remove_test() {
     CU_ASSERT_PTR_NOT_NULL_FATAL(al);
 
     int *el = (int *)malloc(sizeof(int));
+    size_t d_len = sizeof(int);
     *el = 45;
     int i = 0;
-    for (i=0; i<10000000; i++)
-        teoArrayListAdd(al, (void *)el);
-    CU_ASSERT(teoArrayListLength(al) == 10000000);
-   // for (i=0; i<1000000; i++)
-   //     teoArrayListDelIdx(al, i, al->length);
-   //CU_ASSERT(teoArrayListLength(al) == 0);
-
-
+    for (i=0; i<100000; i++)
+        teoArrayListAdd(al, (void *)el, d_len);
+    CU_ASSERT(teoArrayListLength(al) == 100000);
+    for (i=0; i<100000; i++)
+        teoArrayListDelIdx(al, 0, 1);
+    printf("length %d\n", al->length);
+    CU_ASSERT(teoArrayListLength(al) == 0);
 }
 /**
  * List suite add

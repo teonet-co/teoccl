@@ -80,13 +80,17 @@ int array_list_expand_internal(teoArrayList *tal, size_t max) {
 }
 
 
-int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data) {
-
+int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data, size_t data_len) {
+    
+    void *cp_data = NULL;
+    cp_data = malloc(data_len);
+    if (!cp_data) return -1;
+    memcpy(cp_data, data, data_len);
     if (i > SIZE_T_MAX -1 ) return -1;
     if(array_list_expand_internal(tal, i+1)) return -1;
     if(i < tal->length && tal->array[i])
         tal->free_fn(tal->array[i]);
-    tal->array[i] = data;
+    tal->array[i] = cp_data;
     if(tal->length <= i) tal->length = i + 1;
   return 0;
 }
@@ -96,21 +100,21 @@ int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count) {
 
     size_t j, stop;
 
-    stop = i + count;
+    stop = count+i;
     if (i >= tal->length || stop > tal->length) return -1;
     for (j = i; j < stop; ++j) {
-        if (tal->array[j]) tal->free_fn(tal->array[i]);
+        if (tal->array[j]) tal->free_fn(tal->array[j]);
     }
 
     memmove(tal->array + i, tal->array + stop, (tal->length - stop) * sizeof(void *));
-    tal->length -= stop;
+    tal->length -= count;
     return 0;
 }
 
 
-int teoArrayListAdd(teoArrayList *tal, void *data) {
+int teoArrayListAdd(teoArrayList *tal, void *data, size_t data_len) {
 
-    return teoArrayListPutIdx(tal, tal->length, data);
+    return teoArrayListPutIdx(tal, tal->length, data, data_len);
 }
 
 
