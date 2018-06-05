@@ -101,6 +101,7 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
  * @param map_it Pointer to teoMapIterator
  * @return Pointer to map element data teoMapValueData
  */
+static
 inline teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
     return map_it ? map_it->tmv : NULL;
 }
@@ -111,6 +112,7 @@ inline teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
  * @param key_length [out] Key length
  * @return Pointer to key
  */
+static
 inline void *teoMapIteratorElementKey(teoMapElementData *el, 
         size_t *key_length) {
     if(key_length) *key_length = el->key_length;
@@ -123,6 +125,7 @@ inline void *teoMapIteratorElementKey(teoMapElementData *el,
  * @param data_length [out] Data length
  * @return Pointer to data
  */
+static
 inline void *teoMapIteratorElementData(teoMapElementData *el, 
         size_t *data_length) {
     if(data_length) *data_length = el->data_length;
