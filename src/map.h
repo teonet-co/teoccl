@@ -91,7 +91,7 @@ int teoMapDelete(teoMap *map, void *key, size_t key_length);
 
 teoMapIterator *teoMapIteratorNew(teoMap *map);
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map);
-int teoMapIteratorDestroy(teoMapIterator *map_it);
+int teoMapIteratorFree(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
 
@@ -128,6 +128,9 @@ inline void *teoMapIteratorElementData(teoMapElementData *el,
     if(data_length) *data_length = el->data_length;
     return el->data + el->key_length;
 }
+
+typedef int (*teoMapForeachFunction)(teoMap *m, int idx, teoMapElementData *d, void* user_data);
+int teoMapForeach(teoMap *m, teoMapForeachFunction callback, void *user_data);
 
 #ifdef __cplusplus
 }

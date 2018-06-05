@@ -134,7 +134,7 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
             i++;
         }
         // Destroy map iterator
-        teoMapIteratorDestroy(it);
+        teoMapIteratorFree(it);
     }
 
     // Free existing queues and move queues pointer of new map to existing
@@ -267,7 +267,7 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length) {
         if((el = teoMapIteratorNext(it))) {
             data = teoMapIteratorElementData(el, data_length);
         }
-        teoMapIteratorDestroy(it);
+        teoMapIteratorFree(it);
     }
     
     return data;
@@ -455,7 +455,7 @@ teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
  * @param map_it Pointer to teoMapIterator
  * @return Zero at success
  */
-int teoMapIteratorDestroy(teoMapIterator *map_it) {
+int teoMapIteratorFree(teoMapIterator *map_it) {
 
     if(map_it) {
         teoQueueIteratorFree(map_it->it);
@@ -522,4 +522,28 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
     return tmv;
 }
 
+
+/**
+ * Loop through map and call callback function with index and data in parameters
+ * 
+ * @param m Pointer to teoMap
+ * @param callback Pointer to callback function teoMapForeachFunction
+ * 
+ * @return Number of elements processed
+ */
+int teoMapForeach(teoMap *m, teoMapForeachFunction callback, 
+        void *user_data) {
+    
+    int i = 0;
+    teoMapIterator *it = teoMapIteratorNew(m);
+    if(it != NULL) {
+        
+        while(teoMapIteratorNext(it)) {            
+            if(callback(m, i++, teoMapIteratorElement(it), user_data)) break;
+        }
+        teoMapIteratorFree(it);
+    }
+    
+    return i;
+}
 

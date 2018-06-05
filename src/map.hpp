@@ -144,7 +144,7 @@ namespace teo {
 
     // iterator free
     inline int iteratorFree(teoMapIterator *it) {
-      return teoMapIteratorDestroy(it);
+      return teoMapIteratorFree(it);
     }
  
     // get element
