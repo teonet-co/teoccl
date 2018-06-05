@@ -36,10 +36,10 @@ int main() {
         return CU_get_error();
     
     // Add suits to test
-    listSuiteAdd();
     queueSuiteAdd();
     mapSuiteAdd();
-    /* Run all tests using the CUnit Basic interface */
+    listSuiteAdd();
+   /* Run all tests using the CUnit Basic interface */
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();
     CU_cleanup_registry();
