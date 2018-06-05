@@ -25,7 +25,7 @@ int clean_suite(void) {
 // Suits functions define
 int queueSuiteAdd();
 int mapSuiteAdd();
-
+int listSuiteAdd();
 
 int main() {
     
@@ -36,9 +36,9 @@ int main() {
         return CU_get_error();
     
     // Add suits to test
+    listSuiteAdd();
     queueSuiteAdd();
     mapSuiteAdd();
-
     /* Run all tests using the CUnit Basic interface */
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();

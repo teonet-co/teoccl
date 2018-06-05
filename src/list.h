@@ -28,7 +28,7 @@ typedef struct teoArrayList {
 } teoArrayList;
 
 teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
-void teoArrayListFree(teoArrayList *tal);
+int teoArrayListFree(teoArrayList *tal);
 
 void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
 int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data);

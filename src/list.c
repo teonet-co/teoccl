@@ -35,7 +35,7 @@ teoArrayList *teoArrayListNew(array_list_free_fn *free_fn) {
 }
 
 
-void teoArrayListFree(teoArrayList *tal) {
+int teoArrayListFree(teoArrayList *tal) {
     
     size_t i;
     for (i = 0; i < tal->length; i++) {
@@ -43,6 +43,8 @@ void teoArrayListFree(teoArrayList *tal) {
     }
     free(tal->array);
     free(tal);
+
+    return 0;
 }
 
 
