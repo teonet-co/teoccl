@@ -101,7 +101,9 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
  * @param map_it Pointer to teoMapIterator
  * @return Pointer to map element data teoMapValueData
  */
-teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it); 
+inline teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
+    return map_it ? map_it->tmv : NULL;
+}
 /**
  * Get key from map element data
  * 
@@ -109,8 +111,11 @@ teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it);
  * @param key_length [out] Key length
  * @return Pointer to key
  */
-void *teoMapIteratorElementKey(teoMapElementData *el, size_t *key_length);
-
+inline void *teoMapIteratorElementKey(teoMapElementData *el, 
+        size_t *key_length) {
+    if(key_length) *key_length = el->key_length;
+    return el->data;
+}
 /**
  * Get data from map element data
  * 
@@ -118,7 +123,11 @@ void *teoMapIteratorElementKey(teoMapElementData *el, size_t *key_length);
  * @param data_length [out] Data length
  * @return Pointer to data
  */
-void *teoMapIteratorElementData(teoMapElementData *el, size_t *data_length);
+inline void *teoMapIteratorElementData(teoMapElementData *el, 
+        size_t *data_length) {
+    if(data_length) *data_length = el->data_length;
+    return el->data + el->key_length;
+}
 
 #ifdef __cplusplus
 }
