@@ -28,7 +28,22 @@ void list_create_test() {
     CU_ASSERT(!rv);
 }
 
+void list_add_remove_test() {
+    teoArrayList *al = teoArrayListNew(free_int_fn);
+    CU_ASSERT_PTR_NOT_NULL_FATAL(al);
 
+    int *el = (int *)malloc(sizeof(int));
+    *el = 45;
+    int i = 0;
+    for (i=0; i<10000000; i++)
+        teoArrayListAdd(al, (void *)el);
+    CU_ASSERT(teoArrayListLength(al) == 10000000);
+   // for (i=0; i<1000000; i++)
+   //     teoArrayListDelIdx(al, i, al->length);
+   //CU_ASSERT(teoArrayListLength(al) == 0);
+
+
+}
 /**
  * List suite add
  * 
@@ -46,8 +61,8 @@ int listSuiteAdd() {
     }
 
     /* Add this module tests to the suite */
-    if ((NULL == CU_add_test(pSuite, "list create/destroy", list_create_test))) { //||
-       // (NULL == CU_add_test(pSuite, "add elements to queue, move and delete it", add_elements_to_queue)) ||
+    if ((NULL == CU_add_test(pSuite, "list create/destroy", list_create_test)) ||
+        (NULL == CU_add_test(pSuite, "add elements to list, move and delete it", list_add_remove_test))){// ||
        // (NULL == CU_add_test(pSuite, "check queue iterator", check_queue_iterator)) ||
        // (NULL == CU_add_test(pSuite, "delete elements from queue", delete_elements_from_queue)) ) {
         
