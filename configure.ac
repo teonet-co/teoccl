@@ -15,8 +15,8 @@ AC_SUBST([$1], ['$2'])
 # END
 
 AC_PREREQ([2.69])
-AC_INIT([libteoccl], [0.0.1], [kirill@scherba.ru])
-AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 1, [teoccl dynamic library version])
+AC_INIT([libteoccl], [0.0.2], [kirill@scherba.ru])
+AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 2, [teoccl dynamic library version])
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teoccl library: Teonet c container library"], [Application description])
 AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2018"], [Teoccl library copyright])
 
