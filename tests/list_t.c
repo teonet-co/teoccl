@@ -5,16 +5,23 @@
 *
 * Created on Tue Jun  5 16:11:48 2018
 */
-
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
 #include <CUnit/Basic.h>
 
 #include "list.h"
 
 int init_suite(void);
 int clean_suite(void);
+
+double timeInMilliSeconds(void) {
+    struct timeval tv;
+    gettimeofday(&tv,NULL);
+    return (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
+}
 
 void free_int_fn(void *pointer) {
     free(pointer);
@@ -36,13 +43,17 @@ void list_add_remove_test() {
     size_t d_len = sizeof(int);
     *el = 45;
     int i = 0;
-    for (i=0; i<100000; i++)
+    double t_beg = timeInMilliSeconds();
+    for (i=0; i<1000000; i++)
         teoArrayListAdd(al, (void *)el, d_len);
-    CU_ASSERT(teoArrayListLength(al) == 100000);
-    for (i=0; i<100000; i++)
-        teoArrayListDelIdx(al, 0, 1);
-    printf("length %d\n", al->length);
+    CU_ASSERT(teoArrayListLength(al) == 1000000);
+  //  for (i=0; i<200000; i++)
+        teoArrayListDelIdx(al, 0, 1000000);
+    printf("\n\t%d records add/delete, time %.3f sec ", 1000000, ((timeInMilliSeconds() - t_beg))/1000);
     CU_ASSERT(teoArrayListLength(al) == 0);
+    int rv = teoArrayListFree(al);
+    CU_ASSERT(!rv);
+    free(el);
 }
 /**
  * List suite add
