@@ -47,13 +47,13 @@ TEST(MapSuite, mapDeleteExample) {
   map.add("fdf", 34);
   map.add("struct", my_struct);
 
-  map.deleteByKey(2);
+  map.del(2);
   CHECK(map.size() == 3);
 
   int* getcheck = (int *)map.get("fdf", NULL);
   CHECK(*getcheck == 34);
 
-  map.deleteByKey("struct");
+  map.del("struct");
   CHECK(map.size() == 2);
 }
 

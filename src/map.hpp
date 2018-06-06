@@ -108,17 +108,17 @@ namespace teo {
 
 
     // delete
-    inline int deleteByKey(void *key, size_t key_length) {
+    inline int del(void *key, size_t key_length) {
       return teoMapDelete(map, key, key_length);
     }
 
-    inline int deleteByKey(const std::string& key) {
-      return deleteByKey((void *)key.c_str(), key.size() + 1);
+    inline int del(const std::string& key) {
+      return del((void *)key.c_str(), key.size() + 1);
     }
 
     template<typename K>
-    int deleteByKey(const K& key) {
-      return deleteByKey((void *)&key, sizeof(K));
+    int del(const K& key) {
+      return del((void *)&key, sizeof(K));
     }
 
 
