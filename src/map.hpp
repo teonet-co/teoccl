@@ -137,7 +137,7 @@ namespace teo {
       return teoMapIteratorNext(it);
     }
  
-    // iterator prev
+    // iterator previous
     inline teoMapElementData *iterator_prev(teoMapIterator *it) {
       return teoMapIteratorPrev(it);
     }
@@ -147,19 +147,21 @@ namespace teo {
       return teoMapIteratorFree(it);
     }
  
-    // get element
+    // get iterator element
     inline teoMapElementData *mapItEl(teoMapIterator *it) {
       return teoMapIteratorElement(it);
     }
 
-    // get key
-    inline void *mapItElKey(teoMapElementData *el, size_t *key_length) {
-      return teoMapIteratorElementKey(el, key_length);
+    // get iterator element key
+    template<typename D>
+    inline D *mapItElKey(teoMapElementData *el, size_t *key_length = NULL) {
+      return (D *)teoMapIteratorElementKey(el, key_length);
     }
 
-    // get data
-    inline void *mapItElData(teoMapElementData *el, size_t *data_length) {
-      return teoMapIteratorElementData(el, data_length);
+    // get iterator element data
+    template<typename D>
+    inline D *mapItElData(teoMapElementData *el, size_t *data_length = NULL) {
+      return (D *)teoMapIteratorElementData(el, data_length);
     }
 
   };
