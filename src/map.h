@@ -30,6 +30,7 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <string.h>
 #include <stdint.h>
 
 #include "queue.h"
@@ -85,6 +86,22 @@ void teoMapClear(teoMap *map);
 
 void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data, 
   size_t data_length);
+
+/**
+ * Add (or update) key data to the map when key is cstring
+ *
+ * @param map Pointer to teoMapData
+ * @param key Pointer to key cstring
+ * @param data Pointer to data
+ * @param data_length Data length
+ * @return Data of added key or (void*)-1 at error
+ */
+static
+inline void *teoMapAddStr(teoMap *map, const char *key, void *data, 
+        size_t data_length) {
+    return teoMapAdd(map, (void*)key, strlen(key) + 1, data, data_length);
+}
+
 void *teoMapGet(teoMap *map, void *key, size_t key_length, 
   size_t *data_length);
 int teoMapDelete(teoMap *map, void *key, size_t key_length);
