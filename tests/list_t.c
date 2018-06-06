@@ -41,11 +41,12 @@ void list_add_remove_test() {
 
     int *el = (int *)malloc(sizeof(int));
     size_t d_len = sizeof(int);
+    (void)d_len;
     *el = 45;
     int i = 0;
     double t_beg = timeInMilliSeconds();
     for (i=0; i<1000000; i++)
-        teoArrayListAdd(al, (void *)el, d_len);
+        teoArrayListAdd(al, (void *)el/*, d_len*/);
     CU_ASSERT(teoArrayListLength(al) == 1000000);
   //  for (i=0; i<200000; i++)
         teoArrayListDelIdx(al, 0, 1000000);
