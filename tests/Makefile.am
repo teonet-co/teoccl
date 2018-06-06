@@ -31,7 +31,7 @@ LIBS = ../src/.libs/libteoccl.a -lcunit -lCppUTest
 
 noinst_PROGRAMS = teoccl_tst teoccl_cpp_tst
 
-teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c 
+teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c list_t.c
 teoccl_cpp_tst_SOURCES = main_cpp_t.cpp queue_cpp_t.cpp map_cpp_t.cpp
 
 testsdir = $(datarootdir)/doc/@PACKAGE@/tests
