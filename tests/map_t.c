@@ -110,7 +110,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     
     // Create new map
-    teoMapData *map = teoMapNew(NUM_KEYS, 1);
+    teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
     
     // Add and Get data from map
@@ -172,7 +172,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     CU_ASSERT(i == map->length);
     // Destroy map iterator
-    teoMapIteratorDestroy(it);
+    teoMapIteratorFree(it);
 
     // Create reverse map iterator
     teoMapIterator *it_r = teoMapIteratorReverseNew(map);
@@ -192,7 +192,7 @@ void _check_map(const size_t NUM_KEYS) {
     }
     CU_ASSERT(i == 1);
     // Destroy map iterator
-    teoMapIteratorDestroy(it_r);
+    teoMapIteratorFree(it_r);
  
  
     printf("\n\t%d records read in iterator loop, time: %.3f ms \n   ", 
@@ -222,7 +222,7 @@ void check_binary_key() {
     const size_t NUM_KEYS = 20;
     
     // Create new map
-    teoMapData *map = teoMapNew(NUM_KEYS, 1);
+    teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
     
     int key = 25;

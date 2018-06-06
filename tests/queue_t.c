@@ -267,7 +267,9 @@ void delete_elements_from_queue() {
     teoQueueIterator *it = teoQueueIteratorNew(q);
     if(it != NULL) {
         
-        while(teoQueueIteratorNext(it)) {
+        #define NEXT next = teoQueueIteratorNext(it)
+        teoQueueData *NEXT;
+        while(next) {
             
             if(i%2) {
                 qd = teoQueueIteratorElement(it);
@@ -276,11 +278,14 @@ void delete_elements_from_queue() {
                 printf("      delete qd->data: \"%s\"\n", qd->data);
                 #endif
                 deletedNum++;
+                NEXT;
                 teoQueueDelete(q, qd);
             }
+            else NEXT;
             i++;
         }
         teoQueueIteratorFree(it);
+        #undef NEXT
     }
     newNum = teoQueueSize(q);
     #if !NO_MESSAGES
