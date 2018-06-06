@@ -104,6 +104,21 @@ inline void *teoMapAddStr(teoMap *map, const char *key, void *data,
 
 void *teoMapGet(teoMap *map, void *key, size_t key_length, 
   size_t *data_length);
+
+/**
+ * Get key data from hash table when key is cstring
+ *
+ * @param map Pointer to teoMapData
+ * @param key Pointer to key cstring
+ * @param data_length [out] Pointer to data length
+ *
+ * @return Data of selected key (may be NULL) or (void*)-1 if not found
+ */
+static
+inline void *teoMapGetStr(teoMap *map, const char *key, size_t *data_length) {
+    return teoMapGet(map, (void *)key, strlen(key) + 1, data_length);
+}
+
 int teoMapDelete(teoMap *map, void *key, size_t key_length);
 
 teoMapIterator *teoMapIteratorNew(teoMap *map);
