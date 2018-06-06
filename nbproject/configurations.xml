@@ -39,14 +39,13 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <flagsDictionary>
-        <element flagsID="0" commonFlags="-g -std=gnu11 -fPIC -O2 -g -O2 -fPIC"/>
-        <element flagsID="1"
+        <element flagsID="0"
                  commonFlags="-mtune=generic -march=x86-64 -O2 -O2 -std=c++11 -fstack-protector-strong"/>
-        <element flagsID="2"
+        <element flagsID="1"
                  commonFlags="-mtune=generic -march=x86-64 -g -g -O2 -O2 -std=gnu11 -fPIC -fstack-protector-strong"/>
-        <element flagsID="3"
+        <element flagsID="2"
                  commonFlags="-mtune=generic -march=x86-64 -g -g -O2 -O2 -std=gnu99 -fstack-protector-strong"/>
-        <element flagsID="4" commonFlags="-std=c++11 -O2 -O2"/>
+        <element flagsID="3" commonFlags="-std=c++11 -O2 -O2"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -77,33 +76,23 @@
         </cTool>
       </folder>
       <item path="src/hash.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="2">
+        <cTool flags="1">
         </cTool>
       </item>
       <item path="src/list.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="2">
+        <cTool flags="1">
         </cTool>
       </item>
-      <item path="src/map.c" ex="false" tool="0" flavor2="10">
-        <cTool flags="0">
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-          <preprocessorList>
-            <Elem>HAVE_CONFIG_H</Elem>
-            <Elem>PACKAGE_DATA_DIR="/usr/share"</Elem>
-            <Elem>PACKAGE_LOCALE_DIR="/usr/share/locale"</Elem>
-            <Elem>PACKAGE_SRC_DIR="."</Elem>
-            <Elem>PIC</Elem>
-          </preprocessorList>
+      <item path="src/map.c" ex="false" tool="0" flavor2="3">
+        <cTool flags="1">
         </cTool>
       </item>
       <item path="src/queue.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="2">
+        <cTool flags="1">
         </cTool>
       </item>
       <item path="tests/list_t.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="3">
+        <cTool flags="2">
           <incDir>
             <pElem>src</pElem>
             <pElem>tests</pElem>
@@ -111,7 +100,7 @@
         </cTool>
       </item>
       <item path="tests/main_cpp_t.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="1">
+        <ccTool flags="0">
           <incDir>
             <pElem>/usr/include/CppUTest</pElem>
             <pElem>tests</pElem>
@@ -119,14 +108,14 @@
         </ccTool>
       </item>
       <item path="tests/main_t.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="3">
+        <cTool flags="2">
           <incDir>
             <pElem>tests</pElem>
           </incDir>
         </cTool>
       </item>
       <item path="tests/map_cpp_t.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="4">
+        <ccTool flags="3">
           <incDir>
             <pElem>tests</pElem>
             <pElem>.</pElem>
@@ -141,7 +130,7 @@
         </ccTool>
       </item>
       <item path="tests/map_t.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="3">
+        <cTool flags="2">
           <incDir>
             <pElem>src</pElem>
             <pElem>tests</pElem>
@@ -151,7 +140,7 @@
       <item path="tests/queue_cpp.cpp" ex="false" tool="1" flavor2="4">
       </item>
       <item path="tests/queue_cpp_t.cpp" ex="false" tool="1" flavor2="8">
-        <ccTool flags="1">
+        <ccTool flags="0">
           <incDir>
             <pElem>src</pElem>
             <pElem>/usr/include/CppUTest</pElem>
@@ -160,7 +149,7 @@
         </ccTool>
       </item>
       <item path="tests/queue_t.c" ex="false" tool="0" flavor2="3">
-        <cTool flags="3">
+        <cTool flags="2">
           <incDir>
             <pElem>src</pElem>
             <pElem>tests</pElem>

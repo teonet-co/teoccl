@@ -24,6 +24,10 @@
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>cstring</word>
+            <word>fdf</word>
+            <word>qrt</word>
+            <word>qwer</word>
+            <word>struct</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

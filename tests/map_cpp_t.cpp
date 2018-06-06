@@ -5,11 +5,14 @@
  * Created on Jun 1, 2018, 12:37:53 AM
  */
 
+#include <cstring>
 #include <iostream>
 #include <CppUTest/TestHarness.h>
+
 #include "../src/map.hpp"
-#include <cstring>
+
 using namespace std;
+
 TEST_GROUP(MapSuite) {
   teo::Map map;
 };
@@ -60,4 +63,29 @@ TEST(MapSuite, mapDeleteExample) {
 TEST(MapSuite, mapInitExample) {
   teo::Map *m = new teo::Map();
   delete m;
+}
+
+TEST(MapSuite, mapForeachExample) {
+  
+  const std::string str[] = {
+    "String 0",
+    "String 1",
+    "String 2",
+    "String 3",
+    "String 4",
+    "String 5"
+  };  
+  const int str_length = (int)(sizeof(str) / sizeof(str[0]));
+  
+  for(int i =0; i < str_length; i++) {
+    std::string key = std::to_string(i);
+    map.add(key, str[i]);
+  }  
+
+  map.foreach([](teoMap *m, int idx, teoMapElementData *el, void* user_data) {
+    auto str = (const std::string *)user_data;
+    string key = (const char*)teoMapIteratorElementKey(el, NULL);
+    STRCMP_EQUAL((const char*)teoMapIteratorElementData(el, NULL), str[std::stoi(key)].c_str());
+    return 0;
+  }, (void*)str);
 }
