@@ -121,6 +121,18 @@ inline void *teoMapGetStr(teoMap *map, const char *key, size_t *data_length) {
 
 int teoMapDelete(teoMap *map, void *key, size_t key_length);
 
+/**
+ * Delete keys element from map when key is cstring
+ *
+ * @param map Pointer to teoMapData
+ * @param key Pointer to key cstring
+ * @return Zero at success, or errors: -1 - keys element not found
+ */
+static 
+inline int teoMapDeleteStr(teoMap *map, const char *key) {
+    return teoMapDelete(map, (void *)key, strlen(key) + 1);
+}
+
 teoMapIterator *teoMapIteratorNew(teoMap *map);
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map);
 int teoMapIteratorFree(teoMapIterator *map_it);
