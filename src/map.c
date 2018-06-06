@@ -495,7 +495,7 @@ teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it) {
 
 
 /**
- * Get prev maps element
+ * Get previous maps element
  * 
  * @param map_it Pointer to teoMapIterator
  * @return Pointer to map element data teoMapValueData

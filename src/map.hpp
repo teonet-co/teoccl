@@ -163,6 +163,11 @@ namespace teo {
     inline D *mapItElData(teoMapElementData *el, size_t *data_length = NULL) {
       return (D *)teoMapIteratorElementData(el, data_length);
     }
+    
+    // foreach    
+    inline int foreach(teoMapForeachFunction callback, void *user_data = NULL) {
+      return teoMapForeach(map, callback, user_data);
+    }
 
   };
 
