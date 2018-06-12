@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  * 
  * \file   hash.c
+ * \brief Hash module
  * \author Kirill Scherba <kirill@scherba.ru>
  *
  * Created on June 5, 2016, 4:29 PM
