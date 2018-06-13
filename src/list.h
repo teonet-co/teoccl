@@ -20,7 +20,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
+ */
+
+
+/**
  * \file list.h
  * \brief List module
  * \author max <mpano91@gmail.com> 
@@ -37,11 +40,13 @@
 extern "C" {
 #endif
 
-#define ARRAY_LIST_DEFAULT_SIZE 32 /// Default ArrayList size
+#define ARRAY_LIST_DEFAULT_SIZE 32 // Default ArrayList size
 
-typedef void (array_list_free_fn) (void *data); /// free-callback function
+typedef void (array_list_free_fn) (void *data); // free-callback function
 
-/// Array-List structure
+/**
+ * @brief Array-List structure
+ */
 typedef struct teoArrayList {
 
     void **array;   ///< Core array
@@ -52,7 +57,7 @@ typedef struct teoArrayList {
 } teoArrayList;
 
 /**
- * Create new Array-List
+ * @brief Create new Array-List
  * 
  * @param[in] free_fn - Pointer to free-callback function
  * @return Pointer to teoArrayList
@@ -60,7 +65,7 @@ typedef struct teoArrayList {
 teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
 
 /**
- * Free memory allocated for Array-List
+ * @brief Free memory allocated for Array-List
  * 
  * @param[in] tal - Pointer to teoArrayList
  * @return zero \todo Create correct return
@@ -68,7 +73,7 @@ teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
 int teoArrayListFree(teoArrayList *tal);
 
 /**
- * Get element of Array-List by index
+ * @brief Get element of Array-List by index
  * 
  * @param[out] tal - Pointer to teoArrayList
  * @param[in] i - index in teoArrayList
@@ -77,7 +82,7 @@ int teoArrayListFree(teoArrayList *tal);
 void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
 
 /**
- * Delete range of elements of Array-List since index
+ * @brief Delete range of elements of Array-List since index
  * 
  * @param[in] tal - Pointer to teoArrayList
  * @param[in] i - Delete from this index
@@ -87,7 +92,7 @@ void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
 int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count);
 
 /**
- * Add element to Array-List
+ * @brief Add element to Array-List
  * 
  * @param[in] tal - Pointer to teoArrayList
  * @param[in] data - Pointer to the data to be added 
@@ -96,7 +101,7 @@ int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count);
 int teoArrayListAdd(teoArrayList *tal, void *data);
 
 /**
- * Get count of elements in Array-List
+ * @brief Get count of elements in Array-List
  * 
  * @param[in] tal - Pointer to teoArrayList
  * @return count of elements in teoArrayList
