@@ -242,6 +242,80 @@ void check_binary_key() {
     teoMapDestroy(map);        
 }
 
+// Check delete from map
+void check_map_delete() {
+    
+    int i;
+    const size_t NUM_KEYS = 50000;
+
+    // Create keys and data
+    char **key = malloc(sizeof(char*) * NUM_KEYS);
+    size_t *key_length = malloc(sizeof(*key_length) * NUM_KEYS);
+    
+    char **data = malloc(sizeof(char*) * NUM_KEYS);
+    size_t *data_length  = malloc(sizeof(*data_length) * NUM_KEYS);
+            
+    for(i = 0; i < NUM_KEYS; i++) {
+        
+        char *k = randIpPort();
+        
+        key[i] = malloc(BUFFER_LEN);
+        key_length[i] = strlen(k) + 1;        
+        memcpy(key[i], k, key_length[i]);
+        
+        data[i] = malloc(BUFFER_LEN);
+        data_length[i] = snprintf(data[i], BUFFER_LEN, 
+                "Hello Teo ccl hash table - %d!", i) + 1;
+    }
+    
+    // Create new map
+    teoMap *map = teoMapNew(NUM_KEYS, 1);
+    CU_ASSERT_PTR_NOT_NULL(map);
+    
+    // Add and Get data from map
+    uint64_t t_beg = timeInMilliseconds();    
+    for(i = 0; i < NUM_KEYS; i++) {
+
+        // Add to map
+        teoMapAdd(map, key[i], key_length[i], data[i], data_length[i]);
+
+        // Get from map
+        size_t d_length;
+        void *d = teoMapGet(map, key[i], key_length[i], &d_length);
+        CU_ASSERT_FATAL(d != (void*)-1);
+        CU_ASSERT_EQUAL_FATAL(data_length[i], d_length);
+        CU_ASSERT_STRING_EQUAL(d, data[i]);
+    }
+    CU_ASSERT_EQUAL(NUM_KEYS, teoMapSize(map));
+    printf("\n\t%d records add/get, time: %.3f ms, number of collisions: %u ", 
+            (int)NUM_KEYS, (timeInMilliseconds() - t_beg) / 1000.0, map->collisions );
+    
+    
+    // Delete keys from map
+    int j;
+    t_beg = timeInMilliseconds();  
+    for(i = NUM_KEYS - 1, j = 0; i >= 0; i--, j++) {
+        int rv = teoMapDelete(map, key[i], key_length[i]);
+        CU_ASSERT(!rv);
+        CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));
+        rv = teoMapDelete(map, key[i], key_length[i]);
+        CU_ASSERT(rv);
+        CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));        
+    }
+    printf("\n\t%d records deleted, time: %.3f ms, number of collisions: %u ", 
+            (int)NUM_KEYS, (timeInMilliseconds() - t_beg) / 1000.0, map->collisions );
+    
+    // Destroy map
+    teoMapDestroy(map);
+    
+    // Free keys and data
+    for(i = 0; i < NUM_KEYS; i++) { free(key[i]); free(data[i]); }
+    free(key);
+    free(data);
+    free(key_length);
+    free(data_length);    
+}
+
 int mapSuiteAdd() {
     
     CU_pSuite pSuite = NULL;
@@ -256,6 +330,7 @@ int mapSuiteAdd() {
     /* Add the tests to the suite */
     if ((NULL == CU_add_test(pSuite, "check hash functions", check_hash)) 
      || (NULL == CU_add_test(pSuite, "check map functions", check_map)) 
+     || (NULL == CU_add_test(pSuite, "check map delete function", check_map_delete)) 
      || (NULL == CU_add_test(pSuite, "check binary keys", check_binary_key)) 
             ) {
         CU_cleanup_registry();
