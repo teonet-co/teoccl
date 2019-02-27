@@ -121,9 +121,9 @@ int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count) {
 }
 
 
-int teoArrayListAdd(teoArrayList *tal, void *data/*, size_t data_len*/) {
+int teoArrayListAdd(teoArrayList *tal, void *data) {
 
-    return teoArrayListPutIdx(tal, tal->length, data/*, data_len*/);
+    return teoArrayListPutIdx(tal, tal->length, data);
 }
 
 
