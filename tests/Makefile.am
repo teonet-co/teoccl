@@ -31,11 +31,11 @@ LIBS = ../src/.libs/libteoccl.a -lcunit -lCppUTest
 
 noinst_PROGRAMS = teoccl_tst teoccl_cpp_tst
 
-teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c list_t.c
+teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c list_t.c CMakeLists.txt
 teoccl_cpp_tst_SOURCES = main_cpp_t.cpp queue_cpp_t.cpp map_cpp_t.cpp
 
 testsdir = $(datarootdir)/doc/@PACKAGE@/tests
-tests_DATA = $(teoccl_tst_SOURCES)
+tests_DATA = $(teoccl_tst_SOURCES) $(teoccl_cpp_tst_SOURCES)
 
 # Remove doc directory on uninstall
 uninstall-local:

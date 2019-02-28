@@ -14,17 +14,11 @@ AM_CFLAGS = \
 	 -fno-strict-aliasing \
 	 -fPIC
 
-#	 -fvisibility=hidden
-#	 -I$(HOME)/Projects/teonet/src/ 
-
 AM_CXX = clang++
 AM_CXXFLAGS = \
 	 -g -Wall \
          -std=c++11 \
 	 -fPIC
-	
-#	 -std=c++11 
-#	 -I$(HOME)/Projects/teonet/src/
 
 ## Debug info
 if DEBUG
@@ -49,7 +43,7 @@ libteoccl_la_SOURCES = \
 	
 libteocclincludedir=$(includedir)/libteoccl
 	
-nobase_libteocclinclude_HEADERS = 
+nobase_libteocclinclude_HEADERS = hash.h list.h map.h map.hpp queue.h queue.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
 
