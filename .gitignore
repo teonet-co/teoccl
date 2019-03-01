@@ -18,7 +18,6 @@
 /install-sh
 /po/POTFILES
 /missing
-/docs/
 /src/.libs/
 /src/.deps/
 /src/libteoccl.pc
@@ -62,3 +61,4 @@ tests/teoccl_cpp_tst
 tests/teoccl_tst
 
 nbproject/
+/distr/
