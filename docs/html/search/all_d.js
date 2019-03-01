@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['newdata',['newData',['../classteo_1_1Queue.html#a11185e829c64cac13e9d8f8d38e41222',1,'teo::Queue::newData(void *data, size_t data_length)'],['../classteo_1_1Queue.html#a9dc3f5ce378485981264c73074bf0721',1,'teo::Queue::newData(std::string data)'],['../classteo_1_1Queue.html#a6d01c7e2f9cfc68e129d0f9aa631cd99',1,'teo::Queue::newData(const T &amp;data)'],['../classteo_1_1Queue.html#a11185e829c64cac13e9d8f8d38e41222',1,'teo::Queue::newData(void *data, size_t data_length)'],['../classteo_1_1Queue.html#a9dc3f5ce378485981264c73074bf0721',1,'teo::Queue::newData(std::string data)'],['../classteo_1_1Queue.html#a6d01c7e2f9cfc68e129d0f9aa631cd99',1,'teo::Queue::newData(const T &amp;data)']]],
+  ['next',['next',['../structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f',1,'teoQueueData::next()'],['../queue__t_8c.html#a2be29dbf95b4a2c822f307a5b8141184',1,'NEXT():&#160;queue_t.c']]],
+  ['no_5fmessages',['NO_MESSAGES',['../queue__t_8c.html#a3502e037c3af750bcf424cddec1d3c0b',1,'NO_MESSAGES():&#160;queue_t.c'],['../queue__t_8c.html#a3502e037c3af750bcf424cddec1d3c0b',1,'NO_MESSAGES():&#160;queue_t.c'],['../queue__t_8c.html#a3502e037c3af750bcf424cddec1d3c0b',1,'NO_MESSAGES():&#160;queue_t.c']]]
+];
