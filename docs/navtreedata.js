@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "teoccl", "index.html", [
+  [ "TeoCCl", "index.html", [
     [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
