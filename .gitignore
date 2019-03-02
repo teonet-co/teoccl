@@ -62,3 +62,4 @@ tests/teoccl_tst
 
 nbproject/
 /distr/
+dist/

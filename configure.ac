@@ -18,7 +18,7 @@ AC_PREREQ([2.69])
 AC_INIT([libteoccl], [0.0.3], [kirill@scherba.ru])
 AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 3, [teoccl dynamic library version])
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teoccl library: Teonet c container library"], [Application description])
-AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2018"], [Teoccl library copyright])
+AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2019"], [Teoccl library copyright])
 
 AC_PREFIX_DEFAULT([/usr])
 AC_CONFIG_HEADERS([config.h])
@@ -224,7 +224,7 @@ DX_RTF_FEATURE(OFF)
 DX_XML_FEATURE(OFF)
 DX_PDF_FEATURE(OFF)
 DX_PS_FEATURE(OFF)
-DX_INIT_DOXYGEN(TR-UDP, Doxyfile, docs)
+DX_INIT_DOXYGEN(teoccl, Doxyfile, docs)
 
 fi
 
