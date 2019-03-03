@@ -21,7 +21,7 @@ jobs:
 
       # Install dependences
       #- run: sh/build-ubuntu.sh
-      - run sudo apt-get install libcunit1-dev cpputest
+      - run: sudo apt-get install libcunit1-dev cpputest
       # Make
       - run: ./autogen.sh --prefix=/usr
       - run: make
