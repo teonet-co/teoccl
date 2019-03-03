@@ -195,12 +195,12 @@ workflows:
             tags:
               ignore: /^v.*/
 
-      - un-tagged-build-centos:
-          requires:
-            - testing
-          filters:
-            tags:
-              ignore: /^v.*/
+#      - un-tagged-build-centos:
+#          requires:
+#            - testing
+#          filters:
+#            tags:
+#              ignore: /^v.*/
 
   tagged:
     jobs:
