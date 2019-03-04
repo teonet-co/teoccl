@@ -22,12 +22,18 @@ jobs:
       # Install dependences
       #- run: sh/build-ubuntu.sh
       - run: sudo apt-get install libcunit1-dev cpputest
+
       # Make
       - run: ./autogen.sh --prefix=/usr
       - run: make
+
       # Test
       #- run: app/teovpn -?
       - run: make test
+      
+      # Buid binary deb package
+      #- run: git clone git@github.com:teonet-co/ci-build.git
+      - run: ci-build/make_package deb
 
 #      # build the application image
 #      - run: docker build --no-cache -t $CIRCLE_PROJECT_REPONAME -f docker/Dockerfile .
@@ -220,14 +226,14 @@ workflows:
             tags:
               only: /^v.*/
 
-      - tagged-build-centos:
-          requires:
-            - testing
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
+#      - tagged-build-centos:
+#          requires:
+#            - testing
+#          filters:
+#            branches:
+#              ignore: /.*/
+#            tags:
+#              only: /^v.*/
 
 #      - tagged-build-opensuse:
 #          requires:
@@ -241,7 +247,7 @@ workflows:
       - tagged-build-docker:
           requires:
             - tagged-build-ubuntu
-            - tagged-build-centos
+#            - tagged-build-centos
 #            - tagged-build-opensuse
           filters:
             branches:

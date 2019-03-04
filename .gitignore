@@ -63,3 +63,5 @@ tests/teoccl_tst
 nbproject/
 /distr/
 dist/
+
+config\.h\.in~
