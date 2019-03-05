@@ -1,2 +1,41 @@
+### v0.0.4-13-g681955d
 
+  - Updated submodule ci-build
+  - CircleCI config file added
+  - Doxygen documentation published
+  - Create docs folder for github website
 
+### v0.0.3
+
+  - Delete from map test created
+  - Added docs for array-list #5
+  - C++ map.foreach test created
+  - Function foreach added to the map c++ wrapper
+  - Templates added to the c++ map iterator element get key and get data functions
+  - The c++ deleteByKey function renamed to del
+  - The teoMapDeleteStr function on the map module created
+  - The teoMapGetStr function on the map module created
+  - The teoMapAddStr function on the map module created
+  - Update test
+  - Modify list
+  - List container Close
+  - Added tests
+  - Added test for list
+
+### v0.0.2
+
+  - Put function was add
+  - Function teoMapForeach was added
+  - Added cpp map wrapper
+  - Rename teoMapData to teoMap
+  - Makefile updated, heders removed from includedir
+
+### v0.0.1
+
+  - Add previous iterator for map
+  - Netbeans project files added
+  - README.md file updated
+  - C++17 replased with c++11 to comatible with centos build images
+  - gnu99 gcc standard added to fix error in centos
+  - COPYING file updated
+  - Make files fixed to install all necessary files

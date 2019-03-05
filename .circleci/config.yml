@@ -7,6 +7,20 @@
 version: 2
 jobs:
 
+  direct-download:
+    docker: # run the steps with Docker
+      - image: gitlab.ksproject.org:5000/ci/ubuntu_teonet
+    steps:
+      - checkout
+      # Add to direct download list
+      - run: curl -vvf -X PUT -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY -H "Content-Type:application/json" -d '{"list_in_downloads":true}' "https://api.bintray.com/file_metadata/teonet-co/u/pool/main/"$PACKET_NAME"/"$PACKAGE_NAME"_wheezy.deb"
+      - run: echo ""
+      
+      # Add to direct download list
+      - run: curl -vvf -X PUT -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY -H "Content-Type:application/json" -d '{"list_in_downloads":true}' "https://api.bintray.com/file_metadata/teonet-co/u/pool/main/"$PACKET_NAME"/"$PACKAGE_NAME"_bionic.deb"
+      - run: echo ""
+
+
   un-tagged-build-ubuntu:
     docker: # run the steps with Docker
       - image: gitlab.ksproject.org:5000/ci/ubuntu_teonet
@@ -18,10 +32,11 @@ jobs:
       - run: echo $CIRCLE_PROJECT_REPONAME
       - run: echo $CIRCLE_BRANCH
       - run: echo $CIRCLE_TAG
+      - run: echo $CI_BUILD_REF_BT
 
       # Install dependences
       #- run: sh/build-ubuntu.sh
-      - run: sudo apt-get install libcunit1-dev cpputest
+      - run: sudo apt-get install -y libcunit1-dev cpputest
 
       # Make
       - run: ./autogen.sh --prefix=/usr

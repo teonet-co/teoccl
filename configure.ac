@@ -15,10 +15,12 @@ AC_SUBST([$1], ['$2'])
 # END
 
 AC_PREREQ([2.69])
-AC_INIT([libteoccl], [0.0.4], [kirill@scherba.ru])
+AC_INIT([libteoccl], [0.0.4], [Kirill Scherba <kirill@scherba.ru>])
 AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 4, [teoccl dynamic library version])
-AC_DEFINE([PACKAGE_DESCRIPTION], ["Teoccl library: Teonet c container library"], [Application description])
+AC_DEFINE([PACKAGE_DESCRIPTION], ["The Teonet ccl library process basic containers for C language"], [Application description])
 AC_DEFINE([PACKAGE_DEPENDENCIES], [""], [Application dependencies])
+AC_DEFINE([LICENSES], ["[[\"MIT\",\"LGPL-3.0\"]]"], [Application package licenses])
+AC_DEFINE([VCS_URL], ["https://github.com/teonet-co/teoccl.git"], [Git URL])
 AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2019"], [Teoccl library copyright])
 
 AC_PREFIX_DEFAULT([/usr])
@@ -200,7 +202,7 @@ dnl Internationalization
 dnl ***************************************************************************
 IT_PROG_INTLTOOL([0.35.0])
 
-GETTEXT_PACKAGE=teonet
+GETTEXT_PACKAGE=libteoccl
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
 

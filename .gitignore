@@ -65,3 +65,5 @@ nbproject/
 dist/
 
 config\.h\.in~
+
+libteoccl*.deb
