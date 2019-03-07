@@ -1,20 +1,20 @@
-# Teo ccl library: Teonet c containers library
+# Teonet (CCL) C Containers Library
 
 ## 1. Description
 
-The Teo ccl library process basic container at C language.
+The Teonet CCL is a library processed basic containers at C language. The Map and Queue containers are used in [Teonet TR-UDP Library](https://github.com/teonet-co/teonet/wikis/tr-udp)
 
+
+[![CircleCI](https://circleci.com/gh/teonet-co/teonet.svg?style=svg&circle-token=d8827ba514cdb37c75565c8e8d7ebd275a0bc167)](https://circleci.com/gh/teonet-co/teoccl)
 [![Documentation](https://codedocs.xyz/teonet-co/teoccl.svg)](https://codedocs.xyz/teonet-co/teoccl/)
 [ ![Download](https://api.bintray.com/packages/teonet-co/u/libteoccl/images/download.svg) ](https://bintray.com/teonet-co/u/libteoccl/_latestVersion)
-
-[Read More](https://github.com/teonet-co/teonet/wikis/tr-udp)
 
 
 ## 2. Installation from sources
 
 ### Install project with submodules
 
-    git clone git@gitlab.ksproject.org:teonet/teoccl.git
+    git clone git@github.com:teonet-co/teoccl.git
     cd teoccl
     git submodule update --init
 

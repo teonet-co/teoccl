@@ -1,6 +1,6 @@
 var structteoQueue =
 [
-    [ "first", "structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d", null ],
-    [ "last", "structteoQueue.html#a7864178469952c1d3e79bb135c7c0393", null ],
+    [ "first", "structteoQueue.html#a14d2059926ae816299c3187c5878e4a8", null ],
+    [ "last", "structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23", null ],
     [ "length", "structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0", null ]
 ];

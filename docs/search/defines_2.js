@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buffer_5flen',['BUFFER_LEN',['../map__t_8c.html#a46130dc86f2322714bba26960b64e7bb',1,'map_t.c']]]
+  ['copyright',['COPYRIGHT',['../config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194',1,'config.h']]]
 ];

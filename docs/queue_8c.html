@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeoCCl: queue.c File Reference</title>
+<title>TeoCCl library: queue.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,8 +28,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TeoCCl
-   &#160;<span id="projectnumber">0.0.3</span>
+   <div id="projectname">TeoCCl library
+   &#160;<span id="projectnumber">0.0.4</span>
    </div>
   </td>
  </tr>
@@ -88,7 +88,7 @@ $(document).ready(function(){initNavTree('queue_8c.html','');});
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="src_2queue_8h_source.html">queue.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="queue_8h_source.html">queue.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -158,7 +158,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a6a8aeffeb614e30833a8f2a4fc395141"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#a6a8aeffeb614e30833a8f2a4fc395141">teoQueueIteratorFree</a> (<a class="el" href="structteoQueueIterator.html">teoQueueIterator</a> *it)</td></tr>
 <tr class="memdesc:a6a8aeffeb614e30833a8f2a4fc395141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free (destroy) Teo Queue iterator.  <a href="#a6a8aeffeb614e30833a8f2a4fc395141">More...</a><br /></td></tr>
 <tr class="separator:a6a8aeffeb614e30833a8f2a4fc395141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0fd4f7fab9d8e8276a3f2effe9732a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach</a> (<a class="el" href="structteoQueue.html">teoQueue</a> *q, <a class="el" href="src_2queue_8h.html#abcc9547f08b7648157f6819e809f94f0">teoQueueForeachFunction</a> callback, void *user_data)</td></tr>
+<tr class="memitem:ab0fd4f7fab9d8e8276a3f2effe9732a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="queue_8c.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach</a> (<a class="el" href="structteoQueue.html">teoQueue</a> *q, <a class="el" href="queue_8h.html#abcc9547f08b7648157f6819e809f94f0">teoQueueForeachFunction</a> callback, void *user_data)</td></tr>
 <tr class="memdesc:ab0fd4f7fab9d8e8276a3f2effe9732a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loop through queue and call callback function with index and data in parameters.  <a href="#ab0fd4f7fab9d8e8276a3f2effe9732a6">More...</a><br /></td></tr>
 <tr class="separator:ab0fd4f7fab9d8e8276a3f2effe9732a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -208,7 +208,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>, and <a class="el" href="queue_8c.html#ad0c530b0f85324680e5cfa429440c5a3">teoQueuePut()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a8360468010375e86b4de9574327212bd">teo::Queue::add()</a>, <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="src_2queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>, and <a class="el" href="src_2queue_8h.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a8360468010375e86b4de9574327212bd">teo::Queue::add()</a>, <a class="el" href="queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>, and <a class="el" href="queue_8h.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>.</p>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>, <a class="el" href="queue_8c.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, <a class="el" href="queue_8c.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>, and <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, <a class="el" href="queue_8c.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, <a class="el" href="queue_8c.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>, and <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#adef80eee0dba25749024ed5318e9d746">teo::Queue::addAfter()</a>.</p>
 
@@ -321,7 +321,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="queue_8c.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, and <a class="el" href="queue_8c.html#ab3906efdbfaa422ec2a6e229176b7083">teoQueueMoveToTop()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#aeab2d6052cd1dd82af06897a94038cbd">teo::Queue::addTop()</a>, and <a class="el" href="src_2queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#aeab2d6052cd1dd82af06897a94038cbd">teo::Queue::addTop()</a>, and <a class="el" href="queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>.</p>
 
 </div>
 </div>
@@ -371,7 +371,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="queue_8c.html#a77fb79c1425b148f6a01d3b1df0ccb16">teoQueueRemove()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a7e3cc58be7bf97de404a9d1b8667c732">teo::Queue::del()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="src_2queue_8h.html#a3b252576d80397b5f429d4d75181e8e6">teoQueueDeleteFirst()</a>, and <a class="el" href="src_2queue_8h.html#ad529f8a40fa7da2601c1dfd05988d2bd">teoQueueDeleteLast()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a7e3cc58be7bf97de404a9d1b8667c732">teo::Queue::del()</a>, <a class="el" href="queue_8h.html#a3b252576d80397b5f429d4d75181e8e6">teoQueueDeleteFirst()</a>, and <a class="el" href="queue_8h.html#ad529f8a40fa7da2601c1dfd05988d2bd">teoQueueDeleteLast()</a>.</p>
 
 </div>
 </div>
@@ -408,9 +408,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, and <a class="el" href="queue_8c.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, and <a class="el" href="queue_8c.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, and <a class="el" href="classteo_1_1Queue.html#a38b9ec3bf22b0e1c862df6cd7e86c061">teo::Queue::delFirst()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a38b9ec3bf22b0e1c862df6cd7e86c061">teo::Queue::delFirst()</a>.</p>
 
 </div>
 </div>
@@ -447,9 +447,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, and <a class="el" href="queue_8c.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, and <a class="el" href="queue_8c.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, and <a class="el" href="classteo_1_1Queue.html#ad6973d828a8f5e74f6c06821fc4f9f70">teo::Queue::delLast()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#ad6973d828a8f5e74f6c06821fc4f9f70">teo::Queue::delLast()</a>.</p>
 
 </div>
 </div>
@@ -488,7 +488,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="queue_8c.html#a8a650ba606f226b0f6c9146a99c8cae6">teoQueueFree()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="queue__t_8c.html#a3ee2cd68cfa1404edd0bfc483c33768b">queue_create_test()</a>, <a class="el" href="src_2map_8h.html#a10c56557aeed65da33554e78da7ac76e">teoMapDestroy()</a>, and <a class="el" href="classteo_1_1Queue.html#a6291422db19ffc915c6b641fd0f980a8">teo::Queue::~Queue()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="map_8h.html#a10c56557aeed65da33554e78da7ac76e">teoMapDestroy()</a>, and <a class="el" href="classteo_1_1Queue.html#a6291422db19ffc915c6b641fd0f980a8">teo::Queue::~Queue()</a>.</p>
 
 </div>
 </div>
@@ -507,7 +507,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="src_2queue_8h.html#abcc9547f08b7648157f6819e809f94f0">teoQueueForeachFunction</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="queue_8h.html#abcc9547f08b7648157f6819e809f94f0">teoQueueForeachFunction</a>&#160;</td>
           <td class="paramname"><em>callback</em>, </td>
         </tr>
         <tr>
@@ -565,9 +565,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, and <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, and <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#aa3e2c1b70a272143e38ca2f512b080f8">teo::Queue::freeAll()</a>, <a class="el" href="src_2map_8h.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>, and <a class="el" href="src_2queue_8h.html#a3199bcb6c90f4419d0d4bec5be751d2a">teoQueueDestroy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#aa3e2c1b70a272143e38ca2f512b080f8">teo::Queue::freeAll()</a>, <a class="el" href="map_8h.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>, and <a class="el" href="queue_8h.html#a3199bcb6c90f4419d0d4bec5be751d2a">teoQueueDestroy()</a>.</p>
 
 </div>
 </div>
@@ -604,9 +604,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> or NULL if not exists </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueueIterator.html#a3e3b9cb8de5b09f2d4f78fe39afcead9">teoQueueIterator::qd</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueueIterator.html#a49d2bd50f08cd9f4b14e1c9283d16c87">teoQueueIterator::qd</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="classteo_1_1Queue.html#af128e5df5744c4a7791a765431b8bf63">teo::Queue::iteratorElement()</a>, and <a class="el" href="src_2queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#af128e5df5744c4a7791a765431b8bf63">teo::Queue::iteratorElement()</a>, and <a class="el" href="queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
 
 </div>
 </div>
@@ -635,7 +635,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="classteo_1_1Queue.html#ab24af2162b1d9c1fac1d77da205e1c43">teo::Queue::iteratorFree()</a>, <a class="el" href="src_2map_8h.html#aea144b75b436ea1175902b08e81df7c7">teoMapIteratorFree()</a>, and <a class="el" href="src_2queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#ab24af2162b1d9c1fac1d77da205e1c43">teo::Queue::iteratorFree()</a>, <a class="el" href="map_8h.html#aea144b75b436ea1175902b08e81df7c7">teoMapIteratorFree()</a>, and <a class="el" href="queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
 
 </div>
 </div>
@@ -664,9 +664,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueueIterator.html#af29a1eb3d9cabb633532738f7955b4c0">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a3e3b9cb8de5b09f2d4f78fe39afcead9">teoQueueIterator::qd</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueueIterator.html#a6bef69615ee8fcaccad005c6c2721e95">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a49d2bd50f08cd9f4b14e1c9283d16c87">teoQueueIterator::qd</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="classteo_1_1Queue.html#ae5ccdb845880415fceea5d4f89718979">teo::Queue::iterator()</a>, <a class="el" href="src_2map_8h.html#ad8fa845308138da14714a96b2a3c9c57">teoMapIteratorNew()</a>, <a class="el" href="src_2map_8h.html#a518645bdc7a67f8f79ff5ed052a2ec29">teoMapIteratorReverseNew()</a>, and <a class="el" href="src_2queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#ae5ccdb845880415fceea5d4f89718979">teo::Queue::iterator()</a>, <a class="el" href="map_8h.html#ad8fa845308138da14714a96b2a3c9c57">teoMapIteratorNew()</a>, <a class="el" href="map_8h.html#a518645bdc7a67f8f79ff5ed052a2ec29">teoMapIteratorReverseNew()</a>, and <a class="el" href="queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
 
 </div>
 </div>
@@ -695,9 +695,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> or NULL if not exists </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, <a class="el" href="structteoQueueIterator.html#af29a1eb3d9cabb633532738f7955b4c0">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a3e3b9cb8de5b09f2d4f78fe39afcead9">teoQueueIterator::qd</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueIterator.html#a6bef69615ee8fcaccad005c6c2721e95">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a49d2bd50f08cd9f4b14e1c9283d16c87">teoQueueIterator::qd</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="classteo_1_1Queue.html#afa868bc0b32f4cc5dc638976a95ebfdf">teo::Queue::iteratorNext()</a>, <a class="el" href="src_2map_8h.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, and <a class="el" href="src_2queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#afa868bc0b32f4cc5dc638976a95ebfdf">teo::Queue::iteratorNext()</a>, <a class="el" href="map_8h.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, and <a class="el" href="queue_8h.html#ab0fd4f7fab9d8e8276a3f2effe9732a6">teoQueueForeach()</a>.</p>
 
 </div>
 </div>
@@ -726,9 +726,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> or NULL if not exists </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>, <a class="el" href="structteoQueueIterator.html#af29a1eb3d9cabb633532738f7955b4c0">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a3e3b9cb8de5b09f2d4f78fe39afcead9">teoQueueIterator::qd</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, <a class="el" href="structteoQueueIterator.html#a6bef69615ee8fcaccad005c6c2721e95">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a49d2bd50f08cd9f4b14e1c9283d16c87">teoQueueIterator::qd</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a74a6e09b83ec3514eb7882d3dca98fcf">teo::Queue::iteratorPrev()</a>, and <a class="el" href="src_2map_8h.html#acd6e08b414dde5f94952efb9894a2009">teoMapIteratorPrev()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a74a6e09b83ec3514eb7882d3dca98fcf">teo::Queue::iteratorPrev()</a>, and <a class="el" href="map_8h.html#acd6e08b414dde5f94952efb9894a2009">teoMapIteratorPrev()</a>.</p>
 
 </div>
 </div>
@@ -768,9 +768,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to input <a class="el" href="structteoQueueIterator.html" title="TR-UDP iterator. ">teoQueueIterator</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueueIterator.html#af29a1eb3d9cabb633532738f7955b4c0">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a3e3b9cb8de5b09f2d4f78fe39afcead9">teoQueueIterator::qd</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueueIterator.html#a6bef69615ee8fcaccad005c6c2721e95">teoQueueIterator::q</a>, and <a class="el" href="structteoQueueIterator.html#a49d2bd50f08cd9f4b14e1c9283d16c87">teoQueueIterator::qd</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a238090661c494cd60bda6bc331775837">teo::Queue::iteratorElement()</a>, <a class="el" href="src_2map_8h.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, and <a class="el" href="src_2map_8h.html#acd6e08b414dde5f94952efb9894a2009">teoMapIteratorPrev()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a238090661c494cd60bda6bc331775837">teo::Queue::iteratorElement()</a>, <a class="el" href="map_8h.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, and <a class="el" href="map_8h.html#acd6e08b414dde5f94952efb9894a2009">teoMapIteratorPrev()</a>.</p>
 
 </div>
 </div>
@@ -810,9 +810,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to input <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a77fb79c1425b148f6a01d3b1df0ccb16">teoQueueRemove()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a77fb79c1425b148f6a01d3b1df0ccb16">teoQueueRemove()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, and <a class="el" href="classteo_1_1Queue.html#ac1240d248b70176a535b6b66715904cd">teo::Queue::moveToEnd()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#ac1240d248b70176a535b6b66715904cd">teo::Queue::moveToEnd()</a>.</p>
 
 </div>
 </div>
@@ -852,9 +852,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to input <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a77fb79c1425b148f6a01d3b1df0ccb16">teoQueueRemove()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a77fb79c1425b148f6a01d3b1df0ccb16">teoQueueRemove()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, <a class="el" href="classteo_1_1Queue.html#a8cec7babaa11e52f6491df3fb33eec41">teo::Queue::moveToTop()</a>, and <a class="el" href="src_2queue_8h.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a8cec7babaa11e52f6491df3fb33eec41">teo::Queue::moveToTop()</a>, and <a class="el" href="queue_8h.html#a39023f1dc8b35e385ba3546900ed26bc">teoQueueAddTop()</a>.</p>
 
 </div>
 </div>
@@ -876,7 +876,7 @@ Functions</h2></td></tr>
 <p>Create new Teo Queue. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to new Teo Queue or NULL if memory allocate error </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, <a class="el" href="classteo_1_1Queue.html#a53fb136d473c476585d798de3742a131">teo::Queue::Queue()</a>, <a class="el" href="queue__t_8c.html#a3ee2cd68cfa1404edd0bfc483c33768b">queue_create_test()</a>, and <a class="el" href="src_2map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a53fb136d473c476585d798de3742a131">teo::Queue::Queue()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
 
 </div>
 </div>
@@ -916,9 +916,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueueData.html#adf1cbee67b66329dd7043d7159255368">teoQueueData::data</a>, and <a class="el" href="structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c">teoQueueData::data_length</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, and <a class="el" href="structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c">teoQueueData::data_length</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a11185e829c64cac13e9d8f8d38e41222">teo::Queue::newData()</a>, <a class="el" href="src_2queue_8h.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, <a class="el" href="src_2queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>, and <a class="el" href="src_2queue_8h.html#abb3aa99cf112e4d7dd516f01c3185132">teoQueueUpdate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a11185e829c64cac13e9d8f8d38e41222">teo::Queue::newData()</a>, <a class="el" href="queue_8h.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, <a class="el" href="queue_8h.html#ae036c852bfbeb21003a20004f7422801">teoQueueAddAfter()</a>, and <a class="el" href="queue_8h.html#abb3aa99cf112e4d7dd516f01c3185132">teoQueueUpdate()</a>.</p>
 
 </div>
 </div>
@@ -958,9 +958,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, and <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, and <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a9cc31e1d3f8b66749fb131d6dc12cba2">teo::Queue::put()</a>, and <a class="el" href="src_2queue_8h.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a9cc31e1d3f8b66749fb131d6dc12cba2">teo::Queue::put()</a>, and <a class="el" href="queue_8h.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>.</p>
 
 </div>
 </div>
@@ -1008,9 +1008,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to <a class="el" href="structteoQueueData.html" title="Queue module, linked list with data in body. ">teoQueueData</a> </dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, and <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, and <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a589b677061ea61d177cec851ef45324e">teo::Queue::remove()</a>, <a class="el" href="src_2queue_8h.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>, <a class="el" href="src_2queue_8h.html#a7cde60047b17350dcd1ca8fff82d415d">teoQueueMoveToEnd()</a>, and <a class="el" href="src_2queue_8h.html#ab3906efdbfaa422ec2a6e229176b7083">teoQueueMoveToTop()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#a589b677061ea61d177cec851ef45324e">teo::Queue::remove()</a>, <a class="el" href="queue_8h.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>, <a class="el" href="queue_8h.html#a7cde60047b17350dcd1ca8fff82d415d">teoQueueMoveToEnd()</a>, and <a class="el" href="queue_8h.html#ab3906efdbfaa422ec2a6e229176b7083">teoQueueMoveToTop()</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1049,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="structteoQueue.html#a4f7186b33225c50be4e52010bf09e0a0">teoQueue::length</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>, <a class="el" href="queue__t_8c.html#a722ee0c96bb62218b53b1eed9ac80a43">check_queue_iterator()</a>, <a class="el" href="queue__t_8c.html#a489e9ec1981613bf36f57dece88886d1">delete_elements_from_queue()</a>, and <a class="el" href="classteo_1_1Queue.html#ad3340f926bb8c4eb27f383054dab4fa2">teo::Queue::size()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classteo_1_1Queue.html#ad3340f926bb8c4eb27f383054dab4fa2">teo::Queue::size()</a>.</p>
 
 </div>
 </div>
@@ -1103,9 +1103,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
-<p class="reference">References <a class="el" href="structteoQueue.html#a59c66e4e23adc1645eb3801dad48a86d">teoQueue::first</a>, <a class="el" href="structteoQueue.html#a7864178469952c1d3e79bb135c7c0393">teoQueue::last</a>, <a class="el" href="structteoQueueData.html#af459604f19bbbd57afb25abae1ea706f">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a8e624dd21edc9e8cbbc023cf8081748d">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="queue__t_8c.html#a91a962f63af77f5c4f62ccd549c86747">add_elements_to_queue()</a>.</p>
+<p class="reference">References <a class="el" href="structteoQueue.html#a14d2059926ae816299c3187c5878e4a8">teoQueue::first</a>, <a class="el" href="structteoQueue.html#ac6cec13f1d2045f9295a5f50c5b5ed23">teoQueue::last</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, and <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1113,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="queue_8c.html">queue.c</a></li>
-    <li class="footer">Generated on Sat Mar 2 2019 03:54:47 for TeoCCl by
+    <li class="footer">Generated on Fri Mar 8 2019 02:49:00 for TeoCCl library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

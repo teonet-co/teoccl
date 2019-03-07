@@ -1,4 +1,4 @@
-### v0.0.4
+Version v0.0.4
 
   - Upload DEB package to Bintray repository
   - Updated submodule ci-build
@@ -6,7 +6,7 @@
   - Doxygen documentation published
   - Create docs folder for github website
 
-### v0.0.3
+Version v0.0.3
 
   - Delete from map test created
   - Added docs for array-list #5
@@ -23,7 +23,7 @@
   - Added tests
   - Added test for list
 
-### v0.0.2
+Version v0.0.2
 
   - Put function was add
   - Function teoMapForeach was added
@@ -31,7 +31,7 @@
   - Rename teoMapData to teoMap
   - Makefile updated, heders removed from includedir
 
-### v0.0.1
+Version v0.0.1
 
   - Add previous iterator for map
   - Netbeans project files added

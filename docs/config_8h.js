@@ -30,9 +30,11 @@ var config_8h =
     [ "HAVE_SYS_TYPES_H", "config_8h.html#a69dc70bea5d1f8bd2be9740e974fa666", null ],
     [ "HAVE_UNISTD_H", "config_8h.html#a219b06937831d0da94d801ab13987639", null ],
     [ "LIBRARY_MAJOR_VERSION", "config_8h.html#a63e07f53f6ca25e38a78579772405591", null ],
+    [ "LICENSES", "config_8h.html#af920c62caba124bca20ce0bba01200a8", null ],
     [ "LT_OBJDIR", "config_8h.html#ac2d5925d76379847dd9fc4747b061659", null ],
     [ "PACKAGE", "config_8h.html#aca8570fb706c81df371b7f9bc454ae03", null ],
     [ "PACKAGE_BUGREPORT", "config_8h.html#a1d1d2d7f8d2f95b376954d649ab03233", null ],
+    [ "PACKAGE_DEPENDENCIES", "config_8h.html#ad2f0b3e8ed548f3cf0aa09a834b49fbf", null ],
     [ "PACKAGE_DESCRIPTION", "config_8h.html#a714627d9e7b71b55548e2ddda429d3fb", null ],
     [ "PACKAGE_NAME", "config_8h.html#a1c0439e4355794c09b64274849eb0279", null ],
     [ "PACKAGE_STRING", "config_8h.html#ac73e6f903c16eca7710f92e36e1c6fbf", null ],
@@ -40,5 +42,6 @@ var config_8h =
     [ "PACKAGE_URL", "config_8h.html#a5c93853116d5a50307b6744f147840aa", null ],
     [ "PACKAGE_VERSION", "config_8h.html#aa326a05d5e30f9e9a4bb0b4469d5d0c0", null ],
     [ "STDC_HEADERS", "config_8h.html#a550e5c272cc3cf3814651721167dcd23", null ],
+    [ "VCS_URL", "config_8h.html#ab355eb06e2a02bf2bc912f6ee3b7287b", null ],
     [ "VERSION", "config_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf", null ]
 ];

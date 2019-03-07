@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['copyright',['COPYRIGHT',['../config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194',1,'config.h']]]
+  ['enable_5fnls',['ENABLE_NLS',['../config_8h.html#a7cc70673e1bfa2cbbc58f1733a8aa344',1,'config.h']]]
 ];
