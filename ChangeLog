@@ -1,5 +1,6 @@
-### v0.0.4-13-g681955d
+### v0.0.4
 
+  - Upload DEB package to Bintray repository
   - Updated submodule ci-build
   - CircleCI config file added
   - Doxygen documentation published
