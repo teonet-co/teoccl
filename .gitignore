@@ -67,3 +67,5 @@ dist/
 config\.h\.in~
 
 libteoccl*.deb
+
+build/
