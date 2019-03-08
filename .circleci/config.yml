@@ -3,7 +3,6 @@
 # Check https://circleci.com/docs/2.0/ for more details
 #
 
-#workflows:
 version: 2
 jobs:
 
@@ -200,12 +199,15 @@ jobs:
 #          name: test
 #          command: npm test
 
+
 workflows:
-  version: 2
+  version: 2  
   un-tagged:
     jobs:
       - testing:
           filters:
+            branches:
+              only: master
             tags:
               ignore: /^v.*/
 
@@ -213,6 +215,8 @@ workflows:
           requires:
             - testing
           filters:
+            branches:
+              only: master
             tags:
               ignore: /^v.*/
 
@@ -222,6 +226,16 @@ workflows:
 #          filters:
 #            tags:
 #              ignore: /^v.*/
+
+
+  skipped:
+    jobs:
+      - testing:
+          filters:
+            branches:
+              only: /~master/
+            tags:
+              ignore: /^v.*/
 
   tagged:
     jobs:

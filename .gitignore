@@ -56,16 +56,12 @@
 /src/*.o
 /src/*.la
 /src/.dirstamp
-
 tests/teoccl_cpp_tst
 tests/teoccl_tst
-
 nbproject/
 /distr/
 dist/
-
 config\.h\.in~
-
 libteoccl*.deb
-
 build/
+docs/
