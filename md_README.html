@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TeoCCl library: Teonet CCL Documentation.</title>
+<title>TeoCCl library: Teonet (CCL) C Containers Library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('index.html','');});
+$(document).ready(function(){initNavTree('md_README.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -81,15 +81,44 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Teonet CCL Documentation. </div>  </div>
+<div class="title">Teonet (CCL) C Containers Library </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>The Teonet CCL is a library processed basic containers at C language.<a href="https://bintray.com/teonet-co/u/libteoccl/_latestVersion"></a></p>
-<h3>Installation information</h3>
-<p>See the <a class="el" href="md_README.html">README.md</a> file to get Installation Info. <br />
- </p><h3>See the latest news from library <a href="https://github.com/teonet-co/teoccl/blob/master/ChangeLog">ChangeLog</a>: <br />
-</h3>
-<div class="fragment"><div class="line">Version v0.0.4</div><div class="line"></div><div class="line">  - Upload DEB package to Bintray repository</div><div class="line">  - Updated submodule ci-build</div><div class="line">  - CircleCI config file added</div><div class="line">  - Doxygen documentation published</div><div class="line">  - Create docs folder for github website</div><div class="line"></div><div class="line">Version v0.0.3</div><div class="line"></div><div class="line">  - Delete from map test created</div><div class="line">  - Added docs for array-list #5</div><div class="line">  - C++ map.foreach test created</div><div class="line">  - Function foreach added to the map c++ wrapper</div><div class="line">  - Templates added to the c++ map iterator element get key and get data functions</div><div class="line">  - The c++ deleteByKey function renamed to del</div><div class="line">  - The teoMapDeleteStr function on the map module created</div><div class="line">  - The teoMapGetStr function on the map module created</div><div class="line">  - The teoMapAddStr function on the map module created</div><div class="line">  - Update test</div><div class="line">  - Modify list</div><div class="line">  - List container Close</div><div class="line">  - Added tests</div><div class="line">  - Added test for list</div><div class="line"></div><div class="line">Version v0.0.2</div><div class="line"></div><div class="line">  - Put function was add</div><div class="line">  - Function teoMapForeach was added</div><div class="line">  - Added cpp map wrapper</div><div class="line">  - Rename teoMapData to teoMap</div><div class="line">  - Makefile updated, heders removed from includedir</div><div class="line"></div><div class="line">Version v0.0.1</div><div class="line"></div><div class="line">  - Add previous iterator for map</div><div class="line">  - Netbeans project files added</div><div class="line">  - README.md file updated</div><div class="line">  - C++17 replased with c++11 to comatible with centos build images</div><div class="line">  - gnu99 gcc standard added to fix error in centos</div><div class="line">  - COPYING file updated</div><div class="line">  - Make files fixed to install all necessary files</div></div><!-- fragment --> </div></div><!-- contents -->
+<div class="textblock"><h2>1. Description</h2>
+<p>The Teonet CCL is a library processed basic containers at C language. The Map and Queue containers are used in <a href="https://github.com/teonet-co/teonet/wikis/tr-udp">Teonet TR-UDP Library</a></p>
+<p><a href="https://circleci.com/gh/teonet-co/teoccl"></a> <a href="https://codedocs.xyz/teonet-co/teoccl/"></a> <a href="https://bintray.com/teonet-co/u/libteoccl/_latestVersion"></a></p>
+<h2>2. Installation from sources</h2>
+<h3>Install project with submodules</h3>
+<pre class="fragment">git clone git@github.com:teonet-co/teoccl.git
+cd teoccl
+git submodule update --init
+</pre><h3>Install Dependences</h3>
+<p>There is not dependences</p>
+<h3>First time, after got sources from subversion repository</h3>
+<pre class="fragment">./autogen.sh
+</pre><h2>3. Make your application</h2>
+<pre class="fragment">make
+</pre><h2>3.1 Using autoscan to Create configure.ac</h2>
+<p>After make some global changes in sources code use <code>autoscan</code> to update projects configure.ac</p>
+<h2>4. Installation from repository</h2>
+<h3>UBUNTU</h3>
+<pre class="fragment">http://repo.ksproject.org/ubuntu/
+https://dl.bintray.com/teonet-co/u
+</pre><h3>Add repository</h3>
+<p>KSProject: </p><pre class="fragment">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8CC88F3BE7D6113C
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository "deb http://repo.ksproject.org/ubuntu/ teonet main"
+sudo apt-get update
+</pre><p>Bintray: </p><pre class="fragment">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61
+echo "deb https://dl.bintray.com/teonet-co/u bionic main" | sudo tee -a /etc/apt/sources.list
+sudo apt-get update
+</pre><h3>Install</h3>
+<pre class="fragment">sudo apt-get install -y libteoccl
+</pre><h2>5. Run example</h2>
+<p>See example README.md</p>
+<h2>6. Teo ccl documentation</h2>
+<p>See libteoccl documentation at: <a href="https://codedocs.xyz/teonet-co/teoccl">https://codedocs.xyz/teonet-co/teoccl</a> </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
