@@ -1,1 +1,18 @@
+  
+  
+  
+version: 2
+jobs:
 
+  testing: # runs not using Workflows must have a `build` job as entry point
+    working_directory: ~/mern-starter # directory where steps will run
+    docker: # run the steps with Docker
+      - image: circleci/node # ...with this image as the primary container; this is where all `steps` will run
+    steps: # a collection of executable commands
+       - run: echo Run tests of $CIRCLE_PROJECT_REPONAME project
+
+workflows:
+  version: 2  
+  any:
+    jobs:
+      - testing:
