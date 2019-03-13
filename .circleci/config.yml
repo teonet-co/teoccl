@@ -10,36 +10,60 @@
 version: 2
 jobs:
 
-  # direct-download:
-  #   docker: # run the steps with Docker
-  #     - image: gitlab.ksproject.org:5000/ci/ubuntu_teonet
-  #   steps:
-  #     - checkout
-  #     # Add to direct download list
-  #     - run: curl -vvf -X PUT -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY -H "Content-Type:application/json" -d '{"list_in_downloads":true}' "https://api.bintray.com/file_metadata/teonet-co/u/pool/main/"$PACKET_NAME"/"$PACKAGE_NAME"_wheezy.deb"
-  #     - run: echo ""
-      
-  #     # Add to direct download list
-  #     - run: curl -vvf -X PUT -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY -H "Content-Type:application/json" -d '{"list_in_downloads":true}' "https://api.bintray.com/file_metadata/teonet-co/u/pool/main/"$PACKET_NAME"/"$PACKAGE_NAME"_bionic.deb"
-  #     - run: echo ""
-
-
-  un-tagged-build-ubuntu:
-    docker: # run the steps with Docker
-      - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet # gitlab.ksproject.org:5000/ci/ubuntu_teonet
+  # Build sources at clear ubuntu:16.04 
+  # (test build dependences script ci-build-data/build-ubuntu.sh)
+  build-ubuntu-clear:
+    docker:
+      - image: teonet-co-docker-d.bintray.io/ci/ubuntu-git:16.04
     steps:
       - checkout
       - run: git submodule update --init --recursive
 
-      # show current variables
-      - run: echo $CIRCLE_PROJECT_REPONAME
-      - run: echo $CIRCLE_BRANCH
-      - run: echo $CIRCLE_TAG
-      - run: echo $CI_BUILD_REF_BT
+      # Install dependences
+      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
+
+      # Make
+      - run: ./autogen.sh --prefix=/usr
+      - run: make
+
+      # Test
+      - run: make test
+
+
+
+  # Build sources at ubuntu_teonet image with preinstalled common dependences 
+  # (test quick build) 
+  build-ubuntu:
+    docker:
+      - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet
+    steps:
+      - checkout
+      - run: git submodule update --init --recursive
 
       # Install dependences
-      #- run: sh/build-ubuntu.sh
-      #- run: sudo apt-get install -y libcunit1-dev cpputest
+      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
+
+      # Make
+      - run: ./autogen.sh --prefix=/usr
+      - run: make
+
+      # Test
+      #- run: app/teovpn -?
+      - run: make test
+
+
+
+  # Build and Publish deb packages and Source doxygen documentation to repository
+  # (publishing) 
+  publish-ubuntu:
+    docker:
+      - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet
+    steps:
+      - checkout
+      - run: git submodule update --init --recursive
+
+      # Install dependences
+      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
 
       # Make
       - run: ./autogen.sh --prefix=/usr
@@ -53,18 +77,26 @@ jobs:
       #- run: git clone git@github.com:teonet-co/ci-build.git
       - run: ci-build/make_package deb
 
-#      # build the application image
-#      - run: docker build --no-cache -t $CIRCLE_PROJECT_REPONAME -f docker/Dockerfile .
-#
-#      # Check created image
-#      - run: docker run -it --rm --name $CIRCLE_PROJECT_REPONAME $CIRCLE_PROJECT_REPONAME node . -?
-#
-#      # This is place for run unit tests from docker container
+
+  # Install packages at clear ubuntu:16.04 
+  # (test published packages)
+  install-ubuntu-clear:
+    docker:
+      - image: teonet-co-docker-d.bintray.io/ci/ubuntu-git:16.04
+    steps:
+      # Install Teonet bintray repository
+      - run: apt-get update && apt-get install -y sudo apt-transport-https &&
+             sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61 &&
+             echo "deb https://dl.bintray.com/teonet-co/u bionic main" | sudo tee -a /etc/apt/sources.list &&
+             sudo apt-get update
+
+      # Install this application from published packet       
+      - run: apt-get install -y libteoccl
 
 
   un-tagged-build-centos:
     docker: # run the steps with Docker
-      - image: teonet-co-docker-d.bintray.io/ci/ubuntu_centos # gitlab.ksproject.org:5000/ci/centos_teonet
+      - image: teonet-co-docker-d.bintray.io/ci/centos_teonet # gitlab.ksproject.org:5000/ci/centos_teonet
     steps:
       - checkout
       - run: git submodule update --init --recursive
@@ -82,31 +114,6 @@ jobs:
       # Test
       #- run: app/teovpn -?
       - run: make test
-
-
-  tagged-build-ubuntu:
-    docker: # run the steps with Docker
-      - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet
-    steps:
-      - checkout
-      - run: git submodule update --init --recursive
-
-      # show current variables
-      - run: echo $CIRCLE_PROJECT_REPONAME
-      - run: echo $CIRCLE_BRANCH
-      - run: echo $CIRCLE_TAG
-
-      # Install dependences
-      #- run: sh/build-ubuntu.sh
-      # Make
-      - run: ./autogen.sh --prefix=/usr
-      - run: make
-      # Test
-      #- run: app/teovpn -?
-      - run: make test
-
-      # Build DEB package and upload it to repository
-      #- run: sh/make_package deb
 
 
   tagged-build-centos:
@@ -215,7 +222,7 @@ workflows:
             tags:
               ignore: /^v.*/
 
-      - un-tagged-build-ubuntu:
+      - build-ubuntu:
           context: CI_BUILD
           requires:
             - testing
