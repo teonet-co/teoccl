@@ -2,6 +2,10 @@
 #
 # Check https://circleci.com/docs/2.0/ for more details
 #
+# MAINTAINER Kirill Scherba <kirill@scherba.ru>
+#
+# Versin 0.0.1
+#
 
 version: 2
 jobs:
@@ -35,7 +39,7 @@ jobs:
 
       # Install dependences
       #- run: sh/build-ubuntu.sh
-      - run: sudo apt-get install -y libcunit1-dev cpputest
+      #- run: sudo apt-get install -y libcunit1-dev cpputest
 
       # Make
       - run: ./autogen.sh --prefix=/usr
@@ -143,7 +147,7 @@ jobs:
       - run: echo $CIRCLE_TAG
 
       # Install dependences
-      - run: sh/build-opensuse.sh
+      #- run: sh/build-opensuse.sh
       # Make
       - run: ./autogen.sh --prefix=/usr
       - run: make
