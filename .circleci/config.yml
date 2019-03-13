@@ -222,10 +222,20 @@ workflows:
             tags:
               ignore: /^v.*/
 
-      - build-ubuntu:
+      - publish-ubuntu:
           context: CI_BUILD
           requires:
             - testing
+          filters:
+            branches:
+              only: master
+            tags:
+              ignore: /^v.*/
+
+      - install-ubuntu-clear:
+          context: CI_BUILD
+          requires:
+            - publish-ubuntu
           filters:
             branches:
               only: master
