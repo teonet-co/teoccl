@@ -41,7 +41,6 @@
 /examples/Makefile.in
 /examples/trudpcat_ev
 /examples/.libs/
-
 /config.log
 /repo/
 /Doxyfile.bak
@@ -60,8 +59,11 @@ tests/teoccl_cpp_tst
 tests/teoccl_tst
 nbproject/
 /distr/
-dist/
+/dist/
 config\.h\.in~
 libteoccl*.deb
-build/
-docs/
+/build/
+/docs/
+/doc-pak/
+/backup-*-pre-libteoccl\.tgz
+/description-pak

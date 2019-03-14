@@ -219,7 +219,7 @@ if test $HAVE_DOXYGEN = "false"; then
     AC_MSG_WARN([*** doxygen not found, docs will not be built])
 else
 
-DX_HTML_FEATURE(OFF)
+DX_HTML_FEATURE(ON)
 DX_CHM_FEATURE(OFF)
 DX_CHI_FEATURE(OFF)
 DX_MAN_FEATURE(OFF)
