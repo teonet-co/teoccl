@@ -282,7 +282,7 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length) {
 static inline teoMapElementData *_teoMapGetValueData(void *tqd_data,
         uint32_t key_length) {
 
-    return tqd_data - key_length - sizeof(teoMapElementData);
+    return (teoMapElementData *)((char *)tqd_data - key_length - sizeof(teoMapElementData));
 }
 
 /**
@@ -292,7 +292,7 @@ static inline teoMapElementData *_teoMapGetValueData(void *tqd_data,
  * @return Pointer to maps queue data
  */
 static inline teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd) {
-    return mvd ? (teoQueueData *)((void*)mvd - sizeof(teoQueueData)) : NULL;
+    return mvd ? (teoQueueData *)((char *)mvd - sizeof(teoQueueData)) : NULL;
 }
 
 /**
