@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['ksn_5fbuffer_5fsm_5fsize',['KSN_BUFFER_SM_SIZE',['../make__package_8c.html#a902157fc000f741769e3c063b7eb4549',1,'make_package.c']]]
+  ['library_5fmajor_5fversion',['LIBRARY_MAJOR_VERSION',['../config_8h.html#a63e07f53f6ca25e38a78579772405591',1,'config.h']]],
+  ['licenses',['LICENSES',['../config_8h.html#af920c62caba124bca20ce0bba01200a8',1,'config.h']]],
+  ['lt_5fobjdir',['LT_OBJDIR',['../config_8h.html#ac2d5925d76379847dd9fc4747b061659',1,'config.h']]]
 ];

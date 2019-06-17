@@ -5,7 +5,6 @@ var files =
     [ "hash.h", "hash_8h.html", "hash_8h" ],
     [ "list.c", "list_8c.html", "list_8c" ],
     [ "list.h", "list_8h.html", "list_8h" ],
-    [ "make_package.c", "make__package_8c.html", "make__package_8c" ],
     [ "map.c", "map_8c.html", "map_8c" ],
     [ "map.h", "map_8h.html", "map_8h" ],
     [ "map.hpp", "map_8hpp.html", [

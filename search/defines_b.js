@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tbp_5fversion',['TBP_VERSION',['../make__package_8c.html#a7fbdb8b8da7c6d41e045726d8c3d9209',1,'make_package.c']]],
-  ['teo_5ffree',['TEO_FREE',['../list_8c.html#ab512f280a1d3185440b6911cb67c7539',1,'list.c']]]
+  ['vcs_5furl',['VCS_URL',['../config_8h.html#ab355eb06e2a02bf2bc912f6ee3b7287b',1,'config.h']]],
+  ['version',['VERSION',['../config_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf',1,'config.h']]]
 ];

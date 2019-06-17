@@ -2,7 +2,6 @@ var NAVTREE =
 [
   [ "TeoCCl library", "index.html", [
     [ "Teonet CCL Documentation.", "index.html", null ],
-    [ "README", "md_ci-build_README.html", null ],
     [ "Teonet (CCL) C Containers Library", "md_README.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
@@ -23,8 +22,6 @@ var NAVTREE =
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
         [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -34,7 +31,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"queue_8h.html#a9aec5e1ed94db5e05fc12c9f77997365"
+"queue_8h.html#af4adbd8da8a9185e80dbf6f642d3c6dc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

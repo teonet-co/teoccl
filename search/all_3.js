@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['collisions',['collisions',['../structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3',1,'teoMap']]],
-  ['config_2eh',['config.h',['../config_8h.html',1,'']]],
-  ['copyright',['COPYRIGHT',['../config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194',1,'config.h']]],
-  ['readme_2emd',['README.md',['../ci-build_2README_8md.html',1,'']]]
+  ['data',['data',['../structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0',1,'teoMapElementData::data()'],['../structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656',1,'teoQueueData::data()']]],
+  ['data_5flength',['data_length',['../structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d',1,'teoMapElementData::data_length()'],['../structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c',1,'teoQueueData::data_length()']]],
+  ['del',['del',['../classteo_1_1Map.html#a3f017eba41a7af7b75d00eadb1b13be7',1,'teo::Map::del(void *key, size_t key_length)'],['../classteo_1_1Map.html#a87cab42ebbc8dde57798874fce287119',1,'teo::Map::del(const std::string &amp;key)'],['../classteo_1_1Map.html#a09377d22fc0b6377fa8f6e714b0ce0cc',1,'teo::Map::del(const K &amp;key)'],['../classteo_1_1Queue.html#a7e3cc58be7bf97de404a9d1b8667c732',1,'teo::Queue::del()']]],
+  ['delfirst',['delFirst',['../classteo_1_1Queue.html#a38b9ec3bf22b0e1c862df6cd7e86c061',1,'teo::Queue']]],
+  ['dellast',['delLast',['../classteo_1_1Queue.html#ad6973d828a8f5e74f6c06821fc4f9f70',1,'teo::Queue']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['b_5ftype',['B_TYPE',['../make__package_8c.html#a93ff39d263f22c7946cc65bc63c983de',1,'make_package.c']]]
+  ['collisions',['collisions',['../structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3',1,'teoMap']]],
+  ['config_2eh',['config.h',['../config_8h.html',1,'']]],
+  ['copyright',['COPYRIGHT',['../config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194',1,'config.h']]]
 ];

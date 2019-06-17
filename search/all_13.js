@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ub1',['ub1',['../hash_8h.html#a5e0e444ca36facaa313c7f26758b6dd0',1,'hash.h']]],
-  ['ub4',['ub4',['../hash_8h.html#a3fece3757bfd6deee681fb0d1fd41f97',1,'hash.h']]]
+  ['vcs_5furl',['VCS_URL',['../config_8h.html#ab355eb06e2a02bf2bc912f6ee3b7287b',1,'config.h']]],
+  ['version',['VERSION',['../config_8h.html#a1c6d5de492ac61ad29aec7aa9a436bbf',1,'config.h']]]
 ];
