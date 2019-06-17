@@ -177,13 +177,13 @@ namespace teo {
     inline int iteratorFree(teoQueueIterator *it) {
       return teoQueueIteratorFree(it);
     }
-    
-    // foreach    
+
+    // foreach
     inline int foreach(teoQueueForeachFunction callback, void *user_data = NULL) {
       return teoQueueForeach(que, callback, user_data);
     }
-    
-    // get data 
+
+    // get data
     template<typename T>
     static inline T getData(void *data) {
       return (T)data;
