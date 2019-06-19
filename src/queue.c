@@ -52,7 +52,7 @@ teoQueue *teoQueueNew() {
  *
  * @return Zero at success
  */
-inline int teoQueueDestroy(teoQueue *q) {
+int teoQueueDestroy(teoQueue *q) {
 
     if(q) {
         teoQueueFree(q);
@@ -92,7 +92,7 @@ int teoQueueFree(teoQueue *q) {
  *
  * @return Number of elements in Teo queue
  */
-inline size_t teoQueueSize(teoQueue *q) {
+size_t teoQueueSize(teoQueue *q) {
 
     return q ? q->length : -1;
 }
@@ -173,7 +173,7 @@ teoQueueData *teoQueueAdd(teoQueue *q, void *data, size_t data_length) {
  *
  * @return Pointer to teoQueueData of added element
  */
-inline teoQueueData *teoQueueAddTop(teoQueue *q, void *data,
+teoQueueData *teoQueueAddTop(teoQueue *q, void *data,
         size_t data_length) {
 
     teoQueueData *qd = teoQueueAdd(q, data, data_length);
@@ -264,7 +264,7 @@ teoQueueData *teoQueueUpdate(teoQueue *q, void *data, size_t data_length,
  * @param qd Pointer to teoQueueData
  * @return Pointer to teoQueueData
  */
-inline teoQueueData *teoQueueRemove(teoQueue *q, teoQueueData *qd) {
+teoQueueData *teoQueueRemove(teoQueue *q, teoQueueData *qd) {
 
     if(q && q->length && qd) {
 
@@ -290,7 +290,7 @@ inline teoQueueData *teoQueueRemove(teoQueue *q, teoQueueData *qd) {
  * @param qd Pointer to teoQueueData
  * @return Zero at success
  */
-inline int teoQueueDelete(teoQueue *q, teoQueueData *qd) {
+int teoQueueDelete(teoQueue *q, teoQueueData *qd) {
 
     if(q && qd) {
         free(teoQueueRemove(q, qd));
@@ -305,7 +305,7 @@ inline int teoQueueDelete(teoQueue *q, teoQueueData *qd) {
  * @param q Pointer to teoQueue
  * @return Zero at success
  */
-inline int teoQueueDeleteFirst(teoQueue *q) {
+int teoQueueDeleteFirst(teoQueue *q) {
     return q && q->first ? teoQueueDelete(q, q->first) : -1;
 }
 
@@ -315,7 +315,7 @@ inline int teoQueueDeleteFirst(teoQueue *q) {
  * @param q Pointer to teoQueue
  * @return Zero at success
  */
-inline int teoQueueDeleteLast(teoQueue *q) {
+int teoQueueDeleteLast(teoQueue *q) {
     return q && q->last ? teoQueueDelete(q, q->last) : -1;
 }
 
@@ -444,7 +444,7 @@ teoQueueData *teoQueueIteratorPrev(teoQueueIterator *it) {
  *
  * @return Pointer to the teoQueueData or NULL if not exists
  */
-inline teoQueueData *teoQueueIteratorElement(teoQueueIterator *it) {
+teoQueueData *teoQueueIteratorElement(teoQueueIterator *it) {
 
     return it ? it->qd : NULL;
 }
