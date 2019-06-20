@@ -1,14 +1,23 @@
+# This file defines formatting options for clang-format tool.
+# See https://clang.llvm.org/docs/ClangFormatStyleOptions.html for options.
+
 BasedOnStyle: LLVM
 
-Language:        Cpp
-IndentWidth: 2
+Language: Cpp
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AlignEscapedNewlines: DontAlign
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AlwaysBreakTemplateDeclarations: true
+BreakBeforeBraces: Attach
+ColumnLimit: 100
+DerivePointerAlignment: false
+IndentCaseLabels: true
+IndentWidth: 4
+KeepEmptyLinesAtTheStartOfBlocks: false
+NamespaceIndentation: All
 PointerAlignment: Left
 SortIncludes: false
-AlwaysBreakTemplateDeclarations: true
-BreakBeforeBraces: Custom
-BraceWrapping:
-  AfterClass:      false
-  AfterStruct:     true
-  AfterFunction:   false
-  BeforeCatch:     false
-  BeforeElse:      false
+TabWidth: 4
+UseTab: Never
