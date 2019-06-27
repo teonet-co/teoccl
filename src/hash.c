@@ -47,7 +47,7 @@
 // See definition at: http://www.azillionmonkeys.com/qed/hash.html
 
 uint32_t teoHashSuperFast(const char * data, int len) {
-    uint32_t hash = len, tmp;
+    uint32_t hash = len;
     int rem;
 
     if (len <= 0 || data == NULL) return 0;
@@ -58,7 +58,7 @@ uint32_t teoHashSuperFast(const char * data, int len) {
     /* Main loop */
     for (; len > 0; len--) {
         hash += get16bits(data);
-        tmp = (get16bits(data + 2) << 11) ^ hash;
+        uint32_t tmp = (get16bits(data + 2) << 11) ^ hash;
         hash = (hash << 16) ^ tmp;
         data += 2 * sizeof (uint16_t);
         hash += hash >> 11;
