@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-/**  
+/**
  * \file   queue.h
  * \brief  Queue module
  * \author Kirill Scherba <kirill@scherba.ru>
@@ -43,40 +43,40 @@ extern "C" {
 
 /**
  * Queue module, linked list with data in body
- * 
+ *
  */
 
 /**
  * TR-UDP queue data structure
  */
 typedef struct teoQueueData {
-    
+
     struct teoQueueData *prev;
     struct teoQueueData *next;
     size_t data_length;
     char data[];
-    
+
 } teoQueueData;
 
 /**
  * TR-UDP Queue structure
  */
 typedef struct teoQueue {
-    
+
     size_t length;
     teoQueueData *first;
     teoQueueData *last;
-    
+
 } teoQueue;
 
 /**
  * TR-UDP iterator
  */
 typedef struct teoQueueIterator {
-    
+
     teoQueue *q;
-    teoQueueData *qd;    
-    
+    teoQueueData *qd;
+
 } teoQueueIterator;
 
 teoQueue *teoQueueNew();
@@ -87,9 +87,9 @@ teoQueueData *teoQueueNewData(void *data, size_t data_length);
 
 teoQueueData *teoQueueAdd(teoQueue *q, void *data, size_t data_length);
 teoQueueData *teoQueueAddTop(teoQueue *q, void *data, size_t data_length);
-teoQueueData *teoQueueAddAfter(teoQueue *q, void *data, size_t data_length, 
+teoQueueData *teoQueueAddAfter(teoQueue *q, void *data, size_t data_length,
         teoQueueData *qd);
-teoQueueData *teoQueueUpdate(teoQueue *q, void *data, size_t data_length, 
+teoQueueData *teoQueueUpdate(teoQueue *q, void *data, size_t data_length,
         teoQueueData *qd);
 teoQueueData *teoQueueRemove(teoQueue *q, teoQueueData *qd);
 int teoQueueDelete(teoQueue *q, teoQueueData *qd);

@@ -20,7 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
+ *
  * \file   hash.h
  * \brief Hash module
  * \author Kirill Scherba <kirill@scherba.ru>
@@ -36,9 +36,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    
+
 typedef unsigned long int ub4; /* unsigned 4-byte quantities */
-typedef unsigned char ub1; /* unsigned 1-byte quantities */  
+typedef unsigned char ub1; /* unsigned 1-byte quantities */
 
 uint32_t teoHashSuperFast (const char * data, int len);
 ub4 teoHashFast(ub1 *k, ub4 length, ub4 initval); /* the previous hash,

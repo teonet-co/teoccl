@@ -19,9 +19,9 @@
 #define TEO_FREE( ptr ) if( ptr ){ free( ptr ); ptr = 0; }
 
 teoArrayList *teoArrayListNew(array_list_free_fn *free_fn) {
-    
+
     teoArrayList *tal;
-    
+
     tal = (teoArrayList *)calloc(1, sizeof(teoArrayList));
     if (!tal) return NULL;
 
@@ -38,7 +38,7 @@ teoArrayList *teoArrayListNew(array_list_free_fn *free_fn) {
 
 
 int teoArrayListFree(teoArrayList *tal) {
-    
+
     if (tal->free_fn) {
         size_t i;
         for (i = 0; i < tal->length; i++) {
@@ -53,7 +53,7 @@ int teoArrayListFree(teoArrayList *tal) {
 
 
 void *teoArrayListGetIdx(teoArrayList *tal, size_t i) {
-    
+
     if (i >= tal->length) return NULL;
     return tal->array[i];
 }
@@ -61,7 +61,7 @@ void *teoArrayListGetIdx(teoArrayList *tal, size_t i) {
 
 static
 int array_list_expand_internal(teoArrayList *tal, size_t max) {
-  
+
     void *t;
     size_t new_size;
 
@@ -73,19 +73,19 @@ int array_list_expand_internal(teoArrayList *tal, size_t max) {
         new_size = tal->size << 1;
         if (new_size < max) new_size = max;
     }
-    
+
     if (new_size > (~((size_t)0)) / sizeof(void*)) return -1;
     if (!(t = realloc(tal->array, new_size*sizeof(void*)))) return -1;
     tal->array = (void**)t;
     (void)memset(tal->array + tal->size, 0, (new_size - tal->size)*sizeof(void*));
     tal->size = new_size;
-    
+
     return 0;
 }
 
 static
 int teoArrayListPutIdx(teoArrayList *tal, size_t i, void *data/*, size_t data_len*/) {
-    
+
 //    void *cp_data = NULL;
 //    cp_data = malloc(data_len);
 //    if (!cp_data) return -1;

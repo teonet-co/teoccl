@@ -20,7 +20,7 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- * 
+ *
  * \file   hash.c
  * \brief Hash module
  * \author Kirill Scherba <kirill@scherba.ru>
@@ -47,7 +47,7 @@
 // See definition at: http://www.azillionmonkeys.com/qed/hash.html
 
 uint32_t teoHashSuperFast(const char * data, int len) {
-    uint32_t hash = len, tmp;
+    uint32_t hash = len;
     int rem;
 
     if (len <= 0 || data == NULL) return 0;
@@ -58,7 +58,7 @@ uint32_t teoHashSuperFast(const char * data, int len) {
     /* Main loop */
     for (; len > 0; len--) {
         hash += get16bits(data);
-        tmp = (get16bits(data + 2) << 11) ^ hash;
+        uint32_t tmp = (get16bits(data + 2) << 11) ^ hash;
         hash = (hash << 16) ^ tmp;
         data += 2 * sizeof (uint16_t);
         hash += hash >> 11;
@@ -107,16 +107,16 @@ For every delta with one or two bits set, and the deltas of all three
   have at least 1/4 probability of changing.
  * If mix() is run forward, every bit of c will change between 1/3 and
   2/3 of the time.  (Well, 22/100 and 78/100 for some 2-bit deltas.)
-mix() was built out of 36 single-cycle latency instructions in a 
+mix() was built out of 36 single-cycle latency instructions in a
   structure that could supported 2x parallelism, like so:
-      a -= b; 
+      a -= b;
       a -= c; x = (c>>13);
       b -= c; a ^= x;
       b -= a; x = (a<<8);
       c -= a; b ^= x;
       c -= b; x = (b>>13);
       ...
-  Unfortunately, superscalar Pentiums and Sparcs can't take advantage 
+  Unfortunately, superscalar Pentiums and Sparcs can't take advantage
   of that parallelism.  They've also turned some of those single-cycle
   latency instructions into multi-cycle latency instructions.  Still,
   this is the fastest good hash I could find.  There were about 2^^68

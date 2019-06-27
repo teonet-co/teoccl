@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Formatting teoccl source code."
+./tools/clang-format-all ./src
+
+echo "Formatting teoccl tests."
+./tools/clang-format-all ./tests

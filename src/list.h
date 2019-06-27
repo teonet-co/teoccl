@@ -26,10 +26,10 @@
 /**
  * \file list.h
  * \brief List module
- * \author max <mpano91@gmail.com> 
- * 
+ * \author max <mpano91@gmail.com>
+ *
  * Array List container
- * 
+ *
  * Created on Fri Jun  1 17:01:30 2018
  */
 
@@ -52,13 +52,13 @@ typedef struct teoArrayList {
     void **array;   ///< Core array
     size_t length;  ///< Count of elements in array
     size_t size;    ///< Size of array
-    array_list_free_fn *free_fn; ///< Pointer to free-callback function 
+    array_list_free_fn *free_fn; ///< Pointer to free-callback function
 
 } teoArrayList;
 
 /**
  * @brief Create new Array-List
- * 
+ *
  * @param[in] free_fn - Pointer to free-callback function
  * @return Pointer to teoArrayList
  */
@@ -66,7 +66,7 @@ teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
 
 /**
  * @brief Free memory allocated for Array-List
- * 
+ *
  * @param[in] tal - Pointer to teoArrayList
  * @return zero \todo Create correct return
  */
@@ -74,7 +74,7 @@ int teoArrayListFree(teoArrayList *tal);
 
 /**
  * @brief Get element of Array-List by index
- * 
+ *
  * @param[out] tal - Pointer to teoArrayList
  * @param[in] i - index in teoArrayList
  * @return Pointer to element of teoArrayList
@@ -83,7 +83,7 @@ void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
 
 /**
  * @brief Delete range of elements of Array-List since index
- * 
+ *
  * @param[in] tal - Pointer to teoArrayList
  * @param[in] i - Delete from this index
  * @param[in] count - Count of deleting elements
@@ -93,16 +93,16 @@ int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count);
 
 /**
  * @brief Add element to Array-List
- * 
+ *
  * @param[in] tal - Pointer to teoArrayList
- * @param[in] data - Pointer to the data to be added 
+ * @param[in] data - Pointer to the data to be added
  * @return -1 - error, 0 - adding was successful
  */
 int teoArrayListAdd(teoArrayList *tal, void *data);
 
 /**
  * @brief Get count of elements in Array-List
- * 
+ *
  * @param[in] tal - Pointer to teoArrayList
  * @return count of elements in teoArrayList
  */

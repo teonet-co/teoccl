@@ -11,6 +11,10 @@ The Teonet CCL is a library processed basic containers at C language. The Map an
 
 ## 2. Installation from sources
 
+### Install dependencies
+
+    sudo apt install libcunit1-dev libcpputest-dev
+
 ### Install project with submodules
 
     git clone git@github.com:teonet-co/teoccl.git

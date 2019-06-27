@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * \file  map 
+ * \file  map
  * \Author max <mpano91@gmail.com>
  *
  * Teo ccl Map C++ wrapper
@@ -40,7 +40,7 @@
 namespace teo {
 
   class Map {
-    
+
   private:
 
     teoMap *map;
@@ -52,7 +52,7 @@ namespace teo {
     {
       map = teoMapNew(size, auto_resize_f);
     }
-    
+
     virtual ~Map() { teoMapDestroy(map); }
 
 
@@ -126,7 +126,7 @@ namespace teo {
     inline teoMapIterator *iterator() {
       return teoMapIteratorNew(map);
     }
- 
+
     // get iterator new(reverse)
     inline teoMapIterator *iteratorReverse() {
       return teoMapIteratorReverseNew(map);
@@ -136,7 +136,7 @@ namespace teo {
     inline teoMapElementData *iteratorNext(teoMapIterator *it) {
       return teoMapIteratorNext(it);
     }
- 
+
     // iterator previous
     inline teoMapElementData *iterator_prev(teoMapIterator *it) {
       return teoMapIteratorPrev(it);
@@ -146,7 +146,7 @@ namespace teo {
     inline int iteratorFree(teoMapIterator *it) {
       return teoMapIteratorFree(it);
     }
- 
+
     // get iterator element
     inline teoMapElementData *mapItEl(teoMapIterator *it) {
       return teoMapIteratorElement(it);
@@ -163,8 +163,8 @@ namespace teo {
     inline D *mapItElData(teoMapElementData *el, size_t *data_length = NULL) {
       return (D *)teoMapIteratorElementData(el, data_length);
     }
-    
-    // foreach    
+
+    // foreach
     inline int foreach(teoMapForeachFunction callback, void *user_data = NULL) {
       return teoMapForeach(map, callback, user_data);
     }
