@@ -224,9 +224,9 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
 
     int idx = hash % map->hash_map_size;
     teoMapElementData *htd;
-    teoQueueData *tqd;
     teoQueueIterator *it = teoQueueIteratorNew(map->q[idx]);
     if(it != NULL) {
+      teoQueueData *tqd;
       while((tqd = teoQueueIteratorNext(it))) {
 
         htd = (teoMapElementData *)tqd->data;
