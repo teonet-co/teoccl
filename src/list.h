@@ -108,7 +108,25 @@ int teoArrayListAdd(teoArrayList *tal, void *data);
  */
 size_t teoArrayListLength(teoArrayList *tal);
 
+
+/**
+ * @brief Run Qsort for array-list
+ *
+ * @param tal - array list
+ * @param compar - pointer to comparator
+ */
 void teoArrayListSort(teoArrayList *tal, int(*compar)(const void *, const void *));
+
+
+/**
+ * @brief Binary search for array-list 
+ *
+ * @param tal - array list
+ * @param key - what we want to find
+ * @param compar - pointer to comparator
+ *
+ * @return A pointer to an entry in the array-list that matches the search key 
+ */
 void *teoArrayListBSearch(teoArrayList *tal, const void **key,
     int(*compar)(const void *, const void *));
 
