@@ -12,7 +12,7 @@
 #include <sys/time.h>
 #include <CUnit/Basic.h>
 
-#include "list.h"
+#include "array_list.h"
 
 int init_suite(void);
 int clean_suite(void);
@@ -28,15 +28,15 @@ void free_int_fn(void *pointer) {
 }
 
 void list_create_test() {
-    teoArrayList *al = teoArrayListNew(free_int_fn);
+    ccl_array_list_t *al = cclArrayListNew(free_int_fn);
     CU_ASSERT_PTR_NOT_NULL_FATAL(al);
 
-    int rv = teoArrayListFree(al);
+    int rv = cclArrayListFree(al);
     CU_ASSERT(!rv);
 }
 
 void list_add_remove_test() {
-    teoArrayList *al = teoArrayListNew(NULL);
+    ccl_array_list_t *al = cclArrayListNew(NULL);
     CU_ASSERT_PTR_NOT_NULL_FATAL(al);
 
     int *el = (int *)malloc(sizeof(int));
@@ -46,10 +46,10 @@ void list_add_remove_test() {
     int i = 0;
     double t_beg = timeInMilliSeconds();
     for (i=0; i<1000000; i++)
-        teoArrayListAdd(al, (void *)el/*, d_len*/);
-    CU_ASSERT(teoArrayListLength(al) == 1000000);
+        cclArrayListAdd(al, (void *)el/*, d_len*/);
+    CU_ASSERT(cclArrayListLength(al) == 1000000);
   //  for (i=0; i<200000; i++)
-        teoArrayListDelIdx(al, 0, 1000000);
+        cclArrayListDelIdx(al, 0, 1000000);
     printf("\n\t%d records add/delete, time %.3f sec ", 1000000, ((timeInMilliSeconds() - t_beg))/1000);
    // CU_ASSERT(teoArrayListLength(al) == 0);
    // int rv = teoArrayListFree(al);
