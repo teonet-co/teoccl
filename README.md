@@ -70,7 +70,7 @@ Bintray:
     sudo apt-get install -y libteoccl
 
 ## 5. Run example
-    
+
 See example [README.md](examples/README.md)
 
 
