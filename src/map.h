@@ -73,8 +73,17 @@ typedef struct teoMapIterator {
 
 } teoMapIterator;
 
-//TRUDP_API
+
+/**
+ * @brief 
+ *
+ * @param map
+ * @param data_length
+ *
+ * @return 
+ */
 void *teoMapGetFirst(teoMap *map, size_t *data_length);
+
 /**
  * Get number of elements in TR-UPD map
  *
@@ -83,12 +92,47 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length);
  */
 size_t teoMapSize(teoMap *map);
 
+
+/**
+ * @brief 
+ *
+ * @param size
+ * @param auto_resize_f
+ *
+ * @return 
+ */
 teoMap *teoMapNew(size_t size, int auto_resize_f);
+
+/**
+ * @brief 
+ *
+ * @param map
+ */
 void teoMapDestroy(teoMap *map);
+
+
+/**
+ * @brief 
+ *
+ * @param map
+ */
 void teoMapClear(teoMap *map);
 
+
+/**
+ * @brief 
+ *
+ * @param map
+ * @param key
+ * @param key_length
+ * @param data
+ * @param data_length
+ *
+ * @return 
+ */
 void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
   size_t data_length);
+
 
 /**
  * Add (or update) key data to the map when key is cstring
