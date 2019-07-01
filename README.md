@@ -49,7 +49,7 @@ configure.ac
 
     http://repo.ksproject.org/ubuntu/
     https://dl.bintray.com/teonet-co/u
-    
+
 ### Add repository
 
 KSProject:
