@@ -49,7 +49,7 @@ configure.ac
 
     http://repo.ksproject.org/ubuntu/
     https://dl.bintray.com/teonet-co/u
-    
+
 ### Add repository
 
 KSProject:
@@ -70,7 +70,7 @@ Bintray:
     sudo apt-get install -y libteoccl
 
 ## 5. Run example
-    
+
 See example [README.md](examples/README.md)
 
 
