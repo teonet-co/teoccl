@@ -13,11 +13,11 @@
 extern "C" {
 #endif
 
-void *teo_malloc(size_t);
-void *teo_calloc(size_t);
-char *teo_strdup(const char *);
-char *teo_strndup(char *, size_t);
-void *teo_realloc(void *, size_t);
+void *ccl_malloc(size_t);
+void *ccl_calloc(size_t);
+char *ccl_strdup(const char *);
+char *ccl_strndup(char *, size_t);
+void *ccl_realloc(void *, size_t);
 
 #ifdef __cplusplus
 }

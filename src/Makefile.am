@@ -41,11 +41,12 @@ libteoccl_la_SOURCES = \
 	hash.c \
 	map.c \
 	array_list.c \
+	linked_list.c \
 	memory.c
 
 libteocclincludedir=$(includedir)/libteoccl
 
-nobase_libteocclinclude_HEADERS = hash.h array_list.h memory.h map.h map.hpp queue.h queue.hpp teoccl.hpp
+nobase_libteocclinclude_HEADERS = hash.h array_list.h linked_list.h memory.h map.h map.hpp queue.h queue.hpp teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
 

@@ -13,45 +13,50 @@
 #include <strings.h>
 
 static
-void teo_memory_out(void) {
-    (void)fprintf(stderr, "Teonet. Out of memory\n");
+void ccl_memory_out(void)
+{
+    (void)fprintf(stderr, "CCL. Out of memory\n");
     exit(1);
 }
 
 
-void *teo_malloc(size_t size) {
-    void *memory;
+void *ccl_malloc(size_t size)
+{
+    void *memory = NULL;
     if((memory = malloc(size)) == NULL) {
-        teo_memory_out();
+        ccl_memory_out();
     }
     
     return memory;
 }
 
 
-void *teo_calloc(size_t size) {
-    void *memory;
-    memory = teo_malloc(size);
+void *ccl_calloc(size_t size)
+{
+    void *memory = NULL;
+    memory = ccl_malloc(size);
     memset(memory, 0, size);
 
     return memory;
 }
 
 
-char *teo_strdup(const char *str) {
+char *ccl_strdup(const char *str)
+{
     char *newstr;
     if ((newstr = strdup(str)) == NULL) {
-        teo_memory_out();
+        ccl_memory_out();
     }
 
     return newstr;
 }
 
 
-char *teo_strndup(char *str, size_t len) {
+char *ccl_strndup(char *str, size_t len)
+{
     char *newstr;
     if ((newstr = malloc(len + 1)) == NULL) {
-        teo_memory_out();
+        ccl_memory_out();
     }
 
     (void)strncpy(newstr, str, len);
@@ -61,10 +66,11 @@ char *teo_strndup(char *str, size_t len) {
 }
 
 
-void *teo_realloc(void *ptr, size_t size) {
+void *ccl_realloc(void *ptr, size_t size)
+{
     void *memory;
     if ((memory = realloc(ptr, size)) == NULL) {
-        teo_memory_out();
+        ccl_memory_out();
     }
 
     return memory;
