@@ -47,9 +47,34 @@ ccl_linked_list_t *cclLinkedListInit(const size_t data_size)
     return init;
 }
 
+void cclLinkedListClear(ccl_linked_list_t *llist)
+{
+    struct node *it = llist->head;
+    while (it) {
+        struct node *temp = it;
+        it = it->next;
+        free(temp->data);
+        free(temp);
+    }
+
+    llist->head = NULL;
+    llist->count = 0;
+}
+
+void cclLinkedListDestroy(ccl_linked_list_t *llist)
+{
+    cclLinkedListClear(llist);
+    free(llist);
+}
+
 int cclLinkedListCount(const ccl_linked_list_t *llist)
 {
     return llist->count;
+}
+
+int cclLinkedListEmpty(const ccl_linked_list_t *llist)
+{
+    return cclLinkedListCount(llist) == 0;
 }
 
 static int cclLinkedListIllegalInput(ccl_linked_list_t *llist, const int idx)

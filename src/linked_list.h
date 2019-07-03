@@ -19,28 +19,31 @@ typedef struct ccl_linked_list ccl_linked_list_t;
 
 ccl_linked_list_t *cclLinkedListInit(const size_t data_size);
 int cclLinkedListCount(const ccl_linked_list_t *llist);
+int cclLinkedListEmpty(const ccl_linked_list_t *llist);
 
+//int cclLinkedListAddFirst(...);
+//int cclLinkedListAddLast(...);
 int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx);
+
+//int cclLinkedListGetFirst(...);
+//int cclLinkedListGetLast(...);
 int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data);
+
+//int cclLinkedListUpdateFirst(...);
+//int cclLinkedListUpdateLast(...);
 int cclLinkedListUpdateAt(ccl_linked_list_t *llist, const int idx, void *const data);
+
+//int cclLinkedListRemoveFirst(...);
+//int cclLinkedListRemoveLast(...);
 int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx);
 
+void cclLinkedListClear(ccl_linked_list_t *llist);
+void cclLinkedListDestroy(ccl_linked_list_t *llist);
 /*
 void cclSortLinkedListAdd(ccl_linked_list_t **, void *, int (*)(void *, void *));
-
-void *cclLinkedListRemove(ccl_linked_list_t **, void *, int (*)(void *, void *, void *), void *);
-
-void cclLinkedListFree(ccl_linked_list_t *, void (*)(void *, void *), void *);
-
-void *cclLinkedListFind(ccl_linked_list_t *, void *, int (*)(void *, void *));
-void *cclLinkedListFirst(ccl_linked_list_t *);
-
-int cclLinkedListIter(ccl_linked_list_t *, int (*)(void *, void *), void *);
-int cclLinkedListCount(ccl_linked_list_t *);
-int cclLinkedListEmpty(ccl_linked_list_t *);
-
 void cclLinkedListConcat(ccl_linked_list_t **, ccl_linked_list_t *);
 void cclSortLinkedListMerge(ccl_linked_list_t **, ccl_linked_list_t *, int (*)(void *, void *));
+
 */
 #ifdef __cplusplus
 }

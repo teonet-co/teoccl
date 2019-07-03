@@ -23,7 +23,7 @@ static long long timeInMilliseconds(void)
     return (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
 }
 
-// Check hash function
+
 void check_add_and_size()
 {
     ccl_linked_list_t *linked_list = cclLinkedListInit(sizeof(int));
