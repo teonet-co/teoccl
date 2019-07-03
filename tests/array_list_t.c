@@ -61,7 +61,7 @@ void list_add_remove_test() {
  * 
  * @return 
  */
-int listSuiteAdd() {
+int arrayListSuiteAdd() {
     
     CU_pSuite pSuite = NULL;
 

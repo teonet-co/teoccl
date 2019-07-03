@@ -18,7 +18,7 @@ extern "C" {
 typedef struct ccl_linked_list ccl_linked_list_t;
 
 ccl_linked_list_t *cclLinkedListInit(const size_t data_size);
-
+int cclLinkedListCount(const ccl_linked_list_t *llist);
 
 int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx);
 int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data);

@@ -47,6 +47,11 @@ ccl_linked_list_t *cclLinkedListInit(const size_t data_size)
     return init;
 }
 
+int cclLinkedListCount(const ccl_linked_list_t *llist)
+{
+    return llist->count;
+}
+
 static int cclLinkedListIllegalInput(ccl_linked_list_t *llist, const int idx)
 {
     return idx < 0 || idx >= llist->count;
@@ -77,7 +82,7 @@ int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx
 {
     struct node *item;
 
-    if (cclLinkedListIllegalInput(llist, idx)) {
+    if (idx < 0 || idx > llist->count) {
         return -1; // bad args
     }
 
