@@ -41,18 +41,15 @@ void check_add_and_size()
     int tail = 0;
     result = cclLinkedListGetAt(linked_list, 0, &head);
     CU_ASSERT_EQUAL(result, 0);
-    printf("%d\n", head);
     result = cclLinkedListGetAt(linked_list, count - 1, &tail);
     CU_ASSERT_EQUAL(result, 0);
-    printf("%d\n", tail);
-
 }
 
 int linkedListSuiteAdd()
 { 
     CU_pSuite pSuite = NULL;
 
-    pSuite = CU_add_suite("ccl linked list", init_suite, clean_suite);
+    pSuite = CU_add_suite("CCL Linked List", init_suite, clean_suite);
     if (NULL == pSuite) {
         CU_cleanup_registry();
         return CU_get_error();
