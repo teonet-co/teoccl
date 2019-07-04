@@ -21,12 +21,12 @@ ccl_linked_list_t *cclLinkedListInit(const size_t data_size);
 int cclLinkedListCount(const ccl_linked_list_t *llist);
 int cclLinkedListEmpty(const ccl_linked_list_t *llist);
 
-//int cclLinkedListAddFirst(...);
-//int cclLinkedListAddLast(...);
+int cclLinkedListAddFirst(ccl_linked_list_t *llist, void *const data);
+int cclLinkedListAddLast(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx);
 
-//int cclLinkedListGetFirst(...);
-//int cclLinkedListGetLast(...);
+int cclLinkedListGetFirst(ccl_linked_list_t *llist, void *const data);
+int cclLinkedListGetLast(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data);
 
 //int cclLinkedListUpdateFirst(...);

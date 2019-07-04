@@ -102,6 +102,15 @@ static struct node *cclLinkedListGetNodeAt(ccl_linked_list_t *llist, const int i
     return temp;
 }
 
+int cclLinkedListAddFirst(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListAddAt(llist, data, 0);
+}
+
+int cclLinkedListAddLast(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListAddAt(llist, data, llist->count);
+}
 
 int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx)
 {
@@ -119,6 +128,11 @@ int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx
     if (idx == 0) {
         item->next = llist->head;
         llist->head = item;
+    } else if (idx == llist->count ) {
+        struct node *const temp = cclLinkedListGetNodeAt(llist, idx - 1);
+        temp->next = item;
+        llist->tail = item;
+        item->next = NULL;
     } else {
         struct node *const temp = cclLinkedListGetNodeAt(llist, idx - 1);
         item->next = temp->next;
@@ -131,6 +145,16 @@ int cclLinkedListAddAt(ccl_linked_list_t *llist, void *const data, const int idx
     llist->count++;
 
     return 0;
+}
+
+int cclLinkedListGetFirst(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListGetAt(llist, 0, data);
+}
+
+int cclLinkedListGetLast(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListGetAt(llist, llist->count - 1, data);
 }
 
 int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data)
@@ -184,5 +208,3 @@ int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx)
     llist->count--;
     return 0;
 }
-
-
