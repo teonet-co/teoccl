@@ -29,18 +29,19 @@ int cclLinkedListGetFirst(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListGetLast(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data);
 
-//int cclLinkedListUpdateFirst(...);
-//int cclLinkedListUpdateLast(...);
+int cclLinkedListUpdateFirst(ccl_linked_list_t *llist, void *const data);
+int cclLinkedListUpdateLast(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListUpdateAt(ccl_linked_list_t *llist, const int idx, void *const data);
 
-//int cclLinkedListRemoveFirst(...);
-//int cclLinkedListRemoveLast(...);
+int cclLinkedListRemoveFirst(ccl_linked_list_t *llist);
+int cclLinkedListRemoveLast(ccl_linked_list_t *llist);
 int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx);
 
 void cclLinkedListClear(ccl_linked_list_t *llist);
 void cclLinkedListDestroy(ccl_linked_list_t *llist);
+
+void cclSortLinkedListAdd(ccl_linked_list_t *, void *, int (*)(const void *, const void *));
 /*
-void cclSortLinkedListAdd(ccl_linked_list_t **, void *, int (*)(void *, void *));
 void cclLinkedListConcat(ccl_linked_list_t **, ccl_linked_list_t *);
 void cclSortLinkedListMerge(ccl_linked_list_t **, ccl_linked_list_t *, int (*)(void *, void *));
 

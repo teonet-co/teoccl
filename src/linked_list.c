@@ -169,6 +169,15 @@ int cclLinkedListGetAt(ccl_linked_list_t *llist, const int idx, void *const data
     return 0; // all good
 }
 
+int cclLinkedListUpdateFirst(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListUpdateAt(llist, 0, data);
+}
+
+int cclLinkedListUpdateLast(ccl_linked_list_t *llist, void *const data)
+{
+    return cclLinkedListUpdateAt(llist, llist->count - 1, data);
+}
 
 int cclLinkedListUpdateAt(ccl_linked_list_t *llist, const int idx, void *const data)
 {
@@ -182,6 +191,15 @@ int cclLinkedListUpdateAt(ccl_linked_list_t *llist, const int idx, void *const d
     return 0; // all good
 }
 
+int cclLinkedListRemoveFirst(ccl_linked_list_t *llist)
+{
+    return cclLinkedListRemoveAt(llist, 0);
+}
+
+int cclLinkedListRemoveLast(ccl_linked_list_t *llist)
+{
+    return cclLinkedListRemoveAt(llist, llist->count - 1);
+}
 
 int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx)
 {
@@ -208,3 +226,17 @@ int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx)
     llist->count--;
     return 0;
 }
+
+void cclSortLinkedListAdd(ccl_linked_list_t *llist, void *data, int (*cmp)(const void *, const void *))
+{
+    struct node const *it;
+    int idx = 0;
+    for (it = llist->head; it; it = it->next) {
+        if (cmp(it->data, data) >= 0) {
+            break;
+        }
+        ++idx;
+    }
+    cclLinkedListAddAt(llist, data, idx);
+}
+

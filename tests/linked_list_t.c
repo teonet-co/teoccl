@@ -92,6 +92,108 @@ void check_add_get_first_last()
     printf("\n");
 }
 
+void check_update_remove()
+{
+    ccl_linked_list_t *linked_list = cclLinkedListInit(sizeof(int));
+    CU_ASSERT_PTR_NOT_NULL(linked_list);
+    int i = 0;
+    int result = 0;
+    int size_list = 10;
+    for (i = 0; i < size_list; ++i) {
+        result = cclLinkedListAddAt(linked_list, &i, i);
+        CU_ASSERT_EQUAL(result, 0);
+    }
+    int count = cclLinkedListCount(linked_list);
+    CU_ASSERT_EQUAL(count, size_list);
+    
+    int head = 0;
+    int tail = 0;
+    int first = 228;
+    int last = 666;
+    result = cclLinkedListUpdateFirst(linked_list, &first);
+    CU_ASSERT_EQUAL(result, 0);
+
+    result = cclLinkedListUpdateAt(linked_list, 7, &last);
+    CU_ASSERT_EQUAL(result, 0);
+
+    result = cclLinkedListUpdateLast(linked_list, &last);
+    CU_ASSERT_EQUAL(result, 0);
+
+    result = cclLinkedListGetFirst(linked_list, &head);
+    CU_ASSERT_EQUAL(result, 0);
+    CU_ASSERT_EQUAL(head, first);
+
+    result = cclLinkedListGetLast(linked_list, &tail);
+    CU_ASSERT_EQUAL(result, 0);
+    CU_ASSERT_EQUAL(tail, last);
+
+    printf("\nLinked list: ");
+    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
+        int j = 0;
+        result = cclLinkedListGetAt(linked_list, i, &j);
+        printf("%d ", j);
+    }
+
+    result = cclLinkedListRemoveFirst(linked_list);
+    CU_ASSERT_EQUAL(result, 0);
+
+    result = cclLinkedListRemoveAt(linked_list, 5);
+    CU_ASSERT_EQUAL(result, 0);
+
+    result = cclLinkedListRemoveLast(linked_list);
+    CU_ASSERT_EQUAL(result, 0);
+    printf("\nLinked list: ");
+    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
+        int j = 0;
+        result = cclLinkedListGetAt(linked_list, i, &j);
+        printf("%d ", j);
+    }
+
+    printf("\n");
+}
+
+int cmp_int(const void *a, const void *b)
+{
+     return *(int*)a - *(int*)b;
+}
+
+void check_add_to_sort()
+{
+    srand(time(NULL));
+
+    ccl_linked_list_t *linked_list = cclLinkedListInit(sizeof(int));
+    CU_ASSERT_PTR_NOT_NULL(linked_list);
+    int i = 0;
+    int result = 0;
+    int size_list = 10;
+    for (i = 0; i < size_list; ++i) {
+        result = cclLinkedListAddAt(linked_list, &i, i);
+        CU_ASSERT_EQUAL(result, 0);
+    }
+    int count = cclLinkedListCount(linked_list);
+    CU_ASSERT_EQUAL(count, size_list);
+
+    printf("\nLinked list: ");
+    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
+        int j = 0;
+        result = cclLinkedListGetAt(linked_list, i, &j);
+        printf("%d ", j);
+    }
+    printf("\n");
+
+    for (i = 0; i < 10; ++i) {
+        int rnd = rand() % 7;
+        cclSortLinkedListAdd(linked_list, &rnd, cmp_int);
+    }
+    printf("\nSorted Linked list: ");
+    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
+        int j = 0;
+        result = cclLinkedListGetAt(linked_list, i, &j);
+        printf("%d ", j);
+    }
+    printf("\n");
+}
+
 int linkedListSuiteAdd()
 { 
     CU_pSuite pSuite = NULL;
@@ -103,7 +205,11 @@ int linkedListSuiteAdd()
     }
 
     if ((NULL == CU_add_test(pSuite, "Linked List: check add and size", check_add_and_size))
-    || (NULL == CU_add_test(pSuite, "Linked List: check add/get first/last item", check_add_get_first_last)))
+    || (NULL == CU_add_test(pSuite, "Linked List: check add/get first/last item", check_add_get_first_last))
+    || (NULL == CU_add_test(pSuite, "Linked List: check update/remove", check_update_remove))
+    || (NULL == CU_add_test(pSuite, "Linked List: add to sort", check_add_to_sort))
+   
+    )
     {
         CU_cleanup_registry();
         return CU_get_error();
