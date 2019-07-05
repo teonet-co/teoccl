@@ -173,7 +173,7 @@ void check_add_to_sort()
     int count = cclLinkedListCount(linked_list);
     CU_ASSERT_EQUAL(count, size_list);
 
-    printf("\nLinked list: ");
+    printf("\nLinked list(it): ");
     iter_llist_t *it = cclLinkedListGetIter(linked_list);
     while (it) {
         int *data = (int *)cclLinkedListIterData(it);
