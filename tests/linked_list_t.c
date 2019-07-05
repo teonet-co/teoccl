@@ -174,10 +174,11 @@ void check_add_to_sort()
     CU_ASSERT_EQUAL(count, size_list);
 
     printf("\nLinked list: ");
-    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
-        int j = 0;
-        result = cclLinkedListGetAt(linked_list, i, &j);
-        printf("%d ", j);
+    iter_llist_t *it = cclLinkedListGetIter(linked_list);
+    while (it) {
+        int *data = (int *)cclLinkedListIterData(it);
+        printf("%d ", *data);
+        it = cclLinkedListIterNext(it);
     }
     printf("\n");
 
@@ -186,10 +187,11 @@ void check_add_to_sort()
         cclSortLinkedListAdd(linked_list, &rnd, cmp_int);
     }
     printf("\nSorted Linked list: ");
-    for (i = 0; i < cclLinkedListCount(linked_list); ++i) {
-        int j = 0;
-        result = cclLinkedListGetAt(linked_list, i, &j);
-        printf("%d ", j);
+    it = cclLinkedListGetIter(linked_list);
+    while (it) {
+        int *data = (int *)cclLinkedListIterData(it);
+        printf("%d ", *data);
+        it = cclLinkedListIterNext(it);
     }
     printf("\n");
 }

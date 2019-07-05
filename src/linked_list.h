@@ -17,9 +17,15 @@ extern "C" {
 
 typedef struct ccl_linked_list ccl_linked_list_t;
 
+typedef struct node iter_llist_t;
+
 ccl_linked_list_t *cclLinkedListInit(const size_t data_size);
 int cclLinkedListCount(const ccl_linked_list_t *llist);
 int cclLinkedListEmpty(const ccl_linked_list_t *llist);
+
+iter_llist_t *cclLinkedListGetIter(const ccl_linked_list_t *llist);
+iter_llist_t *cclLinkedListIterNext(iter_llist_t *it);
+void *cclLinkedListIterData(iter_llist_t *it);
 
 int cclLinkedListAddFirst(ccl_linked_list_t *llist, void *const data);
 int cclLinkedListAddLast(ccl_linked_list_t *llist, void *const data);

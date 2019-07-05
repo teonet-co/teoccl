@@ -77,6 +77,7 @@ int cclLinkedListEmpty(const ccl_linked_list_t *llist)
     return cclLinkedListCount(llist) == 0;
 }
 
+
 static int cclLinkedListIllegalInput(ccl_linked_list_t *llist, const int idx)
 {
     return idx < 0 || idx >= llist->count;
@@ -100,6 +101,20 @@ static struct node *cclLinkedListGetNodeAt(ccl_linked_list_t *llist, const int i
     }
 
     return temp;
+}
+
+iter_llist_t *cclLinkedListGetIter(const ccl_linked_list_t *llist)
+{
+    return cclLinkedListGetNodeAt(llist, 0);
+}
+
+iter_llist_t *cclLinkedListIterNext(iter_llist_t *it)
+{
+    return it->next;
+}
+void *cclLinkedListIterData(iter_llist_t *it)
+{
+    return it->data;
 }
 
 int cclLinkedListAddFirst(ccl_linked_list_t *llist, void *const data)
