@@ -4,7 +4,7 @@
  *
  * Created on Jun 5, 2016, 4:32:13 PM
  */
-
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -196,6 +196,30 @@ void check_add_to_sort()
     printf("\n");
 }
 
+void check_time()
+{
+    uint64_t t_beg = timeInMilliseconds();    
+    
+    ccl_linked_list_t *linked_list = cclLinkedListInit(sizeof(int));
+    CU_ASSERT_PTR_NOT_NULL(linked_list);
+    int i = 0;
+    int result = 0;
+    int size_list = 1000000;
+    for (i = 0; i < size_list; ++i) {
+        result = cclLinkedListAddAt(linked_list, &i, i);
+        CU_ASSERT_EQUAL(result, 0);
+    }
+    int count = cclLinkedListCount(linked_list);
+    CU_ASSERT_EQUAL(count, size_list);
+
+    cclLinkedListClear(linked_list);
+    cclLinkedListDestroy(linked_list);
+
+    printf("\n\t%d records add to linked list, time: %.3f ms \n   ", 
+            size_list, (timeInMilliseconds() - t_beg) / 1000.0);
+
+}
+
 int linkedListSuiteAdd()
 { 
     CU_pSuite pSuite = NULL;
@@ -210,6 +234,7 @@ int linkedListSuiteAdd()
     || (NULL == CU_add_test(pSuite, "Linked List: check add/get first/last item", check_add_get_first_last))
     || (NULL == CU_add_test(pSuite, "Linked List: check update/remove", check_update_remove))
     || (NULL == CU_add_test(pSuite, "Linked List: add to sort", check_add_to_sort))
+    || (NULL == CU_add_test(pSuite, "Linked List: time", check_time))
    
     )
     {
