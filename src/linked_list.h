@@ -1,5 +1,5 @@
 /**
- * \file list.h
+ * \file linked_list.h
  * \brief linked-list module
  * \author max <mpano91@gmail.com>
  *
