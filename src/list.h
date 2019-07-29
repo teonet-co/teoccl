@@ -19,7 +19,7 @@ typedef struct ccl_list ccl_list_t;
 
 typedef struct node iter_list_t;
 
-ccl_linked_list_t *cclListInit(const size_t data_size);
+ccl_list_t *cclListInit(const size_t data_size);
 int cclListCount(const ccl_list_t *dllist);
 int cclListEmpty(const ccl_list_t *dllist);
 

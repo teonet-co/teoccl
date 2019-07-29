@@ -40,6 +40,7 @@ libteoccl_la_SOURCES = \
 	queue.c \
 	hash.c \
 	map.c \
+	list.c \
 	array_list.c
 
 libteocclincludedir=$(includedir)/libteoccl

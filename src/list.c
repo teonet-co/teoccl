@@ -18,7 +18,7 @@
   #endif
 #endif
 
-struct ccl_linked_list {
+struct ccl_list {
     struct node *head;
     struct node *tail;
     size_t node_size;
@@ -31,8 +31,12 @@ struct node {
     struct node *prev;
 };
 
+static int listIllegalInput(ccl_list_t *dllist, const int idx)
+{
+    return (idx < 0 || idx >= dllist->count);
+}
 
-ccl_linked_list_t *cclListInit(const size_t data_size)
+ccl_list_t *cclListInit(const size_t data_size)
 {
     ccl_list_t *init;
 
@@ -144,7 +148,7 @@ int cclListAddAt(ccl_list_t *bllist, void *const data, const int idx)
         bllist->head = item;
     } else if (idx == bllist->count) {
         struct node *const temp = bllist->tail;
-        temp-next = item;
+        temp->next = item;
         item->prev = temp;
         item->next = NULL;
         bllist->tail = item;
