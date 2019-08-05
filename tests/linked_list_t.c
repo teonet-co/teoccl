@@ -220,6 +220,66 @@ void check_time()
 
 }
 
+void check_concat()
+{
+    ccl_linked_list_t *linked_list = cclLinkedListInit(sizeof(int));
+    CU_ASSERT_PTR_NOT_NULL(linked_list);
+    int i = 0;
+    int result = 0;
+    int size_list = 10;
+    for (i = 0; i < size_list; ++i) {
+        result = cclLinkedListAddAt(linked_list, &i, i);
+        CU_ASSERT_EQUAL(result, 0);
+    }
+    int count = cclLinkedListCount(linked_list);
+    CU_ASSERT_EQUAL(count, size_list);
+
+    printf("\nLinked list1(it): ");
+    iter_llist_t *it = cclLinkedListGetIter(linked_list);
+    while (it) {
+        int *data = (int *)cclLinkedListIterData(it);
+        printf("%d ", *data);
+        it = cclLinkedListIterNext(it);
+    }
+    printf("\n");
+
+    ccl_linked_list_t *linked_list1 = cclLinkedListInit(sizeof(int));
+    CU_ASSERT_PTR_NOT_NULL(linked_list1);
+    i = 0;
+    result = 0;
+    size_list = 5;
+    for (i = 0; i < size_list; ++i) {
+        int rnd = rand() % 7;
+        result = cclLinkedListAddAt(linked_list1, &rnd, i);
+        CU_ASSERT_EQUAL(result, 0);
+    }
+    count = cclLinkedListCount(linked_list1);
+
+    it = NULL;
+    printf("\nLinked list2(it): ");
+    it = cclLinkedListGetIter(linked_list1);
+    while (it) {
+        int *data = (int *)cclLinkedListIterData(it);
+        printf("%d ", *data);
+        it = cclLinkedListIterNext(it);
+    }
+    printf("\n");
+
+    cclLinkedListConcat(&linked_list, linked_list1);
+    printf("\nResult list(it): ");
+    it = cclLinkedListGetIter(linked_list);
+    while (it) {
+        int *data = (int *)cclLinkedListIterData(it);
+        printf("%d ", *data);
+        it = cclLinkedListIterNext(it);
+    }
+    printf("\n");
+
+    cclLinkedListClear(linked_list);
+    cclLinkedListDestroy(linked_list);
+
+}
+
 int linkedListSuiteAdd()
 { 
     CU_pSuite pSuite = NULL;
@@ -235,7 +295,8 @@ int linkedListSuiteAdd()
     || (NULL == CU_add_test(pSuite, "Linked List: check update/remove", check_update_remove))
     || (NULL == CU_add_test(pSuite, "Linked List: add to sort", check_add_to_sort))
     || (NULL == CU_add_test(pSuite, "Linked List: time", check_time))
-   
+    || (NULL == CU_add_test(pSuite, "Linked List: concat", check_concat))
+  
     )
     {
         CU_cleanup_registry();

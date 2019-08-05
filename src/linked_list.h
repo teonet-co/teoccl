@@ -23,7 +23,7 @@ ccl_linked_list_t *cclLinkedListInit(const size_t data_size);
 int cclLinkedListCount(const ccl_linked_list_t *llist);
 int cclLinkedListEmpty(const ccl_linked_list_t *llist);
 
-iter_llist_t *cclLinkedListGetIter(const ccl_linked_list_t *llist);
+iter_llist_t *cclLinkedListGetIter(ccl_linked_list_t *llist);
 iter_llist_t *cclLinkedListIterNext(iter_llist_t *it);
 void *cclLinkedListIterData(iter_llist_t *it);
 
@@ -46,12 +46,14 @@ int cclLinkedListRemoveAt(ccl_linked_list_t *llist, const int idx);
 void cclLinkedListClear(ccl_linked_list_t *llist);
 void cclLinkedListDestroy(ccl_linked_list_t *llist);
 
-void cclSortLinkedListAdd(ccl_linked_list_t *llist, void *data, int (*cmp)(const void *, const void *));
-/*
-void cclLinkedListConcat(ccl_linked_list_t **, ccl_linked_list_t *);
-void cclSortLinkedListMerge(ccl_linked_list_t **, ccl_linked_list_t *, int (*)(void *, void *));
+//find function
 
-*/
+void cclSortLinkedListAdd(ccl_linked_list_t *llist, void *data, int (*cmp)(const void *, const void *));
+
+void cclLinkedListConcat(ccl_linked_list_t **f_list, ccl_linked_list_t *s_list);
+void cclSortLinkedListMerge(ccl_linked_list_t **f_list, ccl_linked_list_t *s_list, int (*cmp)(const void *, const void *));
+
+
 #ifdef __cplusplus
 }
 #endif

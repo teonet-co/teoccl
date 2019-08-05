@@ -103,7 +103,7 @@ static struct node *cclLinkedListGetNodeAt(ccl_linked_list_t *llist, const int i
     return temp;
 }
 
-iter_llist_t *cclLinkedListGetIter(const ccl_linked_list_t *llist)
+iter_llist_t *cclLinkedListGetIter(ccl_linked_list_t *llist)
 {
     return cclLinkedListGetNodeAt(llist, 0);
 }
@@ -255,3 +255,20 @@ void cclSortLinkedListAdd(ccl_linked_list_t *llist, void *data, int (*cmp)(const
     cclLinkedListAddAt(llist, data, idx);
 }
 
+
+void cclLinkedListConcat(ccl_linked_list_t **f_list, ccl_linked_list_t *s_list)
+{
+
+    if (*f_list == NULL) {
+        *f_list = s_list;
+    } else {
+        (*f_list)->tail->next = s_list->head;
+        (*f_list)->tail = s_list->tail;
+        (*f_list)->count += s_list->count;
+    }
+}
+
+
+void cclSortLinkedListMerge(ccl_linked_list_t **f_list, ccl_linked_list_t *s_list, int (*cmp)(const void *, const void *))
+{
+}
