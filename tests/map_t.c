@@ -11,8 +11,8 @@
 #include <CUnit/Basic.h>
 #include <CUnit/CUnit.h>
 
-#include "map.h"
-#include "hash.h"
+#include "teoccl/map.h"
+#include "teoccl/hash.h"
 
 /*
  * CUnit Test Suite

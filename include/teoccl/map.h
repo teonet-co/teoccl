@@ -36,7 +36,7 @@
 #include <string.h>
 #include <stdint.h>
 
-#include "queue.h"
+#include "teoccl/queue.h"
 
 #ifdef __cplusplus
 extern "C" {

@@ -35,7 +35,7 @@
 #include <string>
 #include <stdlib.h>
 
-#include "map.h"
+#include "teoccl/map.h"
 
 namespace teo {
 

@@ -13,13 +13,15 @@ AM_CFLAGS = \
 	-std=gnu11 \
 	-fno-strict-aliasing \
 	-fPIC \
+	-I../include \
 	-Wpointer-arith
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
 	-g -Wall \
-	-std=c++11 \
-	-fPIC
+	-std=c++14 \
+	-fPIC \
+	-I../include
 
 ## Debug info
 if DEBUG
@@ -37,16 +39,26 @@ LIBS =
 lib_LTLIBRARIES = libteoccl.la
 
 libteoccl_la_SOURCES = \
-	queue.c \
-	hash.c \
-	map.c \
-	array_list.c
+	teoccl/queue.c \
+	teoccl/hash.c \
+	teoccl/map.c \
+	teoccl/array_list.c
 	teobase/socket.c
 	teobase/time.c
 
 libteocclincludedir=$(includedir)/libteoccl
 
-nobase_libteocclinclude_HEADERS = hash.h array_list.h map.h map.hpp queue.h queue.hpp teoccl.hpp ../include/teobase/platform.h ../include/teobase/socket.h ../include/teobase/time.h
+nobase_libteocclinclude_HEADERS = \
+	../include/teoccl/hash.h \
+	../include/teoccl/array_list.h \
+	../include/teoccl/map.h \
+	../include/teoccl/map.hpp \
+	../include/teoccl/queue.h \
+	../include/teoccl/queue.hpp \
+	../include/teobase/platform.h \
+	../include/teobase/socket.h \
+	../include/teobase/time.h \
+	teoccl/teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
 

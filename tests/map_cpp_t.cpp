@@ -9,7 +9,7 @@
 #include <iostream>
 #include <CppUTest/TestHarness.h>
 
-#include "../src/map.hpp"
+#include "teoccl/map.hpp"
 
 using namespace std;
 
