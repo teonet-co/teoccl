@@ -2,7 +2,7 @@
 #include <limits.h>
 #include <string.h>
 
-#include "array_list.h"
+#include "teoccl/array_list.h"
 
 #ifndef SIZE_T_MAX
   #if SIZEOF_SIZE_T == SIZEOF_INT
