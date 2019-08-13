@@ -42,8 +42,8 @@ libteoccl_la_SOURCES = \
 	teoccl/queue.c \
 	teoccl/hash.c \
 	teoccl/map.c \
-	teoccl/array_list.c
-	teobase/socket.c
+	teoccl/array_list.c \
+	teobase/socket.c \
 	teobase/time.c
 
 libteocclincludedir=$(includedir)/libteoccl
