@@ -10,7 +10,7 @@
 #include <stdio.h>
 #endif
 
-static inline void log(const char* tag, const char* message) {
+static inline void log_message(const char* tag, const char* message) {
 #if defined(TEONET_OS_ANDROID)
     __android_log_print(ANDROID_LOG_ERROR, tag, "%s", message);
 #elif defined(TEONET_OS_WINDOWS)
@@ -21,17 +21,17 @@ static inline void log(const char* tag, const char* message) {
 }
 
 void log_debug(const char* tag, const char* message) {
-    log(tag, message);
+    log_message(tag, message);
 }
 
 void log_info(const char* tag, const char* message) {
-    log(tag, message);
+    log_message(tag, message);
 }
 
 void log_warning(const char* tag, const char* message) {
-    log(tag, message);
+    log_message(tag, message);
 }
 
 void log_error(const char* tag, const char* message) {
-    log(tag, message);
+    log_message(tag, message);
 }
