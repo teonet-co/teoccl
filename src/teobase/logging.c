@@ -12,7 +12,7 @@
 
 static inline void log(const char* tag, const char* message) {
 #if defined(TEONET_OS_ANDROID)
-    __android_log_print(ANDROID_LOG_ERROR, Tag, "%s", message);
+    __android_log_print(ANDROID_LOG_ERROR, tag, "%s", message);
 #elif defined(TEONET_OS_WINDOWS)
     OutputDebugStringA(message);
 #else
