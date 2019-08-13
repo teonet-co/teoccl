@@ -19,7 +19,7 @@
 #elif defined(__APPLE__)
 // This file is needed to be able to check for macOS or iOS.
 #include <TargetConditionals.h>
-// Macro TARGET_OS_IPHONE can be defined to 0, so we also need to ckeck it's value.
+// Macro TARGET_OS_IPHONE can be defined to 0, so we also need to check it's value.
 #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
 // Defined if target OS is iOS.
 #define TEONET_OS_IOS
