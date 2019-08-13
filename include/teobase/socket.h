@@ -11,6 +11,7 @@
 #include <stdint.h>
 
 #if defined(TEONET_OS_WINDOWS)
+#include "teobase/windows.h"
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
 #endif

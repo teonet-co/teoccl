@@ -58,6 +58,7 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teobase/platform.h \
 	../include/teobase/socket.h \
 	../include/teobase/time.h \
+	../include/teobase/windows.h \
 	teoccl/teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0

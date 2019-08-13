@@ -9,6 +9,7 @@
 
 #if defined(TEONET_OS_WINDOWS)
 // TODO: Stop using deprecated functions and remove this define.
+#include "teobase/windows.h"
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include <winsock2.h>
 #include <ws2tcpip.h>
