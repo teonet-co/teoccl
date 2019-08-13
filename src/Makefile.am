@@ -42,10 +42,7 @@ libteoccl_la_SOURCES = \
 	teoccl/queue.c \
 	teoccl/hash.c \
 	teoccl/map.c \
-	teoccl/array_list.c \
-	teobase/socket.c \
-	teobase/time.c \
-	teobase/logging.c
+	teoccl/array_list.c
 
 libteocclincludedir=$(includedir)/libteoccl
 
@@ -56,11 +53,6 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/map.hpp \
 	../include/teoccl/queue.h \
 	../include/teoccl/queue.hpp \
-	../include/teobase/platform.h \
-	../include/teobase/socket.h \
-	../include/teobase/time.h \
-	../include/teobase/logging.h \
-	../include/teobase/windows.h \
 	teoccl/teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
