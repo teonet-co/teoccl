@@ -44,7 +44,8 @@ libteoccl_la_SOURCES = \
 	teoccl/map.c \
 	teoccl/array_list.c \
 	teobase/socket.c \
-	teobase/time.c
+	teobase/time.c \
+	teobase/logging.c
 
 libteocclincludedir=$(includedir)/libteoccl
 
@@ -58,6 +59,7 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teobase/platform.h \
 	../include/teobase/socket.h \
 	../include/teobase/time.h \
+	../include/teobase/logging.h \
 	../include/teobase/windows.h \
 	teoccl/teoccl.hpp
 
