@@ -55,6 +55,6 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/queue.hpp \
 	teoccl/teoccl.hpp
 
-libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
+libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)
 
 libteoccl_la_LIBADD = $(TEOCCL_LIBS)
