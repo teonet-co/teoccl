@@ -44,9 +44,9 @@ libteoccl_la_SOURCES = \
 	teoccl/map.c \
 	teoccl/array_list.c
 
-libteocclincludedir=$(includedir)/libteoccl
+libteocclincludedir=$(includedir)/teoccl
 
-nobase_libteocclinclude_HEADERS = \
+libteocclinclude_HEADERS = \
 	../include/teoccl/hash.h \
 	../include/teoccl/array_list.h \
 	../include/teoccl/map.h \
