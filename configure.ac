@@ -15,8 +15,13 @@ AC_SUBST([$1], ['$2'])
 # END
 
 AC_PREREQ([2.69])
-AC_INIT([libteoccl], [0.0.4], [Kirill Scherba <kirill@scherba.ru>])
-AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 4, [teoccl dynamic library version])
+AC_INIT([libteoccl], [0.0.1], [Kirill Scherba <kirill@scherba.ru>])
+
+AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_AGE,      0, [teoccl dynamic library version])
+
+
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teonet (CCL) C Containers Library"], [Application description])
 AC_DEFINE([PACKAGE_DEPENDENCIES], [""], [Application dependencies])
 AC_DEFINE([LICENSES], ["[[\"MIT\",\"LGPL-3.0\"]]"], [Application package licenses])
