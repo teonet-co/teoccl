@@ -19,9 +19,9 @@ typedef struct ccl_queue ccl_queue_t;
 
 typedef struct node iter_queue_t;
 
-ccl_queue_t *cclListInit(const size_t data_size);
-int cclListCount(const ccl_queue_t *dllist);
-int cclListEmpty(const ccl_queue_t *dllist);
+ccl_queue_t *cclQueueInit(const size_t data_size);
+int cclQueueCount(const ccl_queue_t *dllist);
+int cclQueueEmpty(const ccl_queue_t *dllist);
 
 iter_list_t *cclListGetIter(const ccl_queue_t *dllist);
 iter_list_t *cclListIterNext(iter_list_t *it);
