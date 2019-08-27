@@ -51,10 +51,10 @@
 .deps
 /examples/*.o
 /tests/*.o
-/src/*.lo
-/src/*.o
-/src/*.la
-/src/.dirstamp
+/src/**/*.lo
+/src/**/*.o
+/src/**/*.la
+/src/**/.dirstamp
 tests/teoccl_cpp_tst
 tests/teoccl_tst
 nbproject/

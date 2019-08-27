@@ -6,15 +6,16 @@ AM_CPPFLAGS = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" $(TRUDP_CFLAGS)
 
 AM_CFLAGS = \
-	 -g -Wall \
-	 -I../src \
-	 -std=gnu99
+	-g -Wall \
+	-std=gnu11 \
+	-I../include
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
-         -g -Wall \
-	 -I../src \
-	 -std=c++11
+	-g -Wall \
+	-std=c++14 \
+	-I../include \
+	-std=c++14
 
 ## Debug info
 if DEBUG
@@ -31,7 +32,7 @@ LIBS = ../src/.libs/libteoccl.a -lcunit -lCppUTest
 
 noinst_PROGRAMS = teoccl_tst teoccl_cpp_tst
 
-teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c list_t.c CMakeLists.txt
+teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c array_list_t.c CMakeLists.txt
 teoccl_cpp_tst_SOURCES = main_cpp_t.cpp queue_cpp_t.cpp map_cpp_t.cpp
 
 testsdir = $(datarootdir)/doc/@PACKAGE@/tests

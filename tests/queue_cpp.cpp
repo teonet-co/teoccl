@@ -5,7 +5,7 @@
  */
 
 #include <iostream>
-#include "../src/queue.hpp"
+#include "teoccl/queue.hpp"
 
 int main(int argc, char** argv) {
   

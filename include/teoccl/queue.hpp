@@ -38,7 +38,7 @@
 #include <string>
 #include <stdlib.h>
 
-#include "queue.h"
+#include "teoccl/queue.h"
 
 namespace teo {
 

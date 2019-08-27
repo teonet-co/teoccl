@@ -47,67 +47,66 @@ typedef void (array_list_free_fn) (void *data); // free-callback function
 /**
  * @brief Array-List structure
  */
-typedef struct teoArrayList {
+typedef struct ccl_array_list {
 
     void **array;   ///< Core array
     size_t length;  ///< Count of elements in array
     size_t size;    ///< Size of array
     array_list_free_fn *free_fn; ///< Pointer to free-callback function
 
-} teoArrayList;
+} ccl_array_list_t;
 
 /**
  * @brief Create new Array-List
  *
  * @param[in] free_fn - Pointer to free-callback function
- * @return Pointer to teoArrayList
+ * @return Pointer to ccl_array_list_t
  */
-teoArrayList *teoArrayListNew(array_list_free_fn *free_fn);
+ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn);
 
 /**
  * @brief Free memory allocated for Array-List
  *
- * @param[in] tal - Pointer to teoArrayList
+ * @param[in] tal - Pointer to ccl_array_list_t
  * @return zero \todo Create correct return
  */
-int teoArrayListFree(teoArrayList *tal);
+int cclArrayListFree(ccl_array_list_t *tal);
 
 /**
  * @brief Get element of Array-List by index
  *
- * @param[out] tal - Pointer to teoArrayList
- * @param[in] i - index in teoArrayList
- * @return Pointer to element of teoArrayList
+ * @param[out] tal - Pointer to ccl_array_list_t
+ * @param[in] i - index in ccl_array_list_t
+ * @return Pointer to element of ccl_array_list_t
  */
-void *teoArrayListGetIdx(teoArrayList *tal, size_t i);
+void *cclArrayListGetIdx(ccl_array_list_t *tal, size_t i);
 
 /**
  * @brief Delete range of elements of Array-List since index
  *
- * @param[in] tal - Pointer to teoArrayList
+ * @param[in] tal - Pointer to ccl_array_list_t
  * @param[in] i - Delete from this index
  * @param[in] count - Count of deleting elements
  * @return zero \todo Create correct return
  */
-int teoArrayListDelIdx(teoArrayList *tal, size_t i, size_t count);
+int cclArrayListDelIdx(ccl_array_list_t *tal, size_t i, size_t count);
 
 /**
  * @brief Add element to Array-List
  *
- * @param[in] tal - Pointer to teoArrayList
+ * @param[in] tal - Pointer to ccl_array_list_t
  * @param[in] data - Pointer to the data to be added
  * @return -1 - error, 0 - adding was successful
  */
-int teoArrayListAdd(teoArrayList *tal, void *data);
+int cclArrayListAdd(ccl_array_list_t *tal, void *data);
 
 /**
  * @brief Get count of elements in Array-List
  *
- * @param[in] tal - Pointer to teoArrayList
- * @return count of elements in teoArrayList
+ * @param[in] tal - Pointer to ccl_array_list_t
+ * @return count of elements in ccl_array_list_t
  */
-size_t teoArrayListLength(teoArrayList *tal);
-
+size_t cclArrayListLength(ccl_array_list_t *tal);
 
 /**
  * @brief Run Qsort for array-list
@@ -115,8 +114,7 @@ size_t teoArrayListLength(teoArrayList *tal);
  * @param tal - array list
  * @param compar - pointer to comparator
  */
-void teoArrayListSort(teoArrayList *tal, int(*compar)(const void *, const void *));
-
+void cclArrayListSort(ccl_array_list_t *tal, int(*compar)(const void *, const void *));
 
 /**
  * @brief Binary search for array-list 
@@ -127,7 +125,7 @@ void teoArrayListSort(teoArrayList *tal, int(*compar)(const void *, const void *
  *
  * @return A pointer to an entry in the array-list that matches the search key 
  */
-void *teoArrayListBSearch(teoArrayList *tal, const void **key,
+void *cclArrayListBSearch(ccl_array_list_t *tal, const void **key,
     int(*compar)(const void *, const void *));
 
 #ifdef __cplusplus
