@@ -73,7 +73,6 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
     }
 
     if (inner_idx == BLOCK_SIZE - 1) {
-        struct node *block_iitem_ref;
         if (block_idx == -1) {
             const int old_block_count = deq->block_count;
             const int new_block_count = (int) (RESIZE_RATIO * me->block_count) + 1;
@@ -94,11 +93,10 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
             }
         }
 
-        block_ref = &deq->block[block_idx];
+        struct node *block_ref = &deq->block[block_idx];
         if (!block_ref->data) {
             block_ref->data = ccl_malloc(deq->data_size * BLOCK_SIZE);
         }
-
     }
 
     block_item = deq->block[block_idx];
@@ -110,5 +108,34 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
 
 int cclDequePushBack(ccl_deque *deq, void *const data)
 {
+    struct node block_item;
+    const int block_idx = deq->end_idx / BLOCK_SIZE;
+    const int inner_idx = deq->end_idx % BLOCK_SIZE;
+
+    if (inner_idx == 0) {
+        if (block_idx == deq->block_count) {
+            const int new_block_count = (int) (RESIZE_RATIO * me->block_count) + 1;
+           
+            deq->block = ccl_realloc(deq->block, new_block_count * sizeof(struct node));
+            deq->block_count = new_block_count;
+
+            int i;// TODO: need func for init new blocks
+            for (i = block_idx; i < deq->block_count; ++i) {
+                struct node *const block_copy = &deq->block[i];
+                block_copy->data = NULL;
+            }
+        }
+
+        struct node *block_ref = &deq->block[block_idx];
+        if (!block_ref->data) {
+            block_ref->data = ccl_malloc(deq->data_size * BLOCK_SIZE);
+        }
+    }
+
+    block_item = deq->block[block_idx];
+    memcpy((char *)block_item.data + inner_idx * deq->data_size,
+            data, deq->data_size);
+    ++(deq->end_idx);
+    return 0;
 }
 
