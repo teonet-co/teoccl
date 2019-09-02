@@ -23,8 +23,11 @@ ccl_deque_t *cclDequeInit(const size_t data_size);
 int cclDequeSize(ccl_deque_t *deq);
 int cclDequeTrim(ccl_deque_t *deq);
 
-int cclDequePushFront(ccl_deque *deq, void *const data);
-int cclDequePushBack(ccl_deque *deq, void *const data);
+int cclDequePushFront(ccl_deque_t *deq, void *const data);
+int cclDequePushBack(ccl_deque_t *deq, void *const data);
+
+int cclDequePopFront(ccl_deque_t *deq, void *const data);
+int cclDequePopBack(ccl_deque_t *deq, void *const data);
 #ifdef __cplusplus
 }
 #endif

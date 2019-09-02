@@ -43,20 +43,24 @@ ccl_deque_t *cclDequeInit(const size_t data_size)
     return init;
 }
 
+
 int cclDequeSize(const ccl_deque_t *deq)
 {
     return deq->end_idx - deq->start_idx - 1;
 }
+
 
 int cclDequeEmpty(const ccl_deque_t *deq)
 {
     return cclDequeSize(deq) == 0;
 }
 
+
 int cclDequeTrim(ccl_deque_t *deq)
 {
     return 1;
 }
+
 
 int cclDequePushFront(ccl_deque *deq, void *const data)
 {
@@ -106,6 +110,7 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
     return 0;
 }
 
+
 int cclDequePushBack(ccl_deque *deq, void *const data)
 {
     struct node block_item;
@@ -139,3 +144,42 @@ int cclDequePushBack(ccl_deque *deq, void *const data)
     return 0;
 }
 
+
+int cclDequePopFront(ccl_deque_t *deq, void *const data)
+{
+    int block_idx;
+    int inner_idx;
+    struct node block_item;
+
+    if (cclDequeEmpty(deq)) {
+        return -1;
+    }
+
+    ++(deq->start_idx);
+    block_idx = deq->start_idx / BLOCK_SIZE;
+    inner_idx = deq->start_idx % BLOCK_SIZE;
+    block_item = deq->block[block_idx];
+    memcpy(data, (char *)block_item.data + inner_idx * deq->data_size,
+            deq->data_size);
+    return 0;
+}
+
+
+int cclDequePopBack(ccl_deque_t *deq, void *const data)
+{
+    int block_idx;
+    int inner_idx;
+    struct node block_item;
+
+    if (cclDequeEmpty(deq)) {
+        return -1;
+    }
+
+    --(deq->end_idx);
+    block_idx = deq->end_idx / BLOCK_SIZE;
+    inner_idx = deq->end_idx % BLOCK_SIZE;
+    block_item = deq->block[block_idx];
+    memcpy(data, (char *)block_item.data + inner_idx * deq->data_size,
+            deq->data_size);
+    return 0;
+}
