@@ -58,7 +58,39 @@ int cclDequeEmpty(const ccl_deque_t *deq)
 
 int cclDequeTrim(ccl_deque_t *deq)
 {
-    return 1;
+    const int start_block =
+       deq->start_idx == -1
+        ? 0
+        : deq->start_idx / BLOCK_SIZE;
+    const int end_block =
+       deq->end_idx == 0
+        ? 0 
+        : (deq->end_idx - 1) / BLOCK_SIZE;
+
+    const int new_block_count = end_block - start_block + 1;
+
+    void *const new_block = ccl_malloc(new_block_count * sizeof(struct node));
+    
+    int i;
+    for (i = 0; i < start_block; i++) {
+        const struct node block_item = deq->block[i];
+        free(block_item.data);
+    }
+    
+    for (i = end_block + 1; i < deq->block_count; i++) {
+        const struct node block_item = deq->block[i];
+        free(block_item.data);
+    }
+
+    memcpy(new_block, &deq->block[start_block],
+           new_block_count * sizeof(struct node));
+    free(deq->block);
+    deq->block = new_block;
+    deq->block_count = new_block_count;
+    deq->start_index -= start_block * BLOCK_SIZE;
+    deq->end_index -= start_block * BLOCK_SIZE;
+    
+    return 0;
 }
 
 
@@ -79,7 +111,7 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
     if (inner_idx == BLOCK_SIZE - 1) {
         if (block_idx == -1) {
             const int old_block_count = deq->block_count;
-            const int new_block_count = (int) (RESIZE_RATIO * me->block_count) + 1;
+            const int new_block_count = (int) (RESIZE_RATIO * deq->block_count) + 1;
             const int added_blocks = new_block_count - old_block_count;
 
             deq->block = ccl_realloc(deq->block, new_block_count * sizeof(struct node));
@@ -119,7 +151,7 @@ int cclDequePushBack(ccl_deque *deq, void *const data)
 
     if (inner_idx == 0) {
         if (block_idx == deq->block_count) {
-            const int new_block_count = (int) (RESIZE_RATIO * me->block_count) + 1;
+            const int new_block_count = (int) (RESIZE_RATIO * deq->block_count) + 1;
            
             deq->block = ccl_realloc(deq->block, new_block_count * sizeof(struct node));
             deq->block_count = new_block_count;
@@ -183,3 +215,111 @@ int cclDequePopBack(ccl_deque_t *deq, void *const data)
             deq->data_size);
     return 0;
 }
+
+
+int cclDequeSetFirst(ccl_deque_t *deq, void *data)
+{
+    return cclDequeSetAt(deq, data, 0);
+}
+
+
+int cclDequeSetAt(ccl_deque_t *deq, int index, void *data)
+{
+    int block_idx;
+    int inner_idx;
+    struct node block_item;
+
+    if ((idx < 0) || (idx >= cclDequeSize(deq))) {
+        return -1;
+    }
+
+    idx += deq->start_idx + 1;
+    block_idx = idx / BLOCK_SIZE;
+    inner_idx = idx % BLOCK_SIZE;
+    block_item = deq->block[block_idx];
+    memcpy((char *)block_item.data + inner_idx * deq->data_size,
+            data, deq->data_size);
+
+    return 0; 
+}
+
+
+int cclDequeSetLast(ccl_deque_t *deq, void *data)
+{
+    return cclDequeGetAt(deq, data, cclDequeSize(deq) - 1);
+}
+
+
+int cclDequeGetFirst(ccl_deque_t *deq, void *data)
+{
+    return cclDequeGetAt(deq, data, 0);
+}
+
+
+int cclDequeGetAt(ccl_deque_t *deq, int idx, void *data)
+{
+    int block_idx;
+    int inner_idx;
+    struct node block_item;
+
+    if ((idx < 0) || (idx >= cclDequeSize(deq))) {
+        return -1;
+    }
+
+    idx += deq->start_idx + 1;
+    block_idx = idx / BLOCK_SIZE;
+    inner_idx = idx % BLOCK_SIZE;
+    block_item = deq->block[block_idx];
+    memcpy(data, (char *)block_item.data + inner_idx * deq->data_size,
+            deq->data_size);
+
+    return 0;
+}
+
+
+int cclDequeGetLast(ccl_deque_t *deq, void *data)
+{
+    return cclDequeGetAt(deq, data, cclDequeSize(deq) - 1);
+}
+
+
+int cclDequeClear(ccl_deque_t *deq)
+{
+    void *temp_block_data;
+    int i;
+    struct node *block;
+    struct node *const temp_block = malloc(sizeof(struct node));
+    if (!temp_block) {
+        return -ENOMEM;
+    }
+    temp_block_data = malloc(BLOCK_SIZE * deq->data_size);
+    if (!temp_block_data) {
+        free(temp_block);
+        return -ENOMEM;
+    }
+    for (i = 0; i < deq->block_count; i++) {
+        const struct node block_item = deq->block[i];
+        free(block_item.data);
+    }
+    free(deq->block);
+    deq->start_index = BLOCK_SIZE / 2;
+    deq->end_index = deq->start_index + 1;
+    deq->block_count = 1;
+    deq->block = temp_block;
+    block = deq->block;
+    block->data = temp_block_data;
+}
+
+
+void cclDequeDestroy(ccl_deque_t *deq)
+{
+    int i;
+    for (i = 0; i < deq->block_count; ++i) {
+        const struct node block_item = deq->block[i];
+        free(block_item.data);
+    }
+
+    free(deq->block);
+    free(deq);
+}
+
