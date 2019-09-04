@@ -11,6 +11,8 @@
 #ifndef DEQUE_H
 #define DEQUE_H
 
+#include <stdlib.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif

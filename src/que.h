@@ -1,9 +1,9 @@
 /**
- * \file list.h
- * \brief double linked list module
+ * \file que.h
+ * \brief 
  * \author max <mpano91@gmail.com>
  *
- * double linked list container
+ * 
  *
  * Created on Tue Jul 11 19:55:30 2019
  */
@@ -11,46 +11,29 @@
 #ifndef QUE_H
 #define QUE_H
 
+#include <stdlib.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 typedef struct ccl_queue ccl_queue_t;
 
-typedef struct node iter_queue_t;
+ccl_queue_t *cclQueInit(const size_t data_size);
 
-ccl_queue_t *cclQueueInit(const size_t data_size);
-int cclQueueCount(const ccl_queue_t *dllist);
-int cclQueueEmpty(const ccl_queue_t *dllist);
+int cclQueSize(ccl_queue_t *que);
+int cclQueEmpty(ccl_queue_t *que);
+int cclQueTrim(ccl_queue_t *que);
 
-iter_list_t *cclListGetIter(const ccl_queue_t *dllist);
-iter_list_t *cclListIterNext(iter_list_t *it);
-void *cclListIterData(iter_list_t *it);
+int cclQuePush(ccl_queue_t *que, void *const data);
+int cclQuePop(ccl_queue_t *que, void *const data);
 
-int cclListAddFirst(ccl_queue_t *bllist, void *const data);
-int cclListAddLast(ccl_queue_t *bllist, void *const data);
-int cclListAddAt(ccl_queue_t *bllist, void *const data, const int idx);
+int cclQueFront(ccl_queue_t *que, void *data);
+int cclQueBack(ccl_queue_t *que, void *data);
 
-int cclListGetFirst(ccl_queue_t *bllist, void *const data);
-int cclListGetLast(ccl_queue_t *bllist, void *const data);
-int cclListGetAt(ccl_queue_t *bllist, const int idx, void *const data);
+int cclQueClear(ccl_queue_t *que);
+void cclQueDestroy(ccl_queue_t *que);
 
-int cclListUpdateFirst(ccl_queue_t *bllist, void *const data);
-int cclListUpdateLast(ccl_queue_t *bllist, void *const data);
-int cclListUpdateAt(ccl_queue_t *bllist, const int idx, void *const data);
-
-int cclListRemoveFirst(ccl_queue_t *bllist);
-int cclListRemoveLast(ccl_queue_t *bllist);
-int cclListRemoveAt(ccl_queue_t *bllist, const int idx);
-
-void cclListClear(ccl_queue_t *bllist);
-void cclListDestroy(ccl_queue_t *bllist);
-
-void cclSortListAdd(ccl_queue_t *bllist, void *data, int (*cmp)(const void *, const void *));
-/*
-void cclListConcat(ccl_queue_t **, ccl_queue_t *);
-void cclSortListMerge(ccl_queue_t **, ccl_queue_t *, int (*)(void *, void *));
-*/
 #ifdef __cplusplus
 }
 #endif

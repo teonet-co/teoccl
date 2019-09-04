@@ -1,6 +1,3 @@
-#include <stdlib.h>
-//#include <limits.h>
-//#include <string.h>
 
 #include "memory.h"
 #include "deque.h"
