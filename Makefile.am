@@ -36,7 +36,7 @@ endif
 
 # -----------------------------------------------------------------------------
 
-SUBDIRS = src po tests ci-build #examples
+SUBDIRS = src po tests 
 
 teoccldocdir = ${prefix}/doc/@PACKAGE@
 teoccldoc_DATA = \

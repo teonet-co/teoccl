@@ -22,7 +22,7 @@ typedef struct ccl_deque ccl_deque_t;
 //typedef struct node iter_list_t;
 
 ccl_deque_t *cclDequeInit(const size_t data_size);
-int cclDequeSize(ccl_deque_t *deq);
+int cclDequeSize(const ccl_deque_t *deq);
 int cclDequeEmpty(const ccl_deque_t *deq);
 int cclDequeTrim(ccl_deque_t *deq);
 
@@ -33,7 +33,7 @@ int cclDequePopFront(ccl_deque_t *deq, void *const data);
 int cclDequePopBack(ccl_deque_t *deq, void *const data);
 
 int cclDequeSetFirst(ccl_deque_t *deq, void *const data);
-int cclDequeSetAt(ccl_deque_t *deq, int index, void *const data);
+int cclDequeSetAt(ccl_deque_t *deq, int idx, void *const data);
 int cclDequeSetLast(ccl_deque_t *deq, void *const data);
 
 int cclDequeGetFirst(ccl_deque_t *deq, void *data);

@@ -1,11 +1,12 @@
-
+#include <string.h>
+#include <errno.h>
 #include "memory.h"
 #include "deque.h"
 
 
 struct ccl_deque {
     struct node *block;
-    size_t node_size;
+    size_t data_size;
     int block_count;
     int start_idx;
     int end_idx;
@@ -28,7 +29,7 @@ ccl_deque_t *cclDequeInit(const size_t data_size)
     }
     
     init = ccl_malloc(sizeof(ccl_deque_t));
-    init->node_size = data_size;
+    init->data_size = data_size;
     init->start_idx = BLOCK_SIZE/2;
     init->end_idx = init->start_idx + 1;
     init->block_count = 1;
@@ -84,14 +85,14 @@ int cclDequeTrim(ccl_deque_t *deq)
     free(deq->block);
     deq->block = new_block;
     deq->block_count = new_block_count;
-    deq->start_index -= start_block * BLOCK_SIZE;
-    deq->end_index -= start_block * BLOCK_SIZE;
+    deq->start_idx -= start_block * BLOCK_SIZE;
+    deq->end_idx -= start_block * BLOCK_SIZE;
     
     return 0;
 }
 
 
-int cclDequePushFront(ccl_deque *deq, void *const data)
+int cclDequePushFront(ccl_deque_t *deq, void *const data)
 {
     struct node block_item;
     int block_idx;
@@ -140,7 +141,7 @@ int cclDequePushFront(ccl_deque *deq, void *const data)
 }
 
 
-int cclDequePushBack(ccl_deque *deq, void *const data)
+int cclDequePushBack(ccl_deque_t *deq, void *const data)
 {
     struct node block_item;
     const int block_idx = deq->end_idx / BLOCK_SIZE;
@@ -216,11 +217,11 @@ int cclDequePopBack(ccl_deque_t *deq, void *const data)
 
 int cclDequeSetFirst(ccl_deque_t *deq, void *data)
 {
-    return cclDequeSetAt(deq, data, 0);
+    return cclDequeSetAt(deq, 0, data);
 }
 
 
-int cclDequeSetAt(ccl_deque_t *deq, int index, void *data)
+int cclDequeSetAt(ccl_deque_t *deq, int idx, void *data)
 {
     int block_idx;
     int inner_idx;
@@ -243,13 +244,13 @@ int cclDequeSetAt(ccl_deque_t *deq, int index, void *data)
 
 int cclDequeSetLast(ccl_deque_t *deq, void *data)
 {
-    return cclDequeGetAt(deq, data, cclDequeSize(deq) - 1);
+    return cclDequeGetAt(deq, cclDequeSize(deq) - 1, data);
 }
 
 
 int cclDequeGetFirst(ccl_deque_t *deq, void *data)
 {
-    return cclDequeGetAt(deq, data, 0);
+    return cclDequeGetAt(deq, 0, data);
 }
 
 
@@ -276,35 +277,31 @@ int cclDequeGetAt(ccl_deque_t *deq, int idx, void *data)
 
 int cclDequeGetLast(ccl_deque_t *deq, void *data)
 {
-    return cclDequeGetAt(deq, data, cclDequeSize(deq) - 1);
+    return cclDequeGetAt(deq, cclDequeSize(deq) - 1, data);
 }
 
 
 int cclDequeClear(ccl_deque_t *deq)
 {
-    void *temp_block_data;
     int i;
     struct node *block;
-    struct node *const temp_block = malloc(sizeof(struct node));
-    if (!temp_block) {
-        return -ENOMEM;
-    }
-    temp_block_data = malloc(BLOCK_SIZE * deq->data_size);
-    if (!temp_block_data) {
-        free(temp_block);
-        return -ENOMEM;
-    }
+    struct node *const temp_block = ccl_malloc(sizeof(struct node));
+    void *temp_block_data = ccl_malloc(BLOCK_SIZE * deq->data_size);
+
     for (i = 0; i < deq->block_count; i++) {
         const struct node block_item = deq->block[i];
         free(block_item.data);
     }
+
     free(deq->block);
-    deq->start_index = BLOCK_SIZE / 2;
-    deq->end_index = deq->start_index + 1;
+
+    deq->start_idx = BLOCK_SIZE / 2;
+    deq->end_idx = deq->start_idx + 1;
     deq->block_count = 1;
     deq->block = temp_block;
     block = deq->block;
     block->data = temp_block_data;
+    return 0;
 }
 
 

@@ -19,7 +19,7 @@ extern "C" {
 
 typedef struct ccl_stack ccl_stack_t;
 
-ccl_stack_t cclStackInit(size_t data_size);
+ccl_stack_t *cclStackInit(size_t data_size);
 
 int cclStackSize(ccl_stack_t *s);
 int cclStackEmpty(ccl_stack_t *s);

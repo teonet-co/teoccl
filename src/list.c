@@ -67,16 +67,19 @@ int cclListEmpty(const ccl_list_t *dllist)
 
 iter_list_t *cclListGetIter(const ccl_list_t *dllist)
 {
+    return NULL;
 }
 
 
 iter_list_t *cclListIterNext(iter_list_t *it)
 {
+    return NULL;
 }
 
 
 void *cclListIterData(iter_list_t *it)
 {
+    return NULL;
 }
 
 static struct node *cclListGetNodeFromHead(ccl_list_t *bllist, const int idx)

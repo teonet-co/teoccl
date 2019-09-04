@@ -3,18 +3,18 @@
 #include "stack.h"
 
 struct ccl_stack {
-    ccl_deque_t deq;
+    ccl_deque_t *deq;
 };
 
 
-ccl_stack_t cclStackInit(size_t data_size)
+ccl_stack_t *cclStackInit(size_t data_size)
 {
     ccl_stack_t *init;
     if (data_size == 0) {
         return NULL;
     }
 
-    init = ccl_malloc(sizeof(struct ccl_stack_t));
+    init = ccl_malloc(sizeof(ccl_stack_t));
 
     init->deq = cclDequeInit(data_size);
     if (!init->deq) {

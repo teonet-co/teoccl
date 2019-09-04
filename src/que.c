@@ -6,14 +6,14 @@ static const double TRIM_RATIO = 1.5;
 
 struct ccl_queue {
     int trim_count;
-    ccl_deque_t deq;
+    ccl_deque_t *deq;
 };
 
 
 ccl_queue_t *cclQueInit(const size_t data_size)
 {
     ccl_queue_t *init; 
-    if (data_size == NULL) {
+    if (!data_size) {
         return NULL;
     }
 
@@ -74,7 +74,7 @@ int cclQueFront(ccl_queue_t *que, void *data)
 
 int cclQueBack(ccl_queue_t *que, void *data)
 {
-    return cclDequeGetLast(que->deq, data) == 0
+    return cclDequeGetLast(que->deq, data) == 0;
 }
 
 

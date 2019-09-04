@@ -240,7 +240,6 @@ AC_CONFIG_FILES([
     po/Makefile.in
     src/libteoccl.pc
     src/Makefile
-    ci-build/Makefile
     tests/Makefile
 ])
 
