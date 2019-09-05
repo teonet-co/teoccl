@@ -98,8 +98,6 @@ void get_set_clear_elements_from_deque()
     size_deq = cclDequeSize(deq);
     CU_ASSERT(size_deq == 0);
 
-
-
     cclDequeDestroy(deq);
 }
 
