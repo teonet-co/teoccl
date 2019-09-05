@@ -244,7 +244,7 @@ int cclDequeSetAt(ccl_deque_t *deq, int idx, void *data)
 
 int cclDequeSetLast(ccl_deque_t *deq, void *data)
 {
-    return cclDequeGetAt(deq, cclDequeSize(deq) - 1, data);
+    return cclDequeSetAt(deq, cclDequeSize(deq) - 1, data);
 }
 
 
