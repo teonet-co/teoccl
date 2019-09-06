@@ -73,3 +73,5 @@ src/teoccl/.dirstamp
 ci-build/Makefile
 ci-build/Makefile.in
 ci-build/make_package.o
+INSTALL
+ci-build/make_package
