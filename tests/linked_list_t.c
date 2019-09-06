@@ -11,7 +11,7 @@
 #include <CUnit/Basic.h>
 #include <CUnit/CUnit.h>
 
-#include "linked_list.h"
+#include "teoccl/linked_list.h"
 
 int init_suite(void);
 int clean_suite(void);

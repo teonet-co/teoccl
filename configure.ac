@@ -15,8 +15,13 @@ AC_SUBST([$1], ['$2'])
 # END
 
 AC_PREREQ([2.69])
-AC_INIT([libteoccl], [0.0.4], [Kirill Scherba <kirill@scherba.ru>])
-AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, 4, [teoccl dynamic library version])
+AC_INIT([teoccl], [0.1.1], [Kirill Scherba <kirill@scherba.ru>, Max Ponka <mpano91@gmail.com>])
+
+AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_AGE,      1, [teoccl dynamic library version])
+
+
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teonet (CCL) C Containers Library"], [Application description])
 AC_DEFINE([PACKAGE_DEPENDENCIES], [""], [Application dependencies])
 AC_DEFINE([LICENSES], ["[[\"MIT\",\"LGPL-3.0\"]]"], [Application package licenses])
@@ -25,7 +30,7 @@ AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2019"], [Teoccl library copyright]
 
 AC_PREFIX_DEFAULT([/usr])
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_SRCDIR([src/queue.c])
+AC_CONFIG_SRCDIR([src/teoccl/queue.c])
 AC_CONFIG_MACRO_DIR([m4])
 
 AC_USE_SYSTEM_EXTENSIONS
@@ -240,8 +245,9 @@ AC_CONFIG_FILES([
     po/Makefile.in
     src/libteoccl.pc
     src/Makefile
-    ci-build/Makefile
     tests/Makefile
 ])
 
 AC_OUTPUT
+
+

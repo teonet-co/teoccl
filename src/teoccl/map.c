@@ -32,8 +32,8 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "map.h"
-#include "hash.h"
+#include "teoccl/map.h"
+#include "teoccl/hash.h"
 
 // Local functions
 static
