@@ -360,8 +360,7 @@ upload_deb_bintray()
 # @param $1 Distribution
 allow_deb_binary_download()
 {
-    sleep 20
-    curl -X PUT -H "Content-Type: application/json" -d '{"list_in_downloads":true}' -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY  "https://api.bintray.com/file_metadata/teonet-co/"$PACKET_NAME"/"$VER"/"$PACKAGE_NAME"_"$1".deb"
+    curl -X PUT -H "Content-Type: application/json" -d '{"list_in_downloads":true}' -u$CI_BINTRAY_USER:$CI_BINTRAY_API_KEY  "https://api.bintray.com/file_metadata/teonet-co/u/"$PACKET_NAME"/"$VER"/"$PACKAGE_NAME"_"$1".deb"
 }
 
 # Create packet if not exists
