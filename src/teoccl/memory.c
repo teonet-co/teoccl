@@ -1,9 +1,5 @@
 /* 
-<<<<<<< HEAD
  * \file:   memory.c
-=======
- * \file:   teo_memory.c
->>>>>>> feature/linked-list
  * \author: max <mpano91@gmail.com>
  *
  * Created on June 27, 2018, 4:18 PM

@@ -51,9 +51,9 @@ libteoccl_la_SOURCES = \
 	teoccl/que.c \
 	teoccl/stack.c
 
-libteocclincludedir=$(includedir)/libteoccl
+libteocclincludedir=$(includedir)/teoccl
 
-nobase_libteocclinclude_HEADERS = \
+libteocclinclude_HEADERS = \
 	../include/teoccl/memory.h \
 	../include/teoccl/list.h \
 	../include/teoccl/hash.h \

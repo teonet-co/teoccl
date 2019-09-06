@@ -6,7 +6,6 @@
 #
 # Versin 0.0.1
 #
-
 version: 2
 jobs:
 
@@ -214,93 +213,22 @@ jobs:
 workflows:
   version: 2  
   un-tagged:
-    jobs:
-      - testing:
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /^v.*/
-
+    jobs: 
+      - testing
+  tagged:
+    jobs: 
       - publish-ubuntu:
           context: CI_BUILD
-          requires:
-            - testing
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /^v.*/
-
-      - install-ubuntu-clear:
-          context: CI_BUILD
-          requires:
-            - publish-ubuntu
-          filters:
-            branches:
-              only: master
-            tags:
-              ignore: /^v.*/
-
-#      - un-tagged-build-centos:
-#          requires:
-#            - testing
-#          filters:
-#            tags:
-#              ignore: /^v.*/
-
-
-  # skipped:
-  #   jobs:
-  #     - testing:
-  #         filters:
-  #           branches:
-  #             only: /~master/
-  #           tags:
-  #             ignore: /^v.*/
-
-  tagged:
-    jobs:
-      - testing:
           filters:
             branches:
               ignore: /.*/
             tags:
               only: /^v.*/
 
-      - tagged-build-ubuntu:
-          context: CI_BUILD
-          requires:
-            - testing
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
-
-#      - tagged-build-centos:
-#          requires:
-#            - testing
-#          filters:
-#            branches:
-#              ignore: /.*/
-#            tags:
-#              only: /^v.*/
-
-#      - tagged-build-opensuse:
-#          requires:
-#            - testing
-#          filters:
-#            branches:
-#              ignore: /.*/
-#            tags:
-#              only: /^v.*/
-
-#       - tagged-build-docker:
+#       - tagged-build-ubuntu:
+#           context: CI_BUILD
 #           requires:
-#             - tagged-build-ubuntu
-# #            - tagged-build-centos
-# #            - tagged-build-opensuse
+#             - publish-ubuntu
 #           filters:
 #             branches:
 #               ignore: /.*/
