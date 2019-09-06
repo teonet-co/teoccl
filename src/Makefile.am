@@ -65,8 +65,6 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/stack.h \
 	../include/teoccl/teoccl.hpp
 
-
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)
-
 
 libteoccl_la_LIBADD = $(TEOCCL_LIBS)

@@ -17,7 +17,6 @@ AM_CXXFLAGS = \
 	-I../include \
 	-std=c++14
 
-
 ## Debug info
 if DEBUG
   AM_CFLAGS += -g3 -O0
