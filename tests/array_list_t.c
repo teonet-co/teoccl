@@ -12,7 +12,7 @@
 #include <sys/time.h>
 #include <CUnit/Basic.h>
 
-#include "array_list.h"
+#include "teoccl/array_list.h"
 
 int init_suite(void);
 int clean_suite(void);

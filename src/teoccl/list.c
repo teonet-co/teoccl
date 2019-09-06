@@ -2,8 +2,8 @@
 #include <limits.h>
 #include <string.h>
 
-#include "memory.h"
-#include "list.h"
+#include "teoccl/memory.h"
+#include "teoccl/list.h"
 
 #ifndef SIZE_T_MAX
   #if SIZEOF_SIZE_T == SIZEOF_INT

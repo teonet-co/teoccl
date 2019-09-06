@@ -1,6 +1,6 @@
-#include "memory.h"
-#include "deque.h"
-#include "que.h"
+#include "teoccl/memory.h"
+#include "teoccl/deque.h"
+#include "teoccl/que.h"
 
 static const double TRIM_RATIO = 1.5;
 

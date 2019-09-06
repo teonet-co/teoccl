@@ -7,13 +7,13 @@ AM_CPPFLAGS = \
 
 AM_CFLAGS = \
 	 -g -Wall \
-	 -I../src \
+	 -I../include \
 	 -std=gnu99
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
          -g -Wall \
-	 -I../src \
+	 -I../include \
 	 -std=c++11
 
 ## Debug info

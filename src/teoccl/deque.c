@@ -1,8 +1,8 @@
 #include <string.h>
 #include <errno.h>
-#include "memory.h"
-#include "deque.h"
 
+#include "teoccl/memory.h"
+#include "teoccl/deque.h"
 
 struct ccl_deque {
     struct node *block;

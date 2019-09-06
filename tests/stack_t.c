@@ -9,7 +9,7 @@
 #include <string.h>
 #include <CUnit/Basic.h>
 
-#include "stack.h"
+#include "teoccl/stack.h"
 
 int init_suite(void);
 int clean_suite(void);

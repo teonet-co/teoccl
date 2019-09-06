@@ -9,7 +9,7 @@
 #include <string.h>
 #include <CUnit/Basic.h>
 
-#include "que.h"
+#include "teoccl/que.h"
 
 int init_suite(void);
 int clean_suite(void);

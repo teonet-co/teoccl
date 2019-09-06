@@ -1,5 +1,5 @@
 /* 
- * \file:   teo_memory.c
+ * \file:   memory.c
  * \author: max <mpano91@gmail.com>
  *
  * Created on June 27, 2018, 4:18 PM

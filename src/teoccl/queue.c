@@ -30,7 +30,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "queue.h"
+#include "teoccl/queue.h"
 
 /**
  * Create new Teo Queue

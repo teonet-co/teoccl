@@ -13,12 +13,14 @@ AM_CFLAGS = \
 	-std=gnu11 \
 	-fno-strict-aliasing \
 	-fPIC \
+	-I../include \
 	-Wpointer-arith
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
 	-g -Wall \
 	-std=c++11 \
+	-I../include \
 	-fPIC
 
 ## Debug info
@@ -37,20 +39,31 @@ LIBS =
 lib_LTLIBRARIES = libteoccl.la
 
 libteoccl_la_SOURCES = \
-	memory.c \
-	queue.c \
-	hash.c \
-	map.c \
-	list.c \
-	array_list.c \
-	deque.c \
-	que.c \
-	stack.c
+	teoccl/memory.c \
+	teoccl/queue.c \
+	teoccl/hash.c \
+	teoccl/map.c \
+	teoccl/list.c \
+	teoccl/array_list.c \
+	teoccl/deque.c \
+	teoccl/que.c \
+	teoccl/stack.c
 
 libteocclincludedir=$(includedir)/libteoccl
 
-nobase_libteocclinclude_HEADERS = memory.h list.h hash.h array_list.h map.h map.hpp queue.h queue.hpp teoccl.hpp deque.h que.h stack.h
-
+nobase_libteocclinclude_HEADERS = \
+	../include/teoccl/memory.h \
+	../include/teoccl/list.h \
+	../include/teoccl/hash.h \
+	../include/teoccl/array_list.h \
+	../include/teoccl/map.h \
+	../include/teoccl/map.hpp \
+	../include/teoccl/queue.h \
+	../include/teoccl/queue.hpp \
+	../include/teoccl/deque.h \
+	../include/teoccl/que.h \
+	../include/teoccl/stack.h \
+	../include/teoccl/teoccl.hpp
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
 
 libteoccl_la_LIBADD = $(TEOCCL_LIBS)

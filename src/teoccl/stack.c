@@ -1,6 +1,6 @@
-#include "memory.h"
-#include "deque.h"
-#include "stack.h"
+#include "teoccl/memory.h"
+#include "teoccl/deque.h"
+#include "teoccl/stack.h"
 
 struct ccl_stack {
     ccl_deque_t *deq;

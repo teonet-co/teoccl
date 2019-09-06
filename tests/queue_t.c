@@ -10,7 +10,7 @@
 #include <string.h>
 #include <CUnit/Basic.h>
 
-#include "queue.h"
+#include "teoccl/queue.h"
 
 int init_suite(void);
 int clean_suite(void);
