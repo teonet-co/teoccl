@@ -388,20 +388,20 @@ create_package_bintray()
 build_ppa()
 {
     # Create sources archive and unpack it to build folder
-    make dist
-    mkdir build
-    mv libteoccl-0.0.4.tar.gz build/
-    cd build
-    tar -xzf libteoccl-0.0.4.tar.gz
-    cd libteoccl-0.0.4
+#    make dist
+#    mkdir build
+#    mv libteoccl-0.0.4.tar.gz build/
+#    cd build
+#    tar -xzf libteoccl-0.0.4.tar.gz
+#    cd libteoccl-0.0.4
     #pwd
     #ls -all
 
     # Test this sources packet
-    ./configure
-    make
-    sudo make install DESTDIR=$(pwd)/install
-    sudo make uninstall
+#    ./configure
+#    make
+#    sudo make install DESTDIR=$(pwd)/install
+#    sudo make uninstall
     #ls -all
     #pwd
 
@@ -414,8 +414,8 @@ build_ppa()
 
     # bzr dh-make libteoccl 0.0.4 libteoccl-0.0.4.tar.gz 
 
-    cd ../..
-    echo ""
+#    cd ../..
+#    echo ""
 }
 
 #-------------------------------------------------------------------------------
