@@ -69,3 +69,4 @@ libteoccl*.deb
 /doc-pak/
 /backup-*-pre-libteoccl\.tgz
 /description-pak
+src/teoccl/.dirstamp
