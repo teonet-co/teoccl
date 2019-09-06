@@ -27,7 +27,7 @@ int queueSuiteAdd();
 int dequeSuiteAdd();
 int queSuiteAdd();
 int mapSuiteAdd();
-int listSuiteAdd();
+//int listSuiteAdd();
 int stackSuiteAdd();
 int arrayListSuiteAdd();
 int linkedListSuiteAdd();
@@ -46,7 +46,7 @@ int main() {
     dequeSuiteAdd();
     queSuiteAdd();
     mapSuiteAdd();
-    listSuiteAdd();
+//    listSuiteAdd();
     stackSuiteAdd();
     arrayListSuiteAdd();
     linkedListSuiteAdd();

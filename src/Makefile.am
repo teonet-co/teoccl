@@ -46,6 +46,7 @@ libteoccl_la_SOURCES = \
 	teoccl/map.c \
 	teoccl/list.c \
 	teoccl/array_list.c \
+	teoccl/linked_list.c \
 	teoccl/deque.c \
 	teoccl/que.c \
 	teoccl/stack.c
@@ -57,6 +58,7 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/list.h \
 	../include/teoccl/hash.h \
 	../include/teoccl/array_list.h \
+	../include/teoccl/linked_list.h \
 	../include/teoccl/map.h \
 	../include/teoccl/map.hpp \
 	../include/teoccl/queue.h \

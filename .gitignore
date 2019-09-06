@@ -51,6 +51,8 @@
 .deps
 /examples/*.o
 /tests/*.o
+/src/teoccl/.libs/*.o
+src/teoccl/*.o
 /src/**/*.lo
 /src/**/*.o
 /src/**/*.la
