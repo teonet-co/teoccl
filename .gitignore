@@ -70,3 +70,6 @@ libteoccl*.deb
 /backup-*-pre-libteoccl\.tgz
 /description-pak
 src/teoccl/.dirstamp
+ci-build/Makefile
+ci-build/Makefile.in
+ci-build/make_package.o
