@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['queue',['Queue',['../classteo_1_1Queue.html#a53fb136d473c476585d798de3742a131',1,'teo::Queue']]]
+  ['put',['put',['../classteo_1_1Queue.html#a9cc31e1d3f8b66749fb131d6dc12cba2',1,'teo::Queue']]]
 ];

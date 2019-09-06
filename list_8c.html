@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">TeoCCl library
-   &#160;<span id="projectnumber">0.0.4</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
   </td>
  </tr>
@@ -115,41 +115,58 @@ $(document).ready(function(){initNavTree('list_8c.html','');});
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="list_8h_source.html">list.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="memory_8h_source.html">teoccl/memory.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="list_8h_source.html">teoccl/list.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:acfa3af56d5e0045c1d7a5682fd1d2853"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#acfa3af56d5e0045c1d7a5682fd1d2853">SIZE_T_MAX</a>&#160;&#160;&#160;UINT_MAX</td></tr>
 <tr class="separator:acfa3af56d5e0045c1d7a5682fd1d2853"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab512f280a1d3185440b6911cb67c7539"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#ab512f280a1d3185440b6911cb67c7539">TEO_FREE</a>(ptr)&#160;&#160;&#160;if( ptr ){ free( ptr ); ptr = 0; }</td></tr>
-<tr class="separator:ab512f280a1d3185440b6911cb67c7539"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a827bb5a2d38ca643a39beb6ff0345405"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a827bb5a2d38ca643a39beb6ff0345405">teoArrayListNew</a> (<a class="el" href="list_8h.html#a41e5f51b1befa448b861e61a2c352bd6">array_list_free_fn</a> *free_fn)</td></tr>
-<tr class="memdesc:a827bb5a2d38ca643a39beb6ff0345405"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new Array-List.  <a href="#a827bb5a2d38ca643a39beb6ff0345405">More...</a><br /></td></tr>
-<tr class="separator:a827bb5a2d38ca643a39beb6ff0345405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8baae1d149743c0fd88dfc958bd914ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a8baae1d149743c0fd88dfc958bd914ac">teoArrayListFree</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal)</td></tr>
-<tr class="memdesc:a8baae1d149743c0fd88dfc958bd914ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free memory allocated for Array-List.  <a href="#a8baae1d149743c0fd88dfc958bd914ac">More...</a><br /></td></tr>
-<tr class="separator:a8baae1d149743c0fd88dfc958bd914ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea157b2c49ced216ec7b6cfc09b08099"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aea157b2c49ced216ec7b6cfc09b08099">teoArrayListGetIdx</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal, size_t i)</td></tr>
-<tr class="memdesc:aea157b2c49ced216ec7b6cfc09b08099"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get element of Array-List by index.  <a href="#aea157b2c49ced216ec7b6cfc09b08099">More...</a><br /></td></tr>
-<tr class="separator:aea157b2c49ced216ec7b6cfc09b08099"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40b359a583072661f1b2251cddf5609d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a40b359a583072661f1b2251cddf5609d">teoArrayListDelIdx</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal, size_t i, size_t count)</td></tr>
-<tr class="memdesc:a40b359a583072661f1b2251cddf5609d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete range of elements of Array-List since index.  <a href="#a40b359a583072661f1b2251cddf5609d">More...</a><br /></td></tr>
-<tr class="separator:a40b359a583072661f1b2251cddf5609d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40accd3e944bc0a5cfcf55187299bb65"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a40accd3e944bc0a5cfcf55187299bb65">teoArrayListAdd</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal, void *data)</td></tr>
-<tr class="memdesc:a40accd3e944bc0a5cfcf55187299bb65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add element to Array-List.  <a href="#a40accd3e944bc0a5cfcf55187299bb65">More...</a><br /></td></tr>
-<tr class="separator:a40accd3e944bc0a5cfcf55187299bb65"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5afa983d54b55a129d8a725fdf872769"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a5afa983d54b55a129d8a725fdf872769">teoArrayListLength</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal)</td></tr>
-<tr class="memdesc:a5afa983d54b55a129d8a725fdf872769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get count of elements in Array-List.  <a href="#a5afa983d54b55a129d8a725fdf872769">More...</a><br /></td></tr>
-<tr class="separator:a5afa983d54b55a129d8a725fdf872769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24183ff7cc2043978768ad5246aa632e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a24183ff7cc2043978768ad5246aa632e">teoArrayListSort</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal, int(*compar)(const void *, const void *))</td></tr>
-<tr class="memdesc:a24183ff7cc2043978768ad5246aa632e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run Qsort for array-list.  <a href="#a24183ff7cc2043978768ad5246aa632e">More...</a><br /></td></tr>
-<tr class="separator:a24183ff7cc2043978768ad5246aa632e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dc915cf42c4ca883a99cfd0e73e53cc"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a8dc915cf42c4ca883a99cfd0e73e53cc">teoArrayListBSearch</a> (<a class="el" href="structteoArrayList.html">teoArrayList</a> *tal, const void **key, int(*compar)(const void *, const void *))</td></tr>
-<tr class="memdesc:a8dc915cf42c4ca883a99cfd0e73e53cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binary search for array-list.  <a href="#a8dc915cf42c4ca883a99cfd0e73e53cc">More...</a><br /></td></tr>
-<tr class="separator:a8dc915cf42c4ca883a99cfd0e73e53cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a941dfa38a2b4ac4b94e5aa01b1eba5c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a941dfa38a2b4ac4b94e5aa01b1eba5c4">cclListInit</a> (const size_t data_size)</td></tr>
+<tr class="separator:a941dfa38a2b4ac4b94e5aa01b1eba5c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84fa17297aed2cccc0135c4f21a5e04b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a84fa17297aed2cccc0135c4f21a5e04b">cclListCount</a> (const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *dllist)</td></tr>
+<tr class="separator:a84fa17297aed2cccc0135c4f21a5e04b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedea91bb58594bf4d47b35af75e2873a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aedea91bb58594bf4d47b35af75e2873a">cclListEmpty</a> (const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *dllist)</td></tr>
+<tr class="separator:aedea91bb58594bf4d47b35af75e2873a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24f14be2ae012493dc2e54f963e4dd5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a24f14be2ae012493dc2e54f963e4dd5a">cclListGetIter</a> (const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *dllist)</td></tr>
+<tr class="separator:a24f14be2ae012493dc2e54f963e4dd5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b21b2fae6304f5e7df09ef9a10427ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a0b21b2fae6304f5e7df09ef9a10427ec">cclListIterNext</a> (<a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *it)</td></tr>
+<tr class="separator:a0b21b2fae6304f5e7df09ef9a10427ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f1472495fb7cdb87f6e897463e0576"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a33f1472495fb7cdb87f6e897463e0576">cclListIterData</a> (<a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *it)</td></tr>
+<tr class="separator:a33f1472495fb7cdb87f6e897463e0576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00a179b6dea9e36abd5c9b05f4baed2a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a00a179b6dea9e36abd5c9b05f4baed2a">cclListAddFirst</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:a00a179b6dea9e36abd5c9b05f4baed2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a591aa950231d6ac5ff40acf5f3f1507c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a591aa950231d6ac5ff40acf5f3f1507c">cclListAddLast</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:a591aa950231d6ac5ff40acf5f3f1507c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98909ebdb41ba5728348b05fcb67c2e3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a98909ebdb41ba5728348b05fcb67c2e3">cclListAddAt</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data, const int idx)</td></tr>
+<tr class="separator:a98909ebdb41ba5728348b05fcb67c2e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef8de259b3e2e43cff57ef138ae0a77e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aef8de259b3e2e43cff57ef138ae0a77e">cclListGetFirst</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:aef8de259b3e2e43cff57ef138ae0a77e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15e77d40ab041df5d83205fab642d32"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#ac15e77d40ab041df5d83205fab642d32">cclListGetLast</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:ac15e77d40ab041df5d83205fab642d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf3ad07641f23d05b39a492958ddd0cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aaf3ad07641f23d05b39a492958ddd0cf">cclListGetAt</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, const int idx, void *const data)</td></tr>
+<tr class="separator:aaf3ad07641f23d05b39a492958ddd0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f110736fd313ee12224a06ef53be470"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a4f110736fd313ee12224a06ef53be470">cclListUpdateFirst</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:a4f110736fd313ee12224a06ef53be470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeca615af8f547e3a00692676965ff73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aeeca615af8f547e3a00692676965ff73">cclListUpdateLast</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *const data)</td></tr>
+<tr class="separator:aeeca615af8f547e3a00692676965ff73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22bba8719127d3cf1bfafa279f0208ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a22bba8719127d3cf1bfafa279f0208ba">cclListUpdateAt</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, const int idx, void *const data)</td></tr>
+<tr class="separator:a22bba8719127d3cf1bfafa279f0208ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee1ac79c3bbf7aedb5558adfea8d549b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aee1ac79c3bbf7aedb5558adfea8d549b">cclListRemoveFirst</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist)</td></tr>
+<tr class="separator:aee1ac79c3bbf7aedb5558adfea8d549b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a482226a5a0da2ea62a22604cbf428415"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a482226a5a0da2ea62a22604cbf428415">cclListRemoveLast</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist)</td></tr>
+<tr class="separator:a482226a5a0da2ea62a22604cbf428415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3904849b50eb31446fc6c3f73a8bdc39"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a3904849b50eb31446fc6c3f73a8bdc39">cclListRemoveAt</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, const int idx)</td></tr>
+<tr class="separator:a3904849b50eb31446fc6c3f73a8bdc39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3b20db47e646234796a666648a1c792"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#ac3b20db47e646234796a666648a1c792">cclListClear</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist)</td></tr>
+<tr class="separator:ac3b20db47e646234796a666648a1c792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6105c32a8843269b5b0ab23d98cbdca1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a6105c32a8843269b5b0ab23d98cbdca1">cclListDestroy</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist)</td></tr>
+<tr class="separator:a6105c32a8843269b5b0ab23d98cbdca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97c1dc3aa76fe078dbe2f12a78b71c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#ae97c1dc3aa76fe078dbe2f12a78b71c1">cclSortListAdd</a> (<a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *bllist, void *data, int(*cmp)(const void *, const void *))</td></tr>
+<tr class="separator:ae97c1dc3aa76fe078dbe2f12a78b71c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="acfa3af56d5e0045c1d7a5682fd1d2853"></a>
@@ -162,43 +179,59 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="list_8h.html#aea157b2c49ced216ec7b6cfc09b08099">teoArrayListGetIdx()</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ab512f280a1d3185440b6911cb67c7539"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TEO_FREE</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">ptr</td><td>)</td>
-          <td>&#160;&#160;&#160;if( ptr ){ free( ptr ); ptr = 0; }</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Referenced by <a class="el" href="list_8h.html#a8baae1d149743c0fd88dfc958bd914ac">teoArrayListFree()</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a40accd3e944bc0a5cfcf55187299bb65"></a>
+<a class="anchor" id="a98909ebdb41ba5728348b05fcb67c2e3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int teoArrayListAdd </td>
+          <td class="memname">int cclListAddAt </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em>, </td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="memory_8h.html#a928c2010dfb6e88bd48f9deb8b5d7f0f">ccl_malloc()</a>.</p>
+
+<p>Referenced by <a class="el" href="list_8c.html#a00a179b6dea9e36abd5c9b05f4baed2a">cclListAddFirst()</a>, and <a class="el" href="list_8c.html#a591aa950231d6ac5ff40acf5f3f1507c">cclListAddLast()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a00a179b6dea9e36abd5c9b05f4baed2a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListAddFirst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
           <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
@@ -209,41 +242,443 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Add element to Array-List. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tal</td><td>- Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>- Pointer to the data to be added </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>-1 - error, 0 - adding was successful </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>.</p>
+<p>References <a class="el" href="list_8c.html#a98909ebdb41ba5728348b05fcb67c2e3">cclListAddAt()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8dc915cf42c4ca883a99cfd0e73e53cc"></a>
+<a class="anchor" id="a591aa950231d6ac5ff40acf5f3f1507c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* teoArrayListBSearch </td>
+          <td class="memname">int cclListAddLast </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em>, </td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const void **&#160;</td>
-          <td class="paramname"><em>key</em>, </td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a98909ebdb41ba5728348b05fcb67c2e3">cclListAddAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac3b20db47e646234796a666648a1c792"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cclListClear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="list_8c.html#a6105c32a8843269b5b0ab23d98cbdca1">cclListDestroy()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a84fa17297aed2cccc0135c4f21a5e04b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListCount </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>dllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="list_8c.html#aedea91bb58594bf4d47b35af75e2873a">cclListEmpty()</a>, and <a class="el" href="list_8c.html#a33f1472495fb7cdb87f6e897463e0576">cclListIterData()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6105c32a8843269b5b0ab23d98cbdca1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cclListDestroy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#ac3b20db47e646234796a666648a1c792">cclListClear()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aedea91bb58594bf4d47b35af75e2873a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListEmpty </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>dllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a84fa17297aed2cccc0135c4f21a5e04b">cclListCount()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aaf3ad07641f23d05b39a492958ddd0cf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListGetAt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="list_8c.html#aef8de259b3e2e43cff57ef138ae0a77e">cclListGetFirst()</a>, and <a class="el" href="list_8c.html#ac15e77d40ab041df5d83205fab642d32">cclListGetLast()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aef8de259b3e2e43cff57ef138ae0a77e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListGetFirst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#aaf3ad07641f23d05b39a492958ddd0cf">cclListGetAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a24f14be2ae012493dc2e54f963e4dd5a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a>* cclListGetIter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>dllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac15e77d40ab041df5d83205fab642d32"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListGetLast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#aaf3ad07641f23d05b39a492958ddd0cf">cclListGetAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a941dfa38a2b4ac4b94e5aa01b1eba5c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a>* cclListInit </td>
+          <td>(</td>
+          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramname"><em>data_size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="memory_8h.html#a928c2010dfb6e88bd48f9deb8b5d7f0f">ccl_malloc()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a33f1472495fb7cdb87f6e897463e0576"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* cclListIterData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a84fa17297aed2cccc0135c4f21a5e04b">cclListCount()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0b21b2fae6304f5e7df09ef9a10427ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a>* cclListIterNext </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a6e25adc3a3abd08474268b0b0a297baf">iter_list_t</a> *&#160;</td>
+          <td class="paramname"><em>it</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3904849b50eb31446fc6c3f73a8bdc39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListRemoveAt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="list_8c.html#aee1ac79c3bbf7aedb5558adfea8d549b">cclListRemoveFirst()</a>, and <a class="el" href="list_8c.html#a482226a5a0da2ea62a22604cbf428415">cclListRemoveLast()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aee1ac79c3bbf7aedb5558adfea8d549b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListRemoveFirst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a3904849b50eb31446fc6c3f73a8bdc39">cclListRemoveAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a482226a5a0da2ea62a22604cbf428415"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListRemoveLast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a3904849b50eb31446fc6c3f73a8bdc39">cclListRemoveAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22bba8719127d3cf1bfafa279f0208ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListUpdateAt </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Referenced by <a class="el" href="list_8c.html#a4f110736fd313ee12224a06ef53be470">cclListUpdateFirst()</a>, and <a class="el" href="list_8c.html#aeeca615af8f547e3a00692676965ff73">cclListUpdateLast()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f110736fd313ee12224a06ef53be470"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListUpdateFirst </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a22bba8719127d3cf1bfafa279f0208ba">cclListUpdateAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeeca615af8f547e3a00692676965ff73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cclListUpdateLast </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *const&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>References <a class="el" href="list_8c.html#a22bba8719127d3cf1bfafa279f0208ba">cclListUpdateAt()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae97c1dc3aa76fe078dbe2f12a78b71c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cclSortListAdd </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a213bf8d506183e3a1b2df7d1eadd0d05">ccl_list_t</a> *&#160;</td>
+          <td class="paramname"><em>bllist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
-          <td class="paramname"><em>compar</em>&#160;</td>
+          <td class="paramname"><em>cmp</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -252,222 +687,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Binary search for array-list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tal</td><td>- array list </td></tr>
-    <tr><td class="paramname">key</td><td>- what we want to find </td></tr>
-    <tr><td class="paramname">compar</td><td>- pointer to comparator</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to an entry in the array-list that matches the search key </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, and <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a40b359a583072661f1b2251cddf5609d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int teoArrayListDelIdx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>i</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>count</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Delete range of elements of Array-List since index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tal</td><td>- Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>- Delete from this index </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">count</td><td>- Count of deleting elements </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Create correct return </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, <a class="el" href="structteoArrayList.html#a89410e474e9be8bb48354cd2d9e178ff">teoArrayList::free_fn</a>, and <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a8baae1d149743c0fd88dfc958bd914ac"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int teoArrayListFree </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Free memory allocated for Array-List. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tal</td><td>- Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>zero</dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Create correct return </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, <a class="el" href="structteoArrayList.html#a89410e474e9be8bb48354cd2d9e178ff">teoArrayList::free_fn</a>, <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>, and <a class="el" href="list_8c.html#ab512f280a1d3185440b6911cb67c7539">TEO_FREE</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aea157b2c49ced216ec7b6cfc09b08099"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* teoArrayListGetIdx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>i</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get element of Array-List by index. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">tal</td><td>- Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">i</td><td>- index in <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to element of <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, <a class="el" href="structteoArrayList.html#a89410e474e9be8bb48354cd2d9e178ff">teoArrayList::free_fn</a>, <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>, <a class="el" href="structteoArrayList.html#a7ed022b857abaadc8b627321f8af967c">teoArrayList::size</a>, and <a class="el" href="list_8c.html#acfa3af56d5e0045c1d7a5682fd1d2853">SIZE_T_MAX</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a5afa983d54b55a129d8a725fdf872769"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t teoArrayListLength </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get count of elements in Array-List. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">tal</td><td>- Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>count of elements in <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a827bb5a2d38ca643a39beb6ff0345405"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structteoArrayList.html">teoArrayList</a>* teoArrayListNew </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="list_8h.html#a41e5f51b1befa448b861e61a2c352bd6">array_list_free_fn</a> *&#160;</td>
-          <td class="paramname"><em>free_fn</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Create new Array-List. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">free_fn</td><td>- Pointer to free-callback function </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to <a class="el" href="structteoArrayList.html" title="Array-List structure. ">teoArrayList</a> </dd></dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, <a class="el" href="list_8h.html#acd30d910b398421574eb1f59e78617f5">ARRAY_LIST_DEFAULT_SIZE</a>, <a class="el" href="structteoArrayList.html#a89410e474e9be8bb48354cd2d9e178ff">teoArrayList::free_fn</a>, <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>, and <a class="el" href="structteoArrayList.html#a7ed022b857abaadc8b627321f8af967c">teoArrayList::size</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a24183ff7cc2043978768ad5246aa632e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void teoArrayListSort </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structteoArrayList.html">teoArrayList</a> *&#160;</td>
-          <td class="paramname"><em>tal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int(*)(const void *, const void *)&#160;</td>
-          <td class="paramname"><em>compar</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Run Qsort for array-list. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tal</td><td>- array list </td></tr>
-    <tr><td class="paramname">compar</td><td>- pointer to comparator </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>References <a class="el" href="structteoArrayList.html#ae64e8383f8cb8c6e56b3e4d1731689dd">teoArrayList::array</a>, and <a class="el" href="structteoArrayList.html#a04e6449f6c905805e4ebb4693edb4580">teoArrayList::length</a>.</p>
 
 </div>
 </div>
@@ -476,8 +695,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="list_8c.html">list.c</a></li>
-    <li class="footer">Generated on Mon Jul 1 2019 14:14:28 for TeoCCl library by
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e0ca6075b2c816d15772ad336856d1ac.html">teoccl</a></li><li class="navelem"><a class="el" href="list_8c.html">list.c</a></li>
+    <li class="footer">Generated on Fri Sep 6 2019 15:26:30 for TeoCCl library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

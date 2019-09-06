@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">TeoCCl library
-   &#160;<span id="projectnumber">0.0.4</span>
+   &#160;<span id="projectnumber">0.1.1</span>
    </div>
   </td>
  </tr>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('map_8h.html','');});
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="queue_8h_source.html">queue.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="queue_8h_source.html">teoccl/queue.h</a>&quot;</code><br />
 </div>
 <p><a href="map_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -134,7 +134,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:abfd8510b1fadf533d685965730e2969b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#abfd8510b1fadf533d685965730e2969b">HASH_TABLE_SIZE</a>&#160;&#160;&#160;100</td></tr>
+<tr class="memitem:abfd8510b1fadf533d685965730e2969b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#abfd8510b1fadf533d685965730e2969b">HASH_TABLE_SIZE</a>&#160;&#160;&#160;127</td></tr>
 <tr class="separator:abfd8510b1fadf533d685965730e2969b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78c55a8a6b510e49c62e102b7024c480"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a78c55a8a6b510e49c62e102b7024c480">HASH_TABLE_INITVAL</a>&#160;&#160;&#160;77557755</td></tr>
 <tr class="separator:a78c55a8a6b510e49c62e102b7024c480"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,7 +209,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="map_8h.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>.</p>
+<p>Referenced by <a class="el" href="map_8c.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>.</p>
 
 </div>
 </div>
@@ -218,12 +218,12 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define HASH_TABLE_SIZE&#160;&#160;&#160;100</td>
+          <td class="memname">#define HASH_TABLE_SIZE&#160;&#160;&#160;127</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#afd83f648e8dc71cce74bea7c3f4373ed">teo::Map::Map()</a>, and <a class="el" href="map_8h.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#afd83f648e8dc71cce74bea7c3f4373ed">teo::Map::Map()</a>, and <a class="el" href="map_8c.html#a9fbc74bf29dd1f6bf47bfd35bf9fa156">teoMapClear()</a>.</p>
 
 </div>
 </div>
@@ -343,9 +343,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Data of added key or (void*)-1 at error </dd></dl>
 
-<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d">teoMapElementData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8c.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, and <a class="el" href="queue_8c.html#abb3aa99cf112e4d7dd516f01c3185132">teoQueueUpdate()</a>.</p>
+<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d">teoMapElementData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8h.html#a2a2235f1a4d6eecd8b3253c53f8e4a7f">teoQueueAdd()</a>, and <a class="el" href="queue_8h.html#abb3aa99cf112e4d7dd516f01c3185132">teoQueueUpdate()</a>.</p>
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#a7f7820f521d400402eefad25284eb754">teo::Map::add()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#a7f7820f521d400402eefad25284eb754">teo::Map::add()</a>, and <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
 
 </div>
 </div>
@@ -369,7 +369,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3">teoMap::collisions</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d">teoMapElementData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="map_8h.html#a78c55a8a6b510e49c62e102b7024c480">HASH_TABLE_INITVAL</a>, <a class="el" href="map_8h.html#abfd8510b1fadf533d685965730e2969b">HASH_TABLE_SIZE</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="hash_8c.html#a2d9e81b501b60042a35357279fbf0bd2">teoHashFast()</a>, <a class="el" href="hash_8c.html#a4013c5ebdc1b7ae4302e778ec3e3c14d">teoHashSuperFast()</a>, <a class="el" href="queue_8c.html#a8a650ba606f226b0f6c9146a99c8cae6">teoQueueFree()</a>, <a class="el" href="queue_8c.html#a6a8aeffeb614e30833a8f2a4fc395141">teoQueueIteratorFree()</a>, <a class="el" href="queue_8c.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="queue_8c.html#aa057233becc3ae7f8f9731c42a41a5de">teoQueueIteratorNext()</a>.</p>
+<p>References <a class="el" href="structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3">teoMap::collisions</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d">teoMapElementData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="map_8h.html#a78c55a8a6b510e49c62e102b7024c480">HASH_TABLE_INITVAL</a>, <a class="el" href="map_8h.html#abfd8510b1fadf533d685965730e2969b">HASH_TABLE_SIZE</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="hash_8h.html#a2d9e81b501b60042a35357279fbf0bd2">teoHashFast()</a>, <a class="el" href="hash_8h.html#a4013c5ebdc1b7ae4302e778ec3e3c14d">teoHashSuperFast()</a>, <a class="el" href="queue_8h.html#a8a650ba606f226b0f6c9146a99c8cae6">teoQueueFree()</a>, <a class="el" href="queue_8h.html#a6a8aeffeb614e30833a8f2a4fc395141">teoQueueIteratorFree()</a>, <a class="el" href="queue_8h.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="queue_8h.html#aa057233becc3ae7f8f9731c42a41a5de">teoQueueIteratorNext()</a>.</p>
 
 <p>Referenced by <a class="el" href="classteo_1_1Map.html#a33279f621d830c136619657a414f3736">teo::Map::mapClear()</a>.</p>
 
@@ -416,7 +416,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success, or errors: -1 - keys element not found </dd></dl>
 
-<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, and <a class="el" href="queue_8c.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
+<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, and <a class="el" href="queue_8h.html#ab19610ac7400d1090bc97c965ac51e3a">teoQueueDelete()</a>.</p>
 
 <p>Referenced by <a class="el" href="classteo_1_1Map.html#a3f017eba41a7af7b75d00eadb1b13be7">teo::Map::del()</a>.</p>
 
@@ -445,7 +445,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>References <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, and <a class="el" href="queue_8c.html#a3199bcb6c90f4419d0d4bec5be751d2a">teoQueueDestroy()</a>.</p>
+<p>References <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, and <a class="el" href="queue_8h.html#a3199bcb6c90f4419d0d4bec5be751d2a">teoQueueDestroy()</a>.</p>
 
 <p>Referenced by <a class="el" href="classteo_1_1Map.html#aaead397eb5e49e2c4eb77fc67a810b70">teo::Map::~Map()</a>.</p>
 
@@ -622,9 +622,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero at success </dd></dl>
 
-<p>References <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, and <a class="el" href="queue_8c.html#a6a8aeffeb614e30833a8f2a4fc395141">teoQueueIteratorFree()</a>.</p>
+<p>References <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, and <a class="el" href="queue_8h.html#a6a8aeffeb614e30833a8f2a4fc395141">teoQueueIteratorFree()</a>.</p>
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#a729b17d99b3fad9d1aef33b745b9d586">teo::Map::iteratorFree()</a>, <a class="el" href="map_8h.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8h.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#a729b17d99b3fad9d1aef33b745b9d586">teo::Map::iteratorFree()</a>, <a class="el" href="map_8c.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8c.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
 
 </div>
 </div>
@@ -651,9 +651,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to <a class="el" href="structteoMapIterator.html">teoMapIterator</a> or NULL at memory allocate error </dd></dl>
 
-<p>References <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8c.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
+<p>References <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8h.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#a5e97ab2446187a7622feb03c756742d2">teo::Map::iterator()</a>, <a class="el" href="map_8h.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8h.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#a5e97ab2446187a7622feb03c756742d2">teo::Map::iterator()</a>, <a class="el" href="map_8c.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8c.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
 
 </div>
 </div>
@@ -680,9 +680,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to map element data teoMapValueData </dd></dl>
 
-<p>References <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8c.html#aa057233becc3ae7f8f9731c42a41a5de">teoQueueIteratorNext()</a>, <a class="el" href="queue_8c.html#a5bd8e6391e14c2b6a8574a7c6c3567d6">teoQueueIteratorReset()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
+<p>References <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8h.html#aa057233becc3ae7f8f9731c42a41a5de">teoQueueIteratorNext()</a>, <a class="el" href="queue_8h.html#a5bd8e6391e14c2b6a8574a7c6c3567d6">teoQueueIteratorReset()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#ab41175b8e29caa41d18dea7974bc01ab">teo::Map::iteratorNext()</a>, <a class="el" href="map_8h.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8h.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#ab41175b8e29caa41d18dea7974bc01ab">teo::Map::iteratorNext()</a>, <a class="el" href="map_8c.html#a42654401a55f5931e03a1bf9fa558075">teoMapForeach()</a>, <a class="el" href="map_8c.html#adf927c79538c5af296df2f422235b11c">teoMapGetFirst()</a>, and <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
 
 </div>
 </div>
@@ -709,7 +709,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to map element data teoMapValueData </dd></dl>
 
-<p>References <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8c.html#a40d03bd40764f4fabe6e9eddf978522e">teoQueueIteratorPrev()</a>, <a class="el" href="queue_8c.html#a5bd8e6391e14c2b6a8574a7c6c3567d6">teoQueueIteratorReset()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
+<p>References <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8h.html#a40d03bd40764f4fabe6e9eddf978522e">teoQueueIteratorPrev()</a>, <a class="el" href="queue_8h.html#a5bd8e6391e14c2b6a8574a7c6c3567d6">teoQueueIteratorReset()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
 
 <p>Referenced by <a class="el" href="classteo_1_1Map.html#adfce9d30b679e324e13afb2688360927">teo::Map::iterator_prev()</a>.</p>
 
@@ -738,7 +738,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to <a class="el" href="structteoMapIterator.html">teoMapIterator</a> or NULL at memory allocate error </dd></dl>
 
-<p>References <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8c.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
+<p>References <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapIterator.html#a4aaf6b698c8a05fdbb65041e7a3d5cfc">teoMapIterator::idx</a>, <a class="el" href="structteoMapIterator.html#a318a17040110a632991ce843afbef343">teoMapIterator::it</a>, <a class="el" href="structteoMapIterator.html#ab730183f80cf64e3fe8a7184f63bb199">teoMapIterator::map</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="queue_8h.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="structteoMapIterator.html#a69101f4118a5501daa03d5557136af41">teoMapIterator::tmv</a>.</p>
 
 <p>Referenced by <a class="el" href="classteo_1_1Map.html#ada52701a06c711a676faf3c2731ff98b">teo::Map::iteratorReverse()</a>.</p>
 
@@ -786,9 +786,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to teoMapData </dd></dl>
 
-<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3">teoMap::collisions</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c">teoQueueData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="map_8c.html#a036cc64a6c19b13adf1cb11dd093b049">teoMapAdd()</a>, <a class="el" href="map_8c.html#aea144b75b436ea1175902b08e81df7c7">teoMapIteratorFree()</a>, <a class="el" href="map_8c.html#ad8fa845308138da14714a96b2a3c9c57">teoMapIteratorNew()</a>, <a class="el" href="map_8c.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>, <a class="el" href="queue_8c.html#a8a650ba606f226b0f6c9146a99c8cae6">teoQueueFree()</a>, <a class="el" href="queue_8c.html#aefd0cc7ecfb0b2bf19ca82ed13319bd0">teoQueueNew()</a>, <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>, and <a class="el" href="queue_8c.html#ad0c530b0f85324680e5cfa429440c5a3">teoQueuePut()</a>.</p>
+<p>References <a class="el" href="structteoMap.html#a17e252cba8b65dab1d6b017516b6cba4">teoMap::auto_resize_f</a>, <a class="el" href="structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3">teoMap::collisions</a>, <a class="el" href="structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656">teoQueueData::data</a>, <a class="el" href="structteoMapElementData.html#ae6b1783ae81dc887e430c6f67f9b4cd0">teoMapElementData::data</a>, <a class="el" href="structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c">teoQueueData::data_length</a>, <a class="el" href="structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7">teoMapElementData::hash</a>, <a class="el" href="structteoMap.html#ad1547539204aec4561bb236f6f51f68e">teoMap::hash_map_size</a>, <a class="el" href="structteoMapElementData.html#a409cc4a20eeb26bc45a531f2d281ece1">teoMapElementData::key_length</a>, <a class="el" href="structteoMap.html#ac592abd2ce7211665c45b2b3c1dc9db3">teoMap::length</a>, <a class="el" href="structteoQueueData.html#aa931576e38893f36d357e99e506dedd7">teoQueueData::next</a>, <a class="el" href="structteoQueueData.html#a925559178212df7edcd2466274419ba2">teoQueueData::prev</a>, <a class="el" href="structteoMap.html#a450a238feef14ae3313271e6e76ebefd">teoMap::q</a>, <a class="el" href="map_8c.html#a036cc64a6c19b13adf1cb11dd093b049">teoMapAdd()</a>, <a class="el" href="map_8c.html#aea144b75b436ea1175902b08e81df7c7">teoMapIteratorFree()</a>, <a class="el" href="map_8c.html#ad8fa845308138da14714a96b2a3c9c57">teoMapIteratorNew()</a>, <a class="el" href="map_8c.html#a3660c29d9513368373399a3a772bf3aa">teoMapIteratorNext()</a>, <a class="el" href="queue_8h.html#a8a650ba606f226b0f6c9146a99c8cae6">teoQueueFree()</a>, <a class="el" href="queue_8h.html#aefd0cc7ecfb0b2bf19ca82ed13319bd0">teoQueueNew()</a>, <a class="el" href="queue_8h.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>, and <a class="el" href="queue_8h.html#ad0c530b0f85324680e5cfa429440c5a3">teoQueuePut()</a>.</p>
 
-<p>Referenced by <a class="el" href="classteo_1_1Map.html#afd83f648e8dc71cce74bea7c3f4373ed">teo::Map::Map()</a>, and <a class="el" href="map_8h.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>.</p>
+<p>Referenced by <a class="el" href="classteo_1_1Map.html#afd83f648e8dc71cce74bea7c3f4373ed">teo::Map::Map()</a>.</p>
 
 </div>
 </div>
@@ -826,8 +826,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="map_8h.html">map.h</a></li>
-    <li class="footer">Generated on Mon Jul 1 2019 14:14:28 for TeoCCl library by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_ac2b67dfc92b7019ac9288bcbbe1b08c.html">teoccl</a></li><li class="navelem"><a class="el" href="map_8h.html">map.h</a></li>
+    <li class="footer">Generated on Fri Sep 6 2019 15:26:30 for TeoCCl library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

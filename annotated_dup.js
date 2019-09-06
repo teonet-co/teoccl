@@ -1,7 +1,7 @@
 var annotated_dup =
 [
     [ "teo", "namespaceteo.html", "namespaceteo" ],
-    [ "teoArrayList", "structteoArrayList.html", "structteoArrayList" ],
+    [ "ccl_array_list", "structccl__array__list.html", "structccl__array__list" ],
     [ "teoMap", "structteoMap.html", "structteoMap" ],
     [ "teoMapElementData", "structteoMapElementData.html", "structteoMapElementData" ],
     [ "teoMapIterator", "structteoMapIterator.html", "structteoMapIterator" ],

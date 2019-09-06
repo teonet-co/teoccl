@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['iterator',['iterator',['../classteo_1_1Map.html#a5e97ab2446187a7622feb03c756742d2',1,'teo::Map::iterator()'],['../classteo_1_1Queue.html#ae5ccdb845880415fceea5d4f89718979',1,'teo::Queue::iterator()']]],
-  ['iterator_5fprev',['iterator_prev',['../classteo_1_1Map.html#adfce9d30b679e324e13afb2688360927',1,'teo::Map']]],
-  ['iteratorelement',['iteratorElement',['../classteo_1_1Queue.html#af128e5df5744c4a7791a765431b8bf63',1,'teo::Queue::iteratorElement(teoQueueIterator *it)'],['../classteo_1_1Queue.html#a238090661c494cd60bda6bc331775837',1,'teo::Queue::iteratorElement(teoQueueIterator *it, Queue *q=NULL)']]],
-  ['iteratorfree',['iteratorFree',['../classteo_1_1Map.html#a729b17d99b3fad9d1aef33b745b9d586',1,'teo::Map::iteratorFree()'],['../classteo_1_1Queue.html#ab24af2162b1d9c1fac1d77da205e1c43',1,'teo::Queue::iteratorFree()']]],
-  ['iteratornext',['iteratorNext',['../classteo_1_1Map.html#ab41175b8e29caa41d18dea7974bc01ab',1,'teo::Map::iteratorNext()'],['../classteo_1_1Queue.html#afa868bc0b32f4cc5dc638976a95ebfdf',1,'teo::Queue::iteratorNext()']]],
-  ['iteratorprev',['iteratorPrev',['../classteo_1_1Queue.html#a74a6e09b83ec3514eb7882d3dca98fcf',1,'teo::Queue']]],
-  ['iteratorreverse',['iteratorReverse',['../classteo_1_1Map.html#ada52701a06c711a676faf3c2731ff98b',1,'teo::Map']]]
+  ['get',['get',['../classteo_1_1Map.html#a38c808eeec34a2d275acfe4ab619478c',1,'teo::Map::get(void *key, size_t key_length, size_t *data_length)'],['../classteo_1_1Map.html#a8b0f53e5fa265dc944111f06c86e5635',1,'teo::Map::get(const std::string &amp;key, size_t *data_length)'],['../classteo_1_1Map.html#afa950cbe7342a6f148d1d934d5b3ebc1',1,'teo::Map::get(const K &amp;key, size_t *data_length)']]],
+  ['getdata',['getData',['../classteo_1_1Queue.html#a98709192c7047530df05e3889e779dae',1,'teo::Queue']]],
+  ['getfirst',['getFirst',['../classteo_1_1Map.html#aa050a99d30c9f446c753877198614141',1,'teo::Map']]]
 ];
