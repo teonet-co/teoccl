@@ -6,15 +6,17 @@ AM_CPPFLAGS = \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" $(TRUDP_CFLAGS)
 
 AM_CFLAGS = \
-	 -g -Wall \
-	 -I../include \
-	 -std=gnu99
+	-g -Wall \
+	-std=gnu11 \
+	-I../include
 
 AM_CXX = clang++
 AM_CXXFLAGS = \
-         -g -Wall \
-	 -I../include \
-	 -std=c++11
+	-g -Wall \
+	-std=c++14 \
+	-I../include \
+	-std=c++14
+
 
 ## Debug info
 if DEBUG

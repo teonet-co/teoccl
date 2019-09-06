@@ -19,9 +19,9 @@ AM_CFLAGS = \
 AM_CXX = clang++
 AM_CXXFLAGS = \
 	-g -Wall \
-	-std=c++11 \
-	-I../include \
-	-fPIC
+	-std=c++14 \
+	-fPIC \
+	-I../include
 
 ## Debug info
 if DEBUG
@@ -64,6 +64,9 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/que.h \
 	../include/teoccl/stack.h \
 	../include/teoccl/teoccl.hpp
-libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_MAJOR_VERSION):0:0
+
+
+libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)
+
 
 libteoccl_la_LIBADD = $(TEOCCL_LIBS)
