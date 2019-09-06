@@ -29,6 +29,9 @@ int queSuiteAdd();
 int mapSuiteAdd();
 int listSuiteAdd();
 int stackSuiteAdd();
+int arrayListSuiteAdd();
+int linkedListSuiteAdd();
+
 
 int main() {
     
@@ -45,6 +48,8 @@ int main() {
     mapSuiteAdd();
     listSuiteAdd();
     stackSuiteAdd();
+    arrayListSuiteAdd();
+    linkedListSuiteAdd();
 
    /* Run all tests using the CUnit Basic interface */
     CU_basic_set_mode(CU_BRM_VERBOSE);

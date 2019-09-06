@@ -38,6 +38,7 @@ LIBS =
 
 lib_LTLIBRARIES = libteoccl.la
 
+
 libteoccl_la_SOURCES = \
 	teoccl/memory.c \
 	teoccl/queue.c \
@@ -63,7 +64,7 @@ nobase_libteocclinclude_HEADERS = \
 	../include/teoccl/deque.h \
 	../include/teoccl/que.h \
 	../include/teoccl/stack.h \
-	../include/teoccl/teoccl.hpp
+	teoccl/teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)
 
