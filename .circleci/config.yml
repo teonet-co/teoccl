@@ -218,7 +218,7 @@ workflows:
       - testing:
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
               ignore: /^v.*/
 
@@ -228,7 +228,7 @@ workflows:
             - testing
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
               ignore: /^v.*/
 
@@ -238,7 +238,7 @@ workflows:
             - publish-ubuntu
           filters:
             branches:
-              only: master
+              ignore: /.*/
             tags:
               ignore: /^v.*/
 
