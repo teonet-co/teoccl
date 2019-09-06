@@ -215,7 +215,7 @@ workflows:
   version: 2  
   un-tagged:
     jobs: 
-     - testing
+      - testing
       - publish-ubuntu:
           context: CI_BUILD
           requires:
