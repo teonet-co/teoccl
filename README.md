@@ -9,7 +9,8 @@
 <p align="center">
 <a href="https://circleci.com/gh/teonet-co/workflows/teoccl"><img src="https://img.shields.io/circleci/build/github/teonet-co/teoccl.svg?label=circleci" alt="CircleCI Status" /></a>
 <a href="https://teonet-co.github.io/teoccl/"><img src="https://codedocs.xyz/teonet-co/teoccl.svg" alt="Docs Status" /></a>
-<a href='https://bintray.com/teonet-co/u/libteoccl0/_latestVersion'><img src='https://api.bintray.com/packages/teonet-co/u/libteoccl0/images/download.svg'></a>
+<a href='https://bintray.com/teonet-co/u/libteoccl0/_latestVersion'><img src='https://img.shields.io/badge/dynamic/json.svg?label=bintray%20deb&query=name&style=flat-square&url=https%3A%2F%2Fapi.bintray.com%2Fpackages%2Fteonet-co%2Fu%2Flibteoccl0%2Fversions%2F_latest'></a>
+    
 </p>
 
 
