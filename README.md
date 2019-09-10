@@ -1,13 +1,23 @@
-# Teonet (CCL) C Containers Library
+<h1 align="center">teoccl - c library of containers data structs and algorithms</h1>
+
+<p align="center">
+<a href="https://www.codacy.com/manual/angelskieglazki/teoccl?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=teonet-co/teoccl&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/c7cb5f48aa82488c87c1d301fe5c30b7"/></a>
+<a href="https://www.codefactor.io/repository/github/teonet-co/teoccl"><img src="https://www.codefactor.io/repository/github/teonet-co/teoccl/badge" alt="CodeFactor" /></a>
+<a href="https://github.com/teonet-co/teoccl/blob/master/COPYING"><img src="https://img.shields.io/badge/license-MIT-orange" alt="License" /></a>
+</p>
+
+<p align="center">
+<a href="https://circleci.com/gh/teonet-co/workflows/teoccl"><img src="https://img.shields.io/circleci/build/github/teonet-co/teoccl.svg?label=circleci" alt="CircleCI Status" /></a>
+<a href="https://teonet-co.github.io/teoccl/"><img src="https://codedocs.xyz/teonet-co/teoccl.svg" alt="Docs Status" /></a>
+<a href='https://bintray.com/teonet-co/u/libteoccl0/_latestVersion'><img src='https://api.bintray.com/packages/teonet-co/u/libteoccl0/images/download.svg'></a>
+</p>
+
 
 ## 1. Description
 
 The Teonet CCL is a library processed basic containers at C language. The Map and Queue containers are used in [Teonet TR-UDP Library](https://github.com/teonet-co/teonet/wikis/tr-udp).
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/acb5567bad3244f09e96575cf3319516)](https://app.codacy.com/app/angelskieglazki/teoccl?utm_source=github.com&utm_medium=referral&utm_content=teonet-co/teoccl&utm_campaign=Badge_Grade_Dashboard)
-[![CircleCI](https://circleci.com/gh/teonet-co/teonet.svg?style=svg&circle-token=d8827ba514cdb37c75565c8e8d7ebd275a0bc167)](https://circleci.com/gh/teonet-co/teoccl)
-[![Documentation](https://codedocs.xyz/teonet-co/teoccl.svg)](https://teonet-co.github.io/teoccl/)
-[![Download](https://api.bintray.com/packages/teonet-co/u/libteoccl0/images/download.svg)](https://bintray.com/teonet-co/u/libteoccl0/_latestVersion)
+
 
 
 ## 2. Installation from sources
