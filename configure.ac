@@ -19,8 +19,16 @@ m4_define([library_minor], [1]) dnl
 m4_define([library_patch], [2]) dnl
 m4_define([library_version], [library_major[.]library_minor[.]library_patch]) dnl
 
+# API version
+m4_define([api_version],[0])
+
 AC_PREREQ([2.69])
 AC_INIT([libteoccl0], [library_version], [Kirill Scherba <kirill@scherba.ru>, Max Ponka <mpano91@gmail.com>])
+
+PKG_PROG_PKG_CONFIG
+PKG_INSTALLDIR
+
+AC_DEFINE_SUBST(API_VERSION, [api_version], [api version])
 
 AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
 AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
@@ -251,7 +259,7 @@ LT_INIT
 AC_CONFIG_FILES([
     Makefile
     po/Makefile.in
-    src/libteoccl.pc
+    src/libteoccl-$API_VERSION.pc:src/libteoccl.pc.in
     src/Makefile
     ci-build/Makefile
     tests/Makefile
