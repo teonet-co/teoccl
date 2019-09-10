@@ -30,7 +30,6 @@ AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, [library_major], [pack ver])
 AC_DEFINE_SUBST(LIBRARY_MINOR_VERSION, [library_minor], [pack ver])
 AC_DEFINE_SUBST(LIBRARY_PATCH_VERSION, [library_patch], [pack ver])
 
-
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teonet (CCL) C Containers Library"], [Application description])
 AC_DEFINE([PACKAGE_DEPENDENCIES], [""], [Application dependencies])
 AC_DEFINE([LICENSES], ["[[\"MIT\",\"LGPL-3.0\"]]"], [Application package licenses])
