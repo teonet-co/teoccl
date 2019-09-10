@@ -1,5 +1,7 @@
 var NAVTREEINDEX2 =
 {
+"structteoQueueData.html":[4,0,6],
+"structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c":[4,0,6,1],
 "structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656":[4,0,6,0],
 "structteoQueueData.html#a925559178212df7edcd2466274419ba2":[4,0,6,3],
 "structteoQueueData.html#aa931576e38893f36d357e99e506dedd7":[4,0,6,2],
