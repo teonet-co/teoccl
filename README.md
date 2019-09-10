@@ -7,7 +7,7 @@ The Teonet CCL is a library processed basic containers at C language. The Map an
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/acb5567bad3244f09e96575cf3319516)](https://app.codacy.com/app/angelskieglazki/teoccl?utm_source=github.com&utm_medium=referral&utm_content=teonet-co/teoccl&utm_campaign=Badge_Grade_Dashboard)
 [![CircleCI](https://circleci.com/gh/teonet-co/teonet.svg?style=svg&circle-token=d8827ba514cdb37c75565c8e8d7ebd275a0bc167)](https://circleci.com/gh/teonet-co/teoccl)
 [![Documentation](https://codedocs.xyz/teonet-co/teoccl.svg)](https://teonet-co.github.io/teoccl/)
-[![Download](https://api.bintray.com/packages/teonet-co/u/libteoccl/images/download.svg)](https://bintray.com/teonet-co/u/libteoccl/_latestVersion)
+[![Download](https://api.bintray.com/packages/teonet-co/u/libteoccl/images/download.svg)](https://bintray.com/teonet-co/u/libteoccl0/_latestVersion)
 
 
 ## 2. Installation from sources
