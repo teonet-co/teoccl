@@ -38,6 +38,8 @@ endif
 
 SUBDIRS = src po tests ci-build
 
+pkgconfig_DATA = src/libteoccl-$(API_VERSION).pc
+
 teoccldocdir = ${prefix}/doc/@PACKAGE@
 teoccldoc_DATA = \
 	README\
