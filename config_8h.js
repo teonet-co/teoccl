@@ -5,6 +5,7 @@ var config_8h =
     [ "_GNU_SOURCE", "config_8h.html#a369266c24eacffb87046522897a570d5", null ],
     [ "_POSIX_PTHREAD_SEMANTICS", "config_8h.html#ad44924736167f82a10ae2891fc98a608", null ],
     [ "_TANDEM_SOURCE", "config_8h.html#aca41d2cbf86c3393115fc92f87289dff", null ],
+    [ "API_VERSION", "config_8h.html#ad97188edfdd667de971027b35330fa41", null ],
     [ "COPYRIGHT", "config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194", null ],
     [ "ENABLE_NLS", "config_8h.html#a7cc70673e1bfa2cbbc58f1733a8aa344", null ],
     [ "GETTEXT_PACKAGE", "config_8h.html#ab23870bd5469d09c183b5a4e89efd81d", null ],
