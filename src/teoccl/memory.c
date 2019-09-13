@@ -33,8 +33,7 @@ void *ccl_malloc(size_t size)
 
 void *ccl_calloc(size_t size)
 {
-    void *memory = NULL;
-    memory = ccl_malloc(size);
+    void *memory = ccl_malloc(size);
     memset(memory, 0, size);
 
     return memory;
