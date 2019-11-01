@@ -14,13 +14,29 @@ AC_SUBST([$1], ['$2'])
 ])
 # END
 
+m4_define([library_major], [0]) dnl
+m4_define([library_minor], [1]) dnl
+m4_define([library_patch], [3]) dnl
+m4_define([library_version], [library_major[.]library_minor[.]library_patch]) dnl
+
+# API version
+m4_define([api_version],[0])
+
 AC_PREREQ([2.69])
-AC_INIT([teoccl], [0.1.1], [Kirill Scherba <kirill@scherba.ru>, Max Ponka <mpano91@gmail.com>])
+AC_INIT([libteoccl0], [library_version], [Kirill Scherba <kirill@scherba.ru>, Max Ponka <mpano91@gmail.com>])
+
+PKG_PROG_PKG_CONFIG
+PKG_INSTALLDIR
+
+AC_DEFINE_SUBST(API_VERSION, [api_version], [api version])
 
 AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
 AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
 AC_DEFINE_SUBST(LIBRARY_AGE,      1, [teoccl dynamic library version])
 
+AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, [library_major], [pack ver])
+AC_DEFINE_SUBST(LIBRARY_MINOR_VERSION, [library_minor], [pack ver])
+AC_DEFINE_SUBST(LIBRARY_PATCH_VERSION, [library_patch], [pack ver])
 
 AC_DEFINE([PACKAGE_DESCRIPTION], ["Teonet (CCL) C Containers Library"], [Application description])
 AC_DEFINE([PACKAGE_DEPENDENCIES], [""], [Application dependencies])
@@ -28,7 +44,7 @@ AC_DEFINE([LICENSES], ["[[\"MIT\",\"LGPL-3.0\"]]"], [Application package license
 AC_DEFINE([VCS_URL], ["https://github.com/teonet-co/teoccl.git"], [Git URL])
 AC_DEFINE(COPYRIGHT, ["(c) Kirsoft Inc., 1996-2019"], [Teoccl library copyright])
 
-AC_PREFIX_DEFAULT([/usr])
+
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([src/teoccl/queue.c])
 AC_CONFIG_MACRO_DIR([m4])
@@ -243,9 +259,12 @@ LT_INIT
 AC_CONFIG_FILES([
     Makefile
     po/Makefile.in
-    src/libteoccl.pc
+    src/libteoccl-$API_VERSION.pc:src/libteoccl.pc.in
     src/Makefile
+    ci-build/Makefile
     tests/Makefile
 ])
 
 AC_OUTPUT
+
+

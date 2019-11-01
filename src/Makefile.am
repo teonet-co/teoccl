@@ -38,21 +38,34 @@ LIBS =
 
 lib_LTLIBRARIES = libteoccl.la
 
+
 libteoccl_la_SOURCES = \
+	teoccl/memory.c \
 	teoccl/queue.c \
 	teoccl/hash.c \
 	teoccl/map.c \
-	teoccl/array_list.c
+	teoccl/list.c \
+	teoccl/array_list.c \
+	teoccl/linked_list.c \
+	teoccl/deque.c \
+	teoccl/que.c \
+	teoccl/stack.c
 
 libteocclincludedir=$(includedir)/teoccl
 
 libteocclinclude_HEADERS = \
+	../include/teoccl/memory.h \
+	../include/teoccl/list.h \
 	../include/teoccl/hash.h \
 	../include/teoccl/array_list.h \
+	../include/teoccl/linked_list.h \
 	../include/teoccl/map.h \
 	../include/teoccl/map.hpp \
 	../include/teoccl/queue.h \
 	../include/teoccl/queue.hpp \
+	../include/teoccl/deque.h \
+	../include/teoccl/que.h \
+	../include/teoccl/stack.h \
 	teoccl/teoccl.hpp
 
 libteoccl_la_LDFLAGS = $(AM_LDFLAGS) -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)

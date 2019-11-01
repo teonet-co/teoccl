@@ -51,6 +51,8 @@
 .deps
 /examples/*.o
 /tests/*.o
+/src/teoccl/.libs/*.o
+src/teoccl/*.o
 /src/**/*.lo
 /src/**/*.o
 /src/**/*.la
@@ -67,3 +69,9 @@ libteoccl*.deb
 /doc-pak/
 /backup-*-pre-libteoccl\.tgz
 /description-pak
+src/teoccl/.dirstamp
+ci-build/Makefile
+ci-build/Makefile.in
+ci-build/make_package.o
+INSTALL
+ci-build/make_package

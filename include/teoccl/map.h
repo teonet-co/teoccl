@@ -42,7 +42,7 @@
 extern "C" {
 #endif
 
-#define HASH_TABLE_SIZE 100
+#define HASH_TABLE_SIZE 127
 #define HASH_TABLE_INITVAL 77557755
 
 typedef struct teoMap {

@@ -33,8 +33,8 @@
  * Created on Fri Jun  1 17:01:30 2018
  */
 
-#ifndef LIST_H
-#define LIST_H
+#ifndef ARRAY_LIST_H
+#define ARRAY_LIST_H
 
 #ifdef __cplusplus
 extern "C" {
