@@ -16,7 +16,7 @@ AC_SUBST([$1], ['$2'])
 
 m4_define([library_major], [0]) dnl
 m4_define([library_minor], [1]) dnl
-m4_define([library_patch], [2]) dnl
+m4_define([library_patch], [3]) dnl
 m4_define([library_version], [library_major[.]library_minor[.]library_patch]) dnl
 
 # API version
