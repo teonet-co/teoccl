@@ -99,7 +99,6 @@ var searchData=
   ['cclstacksize',['cclStackSize',['../stack_8h.html#a851cc09008d5a96771ec7d44917018a7',1,'cclStackSize(ccl_stack_t *s):&#160;stack.c'],['../stack_8c.html#a851cc09008d5a96771ec7d44917018a7',1,'cclStackSize(ccl_stack_t *s):&#160;stack.c']]],
   ['cclstacktop',['cclStackTop',['../stack_8h.html#a48712d28a465e6cb666301b15371b0df',1,'cclStackTop(ccl_stack_t *s, void *data):&#160;stack.c'],['../stack_8c.html#a48712d28a465e6cb666301b15371b0df',1,'cclStackTop(ccl_stack_t *s, void *data):&#160;stack.c']]],
   ['cclstacktrim',['cclStackTrim',['../stack_8h.html#acc2f17be7f52ec97a88e0d5255da1ee4',1,'cclStackTrim(ccl_stack_t *s):&#160;stack.c'],['../stack_8c.html#acc2f17be7f52ec97a88e0d5255da1ee4',1,'cclStackTrim(ccl_stack_t *s):&#160;stack.c']]],
-  ['chik_5fchirik',['chik_chirik',['../hash_8h.html#afa1bcf26e5907cc5aee53c9c34c37f4f',1,'chik_chirik():&#160;hash.c'],['../hash_8c.html#afa1bcf26e5907cc5aee53c9c34c37f4f',1,'chik_chirik():&#160;hash.c']]],
   ['collisions',['collisions',['../structteoMap.html#a1a0530d01f5988a835ef3dcec54cb8b3',1,'teoMap']]],
   ['config_2eh',['config.h',['../config_8h.html',1,'']]],
   ['copyright',['COPYRIGHT',['../config_8h.html#a6247bc79b0a606bddbf5a90fc3a03194',1,'config.h']]]

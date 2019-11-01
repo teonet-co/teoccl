@@ -1,7 +1,6 @@
 var searchData=
 [
   ['teonet_20ccl_20documentation_2e',['Teonet CCL Documentation.',['../index.html',1,'']]],
-  ['teonet_20_28ccl_29_20c_20containers_20library',['Teonet (CCL) C Containers Library',['../md_README.html',1,'']]],
   ['teo',['teo',['../namespaceteo.html',1,'']]],
   ['teo_5ffree',['TEO_FREE',['../array__list_8c.html#ab512f280a1d3185440b6911cb67c7539',1,'array_list.c']]],
   ['teoccl_2ehpp',['teoccl.hpp',['../teoccl_8hpp.html',1,'']]],
