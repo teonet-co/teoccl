@@ -19,7 +19,7 @@ jobs:
       - run: git submodule update --init --recursive
 
       # Install dependences
-      - run: if [ -e tools/build-ubuntu.sh ]; then apt-get install -y sudo && tools/build-ubuntu.sh; fi
+      - run: tools/build-ubuntu.sh
 
       # Make
       - run: ./autogen.sh
