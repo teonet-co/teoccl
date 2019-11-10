@@ -10,7 +10,7 @@
 
 # Include make deb functions
 # PWD=`pwd`
-. "$PWD/ci-build/make_inc.sh"
+. "$PWD/tools/make_inc.sh"
 
 # Function ---------------------------------------------------------------------
 
