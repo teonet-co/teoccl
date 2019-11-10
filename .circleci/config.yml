@@ -220,7 +220,7 @@ workflows:
   version: 2  
   un-tagged:
     jobs: 
-      - testing
+      - build-ubuntu-clear
   tagged:
     jobs: 
       - publish-ubuntu:
