@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = libteoccl.la
 
-AM_CFLAGS = -fPIC
+AM_CFLAGS = -fPIC -Wpointer-arith
 
 libteoccl_la_SOURCES = \
 	teoccl/memory.c \
