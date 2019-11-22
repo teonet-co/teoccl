@@ -15,6 +15,8 @@ endif
 
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = src tools tests
+
+pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = src/libteoccl-$(API_VERSION).pc
 
 
