@@ -34,14 +34,14 @@ void queue_create_test() {
  * Add elements to Teo queue test
  */
 void add_elements_to_queue() {
-    
+
     #undef NO_MESSAGES
     #define NO_MESSAGES 1
-    
+
     // Create new queue
     teoQueue *q = teoQueueNew();
     CU_ASSERT_PTR_NOT_NULL_FATAL(q);
-    
+
     int i;
     teoQueueData *qd, *qd2;
     size_t data_length;
@@ -49,7 +49,7 @@ void add_elements_to_queue() {
     const char *data_format = "Hello-%u!";
     size_t data_buf_length = strlen(data_format) + 1 + 10;
     char data[num_elements][data_buf_length];
-    
+
     // Add elements to queue
     #if !NO_MESSAGES
     printf("\n");
@@ -61,7 +61,7 @@ void add_elements_to_queue() {
         data_length = strlen(data[i]) + 1;
         qd = teoQueueAdd(q, (void*)data[i], data_length);
         #if !NO_MESSAGES
-        printf("      data_length: %u, pointer: %p, data: %s\n", 
+        printf("      data_length: %u, pointer: %p, data: %s\n",
                 (unsigned long)data_length, data[i], data[i]);
         #endif
         CU_ASSERT(q->length); // length not null
@@ -76,14 +76,14 @@ void add_elements_to_queue() {
         CU_ASSERT_EQUAL_FATAL(data_length, qd->data_length);
         CU_ASSERT_EQUAL_FATAL(teoQueueSize(q), i+1);
     }
-    
+
     // Loop through all queue elements
     #if !NO_MESSAGES
     printf("    Retrieve %d elements from Queue:\n", (unsigned long)num_elements);
     #endif
     i = 0;
     qd = q->first;
-    while(qd) {      
+    while(qd) {
         #if !NO_MESSAGES
         printf("      qd->data: \"%s\", data[i]: \"%s\"\n", qd->data, data[i]);
         #endif
@@ -103,7 +103,7 @@ void add_elements_to_queue() {
     CU_ASSERT(q->first == qd2);
     CU_ASSERT(q->first->prev == NULL);
     CU_ASSERT(q->length == num_elements);
-    
+
     // Move last element to the top of queue
     qd = q->last;
     qd2 = qd->prev;
@@ -113,7 +113,7 @@ void add_elements_to_queue() {
     CU_ASSERT(q->first == qd);
     CU_ASSERT(q->first->prev == NULL);
     CU_ASSERT(q->length == num_elements);
-    
+
     // Update first element
     char *tst_str = "12345";
     teoQueueUpdate(q, tst_str, 6, q->first);
@@ -127,43 +127,43 @@ void add_elements_to_queue() {
     // Update last element
     teoQueueUpdate(q, tst_str, 6, q->last);
     CU_ASSERT_STRING_EQUAL(q->last->data, tst_str);
-    
+
     // Delete first
     qd = q->first->next;
     teoQueueDeleteFirst(q);
     CU_ASSERT(q->length == num_elements-1);
     CU_ASSERT(q->first->prev == NULL);
     CU_ASSERT(qd == q->first);
-    
+
     // Delete last
     qd = q->last->prev;
     teoQueueDeleteLast(q);
     CU_ASSERT(q->length == num_elements-2);
     CU_ASSERT(q->last->next == NULL);
     CU_ASSERT(qd == q->last);
-    
+
     // Delete all by deleting first
     while(!teoQueueDeleteFirst(q));
     CU_ASSERT(!q->length);
     CU_ASSERT(!q->first && !q->last);
-    
+
     // Destroy queue
     int rv = teoQueueDestroy(q);
-    CU_ASSERT(!rv);    
+    CU_ASSERT(!rv);
 }
 
 /**
  * Check Queue iterator
  */
 void check_queue_iterator() {
-    
+
     #undef NO_MESSAGES
     #define NO_MESSAGES 1
-    
+
     // Create new queue
     teoQueue *q = teoQueueNew();
     CU_ASSERT_PTR_NOT_NULL_FATAL(q);
-    
+
     int i;
     teoQueueData *qd;
     size_t data_length;
@@ -171,19 +171,19 @@ void check_queue_iterator() {
     const char *data_format = "Hello-%u!";
     size_t data_buf_length = strlen(data_format) + 1 + 10;
     char data[num][data_buf_length];
-    
+
     // Add elements to queue
     #if !NO_MESSAGES
     printf("\n");
     printf("    Add %d elements to Queue:\n", (unsigned long)num);
-    #endif    
+    #endif
     for(i = 0; i < num; i++) {
         //char *data = "Hello-1!";
         snprintf(data[i], data_buf_length, data_format, i+1);
         data_length = strlen(data[i]) + 1;
         qd = teoQueueAdd(q, (void*)data[i], data_length);
         #if !NO_MESSAGES
-        printf("      data_length: %u, pointer: %p, data: %s\n", 
+        printf("      data_length: %u, pointer: %p, data: %s\n",
                 (unsigned long)data_length, data[i], data[i]);
         #endif
         CU_ASSERT_PTR_NOT_NULL_FATAL(qd);
@@ -212,21 +212,21 @@ void check_queue_iterator() {
 
     // Destroy queue
     int rv = teoQueueDestroy(q);
-    CU_ASSERT(!rv);    
+    CU_ASSERT(!rv);
 }
 
 /**
  * Delete elements from Teo Queue
  */
 void delete_elements_from_queue() {
-    
+
     #undef NO_MESSAGES
     #define NO_MESSAGES 1
-    
+
     // Create new queue
     teoQueue *q = teoQueueNew();
     CU_ASSERT_PTR_NOT_NULL_FATAL(q);
-    
+
     int i;
     teoQueueData *qd;
     size_t data_length;
@@ -234,19 +234,19 @@ void delete_elements_from_queue() {
     const char *data_format = "Hello-%u!";
     size_t data_buf_length = strlen(data_format) + 1 + 10;
     char data[num][data_buf_length];
-    
+
     // Add elements to queue
     #if !NO_MESSAGES
     printf("\n");
     printf("    Add %d elements to Queue:\n", (unsigned long)num);
-    #endif    
+    #endif
     for(i = 0; i < num; i++) {
         //char *data = "Hello-1!";
         snprintf(data[i], data_buf_length, data_format, i+1);
         data_length = strlen(data[i]) + 1;
         qd = teoQueueAdd(q, (void*)data[i], data_length);
         #if !NO_MESSAGES
-        printf("      data_length: %u, pointer: %p, data: %s\n", 
+        printf("      data_length: %u, pointer: %p, data: %s\n",
                 (unsigned long)data_length, data[i], data[i]);
         #endif
         CU_ASSERT_PTR_NOT_NULL_FATAL(qd);
@@ -254,7 +254,7 @@ void delete_elements_from_queue() {
         CU_ASSERT_EQUAL_FATAL(data_length, qd->data_length);
         CU_ASSERT_EQUAL_FATAL(teoQueueSize(q), i+1);
     }
-    
+
     // Delete elements from queue
     // Retrieve elements from Queue using iterator
     #if !NO_MESSAGES
@@ -265,25 +265,24 @@ void delete_elements_from_queue() {
     struct teoQueueIterator it;
     teoQueueIteratorReset(&it, q);
 
-    #define NEXT next = teoQueueIteratorNext(&it)
-    teoQueueData *NEXT;
+    teoQueueData *next = teoQueueIteratorNext(&it);
     while(next) {
 
         if(i%2) {
             qd = teoQueueIteratorElement(&it);
-            //teoQueueIteratorNext(&it);
+
             #if !NO_MESSAGES
             printf("      delete qd->data: \"%s\"\n", qd->data);
             #endif
             deletedNum++;
-            NEXT;
+            next = teoQueueIteratorNext(&it);
             teoQueueDelete(q, qd);
+        } else {
+            next = teoQueueIteratorNext(&it);
         }
-        else NEXT;
+
         i++;
     }
-
-    #undef NEXT
 
     newNum = teoQueueSize(q);
     #if !NO_MESSAGES
@@ -299,7 +298,7 @@ void delete_elements_from_queue() {
 
     teoQueueIteratorReset(&it, q);
     while(teoQueueIteratorNext(&it)) {
-        
+
         qd = teoQueueIteratorElement(&it);
         #if !NO_MESSAGES
         printf("      qd->data: \"%s\"\n", qd->data);
@@ -308,16 +307,16 @@ void delete_elements_from_queue() {
 
     // Destroy queue
     int rv = teoQueueDestroy(q);
-    CU_ASSERT(!rv);    
+    CU_ASSERT(!rv);
 }
 
 /**
  * Queue suite add
- * 
- * @return 
+ *
+ * @return
  */
 int queueSuiteAdd() {
-    
+
     CU_pSuite pSuite = NULL;
 
     /* Initialize the CUnit test registry */
@@ -336,10 +335,10 @@ int queueSuiteAdd() {
         (NULL == CU_add_test(pSuite, "add elements to queue, move and delete it", add_elements_to_queue)) ||
         (NULL == CU_add_test(pSuite, "check queue iterator", check_queue_iterator)) ||
         (NULL == CU_add_test(pSuite, "delete elements from queue", delete_elements_from_queue)) ) {
-        
+
         CU_cleanup_registry();
         return CU_get_error();
     }
-    
+
     return 0;
 }
