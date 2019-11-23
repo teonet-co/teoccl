@@ -198,18 +198,16 @@ void check_queue_iterator() {
     #endif
 
     i = 0;
-    teoQueueIterator *it = teoQueueIteratorNew(q);
-    if(it != NULL) {
-        
-        while(teoQueueIteratorNext(it)) {
-            
-            qd = teoQueueIteratorElement(it);
-            #if !NO_MESSAGES
-            printf("      qd->data: \"%s\", data[i]: \"%s\"\n", qd->data, data[i]);
-            #endif
-            CU_ASSERT_STRING_EQUAL_FATAL(qd->data, data[i++]);            
-        }
-        teoQueueIteratorFree(it);
+    struct teoQueueIterator it;
+    teoQueueIteratorReset(&it, q);
+
+    while(teoQueueIteratorNext(&it)) {
+
+        qd = teoQueueIteratorElement(&it);
+        #if !NO_MESSAGES
+        printf("      qd->data: \"%s\", data[i]: \"%s\"\n", qd->data, data[i]);
+        #endif
+        CU_ASSERT_STRING_EQUAL_FATAL(qd->data, data[i++]);
     }
 
     // Destroy queue
@@ -264,29 +262,29 @@ void delete_elements_from_queue() {
     #endif
     i = 0;
     size_t newNum, deletedNum = 0;
-    teoQueueIterator *it = teoQueueIteratorNew(q);
-    if(it != NULL) {
-        
-        #define NEXT next = teoQueueIteratorNext(it)
-        teoQueueData *NEXT;
-        while(next) {
-            
-            if(i%2) {
-                qd = teoQueueIteratorElement(it);
-                //teoQueueIteratorNext(it);
-                #if !NO_MESSAGES
-                printf("      delete qd->data: \"%s\"\n", qd->data);
-                #endif
-                deletedNum++;
-                NEXT;
-                teoQueueDelete(q, qd);
-            }
-            else NEXT;
-            i++;
+    struct teoQueueIterator it;
+    teoQueueIteratorReset(&it, q);
+
+    #define NEXT next = teoQueueIteratorNext(&it)
+    teoQueueData *NEXT;
+    while(next) {
+
+        if(i%2) {
+            qd = teoQueueIteratorElement(&it);
+            //teoQueueIteratorNext(&it);
+            #if !NO_MESSAGES
+            printf("      delete qd->data: \"%s\"\n", qd->data);
+            #endif
+            deletedNum++;
+            NEXT;
+            teoQueueDelete(q, qd);
         }
-        teoQueueIteratorFree(it);
-        #undef NEXT
+        else NEXT;
+        i++;
     }
+
+    #undef NEXT
+
     newNum = teoQueueSize(q);
     #if !NO_MESSAGES
     printf("      %u elements deleted from queue\n", (unsigned long)deletedNum);
@@ -298,17 +296,14 @@ void delete_elements_from_queue() {
     #if !NO_MESSAGES
     printf("    Retrieve elements from Queue:\n");
     #endif
-    it = teoQueueIteratorNew(q);
-    if(it != NULL) {
+
+    teoQueueIteratorReset(&it, q);
+    while(teoQueueIteratorNext(&it)) {
         
-        while(teoQueueIteratorNext(it)) {
-            
-            qd = teoQueueIteratorElement(it);
-            #if !NO_MESSAGES
-            printf("      qd->data: \"%s\"\n", qd->data);
-            #endif
-        }
-        teoQueueIteratorFree(it);
+        qd = teoQueueIteratorElement(&it);
+        #if !NO_MESSAGES
+        printf("      qd->data: \"%s\"\n", qd->data);
+        #endif
     }
 
     // Destroy queue
