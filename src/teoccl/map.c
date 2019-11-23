@@ -224,16 +224,17 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
 
     int idx = hash % map->hash_map_size;
     teoMapElementData *htd;
-    teoQueueIterator *it = teoQueueIteratorNew(map->q[idx]);
-    if(it != NULL) {
-      teoQueueData *tqd;
-      while((tqd = teoQueueIteratorNext(it))) {
+    struct teoQueueIterator it;
+    teoQueueIteratorReset(&it, map->q[idx]);
+
+    teoQueueData *tqd;
+    while((tqd = teoQueueIteratorNext(&it))) {
 
         htd = (teoMapElementData *)tqd->data;
         if(htd->hash == hash) {
 
             if(key_length == htd->key_length &&
-               !memcmp(htd->data, key, key_length)) {
+                !memcmp(htd->data, key, key_length)) {
 
                 if(data_length) *data_length = htd->data_length;
                 data = htd->data + htd->key_length;
@@ -241,8 +242,6 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
             }
             else map->collisions++;
         }
-      }
-      teoQueueIteratorFree(it);
     }
 
     return data;

@@ -473,13 +473,11 @@ int teoQueueForeach(teoQueue *q, teoQueueForeachFunction callback,
         void *user_data) {
 
     int i = 0;
-    teoQueueIterator *it = teoQueueIteratorNew(q);
-    if(it != NULL) {
+    struct teoQueueIterator it;
+    teoQueueIteratorReset(&it, q);
 
-        while(teoQueueIteratorNext(it)) {
-            if(callback(q, i++, teoQueueIteratorElement(it), user_data)) break;
-        }
-        teoQueueIteratorFree(it);
+    while(teoQueueIteratorNext(&it)) {
+        if(callback(q, i++, teoQueueIteratorElement(&it), user_data)) break;
     }
 
     return i;
