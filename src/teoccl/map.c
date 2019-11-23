@@ -102,39 +102,37 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
     teoMap *map_new = teoMapNew(size, map->auto_resize_f);
 
     // Loop through existing map and add it elements to new map
-    teoMapIterator *it;
-    if((it = teoMapIteratorNew(map))) {
-        while(teoMapIteratorNext(it)) {
-            teoMapElementData *el = teoMapIteratorElement(it);
+    struct teoMapIterator it;
+    teoMapIteratorReset(&it, map);
 
-            #define _SHOW_RESIZED_MSG_ 0
-            #if _SHOW_RESIZED_MSG_
-            printf("\n #%d hash: %010u, key: %s, value: %s ",
-                   i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
-            #endif
+    while(teoMapIteratorNext(&it)) {
+        teoMapElementData *el = teoMapIteratorElement(&it);
+
+        #define _SHOW_RESIZED_MSG_ 0
+        #if _SHOW_RESIZED_MSG_
+        printf("\n #%d hash: %010u, key: %s, value: %s ",
+                i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
+        #endif
 
 
-            #define _USE_PUT_ 1
-            #if _USE_PUT_
-            int idx = el->hash % map_new->hash_map_size;
-            teoQueueData *qd_new, *qd = _teoMapValueDataToQueueData(el);
-            qd_new = teoQueueNewData(qd->data, qd->data_length);
-            qd_new->prev = qd->prev;
-            qd_new->next = qd->next;
-            teoQueuePut(map_new->q[idx], qd_new);
-            map_new->length++;
-            #else
-            size_t key_length;
-            void *key = teoMapIteratorElementKey(el, &key_length);
-            size_t data_length;
-            void *data = teoMapIteratorElementData(el, &data_length);
-            teoMapAdd(map_new, key, key_length, data, data_length);
-            #endif
+        #define _USE_PUT_ 1
+        #if _USE_PUT_
+        int idx = el->hash % map_new->hash_map_size;
+        teoQueueData *qd_new, *qd = _teoMapValueDataToQueueData(el);
+        qd_new = teoQueueNewData(qd->data, qd->data_length);
+        qd_new->prev = qd->prev;
+        qd_new->next = qd->next;
+        teoQueuePut(map_new->q[idx], qd_new);
+        map_new->length++;
+        #else
+        size_t key_length;
+        void *key = teoMapIteratorElementKey(el, &key_length);
+        size_t data_length;
+        void *data = teoMapIteratorElementData(el, &data_length);
+        teoMapAdd(map_new, key, key_length, data, data_length);
+        #endif
 
-            i++;
-        }
-        // Destroy map iterator
-        teoMapIteratorFree(it);
+        i++;
     }
 
     // Free existing queues and move queues pointer of new map to existing
@@ -260,13 +258,12 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length) {
     void *data = (void*)-1;
     if(data_length) *data_length = 0;
 
-    teoMapIterator *it = teoMapIteratorNew(map);
-    if(it != NULL) {
-        teoMapElementData *el;
-        if((el = teoMapIteratorNext(it))) {
-            data = teoMapIteratorElementData(el, data_length);
-        }
-        teoMapIteratorFree(it);
+    struct teoMapIterator it;
+    teoMapIteratorReset(&it, map);
+
+    teoMapElementData *el;
+    if((el = teoMapIteratorNext(&it))) {
+        data = teoMapIteratorElementData(el, data_length);
     }
 
     return data;
@@ -418,14 +415,25 @@ int teoMapDelete(teoMap *map, void *key, size_t key_length) {
 teoMapIterator *teoMapIteratorNew(teoMap *map) {
 
     teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
+    teoMapIteratorReset(map_it, map);
+
+    return map_it;
+}
+
+/**
+ * Reset map iterator. Binds iterator to map, set forward iteration direction.
+ *
+ * @param map_it Pointer to teoMapIterator
+ * @param map Pointer to teoMapData
+ */
+void teoMapIteratorReset(teoMapIterator *map_it, teoMap *map) {
+
     if(map_it) {
-        map_it->it = teoQueueIteratorNew(map->q[0]);
+        teoQueueIteratorReset(&map_it->it, map->q[0]);
         map_it->idx = 0;
         map_it->map = map;
         map_it->tmv = NULL;
     }
-
-    return map_it;
 }
 
 /**
@@ -437,16 +445,26 @@ teoMapIterator *teoMapIteratorNew(teoMap *map) {
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 
     teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
-    if(map_it) {
-        map_it->it = teoQueueIteratorNew(map->q[map->hash_map_size - 1]);
-        map_it->idx = map->hash_map_size - 1;
-        map_it->map = map;
-        map_it->tmv = NULL;
-    }
+    teoMapIteratorReverseReset(map_it, map);
 
     return map_it;
 }
 
+/**
+ * Reset map iterator. Binds iterator to map, set reverse iteration direction.
+ *
+ * @param map_it Pointer to teoMapIterator
+ * @param map Pointer to teoMapData
+ */
+void teoMapIteratorReverseReset(teoMapIterator *map_it, teoMap *map) {
+
+    if(map_it) {
+        teoQueueIteratorReset(&map_it->it, map->q[map->hash_map_size - 1]);
+        map_it->idx = map->hash_map_size - 1;
+        map_it->map = map;
+        map_it->tmv = NULL;
+    }
+}
 
 /**
  * Destroy map iterator
@@ -457,7 +475,6 @@ teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 int teoMapIteratorFree(teoMapIterator *map_it) {
 
     if(map_it) {
-        teoQueueIteratorFree(map_it->it);
         free(map_it);
     }
 
@@ -477,9 +494,9 @@ teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it) {
     teoQueueData *tqd;
     teoMapElementData *tmv = NULL;
 
-    while(!(tqd = teoQueueIteratorNext(map_it->it))) {
+    while(!(tqd = teoQueueIteratorNext(&map_it->it))) {
         if(++map_it->idx < map_it->map->hash_map_size) {
-            teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
+            teoQueueIteratorReset(&map_it->it, map_it->map->q[map_it->idx]);
         }
         else break;
     }
@@ -506,9 +523,9 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
     teoQueueData *tqd;
     teoMapElementData *tmv = NULL;
 
-    while(!(tqd = teoQueueIteratorPrev(map_it->it))) {
+    while(!(tqd = teoQueueIteratorPrev(&map_it->it))) {
         if(--map_it->idx != UINT32_MAX) {
-            teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
+            teoQueueIteratorReset(&map_it->it, map_it->map->q[map_it->idx]);
         }
         else break;
     }
@@ -530,19 +547,16 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
  *
  * @return Number of elements processed
  */
-int teoMapForeach(teoMap *m, teoMapForeachFunction callback,
+int teoMapForeach(teoMap *map, teoMapForeachFunction callback,
         void *user_data) {
 
     int i = 0;
-    teoMapIterator *it = teoMapIteratorNew(m);
-    if(it != NULL) {
+    struct teoMapIterator it;
+    teoMapIteratorReset(&it, map);
 
-        while(teoMapIteratorNext(it)) {
-            if(callback(m, i++, teoMapIteratorElement(it), user_data)) break;
-        }
-        teoMapIteratorFree(it);
+    while(teoMapIteratorNext(&it)) {
+        if(callback(map, i++, teoMapIteratorElement(&it), user_data)) break;
     }
 
     return i;
 }
-
