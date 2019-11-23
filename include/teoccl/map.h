@@ -68,19 +68,19 @@ typedef struct teoMapIterator {
 
     uint32_t idx;
     teoMap *map;
-    teoQueueIterator *it;
+    teoQueueIterator it;
     teoMapElementData *tmv;
 
 } teoMapIterator;
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  * @param data_length
  *
- * @return 
+ * @return
  */
 void *teoMapGetFirst(teoMap *map, size_t *data_length);
 
@@ -94,17 +94,17 @@ size_t teoMapSize(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param size
  * @param auto_resize_f
  *
- * @return 
+ * @return
  */
 teoMap *teoMapNew(size_t size, int auto_resize_f);
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  */
@@ -112,7 +112,7 @@ void teoMapDestroy(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  */
@@ -120,7 +120,7 @@ void teoMapClear(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  * @param key
@@ -128,7 +128,7 @@ void teoMapClear(teoMap *map);
  * @param data
  * @param data_length
  *
- * @return 
+ * @return
  */
 void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
   size_t data_length);
@@ -181,7 +181,9 @@ inline int teoMapDeleteStr(teoMap *map, const char *key) {
 }
 
 teoMapIterator *teoMapIteratorNew(teoMap *map);
+void teoMapIteratorReset(teoMapIterator *map_it, teoMap *map);
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map);
+void teoMapIteratorReverseReset(teoMapIterator *map_it, teoMap *map);
 int teoMapIteratorFree(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
@@ -231,4 +233,3 @@ int teoMapForeach(teoMap *m, teoMapForeachFunction callback, void *user_data);
 #endif
 
 #endif /* MAP_H */
-

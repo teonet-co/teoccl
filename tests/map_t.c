@@ -29,13 +29,13 @@ long long timeInMilliseconds(void) {
 
 // Check hash function
 void check_hash() {
-    
+
     char *key = "127.0.0.1:8000";
     uint32_t hash = teoHashSuperFast(key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
     hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u ", key, hash);
-    
+
     key = "127.0.0.1:8001";
     hash = teoHashSuperFast(key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
@@ -53,18 +53,18 @@ void check_hash() {
     printf("\n\tHash1 of key %s = %010u ", key, hash);
     hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u \n   ", key, hash);
-    
+
     CU_ASSERT(2 * 2 == 4);
 }
 
 static int randIpOct() {
-    
+
     // 1 - 253
     return (rand() % 253) + 1;
 }
 
 static int randPort() {
-    
+
     // 1000 - 17800
     return ( (rand() % (17800 - 1000)) + 1000);
 }
@@ -73,15 +73,15 @@ static int randPort() {
 char ip_str[BUFFER_LEN];
 
 static char* randIpPort() {
-        
+
     snprintf(ip_str, BUFFER_LEN, "%d.%d.%d.%d:%d", randIpOct(), randIpOct(), randIpOct(), randIpOct(), randPort() );
-    
+
     return ip_str;
 }
 
 // Check hash table. Add and get several records
 void _check_map(const size_t NUM_KEYS) {
-    
+
     int i;
     //const size_t NUM_KEYS = 250000;
 
@@ -90,31 +90,31 @@ void _check_map(const size_t NUM_KEYS) {
     // Create keys and data
     char **key = malloc(sizeof(char*) * NUM_KEYS);
     size_t *key_length = malloc(sizeof(*key_length) * NUM_KEYS);
-    
+
     char **data = malloc(sizeof(char*) * NUM_KEYS);
     size_t *data_length  = malloc(sizeof(*data_length) * NUM_KEYS);
-            
+
     for(i = 0; i < NUM_KEYS; i++) {
-        
+
         char *k = randIpPort();
-        
+
         key[i] = malloc(BUFFER_LEN);
-        key_length[i] = strlen(k) + 1;        
+        key_length[i] = strlen(k) + 1;
         memcpy(key[i], k, key_length[i]);
-        
+
         data[i] = malloc(BUFFER_LEN);
-        data_length[i] = snprintf(data[i], BUFFER_LEN, 
+        data_length[i] = snprintf(data[i], BUFFER_LEN,
                 "Hello Teo ccl hash table - %d!", i) + 1;
-        
+
         //printf("\n %s - \"%s\" ", key[i], data[i]);
     }
-    
+
     // Create new map
     teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
-    
+
     // Add and Get data from map
-    uint64_t t_beg = timeInMilliseconds();    
+    uint64_t t_beg = timeInMilliseconds();
     for(i = 0; i < NUM_KEYS; i++) {
 
         // Add to map
@@ -128,79 +128,74 @@ void _check_map(const size_t NUM_KEYS) {
         CU_ASSERT_STRING_EQUAL(d, data[i]);
     }
     CU_ASSERT_EQUAL(NUM_KEYS, teoMapSize(map));
-    printf("\n\t%d records add/get, time: %.3f ms, number of collisions: %u ", 
+    printf("\n\t%d records add/get, time: %.3f ms, number of collisions: %u ",
             (int)NUM_KEYS, (timeInMilliseconds() - t_beg) / 1000.0, map->collisions );
-    
+
     // Update data of existing key value (add existing key)
     char *data_new = "This is new data for this key ...";
-    size_t data_new_length = strlen(data_new) + 1;    
+    size_t data_new_length = strlen(data_new) + 1;
     // Add to map
-    teoMapAdd(map, key[1], key_length[1], data_new, data_new_length);  
-    
+    teoMapAdd(map, key[1], key_length[1], data_new, data_new_length);
+
     // Get updated key from map
     size_t d_length;
     void *d = teoMapGet(map, key[1], key_length[1], &d_length);
     CU_ASSERT_FATAL(d != (void*)-1);
     CU_ASSERT_EQUAL_FATAL(data_new_length, d_length);
     CU_ASSERT_STRING_EQUAL(d, data_new);
-    
+
     // Delete key from map
     int rv = teoMapDelete(map, key[1], key_length[1]);
     CU_ASSERT(!rv);
     CU_ASSERT_EQUAL(NUM_KEYS - 1, teoMapSize(map));
-    
+
     // Add deleted key
     teoMapAdd(map, key[1], key_length[1], data[1], data_length[1]);
-    
+
     // Loop through map using iterator
     t_beg = timeInMilliseconds();
     // Create normal map iterator
-    teoMapIterator *it = teoMapIteratorNew(map);
-    CU_ASSERT_PTR_NOT_NULL_FATAL(it);
+    struct teoMapIterator it;
+    teoMapIteratorReset(&it, map);
 
     i = 0;
     //printf("\n display %d records by iterator loop: \n", (int)map->length);
-    while(teoMapIteratorNext(it)) {
+    while(teoMapIteratorNext(&it)) {
         i++;
-        teoMapElementData *el = teoMapIteratorElement(it);
+        teoMapElementData *el = teoMapIteratorElement(&it);
         size_t key_lenth;
         /*void *key =*/ teoMapIteratorElementKey(el, &key_lenth);
         size_t data_lenth;
         /*void *data =*/ teoMapIteratorElementData(el, &data_lenth);
-        //printf("\n #%d, idx: %u, hash: %010u, key: %s, data: %s ", 
-        //       i, it->idx, el->hash, (char*)key, (char*)data);        
+        //printf("\n #%d, idx: %u, hash: %010u, key: %s, data: %s ",
+        //       i, &it->idx, el->hash, (char*)key, (char*)data);
     }
     CU_ASSERT(i == map->length);
-    // Destroy map iterator
-    teoMapIteratorFree(it);
 
     // Create reverse map iterator
-    teoMapIterator *it_r = teoMapIteratorReverseNew(map);
-    CU_ASSERT_PTR_NOT_NULL_FATAL(it_r);
+    struct teoMapIterator it_r;
+    teoMapIteratorReverseReset(&it_r, map);
 
     i = map->length+1;
     //printf("\n display %d records by iterator loop: \n", (int)map->length);
-    while(teoMapIteratorPrev(it_r)) {
+    while(teoMapIteratorPrev(&it_r)) {
         i--;
-        teoMapElementData *el = teoMapIteratorElement(it_r);
+        teoMapElementData *el = teoMapIteratorElement(&it_r);
         size_t key_lenth;
         /*void *key =*/ teoMapIteratorElementKey(el, &key_lenth);
         size_t data_lenth;
         /*void *data =*/ teoMapIteratorElementData(el, &data_lenth);
-        //printf("\n #%d, idx: %u, hash: %010u, key: %s, data: %s ", 
-        //       i, it->idx, el->hash, (char*)key, (char*)data);        
+        //printf("\n #%d, idx: %u, hash: %010u, key: %s, data: %s ",
+        //       i, &it_r->idx, el->hash, (char*)key, (char*)data);
     }
     CU_ASSERT(i == 1);
-    // Destroy map iterator
-    teoMapIteratorFree(it_r);
- 
- 
-    printf("\n\t%d records read in iterator loop, time: %.3f ms \n   ", 
+
+    printf("\n\t%d records read in iterator loop, time: %.3f ms \n   ",
             (int)map->length, (timeInMilliseconds() - t_beg) / 1000.0);
-        
+
     // Destroy map
     teoMapDestroy(map);
-    
+
     // Free keys and data
     for(i = 0; i < NUM_KEYS; i++) { free(key[i]); free(data[i]); }
     free(key);
@@ -211,26 +206,26 @@ void _check_map(const size_t NUM_KEYS) {
 
 void check_map() {
     size_t num = 11, mul = 6, num_keys = 3;
-    
+
     for(int i=0; i < num; i++, num_keys = (i < (num + 1)/2 ? num_keys * mul : num_keys / mul ))
         _check_map(num_keys);
 }
 
 // Binary keys check
 void check_binary_key() {
-    
+
     const size_t NUM_KEYS = 20;
-    
+
     // Create new map
     teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
-    
+
     int key = 25;
     int data = 125;
-    
+
     // Add to map
     teoMapAdd(map, &key, sizeof(key) , &data, sizeof(data));
-    
+
     // Get from map
     size_t d_length;
     void *d = teoMapGet(map, &key, sizeof(key), &d_length);
@@ -239,41 +234,41 @@ void check_binary_key() {
     CU_ASSERT_EQUAL(*(int*)d, data);
 
     // Destroy map
-    teoMapDestroy(map);        
+    teoMapDestroy(map);
 }
 
 // Check delete from map
 void check_map_delete() {
-    
+
     int i;
     const size_t NUM_KEYS = 50000;
 
     // Create keys and data
     char **key = malloc(sizeof(char*) * NUM_KEYS);
     size_t *key_length = malloc(sizeof(*key_length) * NUM_KEYS);
-    
+
     char **data = malloc(sizeof(char*) * NUM_KEYS);
     size_t *data_length  = malloc(sizeof(*data_length) * NUM_KEYS);
-            
+
     for(i = 0; i < NUM_KEYS; i++) {
-        
+
         char *k = randIpPort();
-        
+
         key[i] = malloc(BUFFER_LEN);
-        key_length[i] = strlen(k) + 1;        
+        key_length[i] = strlen(k) + 1;
         memcpy(key[i], k, key_length[i]);
-        
+
         data[i] = malloc(BUFFER_LEN);
-        data_length[i] = snprintf(data[i], BUFFER_LEN, 
+        data_length[i] = snprintf(data[i], BUFFER_LEN,
                 "Hello Teo ccl hash table - %d!", i) + 1;
     }
-    
+
     // Create new map
     teoMap *map = teoMapNew(NUM_KEYS, 1);
     CU_ASSERT_PTR_NOT_NULL(map);
-    
+
     // Add and Get data from map
-    uint64_t t_beg = timeInMilliseconds();    
+    uint64_t t_beg = timeInMilliseconds();
     for(i = 0; i < NUM_KEYS; i++) {
 
         // Add to map
@@ -287,37 +282,37 @@ void check_map_delete() {
         CU_ASSERT_STRING_EQUAL(d, data[i]);
     }
     CU_ASSERT_EQUAL(NUM_KEYS, teoMapSize(map));
-    printf("\n\t%d records add/get, time: %.3f ms, number of collisions: %u ", 
+    printf("\n\t%d records add/get, time: %.3f ms, number of collisions: %u ",
             (int)NUM_KEYS, (timeInMilliseconds() - t_beg) / 1000.0, map->collisions );
-    
-    
+
+
     // Delete keys from map
     int j;
-    t_beg = timeInMilliseconds();  
+    t_beg = timeInMilliseconds();
     for(i = NUM_KEYS - 1, j = 0; i >= 0; i--, j++) {
         int rv = teoMapDelete(map, key[i], key_length[i]);
         CU_ASSERT(!rv);
         CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));
         rv = teoMapDelete(map, key[i], key_length[i]);
         CU_ASSERT(rv);
-        CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));        
+        CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));
     }
-    printf("\n\t%d records deleted, time: %.3f ms, number of collisions: %u ", 
+    printf("\n\t%d records deleted, time: %.3f ms, number of collisions: %u ",
             (int)NUM_KEYS, (timeInMilliseconds() - t_beg) / 1000.0, map->collisions );
-    
+
     // Destroy map
     teoMapDestroy(map);
-    
+
     // Free keys and data
     for(i = 0; i < NUM_KEYS; i++) { free(key[i]); free(data[i]); }
     free(key);
     free(data);
     free(key_length);
-    free(data_length);    
+    free(data_length);
 }
 
 int mapSuiteAdd() {
-    
+
     CU_pSuite pSuite = NULL;
 
     /* Add a suite to the registry */
@@ -328,10 +323,10 @@ int mapSuiteAdd() {
     }
 
     /* Add the tests to the suite */
-    if ((NULL == CU_add_test(pSuite, "check hash functions", check_hash)) 
-     || (NULL == CU_add_test(pSuite, "check map functions", check_map)) 
-     || (NULL == CU_add_test(pSuite, "check map delete function", check_map_delete)) 
-     || (NULL == CU_add_test(pSuite, "check binary keys", check_binary_key)) 
+    if ((NULL == CU_add_test(pSuite, "check hash functions", check_hash))
+     || (NULL == CU_add_test(pSuite, "check map functions", check_map))
+     || (NULL == CU_add_test(pSuite, "check map delete function", check_map_delete))
+     || (NULL == CU_add_test(pSuite, "check binary keys", check_binary_key))
             ) {
         CU_cleanup_registry();
         return CU_get_error();
