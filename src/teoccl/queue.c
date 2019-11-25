@@ -31,6 +31,7 @@
 #include <string.h>
 
 #include "teoccl/queue.h"
+#include "teoccl/memory.h"
 
 /**
  * Create new Teo Queue
@@ -38,9 +39,7 @@
  * @return Pointer to new Teo Queue or NULL if memory allocate error
  */
 teoQueue *teoQueueNew() {
-
-    teoQueue *q = (teoQueue *) malloc(sizeof(teoQueue));
-    memset(q, 0, sizeof(teoQueue));
+    teoQueue *q = (teoQueue *)ccl_calloc(sizeof(teoQueue));
 
     return q;
 }
@@ -133,11 +132,14 @@ teoQueueData *teoQueuePut(teoQueue *q, teoQueueData *qd) {
 teoQueueData *teoQueueNewData(void *data, size_t data_length) {
 
     // Create new teoQueueData
-    teoQueueData *qd = (teoQueueData *) malloc(sizeof(teoQueueData) + data_length);
-    if(qd) {
-        // Fill Queue data structure
+    teoQueueData *qd = (teoQueueData *)ccl_malloc(sizeof(teoQueueData) + data_length);
+
+    // Fill Queue data structure
+    if(data != NULL && data_length > 0) {
+        memcpy(qd->data, data, data_length);
         qd->data_length = data_length;
-        if(data && data_length > 0) memcpy(qd->data, data, data_length);
+    } else {
+        qd->data_length = 0;
     }
 
     return qd;
@@ -159,7 +161,7 @@ teoQueueData *teoQueueAdd(teoQueue *q, void *data, size_t data_length) {
     if(q) {
         // Create new teoQueueData
         qd = teoQueueNewData(data, data_length);
-        if(qd) teoQueuePut(q, qd);
+        teoQueuePut(q, qd);
     }
     return qd;
 }
@@ -379,7 +381,7 @@ teoQueueIterator *teoQueueIteratorNew(teoQueue *q) {
 
     teoQueueIterator *it = NULL;
     if(q) {
-        it = (teoQueueIterator *) malloc(sizeof(teoQueueIterator));
+        it = (teoQueueIterator *) ccl_malloc(sizeof(teoQueueIterator));
         it->qd = NULL;
         it->q = q;
     }

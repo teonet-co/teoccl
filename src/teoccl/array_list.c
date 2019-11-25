@@ -4,6 +4,8 @@
 
 #include "teoccl/array_list.h"
 
+#include "teoccl/memory.h"
+
 #ifndef SIZE_T_MAX
   #if SIZEOF_SIZE_T == SIZEOF_INT
     #define SIZE_T_MAX UINT_MAX
@@ -21,19 +23,13 @@
 
 ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 {
-    ccl_array_list_t *tal = (ccl_array_list_t *)calloc(1, sizeof(ccl_array_list_t));
-    if (!tal) {
-        return NULL;
-    }
+    ccl_array_list_t *tal = (ccl_array_list_t *)ccl_malloc(sizeof(ccl_array_list_t));
 
     tal->size = ARRAY_LIST_DEFAULT_SIZE;
     tal->length = 0;
     tal->free_fn = free_fn;
 
-    if (!(tal->array = (void **)calloc(sizeof(void *), tal->size))) {
-        free(tal);
-        return NULL;
-    }
+    tal->array = (void **)ccl_calloc(sizeof(void*) * tal->size);
 
     return tal;
 }
@@ -83,7 +79,7 @@ int array_list_expand_internal(ccl_array_list_t *tal, size_t max)
     }
 
     if (new_size > (~((size_t)0)) / sizeof(void*)) return -1;
-    if (!(t = realloc(tal->array, new_size*sizeof(void*)))) return -1;
+    t = ccl_realloc(tal->array, new_size*sizeof(void*));
     tal->array = (void**)t;
     (void)memset(tal->array + tal->size, 0, (new_size - tal->size)*sizeof(void*));
     tal->size = new_size;
