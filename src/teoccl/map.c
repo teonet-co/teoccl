@@ -34,6 +34,7 @@
 
 #include "teoccl/map.h"
 #include "teoccl/hash.h"
+#include "teoccl/memory.h"
 
 // Local functions
 static
@@ -67,10 +68,10 @@ size_t teoMapSize(teoMap *map) {
 teoMap *teoMapNew(size_t size, int auto_resize_f) {
 
     int i;
-    teoMap *map = (teoMap *)malloc(sizeof(teoMap));
+    teoMap *map = (teoMap *)ccl_malloc(sizeof(teoMap));
 
     // Fill parameters
-    map->q = (teoQueue **)malloc(size * sizeof(teoQueue*));
+    map->q = (teoQueue **)ccl_malloc(size * sizeof(teoQueue*));
     map->auto_resize_f = auto_resize_f;
     map->hash_map_size = size;
     map->collisions = 0;
@@ -310,7 +311,7 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
 
     // Create and fill Data structure
     size_t htd_length = sizeof(teoMapElementData) + key_length + data_length;
-    teoMapElementData *htd = (teoMapElementData *) malloc(htd_length);
+    teoMapElementData *htd = (teoMapElementData *) ccl_malloc(htd_length);
     htd->hash = _teopMapHash(key, key_length);
     htd->key_length = key_length;
     htd->data_length = data_length;
@@ -414,7 +415,7 @@ int teoMapDelete(teoMap *map, void *key, size_t key_length) {
  */
 teoMapIterator *teoMapIteratorNew(teoMap *map) {
 
-    teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
+    teoMapIterator *map_it = (teoMapIterator*)ccl_malloc(sizeof(teoMapIterator));
     teoMapIteratorReset(map_it, map);
 
     return map_it;
@@ -444,7 +445,7 @@ void teoMapIteratorReset(teoMapIterator *map_it, teoMap *map) {
  */
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 
-    teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
+    teoMapIterator *map_it = (teoMapIterator*)ccl_malloc(sizeof(teoMapIterator));
     teoMapIteratorReverseReset(map_it, map);
 
     return map_it;
