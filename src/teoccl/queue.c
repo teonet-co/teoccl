@@ -473,7 +473,7 @@ int teoQueueForeach(teoQueue *q, teoQueueForeachFunction callback,
         void *user_data) {
 
     int i = 0;
-    struct teoQueueIterator it;
+    teoQueueIterator it;
     teoQueueIteratorReset(&it, q);
 
     while(teoQueueIteratorNext(&it)) {

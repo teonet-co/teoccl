@@ -198,7 +198,7 @@ void check_queue_iterator() {
     #endif
 
     i = 0;
-    struct teoQueueIterator it;
+    teoQueueIterator it;
     teoQueueIteratorReset(&it, q);
 
     while(teoQueueIteratorNext(&it)) {
@@ -262,7 +262,7 @@ void delete_elements_from_queue() {
     #endif
     i = 0;
     size_t newNum, deletedNum = 0;
-    struct teoQueueIterator it;
+    teoQueueIterator it;
     teoQueueIteratorReset(&it, q);
 
     teoQueueData *next = teoQueueIteratorNext(&it);

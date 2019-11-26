@@ -155,7 +155,7 @@ void _check_map(const size_t NUM_KEYS) {
     // Loop through map using iterator
     t_beg = timeInMilliseconds();
     // Create normal map iterator
-    struct teoMapIterator it;
+    teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
     i = 0;
@@ -173,7 +173,7 @@ void _check_map(const size_t NUM_KEYS) {
     CU_ASSERT(i == map->length);
 
     // Create reverse map iterator
-    struct teoMapIterator it_r;
+    teoMapIterator it_r;
     teoMapIteratorReverseReset(&it_r, map);
 
     i = map->length+1;
