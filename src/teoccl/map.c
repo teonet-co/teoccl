@@ -102,7 +102,7 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
     teoMap *map_new = teoMapNew(size, map->auto_resize_f);
 
     // Loop through existing map and add it elements to new map
-    struct teoMapIterator it;
+    teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
     while(teoMapIteratorNext(&it)) {
@@ -222,7 +222,7 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
 
     int idx = hash % map->hash_map_size;
     teoMapElementData *htd;
-    struct teoQueueIterator it;
+    teoQueueIterator it;
     teoQueueIteratorReset(&it, map->q[idx]);
 
     teoQueueData *tqd;
@@ -258,7 +258,7 @@ void *teoMapGetFirst(teoMap *map, size_t *data_length) {
     void *data = (void*)-1;
     if(data_length) *data_length = 0;
 
-    struct teoMapIterator it;
+    teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
     teoMapElementData *el;
@@ -551,7 +551,7 @@ int teoMapForeach(teoMap *map, teoMapForeachFunction callback,
         void *user_data) {
 
     int i = 0;
-    struct teoMapIterator it;
+    teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
     while(teoMapIteratorNext(&it)) {
