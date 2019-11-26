@@ -29,7 +29,7 @@
 
 # Include make deb functions
 PWD=`pwd`
-. "$PWD/ci-build/make_deb_inc.sh"
+. "$PWD/tools/make_deb_inc.sh"
 
 # Set exit at error
 set -e
@@ -76,10 +76,10 @@ if [ ! -z "$CI_BUILD_REF" ]; then
     # echo ""
 
     # Download repository from remote host by ftp:
-    ci-build/make_remote_download.sh
+    tools/make_remote_download.sh
     
     # Create DEB repository
-    create_deb_repo $REPO ubuntu Teonet teonet ci-build/gpg_key
+    create_deb_repo $REPO ubuntu Teonet teonet tools/gpg_key
 fi
 
 # Create deb package ----------------------------------------------------------
@@ -119,10 +119,10 @@ if [ ! -z "$CI_BUILD_REF" ]; then
     add_deb_package $REPO/ubuntu teonet $PACKAGE_NAME
 
     # Upload repository to remote host by ftp:
-    ci-build/make_remote_upload.sh
+    tools/make_remote_upload.sh
     
     # Install packet from remote repository
-    ci-build/make_remote_install.sh
+    tools/make_remote_install.sh
 fi
 
 # Upload DEB packages to Bintray  ---------------------------------------------
@@ -149,7 +149,7 @@ fi
 
 # Make and upload documentation  ----------------------------------------------
 if [ -z "$CI_SKIP_DOCS" ]; then
-    ci-build/make_remote_doc_upload.sh $PACKET_NAME 
+    tools/make_remote_doc_upload.sh $PACKET_NAME 
 fi
 
 # Add DEB packages to Bintray download list -----------------------------------

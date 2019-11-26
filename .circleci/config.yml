@@ -10,7 +10,7 @@ version: 2
 jobs:
 
   # Build sources at clear ubuntu:16.04 
-  # (test build dependences script ci-build-data/build-ubuntu.sh)
+  # (test build dependences script tools/build-ubuntu.sh)
   build-ubuntu-clear:
     docker:
       - image: teonet-co-docker-d.bintray.io/ci/ubuntu-git:16.04
@@ -19,10 +19,11 @@ jobs:
       - run: git submodule update --init --recursive
 
       # Install dependences
-      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
+      - run: tools/build-ubuntu.sh
 
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
 
       # Test
@@ -40,10 +41,11 @@ jobs:
       - run: git submodule update --init --recursive
 
       # Install dependences
-      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
+      - run: if [ -e tools/build-ubuntu.sh ]; then apt-get install -y sudo && tools/build-ubuntu.sh; fi
 
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
 
       # Test
@@ -62,10 +64,11 @@ jobs:
       - run: git submodule update --init --recursive
 
       # Install dependences
-      - run: if [ -e ci-build-data/build-ubuntu.sh ]; then apt-get install -y sudo && ci-build-data/build-ubuntu.sh; fi
+      - run: if [ -e tools/build-ubuntu.sh ]; then apt-get install -y sudo && tools/build-ubuntu.sh; fi
 
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
 
       # Test
@@ -74,7 +77,7 @@ jobs:
       
       # Buid binary deb package
       #- run: git clone git@github.com:teonet-co/ci-build.git
-      - run: ci-build/make_package deb
+      - run: tools/make_package deb
 
 
   # Install packages at clear ubuntu:16.04 
@@ -108,7 +111,8 @@ jobs:
       # Install dependences
       #- run: sh/build-centos.sh
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
       # Test
       #- run: app/teovpn -?
@@ -130,7 +134,8 @@ jobs:
       # Install dependences
       #- run: sh/build-centos.sh
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
       # Test
       #- run: app/teovpn -?
@@ -155,7 +160,8 @@ jobs:
       # Install dependences
       #- run: sh/build-opensuse.sh
       # Make
-      - run: ./autogen.sh --prefix=/usr
+      - run: ./autogen.sh
+      - run: ./configure --prefix=/usr
       - run: make
       # Test
       #- run: app/teovpn -?
@@ -214,7 +220,7 @@ workflows:
   version: 2  
   un-tagged:
     jobs: 
-      - testing
+      - build-ubuntu-clear
   tagged:
     jobs: 
       - publish-ubuntu:
