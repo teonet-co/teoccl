@@ -18,9 +18,6 @@
   #endif
 #endif
 
-#define TEO_FREE( ptr ) if( ptr ){ free( ptr ); ptr = 0; }
-
-
 ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 {
     ccl_array_list_t *tal = (ccl_array_list_t *)ccl_malloc(sizeof(ccl_array_list_t));
@@ -38,14 +35,17 @@ ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 int cclArrayListFree(ccl_array_list_t *tal)
 {
     if (tal->free_fn) {
-        int i = 0;
+        size_t i = 0;
         for (i = 0; i < tal->length; ++i) {
             if (tal->array[i]) tal->free_fn(tal->array[i]);
         }
     }
 
-    TEO_FREE(tal->array);
-    TEO_FREE(tal);
+    free(tal->array);
+    tal->array = NULL;
+
+    free(tal);
+    tal = NULL;
 
     return 0;
 }

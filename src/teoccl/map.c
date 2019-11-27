@@ -66,8 +66,6 @@ size_t teoMapSize(teoMap *map) {
  * @return Pointer to teoMapData
  */
 teoMap *teoMapNew(size_t size, int auto_resize_f) {
-
-    int i;
     teoMap *map = (teoMap *)ccl_malloc(sizeof(teoMap));
 
     // Fill parameters
@@ -78,7 +76,9 @@ teoMap *teoMapNew(size_t size, int auto_resize_f) {
     map->length = 0;
 
     // Create Hash table
-    for(i = 0; i < size; i++) map->q[i] = teoQueueNew();
+    for(size_t i = 0; i < size; i++) {
+        map->q[i] = teoQueueNew();
+    }
 
     return map;
 }
@@ -91,15 +91,14 @@ teoMap *teoMapNew(size_t size, int auto_resize_f) {
  * @return Pointer to the same teoMapData
  */
 static teoMap *_teoMapResize(teoMap *map, size_t size) {
-
-    // Show mime of  resize for testing
+    // Show mime of resize for testing
     // #define _SHOW_FUNCTION_MSG_ 1
     #if _SHOW_FUNCTION_MSG_
     printf("resize map from %d to %d, time: ", (int)map->hash_map_size, (int)size);
     uint64_t t_stop, t_beg = teoGetTimestampFull();
     #endif
 
-    int i = 0;
+    size_t i = 0;
     teoMap *map_new = teoMapNew(size, map->auto_resize_f);
 
     // Loop through existing map and add it elements to new map
@@ -111,8 +110,8 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
 
         #define _SHOW_RESIZED_MSG_ 0
         #if _SHOW_RESIZED_MSG_
-        printf("\n #%d hash: %010u, key: %s, value: %s ",
-                i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
+        printf("\n #%u hash: %010u, key: %s, value: %s ",
+                (uint32_t)si, el->hash, (char*)el->data, (char*)el->data + el->key_length);
         #endif
 
 
@@ -137,10 +136,11 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
     }
 
     // Free existing queues and move queues pointer of new map to existing
-    for(i = 0; i < map->hash_map_size; i++) {
+    for (i = 0; i < map->hash_map_size; i++) {
         teoQueueFree(map->q[i]);
         free(map->q[i]);
     }
+
     free(map->q);
     map->q = map_new->q;
     map->hash_map_size = size;
@@ -162,11 +162,8 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
  * @param map Pointer to teoMapData
  */
 void teoMapDestroy(teoMap *map) {
-
     if(map) {
-
-        int i;
-        for(i = 0; i < map->hash_map_size; i++) {
+        for(size_t i = 0; i < map->hash_map_size; i++) {
             teoQueueDestroy(map->q[i]);
         }
         free(map->q);
@@ -175,15 +172,14 @@ void teoMapDestroy(teoMap *map) {
 }
 
 void teoMapClear(teoMap *map) {
-
   if (map) {
-    int i;
-    for (i = 0; i < map->hash_map_size; i++) {
+    for (size_t i = 0; i < map->hash_map_size; i++) {
       teoQueueFree(map->q[i]);
     }
     _teoMapResize(map, HASH_TABLE_SIZE);
   }
 }
+
 /**
  * Calculate hash for selected key
  *
