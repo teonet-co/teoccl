@@ -35,8 +35,7 @@ ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 int cclArrayListFree(ccl_array_list_t *tal)
 {
     if (tal->free_fn) {
-        size_t i = 0;
-        for (i = 0; i < tal->length; ++i) {
+        for (size_t i = 0; i < tal->length; ++i) {
             if (tal->array[i]) tal->free_fn(tal->array[i]);
         }
     }
