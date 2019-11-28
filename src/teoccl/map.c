@@ -111,7 +111,7 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
         #define _SHOW_RESIZED_MSG_ 0
         #if _SHOW_RESIZED_MSG_
         printf("\n #%u hash: %010u, key: %s, value: %s ",
-                (uint32_t)si, el->hash, (char*)el->data, (char*)el->data + el->key_length);
+                (uint32_t)i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
         #endif
 
 
