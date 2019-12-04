@@ -12,7 +12,8 @@ libteoccl_la_SOURCES = \
 	teoccl/linked_list.c \
 	teoccl/deque.c \
 	teoccl/que.c \
-	teoccl/stack.c
+	teoccl/stack.c \
+	# end of libteoccl_la_SOURCES
 
 libteocclincludedir=$(includedir)/teoccl
 
@@ -29,7 +30,8 @@ libteocclinclude_HEADERS = \
 	../include/teoccl/deque.h \
 	../include/teoccl/que.h \
 	../include/teoccl/stack.h \
-	teoccl/teoccl.hpp
+	teoccl/teoccl.hpp \
+	# end of libteocclinclude_HEADERS
 
 libteoccl_la_CFLAGS = -I$(top_srcdir)/include
 libteoccl_la_LDFLAGS = -version-info $(LIBRARY_CURRENT):$(LIBRARY_REVISION):$(LIBRARY_AGE)
