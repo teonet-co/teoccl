@@ -1,4 +1,4 @@
-/* 
+/*
  * \file:   memory.c
  * \author: max <mpano91@gmail.com>
  *
@@ -22,7 +22,7 @@
 
 TEOCCL_NORETURN static void exit_out_of_memory(void) {
     (void)fprintf(stderr, "CCL. Out of memory\n");
-    exit(1);
+    abort();
 }
 
 void *ccl_malloc(size_t size) {
@@ -30,7 +30,7 @@ void *ccl_malloc(size_t size) {
     if (memory == NULL) {
         exit_out_of_memory();
     }
-    
+
     return memory;
 }
 
