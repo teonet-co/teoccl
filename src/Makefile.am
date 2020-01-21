@@ -13,6 +13,7 @@ libteoccl_la_SOURCES = \
 	teoccl/deque.c \
 	teoccl/que.c \
 	teoccl/stack.c \
+	teoccl/algs/lru_cache.c \
 	# end of libteoccl_la_SOURCES
 
 libteocclincludedir=$(includedir)/teoccl
@@ -30,6 +31,7 @@ libteocclinclude_HEADERS = \
 	../include/teoccl/deque.h \
 	../include/teoccl/que.h \
 	../include/teoccl/stack.h \
+	../include/teoccl/algs/lru_cache.h \
 	teoccl/teoccl.hpp \
 	# end of libteocclinclude_HEADERS
 
