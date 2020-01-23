@@ -7,4 +7,20 @@
 #ifndef LRU_CACHE_H
 #define LRU_CACHE_H
 
+#include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+typedef struct ccl_lru_cache ccl_lru_cache_t;
+
+ccl_lru_cache_t *cclLruInit(const size_t size);
+void cclLruDestroy(ccl_lru_cache_t *lru);
+void refer(ccl_lru_cache_t *lru, int *x);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif
