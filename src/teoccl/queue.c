@@ -41,6 +41,9 @@
 teoQueue *teoQueueNew() {
     teoQueue *q = (teoQueue *)ccl_calloc(sizeof(teoQueue));
 
+    q->first = q->last = NULL;
+    q->length = 0;
+
     return q;
 }
 
@@ -133,6 +136,8 @@ teoQueueData *teoQueueNewData(void *data, size_t data_length) {
 
     // Create new teoQueueData
     teoQueueData *qd = (teoQueueData *)ccl_malloc(sizeof(teoQueueData) + data_length);
+    
+    qd->prev = qd->next = NULL;
 
     // Fill Queue data structure
     if(data != NULL && data_length > 0) {
