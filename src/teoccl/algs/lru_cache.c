@@ -31,21 +31,46 @@ ccl_lru_cache_t *cclLruInit(const size_t size)
     return lru;
 }
 
-void refer(ccl_lru_cache_t *lru, int *x)
+void refer(ccl_lru_cache_t *lru, void *data, size_t data_len)
 {
-    if (teoMapGet(lru->lru_hash, x, sizeof(*x), NULL) == (void *)-1) {
+    if (teoMapGet(lru->lru_hash, data, data_len, NULL) == (void *)-1) {
         if (teoQueueSize(lru->lru_que) == lru->cache_size) {
             teoQueueData *last = teoQueueRemove(lru->lru_que, lru->lru_que->last);
             teoMapDelete(lru->lru_hash, last->data, last->data_length);
             free(last);
         }
     } else {
-        void *data = teoMapGet(lru->lru_hash, x, sizeof(*x), NULL);
-        teoQueueRemove(lru->lru_que, (teoQueueData *)data);
+        void *d = teoMapGet(lru->lru_hash, data, data_len, NULL);
+        teoQueueRemove(lru->lru_que, *(teoQueueData **)d);
     }
 
-    teoQueueAddTop(lru->lru_que, x, sizeof(*x));
-    teoMapAdd(lru->lru_hash, x, sizeof(*x), lru->lru_que->first, sizeof(lru->lru_que->first));
+    teoQueueAddTop(lru->lru_que, data, data_len);
+    teoMapAdd(lru->lru_hash, data, data_len, &lru->lru_que->first, sizeof(lru->lru_que->first));
+}
+
+void display(ccl_lru_cache_t *lru, void (*dis)(const void *const data))
+{
+    printf("\nLLRU SIZE = %ld\n", teoQueueSize(lru->lru_que));
+/*
+    printf("1) %d\n", *(int *)lru->lru_que->first->data); 
+    printf("2) %d\n", *(int *)lru->lru_que->first->next->data); 
+    printf("3) %d\n", *(int *)lru->lru_que->first->next->next->data); 
+    printf("4) %d\n", *(int *)lru->lru_que->first->next->next->next->data);
+*/
+    teoQueueIterator it;
+    teoQueueData *qd;
+    teoQueueIteratorReset(&it, lru->lru_que);
+
+    while(teoQueueIteratorNext(&it)) {
+        qd = teoQueueIteratorElement(&it);
+        dis(qd->data);
+    }
+/*
+    printf("1) %s\n", (char *)lru->lru_que->first->data); 
+    printf("2) %s\n", (char *)lru->lru_que->first->next->data); 
+    printf("3) %s\n", (char *)lru->lru_que->first->next->next->data); 
+    printf("4) %s\n", (char *)lru->lru_que->first->next->next->next->data);
+*/    
 }
 
 void cclLruDestroy(ccl_lru_cache_t *lru)

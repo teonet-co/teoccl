@@ -17,7 +17,8 @@ typedef struct ccl_lru_cache ccl_lru_cache_t;
 
 ccl_lru_cache_t *cclLruInit(const size_t size);
 void cclLruDestroy(ccl_lru_cache_t *lru);
-void refer(ccl_lru_cache_t *lru, int *x);
+void refer(ccl_lru_cache_t *lru, void *data, size_t data_len);
+void display(ccl_lru_cache_t *lru, void (*dis)(const void *const data));
 
 #ifdef __cplusplus
 }
