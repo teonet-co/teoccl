@@ -15,12 +15,6 @@ struct ccl_lru_cache {
 };
 
 
-typedef struct ccl_lru_hash {
-    int capacity; 
-    teoQueueData** array; 
-} ccl_lru_hash_t;
-
-
 ccl_lru_cache_t *cclLruInit(const size_t size)
 {
     ccl_lru_cache_t *lru = malloc(sizeof(ccl_lru_cache_t));
@@ -51,11 +45,10 @@ void cclLruRefer(ccl_lru_cache_t *lru, void *data, size_t data_len)
 void cclLruForeach(ccl_lru_cache_t *lru, void (*fn)(const void *const data))
 {
     teoQueueIterator it;
-    teoQueueData *qd;
     teoQueueIteratorReset(&it, lru->lru_que);
 
     while(teoQueueIteratorNext(&it)) {
-        qd = teoQueueIteratorElement(&it);
+        teoQueueData *qd = teoQueueIteratorElement(&it);
         fn(qd->data);
     }
 }
