@@ -31,7 +31,7 @@ ccl_lru_cache_t *cclLruInit(const size_t size)
     return lru;
 }
 
-void refer(ccl_lru_cache_t *lru, void *data, size_t data_len)
+void cclLruRefer(ccl_lru_cache_t *lru, void *data, size_t data_len)
 {
     if (teoMapGet(lru->lru_hash, data, data_len, NULL) == (void *)-1) {
         if (teoQueueSize(lru->lru_que) == lru->cache_size) {
@@ -48,29 +48,16 @@ void refer(ccl_lru_cache_t *lru, void *data, size_t data_len)
     teoMapAdd(lru->lru_hash, data, data_len, &lru->lru_que->first, sizeof(lru->lru_que->first));
 }
 
-void display(ccl_lru_cache_t *lru, void (*dis)(const void *const data))
+void cclLruForeach(ccl_lru_cache_t *lru, void (*fn)(const void *const data))
 {
-    printf("\nLLRU SIZE = %ld\n", teoQueueSize(lru->lru_que));
-/*
-    printf("1) %d\n", *(int *)lru->lru_que->first->data); 
-    printf("2) %d\n", *(int *)lru->lru_que->first->next->data); 
-    printf("3) %d\n", *(int *)lru->lru_que->first->next->next->data); 
-    printf("4) %d\n", *(int *)lru->lru_que->first->next->next->next->data);
-*/
     teoQueueIterator it;
     teoQueueData *qd;
     teoQueueIteratorReset(&it, lru->lru_que);
 
     while(teoQueueIteratorNext(&it)) {
         qd = teoQueueIteratorElement(&it);
-        dis(qd->data);
+        fn(qd->data);
     }
-/*
-    printf("1) %s\n", (char *)lru->lru_que->first->data); 
-    printf("2) %s\n", (char *)lru->lru_que->first->next->data); 
-    printf("3) %s\n", (char *)lru->lru_que->first->next->next->data); 
-    printf("4) %s\n", (char *)lru->lru_que->first->next->next->next->data);
-*/    
 }
 
 void cclLruDestroy(ccl_lru_cache_t *lru)

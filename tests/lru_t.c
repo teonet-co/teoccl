@@ -46,14 +46,14 @@ void add_elements_to_lru()
     int x5 = 5;
     int x6 = 4;
     printf("\n");
-    refer(lru, &x1, sizeof(x1));
-    refer(lru, &x2, sizeof(x2));
-    refer(lru, &x3, sizeof(x3));
-    refer(lru, &x4, sizeof(x4));
-    refer(lru, &x5, sizeof(x5));
-    refer(lru, &x6, sizeof(x6));
-    refer(lru, &x4, sizeof(x4));
-    refer(lru, &x3, sizeof(x3));
+    cclLruRefer(lru, &x1, sizeof(x1));
+    cclLruRefer(lru, &x2, sizeof(x2));
+    cclLruRefer(lru, &x3, sizeof(x3));
+    cclLruRefer(lru, &x4, sizeof(x4));
+    cclLruRefer(lru, &x5, sizeof(x5));
+    cclLruRefer(lru, &x6, sizeof(x6));
+    cclLruRefer(lru, &x4, sizeof(x4));
+    cclLruRefer(lru, &x3, sizeof(x3));
 /*
     char *s1 = "aaa";
     char *s2 = "bbbb";
@@ -61,16 +61,16 @@ void add_elements_to_lru()
     char *s4 = "dddd";
     char *s5 = "eee";
     char *s6 = "dddd";
-    refer(lru, s1, sizeof(s1));
-    refer(lru, s2, sizeof(s2));
-    refer(lru, s3, sizeof(s3));
-    refer(lru, s4, sizeof(s4));
-    refer(lru, s5, sizeof(s5));
-    refer(lru, s6, sizeof(s6));
-    refer(lru, s4, sizeof(s4));
-    refer(lru, s3, sizeof(s3));
+    cclLruRefer(lru, s1, sizeof(s1));
+    cclLruRefer(lru, s2, sizeof(s2));
+    cclLruRefer(lru, s3, sizeof(s3));
+    cclLruRefer(lru, s4, sizeof(s4));
+    cclLruRefer(lru, s5, sizeof(s5));
+    cclLruRefer(lru, s6, sizeof(s6));
+    cclLruRefer(lru, s4, sizeof(s4));
+    cclLruRefer(lru, s3, sizeof(s3));
 */
-    display(lru, display_int);
+    cclLruForeach(lru, display_int);
     cclLruDestroy(lru);
 }
 
@@ -92,7 +92,7 @@ int lruSuiteAdd()
 
     /* Add this module tests to the suite */
     if ((NULL == CU_add_test(pSuite, "lru create/destroy", lru_create_test)) ||
-        (NULL == CU_add_test(pSuite, "add int to lru", add_elements_to_lru)) ) {
+        (NULL == CU_add_test(pSuite, "add elements to lru", add_elements_to_lru)) ) {
         
         CU_cleanup_registry();
         return CU_get_error();
