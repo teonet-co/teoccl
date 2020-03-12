@@ -45,7 +45,7 @@ static
 teoMapElementData *_teoMapGetValueData(void *tqd_data, uint32_t key_length);
 
 static
-uint32_t _teopMapHash(void *key, size_t key_length);
+uint32_t _teopMapHash(const uint8_t *key, size_t key_length);
 
 static
 teoMap *_teoMapResize(teoMap *map, size_t size);
@@ -187,7 +187,7 @@ void teoMapClear(teoMap *map) {
  * @param key_length Key length
  * @return
  */
-static inline uint32_t _teopMapHash(void *key, size_t key_length) {
+static inline uint32_t _teopMapHash(const uint8_t *key, size_t key_length) {
 
     // Select one of several hash functions
     #define _USE_HASH_ 0
