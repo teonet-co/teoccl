@@ -39,7 +39,7 @@ void cclLruRefer(ccl_lru_cache_t *lru, void *data, size_t data_len)
     }
 
     teoQueueAddTop(lru->lru_que, data, data_len);
-    teoMapAdd(lru->lru_hash, data, data_len, &lru->lru_que->first, sizeof(lru->lru_que->first));
+    teoMapAdd(lru->lru_hash, data, data_len, (uint8_t*)&lru->lru_que->first, sizeof(lru->lru_que->first));
 }
 
 void cclLruForeach(ccl_lru_cache_t *lru, void (*fn)(const void *const data))
