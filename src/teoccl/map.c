@@ -243,16 +243,16 @@ static teoMapElementData *_teoMapGet(teoMap *map, const uint8_t *key, size_t key
  *
  * @return Pointer to Data of first available element or (void*)-1 if not found
  */
-void *teoMapGetFirst(teoMap *map, size_t *data_length) {
+uint8_t *teoMapGetFirst(teoMap *map, size_t *data_length) {
 
-    void *data = (void*)-1;
+    uint8_t *data = (uint8_t*)-1;
     if(data_length) *data_length = 0;
 
     teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
-    teoMapElementData *el;
-    if((el = teoMapIteratorNext(&it))) {
+    teoMapElementData *el = teoMapIteratorNext(&it);
+    if(el != NULL) {
         data = teoMapIteratorElementData(el, data_length);
     }
 
@@ -279,10 +279,10 @@ static inline teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd) 
  * @param data_length Data length
  * @return Data of added key or (void*)-1 at error
  */
-void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
+uint8_t *teoMapAdd(teoMap *map, const uint8_t *key, size_t key_length, const uint8_t *data,
         size_t data_length) {
 
-    void *r_data = (void*)-1;
+    uint8_t *r_data = (uint8_t*)-1;
 
     if(!data) data_length = 0;
 
@@ -339,7 +339,7 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
  *
  * @return Data of selected key (may be NULL) or (void*)-1 if not found
  */
-void *teoMapGet(teoMap *map, void *key, size_t key_length,
+uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
         size_t *data_length) {
     uint8_t* data = (uint8_t*)-1;
     size_t element_data_length = 0;
@@ -367,7 +367,7 @@ void *teoMapGet(teoMap *map, void *key, size_t key_length,
  * @param key_length Key length
  * @return Zero at success, or errors: -1 - keys element not found
  */
-int teoMapDelete(teoMap *map, void *key, size_t key_length) {
+int teoMapDelete(teoMap *map, const uint8_t *key, size_t key_length) {
 
     int rv = -1;
 
