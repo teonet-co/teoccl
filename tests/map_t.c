@@ -31,27 +31,27 @@ long long timeInMilliseconds(void) {
 void check_hash() {
 
     char *key = "127.0.0.1:8000";
-    uint32_t hash = teoHashSuperFast(key, strlen(key) + 1);
+    uint32_t hash = teoHashSuperFast((uint8_t*)key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
-    hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
+    hash = teoHashFast((uint8_t*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u ", key, hash);
 
     key = "127.0.0.1:8001";
-    hash = teoHashSuperFast(key, strlen(key) + 1);
+    hash = teoHashSuperFast((uint8_t*)key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
-    hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
+    hash = teoHashFast((uint8_t*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u ", key, hash);
 
     key = "192.168.101.11:8000";
-    hash = teoHashSuperFast(key, strlen(key) + 1);
+    hash = teoHashSuperFast((uint8_t*)key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
-    hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
+    hash = teoHashFast((uint8_t*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u ", key, hash);
 
     key = "192.168.101.11:8001";
-    hash = teoHashSuperFast(key, strlen(key) + 1);
+    hash = teoHashSuperFast((uint8_t*)key, strlen(key) + 1);
     printf("\n\tHash1 of key %s = %010u ", key, hash);
-    hash = teoHashFast((ub1*)key, strlen(key) + 1, 0);
+    hash = teoHashFast((uint8_t*)key, strlen(key) + 1, 0);
     printf("\n\tHash2 of key %s = %010u \n   ", key, hash);
 
     CU_ASSERT(2 * 2 == 4);
@@ -118,11 +118,11 @@ void _check_map(const size_t NUM_KEYS) {
     for(i = 0; i < NUM_KEYS; i++) {
 
         // Add to map
-        teoMapAdd(map, key[i], key_length[i], data[i], data_length[i]);
+        teoMapAdd(map, (uint8_t*)key[i], key_length[i], (uint8_t*)data[i], data_length[i]);
 
         // Get from map
         size_t d_length;
-        void *d = teoMapGet(map, key[i], key_length[i], &d_length);
+        void *d = teoMapGet(map, (uint8_t*)key[i], key_length[i], &d_length);
         CU_ASSERT_FATAL(d != (void*)-1);
         CU_ASSERT_EQUAL_FATAL(data_length[i], d_length);
         CU_ASSERT_STRING_EQUAL(d, data[i]);
@@ -135,22 +135,22 @@ void _check_map(const size_t NUM_KEYS) {
     char *data_new = "This is new data for this key ...";
     size_t data_new_length = strlen(data_new) + 1;
     // Add to map
-    teoMapAdd(map, key[1], key_length[1], data_new, data_new_length);
+    teoMapAdd(map, (uint8_t*)key[1], key_length[1], (uint8_t*)data_new, data_new_length);
 
     // Get updated key from map
     size_t d_length;
-    void *d = teoMapGet(map, key[1], key_length[1], &d_length);
+    void *d = teoMapGet(map, (uint8_t*)key[1], key_length[1], &d_length);
     CU_ASSERT_FATAL(d != (void*)-1);
     CU_ASSERT_EQUAL_FATAL(data_new_length, d_length);
     CU_ASSERT_STRING_EQUAL(d, data_new);
 
     // Delete key from map
-    int rv = teoMapDelete(map, key[1], key_length[1]);
+    int rv = teoMapDelete(map, (uint8_t*)key[1], key_length[1]);
     CU_ASSERT(!rv);
     CU_ASSERT_EQUAL(NUM_KEYS - 1, teoMapSize(map));
 
     // Add deleted key
-    teoMapAdd(map, key[1], key_length[1], data[1], data_length[1]);
+    teoMapAdd(map, (uint8_t*)key[1], key_length[1], (uint8_t*)data[1], data_length[1]);
 
     // Loop through map using iterator
     t_beg = timeInMilliseconds();
@@ -224,11 +224,11 @@ void check_binary_key() {
     int data = 125;
 
     // Add to map
-    teoMapAdd(map, &key, sizeof(key) , &data, sizeof(data));
+    teoMapAdd(map, (uint8_t*)&key, sizeof(key) , (uint8_t*)&data, sizeof(data));
 
     // Get from map
     size_t d_length;
-    void *d = teoMapGet(map, &key, sizeof(key), &d_length);
+    void *d = teoMapGet(map, (uint8_t*)&key, sizeof(key), &d_length);
     CU_ASSERT_FATAL(d != (void*)-1);
     CU_ASSERT_EQUAL_FATAL(sizeof(data), d_length);
     CU_ASSERT_EQUAL(*(int*)d, data);
@@ -272,11 +272,11 @@ void check_map_delete() {
     for(i = 0; i < NUM_KEYS; i++) {
 
         // Add to map
-        teoMapAdd(map, key[i], key_length[i], data[i], data_length[i]);
+        teoMapAdd(map, (uint8_t*)key[i], key_length[i], (uint8_t*)data[i], data_length[i]);
 
         // Get from map
         size_t d_length;
-        void *d = teoMapGet(map, key[i], key_length[i], &d_length);
+        void *d = teoMapGet(map, (uint8_t*)key[i], key_length[i], &d_length);
         CU_ASSERT_FATAL(d != (void*)-1);
         CU_ASSERT_EQUAL_FATAL(data_length[i], d_length);
         CU_ASSERT_STRING_EQUAL(d, data[i]);
@@ -290,10 +290,10 @@ void check_map_delete() {
     int j;
     t_beg = timeInMilliseconds();
     for(i = NUM_KEYS - 1, j = 0; i >= 0; i--, j++) {
-        int rv = teoMapDelete(map, key[i], key_length[i]);
+        int rv = teoMapDelete(map, (uint8_t*)key[i], key_length[i]);
         CU_ASSERT(!rv);
         CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));
-        rv = teoMapDelete(map, key[i], key_length[i]);
+        rv = teoMapDelete(map, (uint8_t*)key[i], key_length[i]);
         CU_ASSERT(rv);
         CU_ASSERT_EQUAL(NUM_KEYS - (j+1), teoMapSize(map));
     }

@@ -38,14 +38,11 @@
 
 // Local functions
 static
-void *_teoMapGet(teoMap *map, void *key, size_t key_length, uint32_t hash,
-        size_t *data_length);
+teoMapElementData *_teoMapGet(teoMap *map, const uint8_t *key,
+        size_t key_length, uint32_t hash);
 
 static
-teoMapElementData *_teoMapGetValueData(void *tqd_data, uint32_t key_length);
-
-static
-uint32_t _teopMapHash(void *key, size_t key_length);
+uint32_t _teopMapHash(const uint8_t *key, size_t key_length);
 
 static
 teoMap *_teoMapResize(teoMap *map, size_t size);
@@ -187,7 +184,7 @@ void teoMapClear(teoMap *map) {
  * @param key_length Key length
  * @return
  */
-static inline uint32_t _teopMapHash(void *key, size_t key_length) {
+static inline uint32_t _teopMapHash(const uint8_t *key, size_t key_length) {
 
     // Select one of several hash functions
     #define _USE_HASH_ 0
@@ -201,45 +198,41 @@ static inline uint32_t _teopMapHash(void *key, size_t key_length) {
 }
 
 /**
- * Get key data from hash table
+ * Get element from hash table
  *
  * @param map Pointer to teoHashTdata
  * @param key Key
  * @param key_length Key length
  * @param hash Hash of key
- * @param data_length [out] Pointer to returned data length (may be NULL)
  *
- * @return Pointer to Data of selected key or NULL if not found
+ * @return Pointer to teoMapValueData of selected key or NULL if not found
  */
-static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
-        uint32_t hash, size_t *data_length) {
-
-    void *data = NULL; //(void*)-1;
-    if(data_length) *data_length = 0;
+static teoMapElementData *_teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
+        uint32_t hash) {
+    teoMapElementData *element = NULL;
 
     int idx = hash % map->hash_map_size;
-    teoMapElementData *htd;
+
     teoQueueIterator it;
     teoQueueIteratorReset(&it, map->q[idx]);
 
     teoQueueData *tqd;
     while((tqd = teoQueueIteratorNext(&it))) {
 
-        htd = (teoMapElementData *)tqd->data;
+        teoMapElementData* htd = (teoMapElementData *)tqd->data;
         if(htd->hash == hash) {
 
             if(key_length == htd->key_length &&
                 !memcmp(htd->data, key, key_length)) {
 
-                if(data_length) *data_length = htd->data_length;
-                data = htd->data + htd->key_length;
+                element = htd;
                 break;
             }
             else map->collisions++;
         }
     }
 
-    return data;
+    return element;
 }
 
 /**
@@ -250,32 +243,20 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
  *
  * @return Pointer to Data of first available element or (void*)-1 if not found
  */
-void *teoMapGetFirst(teoMap *map, size_t *data_length) {
+uint8_t *teoMapGetFirst(teoMap *map, size_t *data_length) {
 
-    void *data = (void*)-1;
+    uint8_t *data = (uint8_t*)-1;
     if(data_length) *data_length = 0;
 
     teoMapIterator it;
     teoMapIteratorReset(&it, map);
 
-    teoMapElementData *el;
-    if((el = teoMapIteratorNext(&it))) {
+    teoMapElementData *el = teoMapIteratorNext(&it);
+    if(el != NULL) {
         data = teoMapIteratorElementData(el, data_length);
     }
 
     return data;
-}
-
-/**
- * Get pointer to teoMapValueData from data pointer returned by teoMapGet
- *
- * @param tqd_data Pointer to map data returned by teoMapGet function
- * @return Pointer to teoMapValueData
- */
-static inline teoMapElementData *_teoMapGetValueData(void *tqd_data,
-        uint32_t key_length) {
-
-    return (teoMapElementData *)((char *)tqd_data - key_length - sizeof(teoMapElementData));
 }
 
 /**
@@ -298,10 +279,10 @@ static inline teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd) 
  * @param data_length Data length
  * @return Data of added key or (void*)-1 at error
  */
-void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
+uint8_t *teoMapAdd(teoMap *map, const uint8_t *key, size_t key_length, const uint8_t *data,
         size_t data_length) {
 
-    void *r_data = (void*)-1;
+    uint8_t *r_data = (uint8_t*)-1;
 
     if(!data) data_length = 0;
 
@@ -315,11 +296,10 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
     if(data_length) memcpy(htd->data + htd->key_length, data, data_length);
 
     // Check that key exist and add data to map if not exists
-    void *tqd_data = NULL;
-    size_t d_length;
     teoQueueData *tqd;
+    teoMapElementData* htd_existing = _teoMapGet(map, key, key_length, htd->hash);
     // Add data to map
-    if(!(tqd_data = _teoMapGet(map, key, key_length, htd->hash, &d_length))) {
+    if (htd_existing == NULL) {
         int idx = htd->hash % map->hash_map_size;
         tqd = teoQueueAdd(map->q[idx], (void*)htd, htd_length);
         if(tqd) {
@@ -332,7 +312,6 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
     }
     // Update existing key data
     else {
-        teoMapElementData *htd_existing = _teoMapGetValueData(tqd_data, key_length);
         tqd = _teoMapValueDataToQueueData(htd_existing);
         int idx = htd->hash % map->hash_map_size;
         tqd = teoQueueUpdate(map->q[idx], (void*)htd, htd_length, tqd);
@@ -360,14 +339,24 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
  *
  * @return Data of selected key (may be NULL) or (void*)-1 if not found
  */
-void *teoMapGet(teoMap *map, void *key, size_t key_length,
+uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
         size_t *data_length) {
+    uint8_t* data = (uint8_t*)-1;
+    size_t element_data_length = 0;
 
     uint32_t hash = _teopMapHash(key, key_length);
-    void *data = _teoMapGet(map, key, key_length, hash, data_length);
+    teoMapElementData* element = _teoMapGet(map, key, key_length, hash);
 
-    return !data ? (void*)-1 :
-           _teoMapGetValueData(data, key_length)->data_length ? data : NULL;
+    if (element != NULL) {
+        element_data_length = element->data_length;
+        data = element_data_length > 0 ? element->data + element->key_length : NULL;
+    }
+
+    if (data_length != NULL) {
+        *data_length = element_data_length;
+    }
+
+    return data;
 }
 
 /**
@@ -378,17 +367,15 @@ void *teoMapGet(teoMap *map, void *key, size_t key_length,
  * @param key_length Key length
  * @return Zero at success, or errors: -1 - keys element not found
  */
-int teoMapDelete(teoMap *map, void *key, size_t key_length) {
+int teoMapDelete(teoMap *map, const uint8_t *key, size_t key_length) {
 
     int rv = -1;
 
-    size_t data_length;
     uint32_t hash = _teopMapHash(key, key_length);
-    void *data = _teoMapGet(map, key, key_length, hash, &data_length);
-    if(data) {
-        teoMapElementData *mvd = _teoMapGetValueData(data, key_length);
-        teoQueueData *tqd = _teoMapValueDataToQueueData(mvd);
-        int idx = mvd->hash % map->hash_map_size;
+    teoMapElementData* map_element = _teoMapGet(map, key, key_length, hash);
+    if (map_element != NULL) {
+        teoQueueData *tqd = _teoMapValueDataToQueueData(map_element);
+        int idx = map_element->hash % map->hash_map_size;
         rv = teoQueueDelete(map->q[idx], tqd);
         if(!rv) {
             map->length--;

@@ -37,13 +37,9 @@
 extern "C" {
 #endif
 
-typedef unsigned long int ub4; /* unsigned 4-byte quantities */
-typedef unsigned char ub1; /* unsigned 1-byte quantities */
-
-uint32_t teoHashSuperFast (const char * data, int len);
-ub4 teoHashFast(ub1 *k, ub4 length, ub4 initval); /* the previous hash,
-                                                     or an arbitrary value
-                                                   */
+uint32_t teoHashSuperFast(const uint8_t* data, int len);
+/* the previous hash, or an arbitrary value */
+uint32_t teoHashFast(register const uint8_t* k, register uint32_t length, register uint32_t initval);
 
 #ifdef __cplusplus
 }

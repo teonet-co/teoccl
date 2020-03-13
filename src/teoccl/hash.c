@@ -46,7 +46,7 @@
 
 // See definition at: http://www.azillionmonkeys.com/qed/hash.html
 
-uint32_t teoHashSuperFast(const char * data, int len) {
+uint32_t teoHashSuperFast(const uint8_t* data, int len) {
     uint32_t hash = len;
     int rem;
 
@@ -91,10 +91,7 @@ uint32_t teoHashSuperFast(const char * data, int len) {
     return hash;
 }
 
-//typedef unsigned long int ub4; /* unsigned 4-byte quantities */
-//typedef unsigned char ub1; /* unsigned 1-byte quantities */
-
-#define hashsize(n) ((ub4)1<<(n))
+#define hashsize(n) ((uint32_t)1<<(n))
 #define hashmask(n) (hashsize(n)-1)
 
 /*
@@ -164,12 +161,13 @@ acceptable.  Do NOT use for cryptographic purposes.
 --------------------------------------------------------------------
  */
 
-ub4 teoHashFast(k, length, initval)
-register ub1 *k; /* the key */
-register ub4 length; /* the length of the key */
-register ub4 initval; /* the previous hash, or an arbitrary value */
-{
-    register ub4 a, b, c, len;
+/*
+k the key
+length the length of the key
+initval the previous hash, or an arbitrary value
+*/
+uint32_t teoHashFast(register const uint8_t* k, register uint32_t length, register uint32_t initval) {
+    register uint32_t a, b, c, len;
 
     /* Set up the internal state */
     len = length;
@@ -178,9 +176,9 @@ register ub4 initval; /* the previous hash, or an arbitrary value */
 
     /*---------------------------------------- handle most of the key */
     while (len >= 12) {
-        a += (k[0] +((ub4) k[1] << 8) +((ub4) k[2] << 16) +((ub4) k[3] << 24));
-        b += (k[4] +((ub4) k[5] << 8) +((ub4) k[6] << 16) +((ub4) k[7] << 24));
-        c += (k[8] +((ub4) k[9] << 8) +((ub4) k[10] << 16)+((ub4) k[11] << 24));
+        a += (k[0] +((uint32_t) k[1] << 8) +((uint32_t) k[2] << 16) +((uint32_t) k[3] << 24));
+        b += (k[4] +((uint32_t) k[5] << 8) +((uint32_t) k[6] << 16) +((uint32_t) k[7] << 24));
+        c += (k[8] +((uint32_t) k[9] << 8) +((uint32_t) k[10] << 16)+((uint32_t) k[11] << 24));
         mix(a, b, c);
         k += 12;
         len -= 12;
@@ -189,17 +187,17 @@ register ub4 initval; /* the previous hash, or an arbitrary value */
     /*------------------------------------- handle the last 11 bytes */
     c += length;
     switch (len) /* all the case statements fall through */ {
-        case 11: c += ((ub4) k[10] << 24);
-        case 10: c += ((ub4) k[9] << 16);
-        case 9: c += ((ub4) k[8] << 8);
+        case 11: c += ((uint32_t) k[10] << 24);
+        case 10: c += ((uint32_t) k[9] << 16);
+        case 9: c += ((uint32_t) k[8] << 8);
             /* the first byte of c is reserved for the length */
-        case 8: b += ((ub4) k[7] << 24);
-        case 7: b += ((ub4) k[6] << 16);
-        case 6: b += ((ub4) k[5] << 8);
+        case 8: b += ((uint32_t) k[7] << 24);
+        case 7: b += ((uint32_t) k[6] << 16);
+        case 6: b += ((uint32_t) k[5] << 8);
         case 5: b += k[4];
-        case 4: a += ((ub4) k[3] << 24);
-        case 3: a += ((ub4) k[2] << 16);
-        case 2: a += ((ub4) k[1] << 8);
+        case 4: a += ((uint32_t) k[3] << 24);
+        case 3: a += ((uint32_t) k[2] << 16);
+        case 2: a += ((uint32_t) k[1] << 8);
         case 1: a += k[0];
             /* case 0: nothing left to add */
     }
