@@ -1,4 +1,4 @@
-<h1 align="center">teoccl - c library of containers data structs and algorithms</h1>
+# teoccl - c library of containers data structs and algorithms
 
 <p align="center">
 <a href="https://www.codacy.com/manual/angelskieglazki/teoccl?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=teonet-co/teoccl&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/c7cb5f48aa82488c87c1d301fe5c30b7"/></a>
@@ -13,13 +13,9 @@
 <a href="https://github.com/teonet-co/teoccl/releases/latest"><img src="https://img.shields.io/github/release/teonet-co/teoccl.svg?maxAge=600" alt="Latest release" /></a>
 </p>
 
-
 ## 1. Description
 
 The Teonet CCL is a library processed basic containers at C language. The Map and Queue containers are used in [Teonet TR-UDP Library](https://github.com/teonet-co/teonet/wikis/tr-udp).
-
-
-
 
 ## 2. Installation from sources
 
@@ -33,27 +29,22 @@ The Teonet CCL is a library processed basic containers at C language. The Map an
     cd teoccl
     git submodule update --init
 
-
 ### Install Dependences
 
 There is not dependences
-
 
 ### First time, after got sources from subversion repository
 
     ./autogen.sh
 
-
 ## 3. Make your application 
 
     make
-
 
 ## 3.1 Using autoscan to Create configure.ac
 
 After make some global changes in sources code use ```autoscan``` to update projects 
 configure.ac
-
 
 ## 4. Installation from repository
 
@@ -85,7 +76,6 @@ Bintray:
 
 See example [README.md](examples/README.md)
 
-
 ## 6. Teo ccl documentation
 
-See libteoccl documentation at: https://teonet-co.github.io/teoccl/
+See libteoccl documentation at: <https://teonet-co.github.io/teoccl/>
