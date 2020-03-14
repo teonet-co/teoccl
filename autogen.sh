@@ -23,5 +23,3 @@ autoreconf --verbose --install --force
 
 echo "\n" Removing autom4te.cache "\n"
 rm -rf autom4te.cache
-
-

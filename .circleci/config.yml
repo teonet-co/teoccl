@@ -9,7 +9,7 @@
 version: 2
 jobs:
 
-  # Build sources at clear ubuntu:16.04 
+  # Build sources at clear ubuntu:16.04
   # (test build dependences script tools/build-ubuntu.sh)
   build-ubuntu-clear:
     docker:
@@ -31,8 +31,8 @@ jobs:
 
 
 
-  # Build sources at ubuntu_teonet image with preinstalled common dependences 
-  # (test quick build) 
+  # Build sources at ubuntu_teonet image with preinstalled common dependences
+  # (test quick build)
   build-ubuntu:
     docker:
       - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet
@@ -55,7 +55,7 @@ jobs:
 
 
   # Build and Publish deb packages and Source doxygen documentation to repository
-  # (publishing) 
+  # (publishing)
   publish-ubuntu:
     docker:
       - image: teonet-co-docker-d.bintray.io/ci/ubuntu_teonet
@@ -74,13 +74,13 @@ jobs:
       # Test
       #- run: app/teovpn -?
       - run: make test
-      
+
       # Buid binary deb package
       #- run: git clone git@github.com:teonet-co/ci-build.git
       - run: tools/make_package deb
 
 
-  # Install packages at clear ubuntu:16.04 
+  # Install packages at clear ubuntu:16.04
   # (test published packages)
   install-ubuntu-clear:
     docker:
@@ -92,7 +92,7 @@ jobs:
              echo "deb https://dl.bintray.com/teonet-co/u bionic main" | sudo tee -a /etc/apt/sources.list &&
              sudo apt-get update
 
-      # Install this application from published packet       
+      # Install this application from published packet
       - run: apt-get install -y libteoccl
 
 
@@ -172,11 +172,11 @@ jobs:
 
 
   # tagged-build-docker:
-  #   #machine: true      
+  #   #machine: true
   #   machine: #true
   #     docker_layer_caching: true    # default - false
   #   steps:
-  #     - checkout  
+  #     - checkout
   #     # build the application image
   #     - run: sudo sysctl -w net.ipv4.ip_forward=1
   #     - run: docker build --no-cache -t $CIRCLE_PROJECT_REPONAME -f sh/Dockerfile .
@@ -217,12 +217,12 @@ jobs:
 
 
 workflows:
-  version: 2  
+  version: 2
   un-tagged:
-    jobs: 
+    jobs:
       - build-ubuntu-clear
   tagged:
-    jobs: 
+    jobs:
       - publish-ubuntu:
           context: CI_BUILD
           filters:
