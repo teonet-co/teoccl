@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\include\teoccl\array_list.h" />
+    <ClInclude Include="..\..\include\teoccl\deque.h" />
+    <ClInclude Include="..\..\include\teoccl\hash.h" />
+    <ClInclude Include="..\..\include\teoccl\linked_list.h" />
+    <ClInclude Include="..\..\include\teoccl\list.h" />
+    <ClInclude Include="..\..\include\teoccl\map.h" />
+    <ClInclude Include="..\..\include\teoccl\map.hpp" />
+    <ClInclude Include="..\..\include\teoccl\memory.h" />
+    <ClInclude Include="..\..\include\teoccl\que.h" />
+    <ClInclude Include="..\..\include\teoccl\queue.h" />
+    <ClInclude Include="..\..\include\teoccl\queue.hpp" />
+    <ClInclude Include="..\..\include\teoccl\stack.h" />
+    <ClInclude Include="..\..\include\teoccl\algs\lru_cache.h">
+      <Filter>algs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\teoccl\teoccl.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="algs">
+      <UniqueIdentifier>{cab4b763-6e7d-4ece-ad4c-f265a7094496}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\teoccl\algs\lru_cache.c">
+      <Filter>algs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\teoccl\array_list.c" />
+    <ClCompile Include="..\..\src\teoccl\deque.c" />
+    <ClCompile Include="..\..\src\teoccl\hash.c" />
+    <ClCompile Include="..\..\src\teoccl\linked_list.c" />
+    <ClCompile Include="..\..\src\teoccl\list.c" />
+    <ClCompile Include="..\..\src\teoccl\map.c" />
+    <ClCompile Include="..\..\src\teoccl\memory.c" />
+    <ClCompile Include="..\..\src\teoccl\que.c" />
+    <ClCompile Include="..\..\src\teoccl\queue.c" />
+    <ClCompile Include="..\..\src\teoccl\stack.c" />
+  </ItemGroup>
+</Project>
