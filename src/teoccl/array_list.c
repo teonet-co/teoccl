@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include <limits.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "teoccl/array_list.h"
@@ -7,15 +7,7 @@
 #include "teoccl/memory.h"
 
 #ifndef SIZE_T_MAX
-  #if SIZEOF_SIZE_T == SIZEOF_INT
-    #define SIZE_T_MAX UINT_MAX
-  #elif SIZEOF_SIZE_T == SIZEOF_LONG
-    #define SIZE_T_MAX ULONG_MAX
-  #elif SIZEOF_SIZE_T == SIZEOF_LONG_LONG
-    #define SIZE_T_MAX ULLONG_MAX
-  #else
-    #error Unable to determine size of size_t
-  #endif
+  #define SIZE_T_MAX ((size_t)-1)
 #endif
 
 ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
