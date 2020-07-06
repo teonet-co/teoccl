@@ -306,8 +306,11 @@ uint8_t *teoMapAdd(teoMap *map, const uint8_t *key, size_t key_length, const uin
             map->length++;
 
             // Resize if needed
-            if(map->auto_resize_f && map->length > map->hash_map_size * 3)
+            if(map->auto_resize_f && map->length > map->hash_map_size * 3) {
                 _teoMapResize(map, map->hash_map_size * 10);
+                teoMapElementData* rehash = _teoMapGet(map, key, key_length, htd->hash);
+                tqd = _teoMapValueDataToQueueData(rehash);
+            }
         }
     }
     // Update existing key data
@@ -349,7 +352,7 @@ uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
 
     if (element != NULL) {
         element_data_length = element->data_length;
-        data = element_data_length > 0 ? element->data + element->key_length : NULL;
+        data = element_data_length > 0 ? (element->data + element->key_length) : ((uint8_t*)-1);
     }
 
     if (data_length != NULL) {
