@@ -352,7 +352,7 @@ uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
 
     if (element != NULL) {
         element_data_length = element->data_length;
-        data = element_data_length > 0 ? (element->data + element->key_length) : ((uint8_t*)-1);
+        data = element_data_length > 0 ? element->data + element->key_length : NULL;
     }
 
     if (data_length != NULL) {
