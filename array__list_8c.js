@@ -1,7 +1,6 @@
 var array__list_8c =
 [
     [ "SIZE_T_MAX", "array__list_8c.html#acfa3af56d5e0045c1d7a5682fd1d2853", null ],
-    [ "TEO_FREE", "array__list_8c.html#ab512f280a1d3185440b6911cb67c7539", null ],
     [ "cclArrayListAdd", "array__list_8c.html#a17baacc98157fcd12aec88778adc9ddc", null ],
     [ "cclArrayListBSearch", "array__list_8c.html#a4fab6251fe587d7df51b0a97d2b67471", null ],
     [ "cclArrayListDelIdx", "array__list_8c.html#aefc68bfc3e9bdb2bcc0ce0d1ca37c4ee", null ],

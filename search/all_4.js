@@ -1,4 +1,11 @@
 var searchData=
 [
-  ['enable_5fnls',['ENABLE_NLS',['../config_8h.html#a7cc70673e1bfa2cbbc58f1733a8aa344',1,'config.h']]]
+  ['data',['data',['../structteoMapElementData.html#ae84adf6dd9b46478a83af84866b949e5',1,'teoMapElementData::data()'],['../structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656',1,'teoQueueData::data()']]],
+  ['data_5flength',['data_length',['../structteoMapElementData.html#a2081a8327592a77158d076d6d45b574d',1,'teoMapElementData::data_length()'],['../structteoQueueData.html#a3996b3e2b2c85fb6e3b2ca593c9f437c',1,'teoQueueData::data_length()']]],
+  ['deb',['DEB',['../make__package_8c.html#a93ff39d263f22c7946cc65bc63c983dea0778fd276cd15ed7e06b162df6a0e111',1,'make_package.c']]],
+  ['del',['del',['../classteo_1_1Map.html#a4f7d0552fbff9eb2562ea6f4ed8a70dc',1,'teo::Map::del(const uint8_t *key, size_t key_length)'],['../classteo_1_1Map.html#a87cab42ebbc8dde57798874fce287119',1,'teo::Map::del(const std::string &amp;key)'],['../classteo_1_1Map.html#a09377d22fc0b6377fa8f6e714b0ce0cc',1,'teo::Map::del(const K &amp;key)'],['../classteo_1_1Queue.html#a7e3cc58be7bf97de404a9d1b8667c732',1,'teo::Queue::del()']]],
+  ['delfirst',['delFirst',['../classteo_1_1Queue.html#a38b9ec3bf22b0e1c862df6cd7e86c061',1,'teo::Queue']]],
+  ['dellast',['delLast',['../classteo_1_1Queue.html#ad6973d828a8f5e74f6c06821fc4f9f70',1,'teo::Queue']]],
+  ['deque_2ec',['deque.c',['../deque_8c.html',1,'']]],
+  ['deque_2eh',['deque.h',['../deque_8h.html',1,'']]]
 ];

@@ -2,7 +2,7 @@ var NAVTREE =
 [
   [ "TeoCCl library", "index.html", [
     [ "Teonet CCL Documentation.", "index.html", null ],
-    [ "README", "md_README.html", null ],
+    [ "teoccl - c library of containers data structs and algorithms", "md_README.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ]
@@ -22,6 +22,8 @@ var NAVTREE =
         [ "All", "globals.html", "globals_dup" ],
         [ "Functions", "globals_func.html", "globals_func" ],
         [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -31,8 +33,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"linked__list_8h.html#a5aaaed875f183c440e6a7a215ce634a9",
-"structteoQueueData.html#a889d6b1ff0a3b93c96ace899539c2656"
+"list_8c.html",
+"structteoMapElementData.html#aae2011745b4587c6823a62cae141c4c7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

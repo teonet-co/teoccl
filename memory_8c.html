@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">TeoCCl library
-   &#160;<span id="projectnumber">0.1.3</span>
+   &#160;<span id="projectnumber">0.1.4</span>
    </div>
   </td>
  </tr>
@@ -112,16 +112,15 @@ $(document).ready(function(){initNavTree('memory_8c.html','');});
 <div class="title">memory.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;sys/types.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;strings.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a3024ccd4a9af5109d24e6c57565d74a1">_POSIX_C_SOURCE</a>&#160;&#160;&#160;200809L</td></tr>
-<tr class="separator:a3024ccd4a9af5109d24e6c57565d74a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa74f6a4c5f6f0c77bc42b45943878d55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#aa74f6a4c5f6f0c77bc42b45943878d55">TEOCCL_NORETURN</a></td></tr>
+<tr class="separator:aa74f6a4c5f6f0c77bc42b45943878d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -131,18 +130,18 @@ Functions</h2></td></tr>
 <tr class="separator:a98b134a69c7c9db2f496337ef51a0c29"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a9094376d770f943523e8222d2cda14"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a4a9094376d770f943523e8222d2cda14">ccl_strdup</a> (const char *str)</td></tr>
 <tr class="separator:a4a9094376d770f943523e8222d2cda14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c84bdfbdd223dcecc9e08c12df3333e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a4c84bdfbdd223dcecc9e08c12df3333e">ccl_strndup</a> (char *str, size_t len)</td></tr>
-<tr class="separator:a4c84bdfbdd223dcecc9e08c12df3333e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b717afa4e5b7d87bdfe5c7179f1c689"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a6b717afa4e5b7d87bdfe5c7179f1c689">ccl_strndup</a> (const char *str, size_t len)</td></tr>
+<tr class="separator:a6b717afa4e5b7d87bdfe5c7179f1c689"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0634790d8a830e50e03df98bbcffbf30"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a0634790d8a830e50e03df98bbcffbf30">ccl_realloc</a> (void *ptr, size_t size)</td></tr>
 <tr class="separator:a0634790d8a830e50e03df98bbcffbf30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a3024ccd4a9af5109d24e6c57565d74a1"></a>
+<a class="anchor" id="aa74f6a4c5f6f0c77bc42b45943878d55"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define _POSIX_C_SOURCE&#160;&#160;&#160;200809L</td>
+          <td class="memname">#define TEOCCL_NORETURN</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -166,6 +165,8 @@ Functions</h2></td></tr>
 
 <p>References <a class="el" href="memory_8c.html#a71abe72aef302970809afda0dc01a85a">ccl_malloc()</a>.</p>
 
+<p>Referenced by <a class="el" href="array__list_8c.html#a0e1b6c007a735750a2447210921d4899">cclArrayListNew()</a>, and <a class="el" href="queue_8c.html#aefd0cc7ecfb0b2bf19ca82ed13319bd0">teoQueueNew()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a71abe72aef302970809afda0dc01a85a"></a>
@@ -182,7 +183,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="memory_8c.html#a98b134a69c7c9db2f496337ef51a0c29">ccl_calloc()</a>, <a class="el" href="deque_8c.html#a847fab1966c706b785af9a4d05e1485f">cclDequeClear()</a>, <a class="el" href="deque_8c.html#a8622542b8c9e6027426ded180fe9d746">cclDequeInit()</a>, <a class="el" href="deque_8c.html#ae8c361810d84189a633e2a7fba599787">cclDequePushBack()</a>, <a class="el" href="deque_8c.html#adb309301d6064ac0def18025e4219d2d">cclDequePushFront()</a>, <a class="el" href="deque_8c.html#aef0a58378e1eb95b8317264ce893b0df">cclDequeTrim()</a>, <a class="el" href="linked__list_8c.html#ae61bebfdb2b85e1647b3810fe0096ec0">cclLinkedListAddAt()</a>, <a class="el" href="linked__list_8c.html#a3a7a33bef2025fa6c167d9373c6179d7">cclLinkedListInit()</a>, <a class="el" href="list_8c.html#a98909ebdb41ba5728348b05fcb67c2e3">cclListAddAt()</a>, <a class="el" href="list_8c.html#a941dfa38a2b4ac4b94e5aa01b1eba5c4">cclListInit()</a>, <a class="el" href="que_8c.html#a52e38ec3ab840d5e7b2ec7091d8cb6b7">cclQueInit()</a>, and <a class="el" href="stack_8c.html#ae9b0a3b1f2de4d913866c6158cb0ddf3">cclStackInit()</a>.</p>
+<p>Referenced by <a class="el" href="memory_8c.html#a98b134a69c7c9db2f496337ef51a0c29">ccl_calloc()</a>, <a class="el" href="memory_8c.html#a6b717afa4e5b7d87bdfe5c7179f1c689">ccl_strndup()</a>, <a class="el" href="array__list_8c.html#a0e1b6c007a735750a2447210921d4899">cclArrayListNew()</a>, <a class="el" href="deque_8c.html#a847fab1966c706b785af9a4d05e1485f">cclDequeClear()</a>, <a class="el" href="deque_8c.html#a8622542b8c9e6027426ded180fe9d746">cclDequeInit()</a>, <a class="el" href="deque_8c.html#ae8c361810d84189a633e2a7fba599787">cclDequePushBack()</a>, <a class="el" href="deque_8c.html#adb309301d6064ac0def18025e4219d2d">cclDequePushFront()</a>, <a class="el" href="deque_8c.html#aef0a58378e1eb95b8317264ce893b0df">cclDequeTrim()</a>, <a class="el" href="linked__list_8c.html#ae61bebfdb2b85e1647b3810fe0096ec0">cclLinkedListAddAt()</a>, <a class="el" href="linked__list_8c.html#a3a7a33bef2025fa6c167d9373c6179d7">cclLinkedListInit()</a>, <a class="el" href="list_8c.html#a98909ebdb41ba5728348b05fcb67c2e3">cclListAddAt()</a>, <a class="el" href="list_8c.html#a941dfa38a2b4ac4b94e5aa01b1eba5c4">cclListInit()</a>, <a class="el" href="que_8c.html#a52e38ec3ab840d5e7b2ec7091d8cb6b7">cclQueInit()</a>, <a class="el" href="stack_8c.html#ae9b0a3b1f2de4d913866c6158cb0ddf3">cclStackInit()</a>, <a class="el" href="map_8c.html#ab85239e7a941bced6981f10482f5a827">teoMapAdd()</a>, <a class="el" href="map_8c.html#ad8fa845308138da14714a96b2a3c9c57">teoMapIteratorNew()</a>, <a class="el" href="map_8c.html#a518645bdc7a67f8f79ff5ed052a2ec29">teoMapIteratorReverseNew()</a>, <a class="el" href="map_8c.html#a69cd4211bf4bd02a9e8d54e2c0a52a7a">teoMapNew()</a>, <a class="el" href="queue_8c.html#a8a4a22688f60e1593cd74b2d42d17d74">teoQueueIteratorNew()</a>, and <a class="el" href="queue_8c.html#a1eab4eaf4406b5eeed4304647fd09fcb">teoQueueNewData()</a>.</p>
 
 </div>
 </div>
@@ -210,7 +211,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Referenced by <a class="el" href="deque_8c.html#ae8c361810d84189a633e2a7fba599787">cclDequePushBack()</a>, and <a class="el" href="deque_8c.html#adb309301d6064ac0def18025e4219d2d">cclDequePushFront()</a>.</p>
+<p>Referenced by <a class="el" href="array__list_8c.html#a135cc702e19907a3b8c6e132d3d55688">cclArrayListGetIdx()</a>, <a class="el" href="deque_8c.html#ae8c361810d84189a633e2a7fba599787">cclDequePushBack()</a>, and <a class="el" href="deque_8c.html#adb309301d6064ac0def18025e4219d2d">cclDequePushFront()</a>.</p>
 
 </div>
 </div>
@@ -230,14 +231,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4c84bdfbdd223dcecc9e08c12df3333e"></a>
+<a class="anchor" id="a6b717afa4e5b7d87bdfe5c7179f1c689"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">char* ccl_strndup </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
@@ -254,6 +255,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>References <a class="el" href="memory_8c.html#a71abe72aef302970809afda0dc01a85a">ccl_malloc()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
@@ -262,7 +265,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e0ca6075b2c816d15772ad336856d1ac.html">teoccl</a></li><li class="navelem"><a class="el" href="memory_8c.html">memory.c</a></li>
-    <li class="footer">Generated on Fri Nov 1 2019 14:07:44 for TeoCCl library by
+    <li class="footer">Generated on Sat Oct 17 2020 19:29:57 for TeoCCl library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
