@@ -14,7 +14,7 @@
 
 # Function ---------------------------------------------------------------------
 
-# Check parameters and set defaults (specific for teonet)
+# Check parameters
 # Parameters:
 # @param $1 Version (required)
 # @param $2 Library HI version (default 0)
@@ -41,27 +41,6 @@
 # VCS_URL=$12
 check_param()
 {
-    PACKET_NAME_DEFAULT="teoroom"
-    MAINTAINER_DEFAULT="kirill@scherba.ru"
-    DEPENDS_DEFAULT=""
-    PACKET_DESCRIPTION_DEFAULT="Teonet room controller"
-    LICENSES_DEFAULT='["MIT"]'
-    VCS_URL_DEFAULT="https://github.com"
-
-    #  Replace characters in $8 and $10
-    #echo "$@"
-    #echo .
-    # ${parameter//pattern/string}
-    # descr="$8"
-    # descr=`echo $descr| sed -e 's/_/ /g'`
-    #echo "$descr"
-    #echo .
-    # depen="$10"
-    # depen=`echo $depen| sed -e 's/!/ /g'`
-    #echo "$depen"
-
-    #exit 1
-
     # The first parameter is required
     # $1
     if [ -z "$1" ]; then
@@ -104,35 +83,40 @@ check_param()
 
     # $7
     if [ -z "$7" ]; then
-        PACKET_NAME=$PACKET_NAME_DEFAULT
+        echo The PACKET NAME parameter is required
+        exit 1
     else
         PACKET_NAME=$7
     fi
 
     # $8
     if [ -z "$8" ]; then
-        PACKET_DESCRIPTION="$PACKET_DESCRIPTION_DEFAULT, Version $VER"
+        echo The PACKET DESCRIPTION parameter is required
+        exit 1
     else
         PACKET_DESCRIPTION=$8 #$descr #$8
     fi
 
     # $9
     if [ -z "$9" ]; then
-        MAINTAINER=$MAINTAINER_DEFAULT
+        echo The MAINTAINER parameter is required
+        exit 1
     else
         MAINTAINER=$9
     fi
 
     # $10
     if [ -z "${10}" ]; then        
-        DEPENDS=$DEPENDS_DEFAULT
+        echo The DEPENDS parameter is required
+        exit 1
     else
         DEPENDS=${10} #$depen #$10
     fi
 
     # $11
     if [ -z "${11}" ]; then        
-        LICENSES=$LICENSES_DEFAULT
+        echo The LICENSES parameter is required
+        exit 1
     else
         LICENSES=${11}
     fi
@@ -140,6 +124,8 @@ check_param()
     # $12
     if [ -z "${12}" ]; then        
         VCS_URL=$VCS_URL_DEFAULT
+        echo The LVCS URL parameter is required
+        exit 1
     else
         VCS_URL=${12}
     fi
