@@ -15,7 +15,7 @@ AC_SUBST([$1], ['$2'])
 
 m4_define([pkg_major], [0]) dnl
 m4_define([pkg_minor], [1]) dnl
-m4_define([pkg_patch], [3]) dnl
+m4_define([pkg_patch], [4]) dnl
 m4_define([pkg_version], [pkg_major[.]pkg_minor[.]pkg_patch]) dnl
 
 m4_define([api_version],[0])
