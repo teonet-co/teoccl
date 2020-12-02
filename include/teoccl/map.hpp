@@ -71,54 +71,56 @@ namespace teo {
 
 
     // add
-    inline void *add(void *key, size_t key_length, void *data,
-        size_t data_length) {
+    inline void *add(const uint8_t *key, size_t key_length,
+        const uint8_t *data, size_t data_length) {
       return teoMapAdd(map, key, key_length, data, data_length);
     }
 
     inline void *add(const std::string& key, const std::string& data) {
-      return add((void *)key.c_str(), key.size() + 1, (void *)data.c_str(),
-          data.size() + 1);
+      return add((const uint8_t *)key.c_str(), key.size() + 1,
+          (const uint8_t *)data.c_str(), data.size() + 1);
     }
 
     template<typename D>
     void *add(const std::string& key, const D& data) {
-      return add((void*)key.c_str(), key.size() + 1, (void *)&data, sizeof(D));
+      return add((const uint8_t*)key.c_str(), key.size() + 1,
+          (const uint8_t *)&data, sizeof(D));
     }
 
     template<typename K, typename D>
     void *add(const K& key, const D& data) {
-      return add((void*)&key, sizeof(K), (void *)&data, sizeof(D));
+      return add((const uint8_t*)&key, sizeof(K),
+            (const uint8_t *)&data, sizeof(D));
     }
 
 
     // get
-    inline void *get(void *key, size_t key_length, size_t *data_length) {
+    inline void *get(const uint8_t *key, size_t key_length, size_t *data_length) {
       return teoMapGet(map, key, key_length, data_length);
     }
 
     inline void *get(const std::string& key, size_t *data_length) {
-      return get((void *)key.c_str(), key.size() + 1, data_length);
+      return get((const uint8_t *)key.c_str(), key.size() + 1, data_length);
     }
 
     template<typename K>
     void *get(const K& key, size_t *data_length) {
-      return get((void *)&key, sizeof(K), data_length);
+      return get((const uint8_t *)&key, sizeof(K), data_length);
     }
 
 
     // delete
-    inline int del(void *key, size_t key_length) {
+    inline int del(const uint8_t *key, size_t key_length) {
       return teoMapDelete(map, key, key_length);
     }
 
     inline int del(const std::string& key) {
-      return del((void *)key.c_str(), key.size() + 1);
+      return del((const uint8_t *)key.c_str(), key.size() + 1);
     }
 
     template<typename K>
     int del(const K& key) {
-      return del((void *)&key, sizeof(K));
+      return del((const uint8_t *)&key, sizeof(K));
     }
 
 

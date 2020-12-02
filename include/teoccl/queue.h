@@ -46,9 +46,6 @@ extern "C" {
  *
  */
 
-/**
- * TR-UDP queue data structure
- */
 typedef struct teoQueueData {
 
     struct teoQueueData *prev;
@@ -58,9 +55,6 @@ typedef struct teoQueueData {
 
 } teoQueueData;
 
-/**
- * TR-UDP Queue structure
- */
 typedef struct teoQueue {
 
     size_t length;
@@ -69,9 +63,6 @@ typedef struct teoQueue {
 
 } teoQueue;
 
-/**
- * TR-UDP iterator
- */
 typedef struct teoQueueIterator {
 
     teoQueue *q;
@@ -92,6 +83,7 @@ teoQueueData *teoQueueAddAfter(teoQueue *q, void *data, size_t data_length,
 teoQueueData *teoQueueUpdate(teoQueue *q, void *data, size_t data_length,
         teoQueueData *qd);
 teoQueueData *teoQueueRemove(teoQueue *q, teoQueueData *qd);
+
 int teoQueueDelete(teoQueue *q, teoQueueData *qd);
 int teoQueueDeleteFirst(teoQueue *q);
 int teoQueueDeleteLast(teoQueue *q);

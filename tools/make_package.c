@@ -113,7 +113,7 @@ int main(int argc, char** argv) {
   if (b_type == 1) {
     // Import repository keys
     if (CI_BUILD_REF != NULL)
-      if (system("ci-build/make_deb_keys_add.sh"))
+      if (system("tools/make_deb_keys_add.sh"))
         return (EXIT_FAILURE);
   }
 
@@ -137,7 +137,7 @@ int main(int argc, char** argv) {
             MAINTAINER, version);
 
     rv = system(cmd);
-    // rv = system("ci-build/make_deb_keys_remove.sh");
+    // rv = system("tools/make_deb_keys_remove.sh");
     rv = system("sudo rm -fr docs doc-pak/");
     exit(0);
   }
@@ -146,7 +146,7 @@ int main(int argc, char** argv) {
   // Execute build packet script
   snprintf(
       cmd, KSN_BUFFER_SM_SIZE,
-      "ci-build/make_%s.sh %s %d %d.0.0 %s %s %s %s '%s' '%s' '%s' '%s' '%s'",
+      "tools/make_%s.sh %s %d %d.0.0 %s %s %s %s '%s' '%s' '%s' '%s' '%s'",
       b_type == DEB ? argv[1] : "rpm", // Script type
       // Script parameters
       version,               // $1 Version

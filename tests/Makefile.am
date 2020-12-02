@@ -10,21 +10,12 @@ AM_CFLAGS = \
 	-std=gnu11 \
 	-I../include
 
-AM_CXX = clang++
+AM_CXX = g++
 AM_CXXFLAGS = \
 	-g -Wall \
 	-std=c++14 \
 	-I../include \
 	-std=c++14
-
-## Debug info
-if DEBUG
-  AM_CFLAGS += -g3 -O0
-  AM_CXXFLAGS += -g3 -O0
-else
-  AM_CFLAGS += -O2
-  AM_CXXFLAGS += -O2
-endif
 
 AM_LDFLAGS = -L../src/.libs 
 
@@ -32,7 +23,7 @@ LIBS = ../src/.libs/libteoccl.a -lcunit -lCppUTest
 
 noinst_PROGRAMS = teoccl_tst teoccl_cpp_tst
 
-teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c array_list_t.c deque_t.c que_t.c stack_t.c linked_list_t.c CMakeLists.txt
+teoccl_tst_SOURCES = main_t.c queue_t.c map_t.c array_list_t.c deque_t.c que_t.c stack_t.c linked_list_t.c lru_t.c CMakeLists.txt
 teoccl_cpp_tst_SOURCES = main_cpp_t.cpp queue_cpp_t.cpp map_cpp_t.cpp
 
 testsdir = $(datarootdir)/doc/@PACKAGE@/tests

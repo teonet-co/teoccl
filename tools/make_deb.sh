@@ -29,7 +29,7 @@
 
 # Include make deb functions
 PWD=`pwd`
-. "$PWD/ci-build/make_deb_inc.sh"
+. "$PWD/tools/make_deb_inc.sh"
 
 # Set exit at error
 set -e
@@ -76,10 +76,10 @@ if [ ! -z "$CI_BUILD_REF" ]; then
     # echo ""
 
     # Download repository from remote host by ftp:
-    ci-build/make_remote_download.sh
+    tools/make_remote_download.sh
     
     # Create DEB repository
-    create_deb_repo $REPO ubuntu Teonet teonet ci-build/gpg_key
+    create_deb_repo $REPO ubuntu Teonet teonet tools/gpg_key
 fi
 
 # Create deb package ----------------------------------------------------------
@@ -119,10 +119,10 @@ if [ ! -z "$CI_BUILD_REF" ]; then
     add_deb_package $REPO/ubuntu teonet $PACKAGE_NAME
 
     # Upload repository to remote host by ftp:
-    ci-build/make_remote_upload.sh
+    tools/make_remote_upload.sh
     
     # Install packet from remote repository
-    ci-build/make_remote_install.sh
+    tools/make_remote_install.sh
 fi
 
 # Upload DEB packages to Bintray  ---------------------------------------------
@@ -134,9 +134,11 @@ if [ ! -z "$CI_BUILD_REF_BT" ]; then
     # Create packet if not exists
     create_package_bintray
     sleep 30
-    # Upload file distribution wheezy, bionic
+    # Upload file distribution wheezy, bionic, focal, groovy
     upload_deb_bintray wheezy
     upload_deb_bintray bionic
+    upload_deb_bintray focal
+    upload_deb_bintray groovy
 fi
 
 # Upload DEB packages to Launchpad PPA repository  ----------------------------
@@ -149,7 +151,7 @@ fi
 
 # Make and upload documentation  ----------------------------------------------
 if [ -z "$CI_SKIP_DOCS" ]; then
-    ci-build/make_remote_doc_upload.sh $PACKET_NAME 
+    tools/make_remote_doc_upload.sh $PACKET_NAME 
 fi
 
 # Add DEB packages to Bintray download list -----------------------------------
@@ -163,6 +165,12 @@ if [ ! -z "$CI_BUILD_REF_BT" ] && [ -z "$CI_SKIP_DOWNLOADS"  ]; then
     
     # Add "bionic" to direct download list
     allow_deb_binary_download bionic
+
+    # Add "focal" to direct download list
+    allow_deb_binary_download focal
+
+    # Add "groovy" to direct download list
+    allow_deb_binary_download groovy
 fi
 
 # circleci local execute --job un-tagged-build-ubuntu -e CI_BUILD_REF_BT=1234567 -e CI_BINTRAY_USER=kirill-scherba -e CI_BINTRAY_API_KEY=fc6f1cae3022da43a10350552028763343bc7474 -e CI_SKIP_DOCS=true -e CI_SKIP_DOWNLOADS=true --skip-checkout

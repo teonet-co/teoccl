@@ -10,11 +10,11 @@
 
 # Include make deb functions
 # PWD=`pwd`
-. "$PWD/ci-build/make_inc.sh"
+. "$PWD/tools/make_inc.sh"
 
 # Function ---------------------------------------------------------------------
 
-# Check parameters and set defaults (specific for teonet)
+# Check parameters
 # Parameters:
 # @param $1 Version (required)
 # @param $2 Library HI version (default 0)
@@ -41,10 +41,10 @@
 # VCS_URL=$12
 check_param()
 {
-    PACKET_NAME_DEFAULT="teoroom"
+    PACKET_NAME_DEFAULT="libteoccl0"
     MAINTAINER_DEFAULT="kirill@scherba.ru"
     DEPENDS_DEFAULT=""
-    PACKET_DESCRIPTION_DEFAULT="Teonet room controller"
+    PACKET_DESCRIPTION_DEFAULT="Teonet"
     LICENSES_DEFAULT='["MIT"]'
     VCS_URL_DEFAULT="https://github.com"
 
@@ -144,7 +144,6 @@ check_param()
         VCS_URL=${12}
     fi
 }
-
 # Update and upgrade build host
 update_host()
 {

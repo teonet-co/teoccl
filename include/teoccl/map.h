@@ -60,7 +60,7 @@ typedef struct teoMapElementData {
     uint32_t hash;
     size_t key_length;
     size_t data_length;
-    char data[]; // Key + Data
+    uint8_t data[]; // Key + Data
 
 } teoMapElementData;
 
@@ -68,21 +68,21 @@ typedef struct teoMapIterator {
 
     uint32_t idx;
     teoMap *map;
-    teoQueueIterator *it;
+    teoQueueIterator it;
     teoMapElementData *tmv;
 
 } teoMapIterator;
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  * @param data_length
  *
- * @return 
+ * @return
  */
-void *teoMapGetFirst(teoMap *map, size_t *data_length);
+uint8_t *teoMapGetFirst(teoMap *map, size_t *data_length);
 
 /**
  * Get number of elements in TR-UPD map
@@ -94,17 +94,17 @@ size_t teoMapSize(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param size
  * @param auto_resize_f
  *
- * @return 
+ * @return
  */
 teoMap *teoMapNew(size_t size, int auto_resize_f);
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  */
@@ -112,7 +112,7 @@ void teoMapDestroy(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  */
@@ -120,7 +120,7 @@ void teoMapClear(teoMap *map);
 
 
 /**
- * @brief 
+ * @brief
  *
  * @param map
  * @param key
@@ -128,9 +128,9 @@ void teoMapClear(teoMap *map);
  * @param data
  * @param data_length
  *
- * @return 
+ * @return
  */
-void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
+uint8_t *teoMapAdd(teoMap *map, const uint8_t *key, size_t key_length, const uint8_t *data,
   size_t data_length);
 
 
@@ -144,12 +144,12 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
  * @return Data of added key or (void*)-1 at error
  */
 static
-inline void *teoMapAddStr(teoMap *map, const char *key, void *data,
+inline uint8_t *teoMapAddStr(teoMap *map, const char *key, const uint8_t *data,
         size_t data_length) {
-    return teoMapAdd(map, (void*)key, strlen(key) + 1, data, data_length);
+    return teoMapAdd(map, (const uint8_t*)key, strlen(key) + 1, data, data_length);
 }
 
-void *teoMapGet(teoMap *map, void *key, size_t key_length,
+uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
   size_t *data_length);
 
 /**
@@ -162,11 +162,11 @@ void *teoMapGet(teoMap *map, void *key, size_t key_length,
  * @return Data of selected key (may be NULL) or (void*)-1 if not found
  */
 static
-inline void *teoMapGetStr(teoMap *map, const char *key, size_t *data_length) {
-    return teoMapGet(map, (void *)key, strlen(key) + 1, data_length);
+inline uint8_t *teoMapGetStr(teoMap *map, const char *key, size_t *data_length) {
+    return teoMapGet(map, (const uint8_t*)key, strlen(key) + 1, data_length);
 }
 
-int teoMapDelete(teoMap *map, void *key, size_t key_length);
+int teoMapDelete(teoMap *map, const uint8_t *key, size_t key_length);
 
 /**
  * Delete keys element from map when key is cstring
@@ -177,11 +177,13 @@ int teoMapDelete(teoMap *map, void *key, size_t key_length);
  */
 static
 inline int teoMapDeleteStr(teoMap *map, const char *key) {
-    return teoMapDelete(map, (void *)key, strlen(key) + 1);
+    return teoMapDelete(map, (const uint8_t*)key, strlen(key) + 1);
 }
 
 teoMapIterator *teoMapIteratorNew(teoMap *map);
+void teoMapIteratorReset(teoMapIterator *map_it, teoMap *map);
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map);
+void teoMapIteratorReverseReset(teoMapIterator *map_it, teoMap *map);
 int teoMapIteratorFree(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it);
 teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it);
@@ -204,7 +206,7 @@ inline teoMapElementData *teoMapIteratorElement(teoMapIterator *map_it) {
  * @return Pointer to key
  */
 static
-inline void *teoMapIteratorElementKey(teoMapElementData *el,
+inline uint8_t *teoMapIteratorElementKey(teoMapElementData *el,
         size_t *key_length) {
     if(key_length) *key_length = el->key_length;
     return el->data;
@@ -217,7 +219,7 @@ inline void *teoMapIteratorElementKey(teoMapElementData *el,
  * @return Pointer to data
  */
 static
-inline void *teoMapIteratorElementData(teoMapElementData *el,
+inline uint8_t *teoMapIteratorElementData(teoMapElementData *el,
         size_t *data_length) {
     if(data_length) *data_length = el->data_length;
     return el->data + el->key_length;
@@ -231,4 +233,3 @@ int teoMapForeach(teoMap *m, teoMapForeachFunction callback, void *user_data);
 #endif
 
 #endif /* MAP_H */
-

@@ -34,17 +34,15 @@
 
 #include "teoccl/map.h"
 #include "teoccl/hash.h"
+#include "teoccl/memory.h"
 
 // Local functions
 static
-void *_teoMapGet(teoMap *map, void *key, size_t key_length, uint32_t hash,
-        size_t *data_length);
+teoMapElementData *_teoMapGet(teoMap *map, const uint8_t *key,
+        size_t key_length, uint32_t hash);
 
 static
-teoMapElementData *_teoMapGetValueData(void *tqd_data, uint32_t key_length);
-
-static
-uint32_t _teopMapHash(void *key, size_t key_length);
+uint32_t _teopMapHash(const uint8_t *key, size_t key_length);
 
 static
 teoMap *_teoMapResize(teoMap *map, size_t size);
@@ -65,19 +63,19 @@ size_t teoMapSize(teoMap *map) {
  * @return Pointer to teoMapData
  */
 teoMap *teoMapNew(size_t size, int auto_resize_f) {
-
-    int i;
-    teoMap *map = (teoMap *)malloc(sizeof(teoMap));
+    teoMap *map = (teoMap *)ccl_malloc(sizeof(teoMap));
 
     // Fill parameters
-    map->q = (teoQueue **)malloc(size * sizeof(teoQueue*));
+    map->q = (teoQueue **)ccl_malloc(size * sizeof(teoQueue*));
     map->auto_resize_f = auto_resize_f;
     map->hash_map_size = size;
     map->collisions = 0;
     map->length = 0;
 
     // Create Hash table
-    for(i = 0; i < size; i++) map->q[i] = teoQueueNew();
+    for(size_t i = 0; i < size; i++) {
+        map->q[i] = teoQueueNew();
+    }
 
     return map;
 }
@@ -90,58 +88,56 @@ teoMap *teoMapNew(size_t size, int auto_resize_f) {
  * @return Pointer to the same teoMapData
  */
 static teoMap *_teoMapResize(teoMap *map, size_t size) {
-
-    // Show mime of  resize for testing
+    // Show mime of resize for testing
     // #define _SHOW_FUNCTION_MSG_ 1
     #if _SHOW_FUNCTION_MSG_
     printf("resize map from %d to %d, time: ", (int)map->hash_map_size, (int)size);
     uint64_t t_stop, t_beg = teoGetTimestampFull();
     #endif
 
-    int i = 0;
+    size_t i = 0;
     teoMap *map_new = teoMapNew(size, map->auto_resize_f);
 
     // Loop through existing map and add it elements to new map
-    teoMapIterator *it;
-    if((it = teoMapIteratorNew(map))) {
-        while(teoMapIteratorNext(it)) {
-            teoMapElementData *el = teoMapIteratorElement(it);
+    teoMapIterator it;
+    teoMapIteratorReset(&it, map);
 
-            #define _SHOW_RESIZED_MSG_ 0
-            #if _SHOW_RESIZED_MSG_
-            printf("\n #%d hash: %010u, key: %s, value: %s ",
-                   i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
-            #endif
+    while(teoMapIteratorNext(&it)) {
+        teoMapElementData *el = teoMapIteratorElement(&it);
+
+        #define _SHOW_RESIZED_MSG_ 0
+        #if _SHOW_RESIZED_MSG_
+        printf("\n #%u hash: %010u, key: %s, value: %s ",
+                (uint32_t)i, el->hash, (char*)el->data, (char*)el->data + el->key_length);
+        #endif
 
 
-            #define _USE_PUT_ 1
-            #if _USE_PUT_
-            int idx = el->hash % map_new->hash_map_size;
-            teoQueueData *qd_new, *qd = _teoMapValueDataToQueueData(el);
-            qd_new = teoQueueNewData(qd->data, qd->data_length);
-            qd_new->prev = qd->prev;
-            qd_new->next = qd->next;
-            teoQueuePut(map_new->q[idx], qd_new);
-            map_new->length++;
-            #else
-            size_t key_length;
-            void *key = teoMapIteratorElementKey(el, &key_length);
-            size_t data_length;
-            void *data = teoMapIteratorElementData(el, &data_length);
-            teoMapAdd(map_new, key, key_length, data, data_length);
-            #endif
+        #define _USE_PUT_ 1
+        #if _USE_PUT_
+        int idx = el->hash % map_new->hash_map_size;
+        teoQueueData *qd_new, *qd = _teoMapValueDataToQueueData(el);
+        qd_new = teoQueueNewData(qd->data, qd->data_length);
+        qd_new->prev = qd->prev;
+        qd_new->next = qd->next;
+        teoQueuePut(map_new->q[idx], qd_new);
+        map_new->length++;
+        #else
+        size_t key_length;
+        void *key = teoMapIteratorElementKey(el, &key_length);
+        size_t data_length;
+        void *data = teoMapIteratorElementData(el, &data_length);
+        teoMapAdd(map_new, key, key_length, data, data_length);
+        #endif
 
-            i++;
-        }
-        // Destroy map iterator
-        teoMapIteratorFree(it);
+        i++;
     }
 
     // Free existing queues and move queues pointer of new map to existing
-    for(i = 0; i < map->hash_map_size; i++) {
+    for (i = 0; i < map->hash_map_size; i++) {
         teoQueueFree(map->q[i]);
         free(map->q[i]);
     }
+
     free(map->q);
     map->q = map_new->q;
     map->hash_map_size = size;
@@ -163,11 +159,8 @@ static teoMap *_teoMapResize(teoMap *map, size_t size) {
  * @param map Pointer to teoMapData
  */
 void teoMapDestroy(teoMap *map) {
-
     if(map) {
-
-        int i;
-        for(i = 0; i < map->hash_map_size; i++) {
+        for(size_t i = 0; i < map->hash_map_size; i++) {
             teoQueueDestroy(map->q[i]);
         }
         free(map->q);
@@ -176,15 +169,14 @@ void teoMapDestroy(teoMap *map) {
 }
 
 void teoMapClear(teoMap *map) {
-
   if (map) {
-    int i;
-    for (i = 0; i < map->hash_map_size; i++) {
+    for (size_t i = 0; i < map->hash_map_size; i++) {
       teoQueueFree(map->q[i]);
     }
     _teoMapResize(map, HASH_TABLE_SIZE);
   }
 }
+
 /**
  * Calculate hash for selected key
  *
@@ -192,7 +184,7 @@ void teoMapClear(teoMap *map) {
  * @param key_length Key length
  * @return
  */
-static inline uint32_t _teopMapHash(void *key, size_t key_length) {
+static inline uint32_t _teopMapHash(const uint8_t *key, size_t key_length) {
 
     // Select one of several hash functions
     #define _USE_HASH_ 0
@@ -206,46 +198,41 @@ static inline uint32_t _teopMapHash(void *key, size_t key_length) {
 }
 
 /**
- * Get key data from hash table
+ * Get element from hash table
  *
  * @param map Pointer to teoHashTdata
  * @param key Key
  * @param key_length Key length
  * @param hash Hash of key
- * @param data_length [out] Pointer to returned data length (may be NULL)
  *
- * @return Pointer to Data of selected key or NULL if not found
+ * @return Pointer to teoMapValueData of selected key or NULL if not found
  */
-static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
-        uint32_t hash, size_t *data_length) {
-
-    void *data = NULL; //(void*)-1;
-    if(data_length) *data_length = 0;
+static teoMapElementData *_teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
+        uint32_t hash) {
+    teoMapElementData *element = NULL;
 
     int idx = hash % map->hash_map_size;
-    teoMapElementData *htd;
-    teoQueueIterator *it = teoQueueIteratorNew(map->q[idx]);
-    if(it != NULL) {
-      teoQueueData *tqd;
-      while((tqd = teoQueueIteratorNext(it))) {
 
-        htd = (teoMapElementData *)tqd->data;
+    teoQueueIterator it;
+    teoQueueIteratorReset(&it, map->q[idx]);
+
+    teoQueueData *tqd;
+    while((tqd = teoQueueIteratorNext(&it))) {
+
+        teoMapElementData* htd = (teoMapElementData *)tqd->data;
         if(htd->hash == hash) {
 
             if(key_length == htd->key_length &&
-               !memcmp(htd->data, key, key_length)) {
+                !memcmp(htd->data, key, key_length)) {
 
-                if(data_length) *data_length = htd->data_length;
-                data = htd->data + htd->key_length;
+                element = htd;
                 break;
             }
             else map->collisions++;
         }
-      }
-      teoQueueIteratorFree(it);
     }
 
-    return data;
+    return element;
 }
 
 /**
@@ -256,33 +243,20 @@ static void *_teoMapGet(teoMap *map, void *key, size_t key_length,
  *
  * @return Pointer to Data of first available element or (void*)-1 if not found
  */
-void *teoMapGetFirst(teoMap *map, size_t *data_length) {
+uint8_t *teoMapGetFirst(teoMap *map, size_t *data_length) {
 
-    void *data = (void*)-1;
+    uint8_t *data = (uint8_t*)-1;
     if(data_length) *data_length = 0;
 
-    teoMapIterator *it = teoMapIteratorNew(map);
-    if(it != NULL) {
-        teoMapElementData *el;
-        if((el = teoMapIteratorNext(it))) {
-            data = teoMapIteratorElementData(el, data_length);
-        }
-        teoMapIteratorFree(it);
+    teoMapIterator it;
+    teoMapIteratorReset(&it, map);
+
+    teoMapElementData *el = teoMapIteratorNext(&it);
+    if(el != NULL) {
+        data = teoMapIteratorElementData(el, data_length);
     }
 
     return data;
-}
-
-/**
- * Get pointer to teoMapValueData from data pointer returned by teoMapGet
- *
- * @param tqd_data Pointer to map data returned by teoMapGet function
- * @return Pointer to teoMapValueData
- */
-static inline teoMapElementData *_teoMapGetValueData(void *tqd_data,
-        uint32_t key_length) {
-
-    return (teoMapElementData *)((char *)tqd_data - key_length - sizeof(teoMapElementData));
 }
 
 /**
@@ -305,16 +279,16 @@ static inline teoQueueData *_teoMapValueDataToQueueData(teoMapElementData *mvd) 
  * @param data_length Data length
  * @return Data of added key or (void*)-1 at error
  */
-void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
+uint8_t *teoMapAdd(teoMap *map, const uint8_t *key, size_t key_length, const uint8_t *data,
         size_t data_length) {
 
-    void *r_data = (void*)-1;
+    uint8_t *r_data = (uint8_t*)-1;
 
     if(!data) data_length = 0;
 
     // Create and fill Data structure
     size_t htd_length = sizeof(teoMapElementData) + key_length + data_length;
-    teoMapElementData *htd = (teoMapElementData *) malloc(htd_length);
+    teoMapElementData *htd = (teoMapElementData *) ccl_malloc(htd_length);
     htd->hash = _teopMapHash(key, key_length);
     htd->key_length = key_length;
     htd->data_length = data_length;
@@ -322,24 +296,25 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
     if(data_length) memcpy(htd->data + htd->key_length, data, data_length);
 
     // Check that key exist and add data to map if not exists
-    void *tqd_data = NULL;
-    size_t d_length;
     teoQueueData *tqd;
+    teoMapElementData* htd_existing = _teoMapGet(map, key, key_length, htd->hash);
     // Add data to map
-    if(!(tqd_data = _teoMapGet(map, key, key_length, htd->hash, &d_length))) {
+    if (htd_existing == NULL) {
         int idx = htd->hash % map->hash_map_size;
         tqd = teoQueueAdd(map->q[idx], (void*)htd, htd_length);
         if(tqd) {
             map->length++;
 
             // Resize if needed
-            if(map->auto_resize_f && map->length > map->hash_map_size * 3)
+            if(map->auto_resize_f && map->length > map->hash_map_size * 3) {
                 _teoMapResize(map, map->hash_map_size * 10);
+                teoMapElementData* rehash = _teoMapGet(map, key, key_length, htd->hash);
+                tqd = _teoMapValueDataToQueueData(rehash);
+            }
         }
     }
     // Update existing key data
     else {
-        teoMapElementData *htd_existing = _teoMapGetValueData(tqd_data, key_length);
         tqd = _teoMapValueDataToQueueData(htd_existing);
         int idx = htd->hash % map->hash_map_size;
         tqd = teoQueueUpdate(map->q[idx], (void*)htd, htd_length, tqd);
@@ -367,14 +342,24 @@ void *teoMapAdd(teoMap *map, void *key, size_t key_length, void *data,
  *
  * @return Data of selected key (may be NULL) or (void*)-1 if not found
  */
-void *teoMapGet(teoMap *map, void *key, size_t key_length,
+uint8_t *teoMapGet(teoMap *map, const uint8_t *key, size_t key_length,
         size_t *data_length) {
+    uint8_t* data = (uint8_t*)-1;
+    size_t element_data_length = 0;
 
     uint32_t hash = _teopMapHash(key, key_length);
-    void *data = _teoMapGet(map, key, key_length, hash, data_length);
+    teoMapElementData* element = _teoMapGet(map, key, key_length, hash);
 
-    return !data ? (void*)-1 :
-           _teoMapGetValueData(data, key_length)->data_length ? data : NULL;
+    if (element != NULL) {
+        element_data_length = element->data_length;
+        data = element_data_length > 0 ? element->data + element->key_length : NULL;
+    }
+
+    if (data_length != NULL) {
+        *data_length = element_data_length;
+    }
+
+    return data;
 }
 
 /**
@@ -385,17 +370,15 @@ void *teoMapGet(teoMap *map, void *key, size_t key_length,
  * @param key_length Key length
  * @return Zero at success, or errors: -1 - keys element not found
  */
-int teoMapDelete(teoMap *map, void *key, size_t key_length) {
+int teoMapDelete(teoMap *map, const uint8_t *key, size_t key_length) {
 
     int rv = -1;
 
-    size_t data_length;
     uint32_t hash = _teopMapHash(key, key_length);
-    void *data = _teoMapGet(map, key, key_length, hash, &data_length);
-    if(data) {
-        teoMapElementData *mvd = _teoMapGetValueData(data, key_length);
-        teoQueueData *tqd = _teoMapValueDataToQueueData(mvd);
-        int idx = mvd->hash % map->hash_map_size;
+    teoMapElementData* map_element = _teoMapGet(map, key, key_length, hash);
+    if (map_element != NULL) {
+        teoQueueData *tqd = _teoMapValueDataToQueueData(map_element);
+        int idx = map_element->hash % map->hash_map_size;
         rv = teoQueueDelete(map->q[idx], tqd);
         if(!rv) {
             map->length--;
@@ -418,15 +401,26 @@ int teoMapDelete(teoMap *map, void *key, size_t key_length) {
  */
 teoMapIterator *teoMapIteratorNew(teoMap *map) {
 
-    teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
+    teoMapIterator *map_it = (teoMapIterator*)ccl_malloc(sizeof(teoMapIterator));
+    teoMapIteratorReset(map_it, map);
+
+    return map_it;
+}
+
+/**
+ * Reset map iterator. Binds iterator to map, set forward iteration direction.
+ *
+ * @param map_it Pointer to teoMapIterator
+ * @param map Pointer to teoMapData
+ */
+void teoMapIteratorReset(teoMapIterator *map_it, teoMap *map) {
+
     if(map_it) {
-        map_it->it = teoQueueIteratorNew(map->q[0]);
+        teoQueueIteratorReset(&map_it->it, map->q[0]);
         map_it->idx = 0;
         map_it->map = map;
         map_it->tmv = NULL;
     }
-
-    return map_it;
 }
 
 /**
@@ -437,17 +431,27 @@ teoMapIterator *teoMapIteratorNew(teoMap *map) {
  */
 teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 
-    teoMapIterator *map_it = (teoMapIterator*)malloc(sizeof(teoMapIterator));
-    if(map_it) {
-        map_it->it = teoQueueIteratorNew(map->q[map->hash_map_size - 1]);
-        map_it->idx = map->hash_map_size - 1;
-        map_it->map = map;
-        map_it->tmv = NULL;
-    }
+    teoMapIterator *map_it = (teoMapIterator*)ccl_malloc(sizeof(teoMapIterator));
+    teoMapIteratorReverseReset(map_it, map);
 
     return map_it;
 }
 
+/**
+ * Reset map iterator. Binds iterator to map, set reverse iteration direction.
+ *
+ * @param map_it Pointer to teoMapIterator
+ * @param map Pointer to teoMapData
+ */
+void teoMapIteratorReverseReset(teoMapIterator *map_it, teoMap *map) {
+
+    if(map_it) {
+        teoQueueIteratorReset(&map_it->it, map->q[map->hash_map_size - 1]);
+        map_it->idx = map->hash_map_size - 1;
+        map_it->map = map;
+        map_it->tmv = NULL;
+    }
+}
 
 /**
  * Destroy map iterator
@@ -458,7 +462,6 @@ teoMapIterator *teoMapIteratorReverseNew(teoMap *map) {
 int teoMapIteratorFree(teoMapIterator *map_it) {
 
     if(map_it) {
-        teoQueueIteratorFree(map_it->it);
         free(map_it);
     }
 
@@ -478,9 +481,9 @@ teoMapElementData *teoMapIteratorNext(teoMapIterator *map_it) {
     teoQueueData *tqd;
     teoMapElementData *tmv = NULL;
 
-    while(!(tqd = teoQueueIteratorNext(map_it->it))) {
+    while(!(tqd = teoQueueIteratorNext(&map_it->it))) {
         if(++map_it->idx < map_it->map->hash_map_size) {
-            teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
+            teoQueueIteratorReset(&map_it->it, map_it->map->q[map_it->idx]);
         }
         else break;
     }
@@ -507,9 +510,9 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
     teoQueueData *tqd;
     teoMapElementData *tmv = NULL;
 
-    while(!(tqd = teoQueueIteratorPrev(map_it->it))) {
+    while(!(tqd = teoQueueIteratorPrev(&map_it->it))) {
         if(--map_it->idx != UINT32_MAX) {
-            teoQueueIteratorReset(map_it->it, map_it->map->q[map_it->idx]);
+            teoQueueIteratorReset(&map_it->it, map_it->map->q[map_it->idx]);
         }
         else break;
     }
@@ -531,19 +534,16 @@ teoMapElementData *teoMapIteratorPrev(teoMapIterator *map_it) {
  *
  * @return Number of elements processed
  */
-int teoMapForeach(teoMap *m, teoMapForeachFunction callback,
+int teoMapForeach(teoMap *map, teoMapForeachFunction callback,
         void *user_data) {
 
     int i = 0;
-    teoMapIterator *it = teoMapIteratorNew(m);
-    if(it != NULL) {
+    teoMapIterator it;
+    teoMapIteratorReset(&it, map);
 
-        while(teoMapIteratorNext(it)) {
-            if(callback(m, i++, teoMapIteratorElement(it), user_data)) break;
-        }
-        teoMapIteratorFree(it);
+    while(teoMapIteratorNext(&it)) {
+        if(callback(map, i++, teoMapIteratorElement(&it), user_data)) break;
     }
 
     return i;
 }
-

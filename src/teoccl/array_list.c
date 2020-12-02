@@ -1,39 +1,24 @@
-#include <stdlib.h>
 #include <limits.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "teoccl/array_list.h"
 
+#include "teoccl/memory.h"
+
 #ifndef SIZE_T_MAX
-  #if SIZEOF_SIZE_T == SIZEOF_INT
-    #define SIZE_T_MAX UINT_MAX
-  #elif SIZEOF_SIZE_T == SIZEOF_LONG
-    #define SIZE_T_MAX ULONG_MAX
-  #elif SIZEOF_SIZE_T == SIZEOF_LONG_LONG
-    #define SIZE_T_MAX ULLONG_MAX
-  #else
-    #error Unable to determine size of size_t
-  #endif
+  #define SIZE_T_MAX ((size_t)-1)
 #endif
-
-#define TEO_FREE( ptr ) if( ptr ){ free( ptr ); ptr = 0; }
-
 
 ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 {
-    ccl_array_list_t *tal = (ccl_array_list_t *)calloc(1, sizeof(ccl_array_list_t));
-    if (!tal) {
-        return NULL;
-    }
+    ccl_array_list_t *tal = (ccl_array_list_t *)ccl_malloc(sizeof(ccl_array_list_t));
 
     tal->size = ARRAY_LIST_DEFAULT_SIZE;
     tal->length = 0;
     tal->free_fn = free_fn;
 
-    if (!(tal->array = (void **)calloc(sizeof(void *), tal->size))) {
-        free(tal);
-        return NULL;
-    }
+    tal->array = (void **)ccl_calloc(sizeof(void*) * tal->size);
 
     return tal;
 }
@@ -42,14 +27,16 @@ ccl_array_list_t *cclArrayListNew(array_list_free_fn *free_fn)
 int cclArrayListFree(ccl_array_list_t *tal)
 {
     if (tal->free_fn) {
-        int i = 0;
-        for (i = 0; i < tal->length; ++i) {
+        for (size_t i = 0; i < tal->length; ++i) {
             if (tal->array[i]) tal->free_fn(tal->array[i]);
         }
     }
 
-    TEO_FREE(tal->array);
-    TEO_FREE(tal);
+    free(tal->array);
+    tal->array = NULL;
+
+    free(tal);
+    tal = NULL;
 
     return 0;
 }
@@ -83,7 +70,7 @@ int array_list_expand_internal(ccl_array_list_t *tal, size_t max)
     }
 
     if (new_size > (~((size_t)0)) / sizeof(void*)) return -1;
-    if (!(t = realloc(tal->array, new_size*sizeof(void*)))) return -1;
+    t = ccl_realloc(tal->array, new_size*sizeof(void*));
     tal->array = (void**)t;
     (void)memset(tal->array + tal->size, 0, (new_size - tal->size)*sizeof(void*));
     tal->size = new_size;
