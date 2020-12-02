@@ -36,9 +36,9 @@ jobs:
     machine: true
     working_directory: ~/teoccl
     steps:
-      - run: apt-get update && apt-get install -y openssh-client git
-      - run: DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get -y install tzdata
-      - run: apt install -y make pkg-config libtool autoconf intltool doxygen gcc g++
+      - run: sudo apt-get update && sudo apt-get install -y openssh-client git
+      - run: DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" sudo apt-get -y install tzdata
+      - run: sudo apt install -y make pkg-config libtool autoconf intltool doxygen gcc g++
       - checkout
       - run:
           name: "package with packagecore"
