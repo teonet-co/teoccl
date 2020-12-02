@@ -58,7 +58,7 @@ jobs:
       - run:
           name: "publish docs to GitHub"
           command: |
-            tools/make_remote_doc.sh teoccl
+            ./misc/make_remote_doc_upload.sh teoccl
       - run:
           name: "publish to Bintray"
           command: |
