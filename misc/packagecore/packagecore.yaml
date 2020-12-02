@@ -1,0 +1,57 @@
+name: libteoccl
+maintainer: Kirill Scherba <kirill@scherba.ru>, Max Ponka <mpano91@gmail.com>
+license: GPL-3.0
+summary: Teonet (CCL) C Containers and DataStruct Library
+homepage: https://github.com/teonet-co/teoccl
+commands:
+  compile:
+    - ./autogen.sh
+    - ./configure
+    - make
+  install:
+    - make PREFIX="/usr" install DESTDIR="${BP_DESTDIR}"
+packages:
+  debian9:
+    builddeps:
+      - libtool
+      - autoconf
+      - intltool
+      - make
+      - gcc
+      - g++
+      - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
+  debian10:
+    builddeps:
+      - libtool
+      - autoconf
+      - intltool
+      - make
+      - gcc
+      - g++
+      - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
+  ubuntu18.04:
+    builddeps:
+      - libtool
+      - autoconf
+      - intltool
+      - make
+      - gcc
+      - g++
+      - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
+  ubuntu20.04:
+    builddeps:
+      - libtool
+      - autoconf
+      - intltool
+      - make
+      - gcc
+      - g++
+      - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
