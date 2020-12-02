@@ -15,7 +15,7 @@ AC_SUBST([$1], ['$2'])
 
 m4_define([pkg_major], [0]) dnl
 m4_define([pkg_minor], [1]) dnl
-m4_define([pkg_patch], [4]) dnl
+m4_define([pkg_patch], [6]) dnl
 m4_define([pkg_version], [pkg_major[.]pkg_minor[.]pkg_patch]) dnl
 
 m4_define([api_version],[0])
@@ -38,8 +38,8 @@ PKG_INSTALLDIR
 AC_DEFINE_SUBST(API_VERSION, [api_version], [api version])
 
 AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
-AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
-AC_DEFINE_SUBST(LIBRARY_AGE,      1, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_REVISION, 1, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_AGE,      0, [teoccl dynamic library version])
 
 AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, [pkg_major], [pack ver])
 AC_DEFINE_SUBST(LIBRARY_MINOR_VERSION, [pkg_minor], [pack ver])
