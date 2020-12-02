@@ -76,7 +76,7 @@ if [ ! -z "$CI_BUILD_REF_BT" ]; then
     	#make doxygen-doc
     	mv docs/ ../.docs
 
-		git config --global user.email "repo@ksproject.org"
+		git config --global user.email "repo@teonet-co.org"
   		git config --global user.name  "repository"
 
     	git checkout gh-pages
