@@ -10,7 +10,7 @@ AM_CFLAGS = \
 	-std=gnu11 \
 	-I../include
 
-AM_CXX = clang++
+AM_CXX = g++
 AM_CXXFLAGS = \
 	-g -Wall \
 	-std=c++14 \

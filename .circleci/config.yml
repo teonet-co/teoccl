@@ -30,8 +30,8 @@ jobs:
             echo "########## gcc-10 ##########"
             ./autogen.sh
             ./configure
-            CC=gcc-10 CXX=g++-10 make
-            make test
+            CC=gcc-10 make
+            CXX=g++-10 make test
             make clean
 
   package-and-publish-release:
