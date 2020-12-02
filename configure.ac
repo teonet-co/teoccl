@@ -38,8 +38,8 @@ PKG_INSTALLDIR
 AC_DEFINE_SUBST(API_VERSION, [api_version], [api version])
 
 AC_DEFINE_SUBST(LIBRARY_CURRENT,  1, [teoccl dynamic library version])
-AC_DEFINE_SUBST(LIBRARY_REVISION, 0, [teoccl dynamic library version])
-AC_DEFINE_SUBST(LIBRARY_AGE,      2, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_REVISION, 1, [teoccl dynamic library version])
+AC_DEFINE_SUBST(LIBRARY_AGE,      0, [teoccl dynamic library version])
 
 AC_DEFINE_SUBST(LIBRARY_MAJOR_VERSION, [pkg_major], [pack ver])
 AC_DEFINE_SUBST(LIBRARY_MINOR_VERSION, [pkg_minor], [pack ver])
