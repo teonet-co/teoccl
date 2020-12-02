@@ -34,14 +34,13 @@ jobs:
 
   package-and-publish-release:
     machine: true
-    working_directory: ~/teoccl
+    docker:
+      - image: ubuntu:20.04
+        working_directory: ~/teoccl
     steps:
       - checkout
-      - run:
-          name: "Doxygen install"
-          command: |
-            apt-get install -y sudo
-            sudo apt-get install -y doxygen
+      - run: apt update -qq
+      - run: apt-get install -y doxygen
       - run:
           name: "package with packagecore"
           command: |
