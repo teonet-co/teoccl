@@ -33,7 +33,6 @@ jobs:
 
 
   package-and-publish-release:
-    machine: true
     docker:
       - image: ubuntu:20.04
         working_directory: ~/teoccl
