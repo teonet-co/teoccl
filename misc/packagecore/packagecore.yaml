@@ -11,30 +11,6 @@ commands:
   install:
     - make PREFIX="/usr" install DESTDIR="${BP_DESTDIR}"
 packages:
-  centos8.0:
-    builddeps:
-      - libtool
-      - autoconf
-      - intltool
-      - make
-      - gcc
-      - pkgconfig
-  fedora32:
-    builddeps:
-      - libtool
-      - autoconf
-      - intltool
-      - make
-      - gcc
-      - pkg-config
-  opensuse15.2:
-    builddeps:
-      - libtool
-      - autoconf
-      - intltool
-      - make
-      - gcc
-      - pkg-config
   debian9:
     builddeps:
       - libtool
@@ -43,6 +19,8 @@ packages:
       - make
       - gcc
       - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
   debian10:
     builddeps:
       - libtool
@@ -51,6 +29,8 @@ packages:
       - make
       - gcc
       - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
   ubuntu18.04:
     builddeps:
       - libtool
@@ -59,6 +39,8 @@ packages:
       - make
       - gcc
       - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
   ubuntu20.04:
     builddeps:
       - libtool
@@ -67,3 +49,5 @@ packages:
       - make
       - gcc
       - pkg-config
+      - libcunit1-dev
+      - libcpputest-dev
