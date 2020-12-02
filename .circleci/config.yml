@@ -38,6 +38,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Doxygen install"
+          command: |
+            apt-get install -y sudo
+            sudo apt-get install -y doxygen
+      - run:
           name: "package with packagecore"
           command: |
             # Clean up
@@ -58,7 +63,6 @@ jobs:
       - run:
           name: "publish docs to GitHub"
           command: |
-            apt install -y --no-install-recommends doxygen
             ./autogen.sh
             ./configure
             ./misc/make_remote_doc_upload.sh teoccl
