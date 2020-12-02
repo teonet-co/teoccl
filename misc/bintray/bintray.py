@@ -33,7 +33,7 @@ BINTRAY_COMPONENT=env('BINTRAY_COMPONENT')
 BINTRAY_ORG=env('BINTRAY_ORG')
 BINTRAY_PACKAGE='libteoccl'
 
-PACKAGE_DESC='libteoccl - test lib'
+PACKAGE_DESC='Teonet (CCL) C Containers and DataStruct Library'
 
 deb_distrib = {
     'ubuntu20.04': 'focal',
@@ -260,8 +260,8 @@ def do_publish(*args):
                 basename, args, extra = get_bintray_params(file)
             except:
                 traceback.print_exc()
-    bpath = '/packages/aeco/%s/%s/versions' % \
-            (args.repo, BINTRAY_PACKAGE)
+    bpath = '/packages/%s/%s/%s/versions' % \
+            (BINTRAY_ORG, args.repo, BINTRAY_PACKAGE)
     data = { 'name': args.version, 'desc': PACKAGE_DESC }
 
     resp = Bintray(bpath).post(data)
