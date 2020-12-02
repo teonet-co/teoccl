@@ -26,8 +26,8 @@ jobs:
       - run: git submodule update --init --recursive
       - run: ./autogen.sh
       - run: ./configure --prefix=/usr
-      - run: CC=gcc-10 make
-      - run: CXX=g++-10 make test
+      - run: CC=gcc-10 CXX=g++-10 make
+      - run: CC=gcc-10 CXX=g++-10 make test
       - run: make clean
 
 
