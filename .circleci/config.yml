@@ -58,6 +58,8 @@ jobs:
       - run:
           name: "publish docs to GitHub"
           command: |
+            ./autogen.sh
+            ./configure
             ./misc/make_remote_doc_upload.sh teoccl
       - run:
           name: "publish to Bintray"
