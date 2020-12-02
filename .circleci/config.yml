@@ -39,7 +39,7 @@ jobs:
         environment:
           CI_FORCE_TEST: 1
     steps:      
-      - run: apt-get update && apt-get install -y openssh-client git python3
+      - run: apt-get update && apt-get install -y openssh-client git python3 python3-pip
       - run: DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get -y install tzdata
       - run: apt install -y make pkg-config libtool autoconf intltool doxygen gcc g++
       - checkout
@@ -51,8 +51,7 @@ jobs:
             # Pack source
             git archive -o ../${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}.tar.gz --format tar.gz --prefix=${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG#v}/ ${CIRCLE_TAG}
             # Use latest installed python3 from pyenv
-            export PYENV_VERSION="$(pyenv versions | grep -Po '\b3\.\d+\.\d+' | tail -1)"
-            pip install packagecore
+            pip3 install packagecore
             packagecore -c misc/packagecore/packagecore.yaml -o ./dist/ ${CIRCLE_TAG#v} ${CIRCLE_BUILD_NUM}
             # Move source pack to dist
             mv ../${CIRCLE_PROJECT_REPONAME}-${CIRCLE_TAG}.tar.gz dist/
