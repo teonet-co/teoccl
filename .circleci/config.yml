@@ -20,7 +20,7 @@ jobs:
             DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get -y install tzdata
             apt install -y --no-install-recommends software-properties-common wget gpg-agent shellcheck
             apt install -y --no-install-recommends git make pkg-config libtool autoconf intltool
-            apt install -y --no-install-recommends gcc-10
+            apt install -y --no-install-recommends gcc-10 g++-10
             apt install -y --no-install-recommends libglib2.0-dev doxygen checkinstall libcunit1-dev libcpputest-dev
       - checkout
       - run:
@@ -30,7 +30,7 @@ jobs:
             echo "########## gcc-10 ##########"
             ./autogen.sh
             ./configure
-            CC=gcc-10 make
+            CC=gcc-10 CXX=g++-10 make
             make test
             make clean
 
