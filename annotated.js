@@ -1,4 +1,4 @@
-var annotated_dup =
+var annotated =
 [
     [ "teo", "namespaceteo.html", "namespaceteo" ],
     [ "ccl_array_list", "structccl__array__list.html", "structccl__array__list" ],
