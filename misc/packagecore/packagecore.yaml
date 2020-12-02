@@ -18,6 +18,7 @@ packages:
       - intltool
       - make
       - gcc
+      - g++
       - pkg-config
       - libcunit1-dev
       - libcpputest-dev
@@ -28,6 +29,7 @@ packages:
       - intltool
       - make
       - gcc
+      - g++
       - pkg-config
       - libcunit1-dev
       - libcpputest-dev
@@ -38,6 +40,7 @@ packages:
       - intltool
       - make
       - gcc
+      - g++
       - pkg-config
       - libcunit1-dev
       - libcpputest-dev
@@ -48,6 +51,7 @@ packages:
       - intltool
       - make
       - gcc
+      - g++
       - pkg-config
       - libcunit1-dev
       - libcpputest-dev
