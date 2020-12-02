@@ -58,6 +58,7 @@ jobs:
       - run:
           name: "publish docs to GitHub"
           command: |
+            apt install -y --no-install-recommends doxygen
             ./autogen.sh
             ./configure
             ./misc/make_remote_doc_upload.sh teoccl
