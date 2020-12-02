@@ -39,7 +39,7 @@ jobs:
         environment:
           CI_FORCE_TEST: 1
     steps:      
-      - run: apt-get update && apt-get install -y openssh-client git
+      - run: apt-get update && apt-get install -y openssh-client git python3
       - run: DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get -y install tzdata
       - run: apt install -y make pkg-config libtool autoconf intltool doxygen gcc g++
       - checkout
